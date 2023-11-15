@@ -1,3 +1,9 @@
+# 커리업 4인 팀 프로젝트
+
+## 프로젝트 기간
+
+> 11.10~
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

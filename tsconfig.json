@@ -13,6 +13,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "allowImportingTsExtensions": true, // typescript 에서 .ts, .tsx 확장자로 모듈 불러오는 것 허용, 이 옵션은 noEmit 이 true 여야 한다.
     "plugins": [
       {
         "name": "next"

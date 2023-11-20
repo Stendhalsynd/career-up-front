@@ -50,6 +50,9 @@
     "no-undef": "off",
     "react/jsx-filename-extension": "off",
     "import/extensions": ["error", "ignorePackages"],
-    "react/function-component-definition": "off"
+    "react/function-component-definition": "off",
+    "react/require-default-props": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/no-unescaped-entities": "off"
   }
 }

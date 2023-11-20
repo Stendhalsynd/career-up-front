@@ -8,21 +8,14 @@ const meta: Meta<typeof Text> = {
   component: Text,
   argTypes: {
     variant: {
-      options: [
-        'extraSmall',
-        'small',
-        'medium',
-        'mediumLarge',
-        'large',
-        'extraLarge',
-      ],
+      options: ['extraSmall', 'small', 'medium', 'mediumLarge', 'large'],
       control: { type: 'select' },
       defaultValue: 'extraSmall',
       // docs에 표시할 내용을 설정
       description: '텍스트 변형',
       table: {
         type: {
-          summary: 'extraSmall, small, medium, mediumLarge, large, extraLarge',
+          summary: 'extraSmall, small, medium, mediumLarge, large',
         },
         defaultValue: { summary: 'extraSmall' },
       },
@@ -204,13 +197,5 @@ export const Large: Story = {
     variant: 'large',
     children: longText,
     label: 'large',
-  },
-}
-
-export const Compare: Story = {
-  args: {
-    variant: 'extraLarge',
-    children: longText,
-    color: 'danger',
   },
 }

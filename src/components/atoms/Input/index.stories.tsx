@@ -22,15 +22,54 @@ const meta: Meta<typeof Input> = {
         type: { summary: 'boolean' },
       },
     },
+    hasDarkBackground: {
+      control: { type: 'boolean' },
+      defaultValue: false,
+      description: '배경 플래그',
+      table: {
+        type: { summary: 'boolean' },
+      },
+    },
   },
 }
 
 export default meta
 type Story = StoryObj<typeof Input>
 
+export const WithoutBorder: Story = {
+  args: {
+    hasBorder: false,
+    hasDarkBackground: false,
+    placeholder: '입력하세요...',
+  },
+  decorators: [
+    (Story) => (
+      <ThemeProvider theme={theme}>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
+}
+
 export const Normal: Story = {
   args: {
     hasBorder: true,
+    hasDarkBackground: false,
+    placeholder: '입력하세요...',
+  },
+  decorators: [
+    (Story) => (
+      <ThemeProvider theme={theme}>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
+}
+
+export const Dark: Story = {
+  args: {
+    hasBorder: true,
+    hasDarkBackground: true,
     placeholder: '입력하세요...',
   },
   decorators: [

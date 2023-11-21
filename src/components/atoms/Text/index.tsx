@@ -19,7 +19,6 @@ export type TextVariant =
   | 'medium'
   | 'mediumLarge'
   | 'large'
-  | 'extraLarge'
 
 export type TextProps = {
   variant?: TextVariant
@@ -85,7 +84,7 @@ const variants = {
 /**
  * 텍스트
  * 변형, 색상, 타이포그래피, 레이아웃, 스페이스 관련 Props 추가
- * @description fontSize, letterSpacing, lineHeight 의 경우만 variant 와 함께 반응형 적용가능 단, breakpoint 는 base 외에 sm 768px, md 901px 만 가능
+ * @description fontSize, letterSpacing, lineHeight 의 경우만 variant 로 한번에 설정 가능. 반응형은 base, sm, md 세종류
  * @example <Text variant="small" fontSize={{base: 'small', md: 'large}} >{children}</Text >
  */
 const Text = styled.span<TextProps>`

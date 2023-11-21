@@ -11,11 +11,11 @@ type LetterSpacingThemeKeys = keyof typeof theme.letterSpacings
 type LineHeightThemeKeys = keyof typeof theme.lineHeights
 
 // 각 Theme의 키의 타입
-export type Space = SpaceThemeKeys | (string & {})
-export type Color = ColorThemeKeys | (string & {})
-export type FontSize = FontSizeThemeKeys | (string & {})
+export type Space = SpaceThemeKeys | ([key: string] & {})
+export type Color = ColorThemeKeys | ([key: string] & {})
+export type FontSize = FontSizeThemeKeys | ([key: string] & {})
 export type LetterSpacing = LetterSpacingThemeKeys | (string & {})
-export type LineHeight = LineHeightThemeKeys | (string & {})
+export type LineHeight = LineHeightThemeKeys | ([key: string] & {})
 
 // 브레이크 포인트
 const BREAKPOINTS: { [key: string]: string } = {

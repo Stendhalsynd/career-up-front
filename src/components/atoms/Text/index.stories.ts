@@ -59,7 +59,7 @@ const meta: Meta<typeof Text> = {
       defaultValue: 'text',
       description: '배경 색상',
       table: {
-        type: { summary: 'text, danger' },
+        type: { summary: 'background colors' },
         defaultValue: { summary: 'text' },
       },
     },
@@ -67,11 +67,9 @@ const meta: Meta<typeof Text> = {
       options: Object.keys(fontSizes),
       mapping: fontSizes,
       control: { type: 'select' },
-      defaultValue: '16px',
       description: '폰트 크기',
       table: {
-        type: { summary: 'text, danger' },
-        defaultValue: { summary: 'text' },
+        type: { summary: 'extraSmall, small, medium, mediumLarge, large' },
       },
     },
     m: {

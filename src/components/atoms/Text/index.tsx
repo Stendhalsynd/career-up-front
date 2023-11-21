@@ -102,9 +102,6 @@ const Text = styled.span<TextProps>`
         styles.push(
           toPropValue('line-height', variants[variant].lineHeight, theme),
         )
-
-      console.log('styles : ', styles)
-
       return styles.join('\n')
     }
   }}
@@ -112,9 +109,6 @@ const Text = styled.span<TextProps>`
   ${(props) => toPropValue('letter-spacing', props.letterSpacing, props.theme)}
   ${(props) => toPropValue('line-height', props.lineHeight, props.theme)}
   ${(props) => {
-    console.log('color : ', props.color)
-    console.log('theme : ', props.theme)
-
     return toPropValue('color', props.color, props.theme)
   }}
   ${(props) =>

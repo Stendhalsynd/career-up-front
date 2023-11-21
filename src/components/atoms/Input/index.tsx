@@ -5,13 +5,24 @@ import styled, { css } from 'styled-components'
 /**
  * 텍스트 입력
  * @description 인풋 박스
- * @example <Input name="email" type="text" placeholder="이메일" hasBorder />
+ * @example <Input
+        name="email"
+        type="text"
+        placeholder="이메일"
+        hasBorder
+        hasDarkBackground
+      />
  */
-const Input = styled.input<{ hasBorder?: boolean }>`
+const Input = styled.input<{
+  hasBorder?: boolean
+  hasDarkBackground?: boolean
+}>`
+  background-color: ${({ theme, hasDarkBackground }) =>
+    hasDarkBackground ? theme.colors.inputDarkGray : theme.colors.inputText};
   ${({ theme, hasBorder }) => {
     if (hasBorder) {
       return css`
-        border: 1px solid ${theme.colors.inputGray};
+        border: 1px solid ${theme.colors.gray};
         color: ${theme.colors.inputGray};
         border-radius: 5px;
       `
@@ -46,7 +57,7 @@ const Input = styled.input<{ hasBorder?: boolean }>`
 `
 
 Input.defaultProps = {
-  hasBorder: true,
+  hasBorder: false,
 }
 
 export default Input

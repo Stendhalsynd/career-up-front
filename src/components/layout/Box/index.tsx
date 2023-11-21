@@ -14,6 +14,7 @@ export type BoxProps = {
   minHeight?: Responsive<string>
   display?: Responsive<string>
   border?: Responsive<string>
+  borderRadius?: Responsive<string>
   overflow?: Responsive<string>
   margin?: Responsive<Space>
   marginTop?: Responsive<Space>
@@ -32,9 +33,12 @@ export type BoxProps = {
  * 레이아웃 조정에 사용한다
  * @description 기본적인 style 에 대해 반응형 적용 가능
  * @example <Box
-          width={'120px'}
-          height={'120px'}
-          backgroundColor={{ base: 'black', sm: 'gray', md: 'red' }}
+        width={'120px'}
+        height={'120px'}
+        backgroundColor={'red'}
+        margin={3}
+        border={'5px solid blue'}
+        borderRadius={'50%'}
       ></Box>
  */
 const Box = styled.div<BoxProps>`
@@ -47,6 +51,7 @@ const Box = styled.div<BoxProps>`
   ${(props) => toPropValue('min-height', props.minHeight, props.theme)}
   ${(props) => toPropValue('display', props.display, props.theme)}
   ${(props) => toPropValue('border', props.border, props.theme)}
+  ${(props) => toPropValue('border-radius', props.borderRadius, props.theme)}
   ${(props) => toPropValue('overflow', props.overflow, props.theme)}
   ${(props) => toPropValue('margin', props.margin, props.theme)}
   ${(props) => toPropValue('margin-top', props.marginTop, props.theme)}

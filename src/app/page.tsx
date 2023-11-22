@@ -8,17 +8,19 @@ import Flex from 'components/layout/Flex/index.tsx'
 import RequestButton from 'components/molecules/Button/RequestButton.tsx'
 import SelectButton from 'components/molecules/Button/SelectButton.tsx'
 import StatusButton from 'components/molecules/Button/StatusButton.tsx'
+import Header from 'components/molecules/Header/index.tsx'
 import Label from 'components/molecules/Label/index.tsx'
 import SearchInput from 'components/molecules/SearchInput/index.tsx'
 
 export default function Home() {
   return (
     <main>
+      <Header />
       <Text variant={'small'} color="danger">
         test
       </Text>
       <Avatar src={'/assets/image/img_avatar.svg'} width={100} height={100} />
-      <Logo></Logo>
+      <Logo />
       <Icon iconName="desktop" width={100} height={100} />
       <Icon iconName="warning" width={100} height={100} />
 

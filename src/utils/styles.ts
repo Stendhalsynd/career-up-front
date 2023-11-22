@@ -9,6 +9,8 @@ type ColorThemeKeys = keyof typeof theme.colors
 type FontSizeThemeKeys = keyof typeof theme.fontSizes
 type LetterSpacingThemeKeys = keyof typeof theme.letterSpacings
 type LineHeightThemeKeys = keyof typeof theme.lineHeights
+type ButtonSizeThemeKeys = keyof typeof theme.buttonSizes
+type ButtonHeightThemeKeys = keyof typeof theme.buttonHeights
 
 // 각 Theme의 키의 타입
 export type Space = SpaceThemeKeys | ([key: string] & {})
@@ -16,6 +18,8 @@ export type Color = ColorThemeKeys | ([key: string] & {})
 export type FontSize = FontSizeThemeKeys | ([key: string] & {})
 export type LetterSpacing = LetterSpacingThemeKeys | (string & {})
 export type LineHeight = LineHeightThemeKeys | ([key: string] & {})
+export type ButtonSize = ButtonSizeThemeKeys | ([key: string] & {})
+export type ButtonHeight = ButtonHeightThemeKeys | ([key: string] & {})
 
 // 브레이크 포인트
 const BREAKPOINTS: { [key: string]: string } = {
@@ -89,6 +93,8 @@ const COLOR_KEYS = new Set(['color', 'background-color'])
 const FONT_SIZE_KEYS = new Set(['font-size'])
 const LINE_SPACING_KEYS = new Set(['letter-spacing'])
 const LINE_HEIGHT_KEYS = new Set(['line-height'])
+const BUTTON_SIZE_KEYS = new Set(['width'])
+const BUTTON_HEIGHT_KEYS = new Set(['height'])
 
 /**
  * Theme에 지정된 CSS 속성값으로 변환
@@ -138,6 +144,23 @@ function toThemeValueIfNeeded<T>(propKey: string, value: T, theme?: AppTheme) {
   ) {
     return theme.lineHeights[value]
   }
+  if (
+    theme &&
+    theme.buttonSizes &&
+    BUTTON_SIZE_KEYS.has(propKey) &&
+    isButtonSizeThemeKeys(value, theme)
+  ) {
+    return theme.buttonSizes[value]
+  }
+
+  if (
+    theme &&
+    theme.buttonHeights &&
+    BUTTON_HEIGHT_KEYS.has(propKey) &&
+    isButtonHeightThemeKeys(value, theme)
+  ) {
+    return theme.buttonHeights[value]
+  }
 
   return value
 }
@@ -182,4 +205,20 @@ function isLineHeightThemeKeys(
   theme: AppTheme,
 ): prop is LineHeightThemeKeys {
   return Object.keys(theme.lineHeights).filter((key) => key == prop).length > 0
+}
+
+function isButtonSizeThemeKeys(
+  prop: any,
+  theme: AppTheme,
+): prop is ButtonSizeThemeKeys {
+  return Object.keys(theme.buttonSizes).filter((key) => key == prop).length > 0
+}
+
+function isButtonHeightThemeKeys(
+  prop: any,
+  theme: AppTheme,
+): prop is ButtonHeightThemeKeys {
+  return (
+    Object.keys(theme.buttonHeights).filter((key) => key == prop).length > 0
+  )
 }

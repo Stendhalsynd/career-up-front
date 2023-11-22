@@ -11,6 +11,10 @@ export type ResponsiveProp<T> = {
 }
 export type Responsive<T> = T | ResponsiveProp<T>
 
+export type CSSPropertyBorderRadius =
+  | CSSPropertyGlobals
+  | Responsive<string | number>
+
 /**
  * Flex
  */

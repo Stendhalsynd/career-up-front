@@ -37,3 +37,15 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
+
+// svg 파일을 React 컴포넌트로 변환하기 위한 설정을 추가하는 부분
+// @svgr/webpack 라이브러리를 사용하여 svg 파일을 React 컴포넌트로 변환한다.
+module.exports = {
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    })
+    return config
+  },
+}

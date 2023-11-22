@@ -31,7 +31,6 @@ const IconImage = styled(Image)<IconProps>`
       />
  */
 
-// const Icon = ({ iconName, width, height }: IconProps) => {
 const Icon = (props: IconProps) => {
   const { iconName, width, height } = props
   const iconPath = `/assets/icon/icon_${iconName}.svg`

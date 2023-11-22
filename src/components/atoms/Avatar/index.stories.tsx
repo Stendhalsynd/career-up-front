@@ -10,7 +10,7 @@ const meta: Meta<typeof Avatar> = {
     src: {
       control: { type: 'text' },
       description: '이미지 URL',
-      defaultValue: '/images/sample/img_avatar.svg',
+      defaultValue: '/assets/image/sample/img_avatar.svg',
       table: {
         type: { summary: 'string' },
       },
@@ -38,7 +38,7 @@ type Story = StoryObj<typeof Avatar>
 
 export const Circle: Story = {
   args: {
-    src: '/images/sample/img_avatar.svg',
+    src: '/assets/image/sample/img_avatar.svg',
     width: 120,
     height: 120,
   },

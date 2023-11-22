@@ -3,7 +3,7 @@
 /* eslint-disable prettier/prettier */
 import styled from 'styled-components'
 import type { Responsive } from 'types/styles'
-import { toPropValue, Color, Space } from 'utils/styles'
+import { toPropValue, Color } from 'utils/styles'
 
 export type BoxProps = {
   color?: Responsive<Color>
@@ -12,20 +12,22 @@ export type BoxProps = {
   height?: Responsive<string>
   minWidth?: Responsive<string>
   minHeight?: Responsive<string>
+  maxWidth?: Responsive<string>
+  maxHeight?: Responsive<string>
   display?: Responsive<string>
   border?: Responsive<string>
   borderRadius?: Responsive<string>
   overflow?: Responsive<string>
-  margin?: Responsive<Space>
-  marginTop?: Responsive<Space>
-  marginRight?: Responsive<Space>
-  marginBottom?: Responsive<Space>
-  marginLeft?: Responsive<Space>
-  padding?: Responsive<Space>
-  paddingTop?: Responsive<Space>
-  paddingRight?: Responsive<Space>
-  paddingBottom?: Responsive<Space>
-  paddingLeft?: Responsive<Space>
+  margin?: Responsive<string>
+  marginTop?: Responsive<string>
+  marginRight?: Responsive<string>
+  marginBottom?: Responsive<string>
+  marginLeft?: Responsive<string>
+  padding?: Responsive<string>
+  paddingTop?: Responsive<string>
+  paddingRight?: Responsive<string>
+  paddingBottom?: Responsive<string>
+  paddingLeft?: Responsive<string>
 }
 
 /**
@@ -49,6 +51,8 @@ const Box = styled.div<BoxProps>`
   ${(props) => toPropValue('height', props.height, props.theme)}
   ${(props) => toPropValue('min-width', props.minWidth, props.theme)}
   ${(props) => toPropValue('min-height', props.minHeight, props.theme)}
+  ${(props) => toPropValue('max-width', props.maxWidth, props.theme)}
+  ${(props) => toPropValue('max-height', props.maxHeight, props.theme)}
   ${(props) => toPropValue('display', props.display, props.theme)}
   ${(props) => toPropValue('border', props.border, props.theme)}
   ${(props) => toPropValue('border-radius', props.borderRadius, props.theme)}

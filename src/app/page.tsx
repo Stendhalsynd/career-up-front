@@ -1,8 +1,4 @@
-// import Image from 'next/image'
-import Avatar from 'components/atoms/Avatar/index.tsx'
-import Icon from 'components/atoms/Icon/index.tsx'
-import Logo from 'components/atoms/Logo/index.tsx'
-import Text from 'components/atoms/Text/index.tsx'
+import { Avatar, Icon, Logo, Text } from 'components/atoms/index.ts'
 
 export default function Home() {
   return (

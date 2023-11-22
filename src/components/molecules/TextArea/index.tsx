@@ -42,6 +42,21 @@ const StyledTextArea = styled.textarea<{ hasError?: boolean }>`
 
 /**
  * 텍스트 영역
+ * @description 여러줄의 입력을 처리할 수 있습니다.
+ * @example <TextArea
+        minRows={3}
+        maxRows={10}
+        hasError={true}
+        placeholder="텍스트를 입력하세요"
+      >
+        입력값
+      </TextArea>
+
+      or 
+
+      <TextArea minRows={3} maxRows={10} placeholder="텍스트를 입력하세요">
+        입력값
+      </TextArea>
  */
 const TextArea = (props: TextAreaProps) => {
   const {

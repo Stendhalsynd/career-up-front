@@ -18,7 +18,7 @@ const Input = styled.input<{
   hasDarkBackground?: boolean
 }>`
   background-color: ${({ theme, hasDarkBackground }) =>
-    hasDarkBackground ? theme.colors.inputDarkGray : theme.colors.inputText};
+    hasDarkBackground ? theme.colors.inputDarkGray : 'transparent'};
   ${({ theme, hasBorder }) => {
     if (hasBorder) {
       return css`
@@ -33,7 +33,7 @@ const Input = styled.input<{
       `
     }
   }}
-  padding: 11px 12px 12px 9px;
+  padding: 16px 12px 11px 9px;
   box-sizing: border-box;
   outline: none;
   width: 100%;

@@ -17,6 +17,7 @@ export type BoxProps = {
   display?: Responsive<string>
   border?: Responsive<string>
   borderRadius?: Responsive<string>
+  borderBottom?: Responsive<string>
   overflow?: Responsive<string>
   margin?: Responsive<string>
   marginTop?: Responsive<string>
@@ -56,6 +57,7 @@ const Box = styled.div<BoxProps>`
   ${(props) => toPropValue('display', props.display, props.theme)}
   ${(props) => toPropValue('border', props.border, props.theme)}
   ${(props) => toPropValue('border-radius', props.borderRadius, props.theme)}
+  ${(props) => toPropValue('border-bottom', props.borderBottom, props.theme)}
   ${(props) => toPropValue('overflow', props.overflow, props.theme)}
   ${(props) => toPropValue('margin', props.margin, props.theme)}
   ${(props) => toPropValue('margin-top', props.marginTop, props.theme)}

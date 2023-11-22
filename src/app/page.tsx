@@ -5,6 +5,7 @@ import Logo from 'components/atoms/Logo/index.tsx'
 import Text from 'components/atoms/Text/index.tsx'
 import Box from 'components/layout/Box/index.tsx'
 import Flex from 'components/layout/Flex/index.tsx'
+import Label from 'components/molecules/Label/index.tsx'
 import SearchInput from 'components/molecules/SearchInput/index.tsx'
 
 export default function Home() {
@@ -57,6 +58,15 @@ export default function Home() {
         </Box>
       </Flex>
       <SearchInput variant={'primaryLarge'} />
+      <Label fontSize={'extraSmall'}>
+        <Text color={'white'}>
+          실력있는 개발자들이 모였습니다. 나의 고민을 해결해줄 수 있는&nbsp;
+        </Text>
+        <Text color={'primary'} fontSize={'large'}>
+          파트너
+        </Text>
+        <Text color={'white'}>를 찾아보세요.</Text>
+      </Label>
 
       {/* <Flex
         flexDirection={'column'}

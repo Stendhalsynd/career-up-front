@@ -40,38 +40,6 @@ export default function Home() {
         재직자
       </SelectButton>
       <StatusButton variant="gray">거절됨</StatusButton>
-
-      {/* <Flex
-        flexDirection={'column'}
-        backgroundColor={'inputGray'}
-        border={'3px solid red'}
-        height={'1000px'}
-      >
-        <Box
-          width={'120px'}
-          height={'120px'}
-          backgroundColor={'red'}
-          margin={1}
-        />
-        <Box
-          width={'120px'}
-          height={'120px'}
-          backgroundColor={'red'}
-          margin={1}
-        />
-        <Box
-          width={'120px'}
-          height={'120px'}
-          backgroundColor={'red'}
-          margin={1}
-        />
-        <Box
-          width={'120px'}
-          height={'120px'}
-          backgroundColor={'red'}
-          margin={1}
-        />
-      </Flex> */}
       <Picture pictureName="cube" />
     </main>
   )

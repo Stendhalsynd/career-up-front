@@ -29,6 +29,7 @@ type FlexProps = BoxProps & {
   justifySelf?: Responsive<CSSPropertyJustifySelf>
   alignSelf?: Responsive<CSSPropertyAlignSelf>
   order?: Responsive<string>
+  display?: Responsive<string>
 }
 
 /**
@@ -51,6 +52,7 @@ const Flex = styled(Box)<FlexProps>`
   ${(props) => toPropValue('justify-self', props.justifySelf, props.theme)}
   ${(props) => toPropValue('align-self', props.alignSelf, props.theme)}
   ${(props) => toPropValue('order', props.order, props.theme)}
+  ${(props) => toPropValue('display', props.display, props.theme)}
 `
 
 Flex.defaultProps = {

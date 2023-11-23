@@ -6,6 +6,7 @@ import {
   SearchInput,
 } from 'components/molecules/index.ts'
 import Login from 'components/organisms/Login/index.tsx'
+import Signup from 'components/organisms/Signup/index.tsx'
 import { Tablet } from 'lib/useMediaQuery.tsx'
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         test
       </Text>
       <Login />
+      <Signup />
       <Avatar src={'/assets/image/img_avatar.svg'} width={100} height={100} />
       <Logo></Logo>
       <Icon iconName="desktop" width={100} height={100} />

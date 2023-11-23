@@ -38,8 +38,8 @@ const Login = () => {
       <Flex flexDirection={'column'} alignItems={'center'}>
         <Flex marginBottom={'15px'}>
           <RequestButton
-            width={{ base: '73.53vw', sm: '400px' }}
-            height={'50px'}
+          // width={{ base: '73.53vw', sm: '400px' }}
+          // height={'50px'}
           >
             로그인
           </RequestButton>
@@ -47,8 +47,8 @@ const Login = () => {
         <Flex>
           <RequestButton
             variant="clear"
-            width={{ base: '73.53vw', sm: '400px' }}
-            height={'50px'}
+            // width={{ base: '73.53vw', sm: '400px' }}
+            // height={'50px'}
           >
             회원가입하기
           </RequestButton>

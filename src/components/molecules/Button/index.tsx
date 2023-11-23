@@ -36,6 +36,7 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   height?: Responsive<ButtonHeight>
   minWidth?: Responsive<string>
   minHeight?: Responsive<string>
+  maxWidth?: Responsive<string>
   display?: Responsive<string>
   border?: Responsive<string>
   borderRadius?: Responsive<string>
@@ -207,6 +208,7 @@ const Button = styled.button<ButtonProps>`
   ${(props) => toPropValue('height', props.height, props.theme)}
   ${(props) => toPropValue('min-width', props.minWidth, props.theme)}
   ${(props) => toPropValue('min-height', props.minHeight, props.theme)}
+  ${(props) => toPropValue('max-width', props.maxWidth, props.theme)}
   ${(props) => toPropValue('display', props.display, props.theme)}
   ${(props) => toPropValue('border', props.border, props.theme)}
   ${(props) =>

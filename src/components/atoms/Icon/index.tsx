@@ -11,23 +11,29 @@ export type IconProps = {
 }
 
 const IconWrapper = styled.button`
+  display: inline-block;
   background-color: transparent;
   border: none;
   cursor: pointer;
 `
 
-const IconImage = styled(Image)<IconProps>`
-  width: ${({ width }) => (width ? width : 24)};
-  height: ${({ height }) => (height ? height : 24)};
-`
+const IconComponent = styled(Image)<IconProps>``
 
 /**
  * 아이콘 컴포넌트
- * @description 아이콘 
+ * @description 아이콘
+ * iconName: /assets/icon/icon_{iconName}.svg
+ * width, height: Integer만 작성
+ * next.js에서 제공하는 Image 태그에는 src, alt, width, height 속성이 필수적으로 명시되어 있어야 한다.
+ * Type
+ * src: String
+ * width: Integer(px)
+ * height: Integer(px)
+ * alt: string
  * @example <Icon
         iconName="close"
-        width="24px"
-        height="24px"
+        width={24}
+        height={24}
       />
  */
 
@@ -37,7 +43,7 @@ const Icon = (props: IconProps) => {
 
   return (
     <IconWrapper>
-      <IconImage
+      <IconComponent
         src={iconPath}
         alt={`${iconName} icon`}
         width={width}
@@ -45,6 +51,11 @@ const Icon = (props: IconProps) => {
       />
     </IconWrapper>
   )
+}
+
+Icon.defaultProps = {
+  width: 24,
+  height: 24,
 }
 
 export default Icon

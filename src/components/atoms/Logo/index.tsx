@@ -24,13 +24,19 @@ export type LogoProps = {
  * alt: string
  * @example <Logo width={60} />
  */
-
 // eslint-disable-next-line react/prop-types
 const Logo = (props: LogoProps) => {
-  const { width, height } = props
+  const { width } = props
 
   return (
-    <Image src={LOGO_IMAGE_PATH} alt="Logo" width={width} height={height} />
+    <Image
+      src={LOGO_IMAGE_PATH}
+      alt="Logo"
+      width={0}
+      height={0}
+      style={{ width, height: 'auto' }}
+      priority
+    />
   )
 }
 

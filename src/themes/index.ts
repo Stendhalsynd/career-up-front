@@ -1,3 +1,5 @@
+import buttonHeights from 'themes/buttonHeights.ts'
+import buttonSizes from 'themes/buttonSizes.ts'
 import colors from 'themes/colors.ts'
 import fontSizes from 'themes/fontSizes.ts'
 import iconSizes from 'themes/iconSizes.ts'
@@ -12,4 +14,6 @@ export const theme = {
   letterSpacings,
   colors,
   iconSizes,
+  buttonSizes,
+  buttonHeights,
 } as const

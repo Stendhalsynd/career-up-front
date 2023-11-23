@@ -5,6 +5,9 @@ import Logo from 'components/atoms/Logo/index.tsx'
 import Text from 'components/atoms/Text/index.tsx'
 import Box from 'components/layout/Box/index.tsx'
 import Flex from 'components/layout/Flex/index.tsx'
+import RequestButton from 'components/molecules/Button/RequestButton.tsx'
+import SelectButton from 'components/molecules/Button/SelectButton.tsx'
+import StatusButton from 'components/molecules/Button/StatusButton.tsx'
 import Label from 'components/molecules/Label/index.tsx'
 import SearchInput from 'components/molecules/SearchInput/index.tsx'
 
@@ -67,6 +70,15 @@ export default function Home() {
         </Text>
         <Text color={'white'}>를 찾아보세요.</Text>
       </Label>
+
+      <RequestButton variant="dark">검색</RequestButton>
+      <SelectButton variant="primary" borderRadius={{ base: '5px' }}>
+        구직자
+      </SelectButton>
+      <SelectButton variant="white" borderRadius={{ base: '5px' }}>
+        재직자
+      </SelectButton>
+      <StatusButton variant="gray">거절됨</StatusButton>
 
       {/* <Flex
         flexDirection={'column'}

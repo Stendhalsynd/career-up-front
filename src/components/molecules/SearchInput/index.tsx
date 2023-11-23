@@ -85,7 +85,7 @@ const SkillLargeSearchInput = () => (
     maxWidth={'fit-content'}
   >
     <Icon iconName="desktop" width={24} height={24} />
-    <Text fontSize={'extraSmall'} color={'darkGray'} marginLeft={2}>
+    <Text fontSize={'extraSmall'} color={'darkGray'} marginLeft={'10px'}>
       기술 스택
     </Text>
     <Flex padding={'4px 0'} marginLeft={'20px'} paddingRight={'33px'}>

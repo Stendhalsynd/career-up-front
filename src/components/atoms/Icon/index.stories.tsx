@@ -22,7 +22,7 @@ const meta: Meta<typeof Icon> = {
     },
     width: {
       control: { type: 'number' },
-      defaultValue: 100,
+      defaultValue: 24,
       description: '가로 길이',
       table: {
         type: { summary: 'number' },
@@ -30,7 +30,7 @@ const meta: Meta<typeof Icon> = {
     },
     height: {
       control: { type: 'number' },
-      defaultValue: 100,
+      defaultValue: 24,
       description: '세로 길이',
       table: {
         type: { summary: 'number' },

@@ -1,65 +1,26 @@
 // import Image from 'next/image'
 import Avatar from 'components/atoms/Avatar/index.tsx'
-import Icon from 'components/atoms/Icon/index.tsx'
-import Logo from 'components/atoms/Logo/index.tsx'
-import Text from 'components/atoms/Text/index.tsx'
-import Box from 'components/layout/Box/index.tsx'
-import Flex from 'components/layout/Flex/index.tsx'
+import Picture from 'components/atoms/Picture'
+import { Icon, Logo, Text } from 'components/atoms/index.ts'
 import RequestButton from 'components/molecules/Button/RequestButton.tsx'
 import SelectButton from 'components/molecules/Button/SelectButton.tsx'
 import StatusButton from 'components/molecules/Button/StatusButton.tsx'
+import Header from 'components/molecules/Header/index.tsx'
 import Label from 'components/molecules/Label/index.tsx'
 import SearchInput from 'components/molecules/SearchInput/index.tsx'
 
 export default function Home() {
   return (
     <main>
+      <Header />
       <Text variant={'small'} color="danger">
         test
       </Text>
       <Avatar src={'/assets/image/img_avatar.svg'} width={100} height={100} />
-      <Logo></Logo>
+      <Logo />
       <Icon iconName="desktop" width={100} height={100} />
-      <Icon iconName="warning" width={100} height={100} />
+      <Icon iconName="warning" />
 
-      <Flex backgroundColor={'black'} height={'140px'} padding={'5vw'}>
-        <Flex>
-          <Logo customWidth={50} customHeight={17} />
-        </Flex>
-
-        <Flex justifyContent={'space-evenly'}>
-          <Box>
-            <Text
-              variant="small"
-              fontSize={{ base: 'small', md: 'large' }}
-              color={'white'}
-            >
-              멘토 찾기
-            </Text>
-          </Box>
-          <Box>
-            <Text
-              variant="small"
-              fontSize={{ base: 'small', md: 'large' }}
-              color={'white'}
-            >
-              나의 채팅
-            </Text>
-          </Box>
-          <Box>
-            <Text
-              variant="small"
-              fontSize={{ base: 'small', md: 'large' }}
-              color={'white'}
-            >
-              로그인
-            </Text>
-          </Box>
-        </Flex>
-        <Box>
-          <Icon iconName="menu" width={24} height={24} />
-        </Box>
-      </Flex>
       <SearchInput variant={'primaryLarge'} />
       <Label fontSize={'extraSmall'}>
         <Text color={'white'}>
@@ -111,6 +72,7 @@ export default function Home() {
           margin={1}
         />
       </Flex> */}
+      <Picture pictureName="cube" />
     </main>
   )
 }

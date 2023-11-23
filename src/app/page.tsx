@@ -5,6 +5,7 @@ import {
   Label,
   SearchInput,
 } from 'components/molecules/index.ts'
+import Login from 'components/organisms/Login/index.tsx'
 import { Tablet } from 'lib/useMediaQuery.tsx'
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <Text variant={'small'} color="danger">
         test
       </Text>
+      <Login />
       <Avatar src={'/assets/image/img_avatar.svg'} width={100} height={100} />
       <Logo></Logo>
       <Icon iconName="desktop" width={100} height={100} />

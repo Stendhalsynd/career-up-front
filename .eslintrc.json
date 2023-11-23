@@ -77,7 +77,9 @@
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:import/recommended",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:import/errors",
+    "plugin:import/warnings"
   ],
   "rules": {
     "react/react-in-jsx-scope": "off",
@@ -96,5 +98,6 @@
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "react/no-unknown-property": "off"
-  }
+  },
+  "plugins": ["@typescript-eslint", "import"]
 }

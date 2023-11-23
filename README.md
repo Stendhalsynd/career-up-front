@@ -3,8 +3,10 @@
 ## 설치 라이브러리
 
 ```
-npm i recoil
+npm i react-hook-form recoil
 npm i react-router-dom
+npm install eslint-import-resolver-node --save-dev
+
 ```
 
 ## 프로젝트 기간

@@ -2,6 +2,7 @@
 // TODO: image 태그에 반응형 웹 적용 가능한 방법 찾아보기
 
 import Image from 'next/image'
+import React from 'react'
 
 // 이미지 경로를 상수로 선언
 const LOGO_IMAGE_PATH = '/assets/image/img_logo.svg'

@@ -1,36 +1,41 @@
+// TODO: storybook 작성
+// TODO: image 태그에 반응형 웹 적용 가능한 방법 찾아보기
+
 import Image from 'next/image'
-// import styled from 'styled-components'
-// import type { Responsive } from 'types/styles'
 
 // 이미지 경로를 상수로 선언
 const LOGO_IMAGE_PATH = '/assets/image/img_logo.svg'
 
 export type LogoProps = {
-  customWidth?: number // Responsive<string>
-  customHeight?: number // Responsive<string>
+  width?: number
+  height?: number
 }
 
+/**
+ * 로고
+ * @description
+ * width, height: Integer만 작성
+ * next.js에서 제공하는 Image 태그에는 src, alt, width, height 속성이 필수적으로 명시되어 있어야 한다.
+ * Type
+ * src: String
+ * width: Integer(px)
+ * height: Integer(px)
+ * alt: string
+ * @example <Logo width={60} />
+ */
+
 // eslint-disable-next-line react/prop-types
-const Logo: React.FC<LogoProps> = ({ customWidth, customHeight }) => {
-  // customWidth와 customHeight가 전달되지 않으면 각각 200과 68을 사용
-  const width = customWidth || 200
-  const height = customHeight || 68
+const Logo = (props: LogoProps) => {
+  const { width, height } = props
 
   return (
     <Image src={LOGO_IMAGE_PATH} alt="Logo" width={width} height={height} />
   )
 }
 
-// const LogoImage = styled(Image)<LogoProps>`
-//   width: ${({ width }) => (width ? width : '200px')};
-//   height: ${({ height }) => (height ? height : '68px')};
-// `
-
-// const Logo = (props: LogoProps) => {
-//   const { width, height } = props
-//   return (
-//     <LogoImage src={LOGO_IMAGE_PATH} alt="Logo" width={width} height={height} />
-//   )
-// }
+Logo.defaultProps = {
+  width: 200,
+  height: 68,
+}
 
 export default Logo

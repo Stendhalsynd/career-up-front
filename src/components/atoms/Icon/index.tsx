@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import styled from 'styled-components'
-// import type { Responsive } from 'types/styles'
 
 export type IconProps = {
   iconName?: string
@@ -20,8 +19,8 @@ const IconWrapper = styled.button`
 const IconComponent = styled(Image)<IconProps>``
 
 /**
- * 아이콘 컴포넌트
- * @description 아이콘
+ * 아이콘
+ * @description
  * iconName: /assets/icon/icon_{iconName}.svg
  * width, height: Integer만 작성
  * next.js에서 제공하는 Image 태그에는 src, alt, width, height 속성이 필수적으로 명시되어 있어야 한다.

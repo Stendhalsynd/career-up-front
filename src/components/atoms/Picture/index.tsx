@@ -1,7 +1,9 @@
+// TODO: storybook 작성
 'use client'
 
 import Image from 'next/image'
 import styled from 'styled-components'
+import { Box } from 'components/layout/index.ts'
 
 export type PictureProps = {
   pictureName?: string
@@ -9,7 +11,7 @@ export type PictureProps = {
   height?: number
 }
 
-const PictureWrapper = styled.div``
+const PictureWrapper = styled(Box)``
 
 const PictureComponent = styled(Image)<PictureProps>``
 

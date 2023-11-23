@@ -10,6 +10,7 @@ import { FontSize, toPropValue } from 'utils/styles.ts'
 interface LabelProps {
   children: ReactNode
   fontSize?: Responsive<FontSize>
+  flexDirection?: string
 }
 
 const StyledLabel = styled(Flex)<LabelProps>`

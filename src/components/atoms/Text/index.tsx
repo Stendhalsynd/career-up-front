@@ -13,6 +13,8 @@ import {
 
 // 텍스트 변형
 export type TextVariant =
+  | 'xxSmall'
+  | 'xSmall'
   | 'extraSmall'
   | 'small'
   | 'medium'
@@ -48,6 +50,18 @@ export type TextProps = {
 }
 
 const variants = {
+  xxSmall: {
+    fontSize: 'xxSmall',
+    letterSpacing: 0,
+    lineHeight: 0,
+  },
+
+  xSmall: {
+    fontSize: 'xSmall',
+    letterSpacing: 0,
+    lineHeight: 0,
+  },
+
   extraSmall: {
     fontSize: 'extraSmall',
     letterSpacing: 0,

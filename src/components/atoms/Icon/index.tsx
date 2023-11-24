@@ -32,12 +32,10 @@ const IconComponent = styled(Image)<IconProps>``
  * @example <Icon
         iconName="close"
         width={24}
-        height={24}
       />
  */
-
 const Icon = (props: IconProps) => {
-  const { iconName, width, height } = props
+  const { iconName, width = 24 } = props
   const iconPath = `/assets/icon/icon_${iconName}.svg`
 
   return (
@@ -45,16 +43,12 @@ const Icon = (props: IconProps) => {
       <IconComponent
         src={iconPath}
         alt={`${iconName} icon`}
-        width={width}
-        height={height}
+        width={0}
+        height={0}
+        style={{ width, height: 'auto' }}
       />
     </IconWrapper>
   )
-}
-
-Icon.defaultProps = {
-  width: 24,
-  height: 24,
 }
 
 export default Icon

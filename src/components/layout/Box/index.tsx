@@ -13,6 +13,8 @@ export type BoxProps = {
   minHeight?: Responsive<string>
   maxWidth?: Responsive<string>
   maxHeight?: Responsive<string>
+  boxShadow?: Responsive<string>
+  gap?: Responsive<string>
   display?: Responsive<string>
   border?: Responsive<string>
   borderRadius?: Responsive<string>
@@ -52,6 +54,8 @@ const Box = styled.div<BoxProps>`
   ${(props) => toPropValue('min-width', props.minWidth, props.theme)}
   ${(props) => toPropValue('min-height', props.minHeight, props.theme)}
   ${(props) => toPropValue('max-width', props.maxWidth, props.theme)}
+  ${(props) => toPropValue('box-shadow', props.boxShadow, props.theme)}
+  ${(props) => toPropValue('gap', props.gap, props.theme)}
   ${(props) => toPropValue('max-height', props.maxHeight, props.theme)}
   ${(props) => toPropValue('display', props.display, props.theme)}
   ${(props) => toPropValue('border', props.border, props.theme)}

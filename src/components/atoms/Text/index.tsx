@@ -85,6 +85,7 @@ const variants = {
  * 변형, 색상, 타이포그래피, 레이아웃, 스페이스 관련 Props 추가
  * @description fontSize, letterSpacing, lineHeight 의 경우만 variant 로 한번에 설정 가능. 반응형은 base, sm, md 세종류
  * @example <Text variant="small" fontSize={{base: 'small', md: 'large'}} >{children}</Text >
+ * TODO: font family 를 포함하여 variant 별 속성이 적용되도록 해야한다.
  */
 const Text = styled.span<TextProps>`
   ${({ variant, fontSize, letterSpacing, lineHeight, theme }) => {

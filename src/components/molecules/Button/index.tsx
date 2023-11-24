@@ -203,6 +203,7 @@ const Button = styled.button<ButtonProps>`
     toPropValue('background-color', props.backgroundColor, props.theme)}
   ${(props) => toPropValue('width', props.width || '300px', props.theme)}
   ${(props) => toPropValue('height', props.height, props.theme)}
+  ${(props) => toPropValue('max-width', props.maxWidth, props.theme)}
   ${(props) => toPropValue('min-width', props.minWidth, props.theme)}
   ${(props) => toPropValue('min-height', props.minHeight, props.theme)}
   ${(props) => toPropValue('max-width', props.maxWidth, props.theme)}

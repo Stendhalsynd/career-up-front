@@ -6,6 +6,7 @@
 npm i react-hook-form recoil
 npm i react-router-dom
 npm install eslint-import-resolver-node --save-dev
+npm i -D chromatic
 
 ```
 

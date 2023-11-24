@@ -25,7 +25,7 @@ export type LogoProps = {
  */
 // eslint-disable-next-line react/prop-types
 const Logo = (props: LogoProps) => {
-  const { width } = props
+  const { width = 200 } = props
 
   return (
     <Image
@@ -37,11 +37,6 @@ const Logo = (props: LogoProps) => {
       priority
     />
   )
-}
-
-Logo.defaultProps = {
-  width: 200,
-  height: 68,
 }
 
 export default Logo

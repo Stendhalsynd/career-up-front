@@ -16,59 +16,19 @@ const VIEWPORTS = {
     },
   },
   DESKTOP_MIN: {
-    name: 'DESKTOP - 768p',
+    name: 'TABLET - 768p',
     styles: {
       width: '768px',
       height: '1300px',
     },
   },
   DESKTOP_MEDIUM: {
-    name: 'DESKTOP - 900p',
+    name: 'TABLET - 900p',
     styles: {
       width: '900px',
       height: '1300px',
     },
   },
-  DESKTOP_MAX: {
-    name: 'DESKTOP - 901p',
-    styles: {
-      width: '901px',
-      height: '1300px',
-    },
-  },
-}
-
-const MOBILE_MAX_VIEWPORTS = {
-  MOBILE_MAX: {
-    name: 'MOBILE - 767p',
-    styles: {
-      width: '767px',
-      height: '1000px',
-    },
-  },
-}
-
-const DESKTOP_MIN_VIEWPORTS = {
-  DESKTOP_MIN: {
-    name: 'DESKTOP - 768p',
-    styles: {
-      width: '768px',
-      height: '1300px',
-    },
-  },
-}
-
-const DESKTOP_MEDIUM_VIEWPORTS = {
-  DESKTOP_MEDIUM: {
-    name: 'DESKTOP - 900p',
-    styles: {
-      width: '900px',
-      height: '1300px',
-    },
-  },
-}
-
-const DESKTOP_MAX_VIEWPORTS = {
   DESKTOP_MAX: {
     name: 'DESKTOP - 901p',
     styles: {

@@ -25,8 +25,9 @@ const StatusButton: React.FC<StatusButtonProps> = ({
   return (
     <Button
       variant="primary"
-      width={{ base: 'medium' }}
-      height={{ base: 'medium' }}
+      width={'fit-content'}
+      height={'fit-content'}
+      padding={'12px 35px'}
       fontSize={{ base: 'extraSmall' }}
       {...buttonProps}
     >

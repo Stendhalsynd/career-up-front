@@ -29,5 +29,4 @@ export const PrimarySmall: Story = {
       </ThemeProvider>
     ),
   ],
-  // render: () => <SearchInput variant=''/>,
 }

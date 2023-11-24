@@ -35,14 +35,9 @@ const Login = () => {
         </Flex>
       </Flex>
 
-      <Flex flexDirection={'column'} alignItems={'center'}>
-        <Flex marginBottom={'15px'}>
-          <RequestButton
-          // width={{ base: '73.53vw', sm: '400px' }}
-          // height={'50px'}
-          >
-            로그인
-          </RequestButton>
+      <Flex flexDirection={'column'} alignItems={'center'} width={'100%'}>
+        <Flex marginBottom={'15px'} width={'100%'}>
+          <RequestButton>로그인</RequestButton>
         </Flex>
         <Flex>
           <RequestButton

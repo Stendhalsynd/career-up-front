@@ -1,5 +1,15 @@
 import { Avatar, Icon, Logo, Text } from 'components/atoms/index.ts'
 import { Box, Flex } from 'components/layout/index.ts'
+import HyperLinkButton from 'components/molecules/Button/HyperLinkButton.tsx'
+import NicknameButton from 'components/molecules/Button/NicknameButton.tsx'
+import RequestButton from 'components/molecules/Button/RequestButton.tsx'
+import SelectButton from 'components/molecules/Button/SelectButton.tsx'
+import StatusButton from 'components/molecules/Button/StatusButton.tsx'
+import {
+  InfoTagButton,
+  IntroTagButton,
+  SkillTagButton,
+} from 'components/molecules/Button/TagButton.tsx'
 import {
   DropDownButton,
   Label,
@@ -72,6 +82,17 @@ export default function Home() {
         </Tablet>
         <Text color={'white'}>를 찾아보세요.</Text>
       </Label>
+
+      <RequestButton>로그인</RequestButton>
+      <HyperLinkButton to="main">커리업 하러 가기</HyperLinkButton>
+      <NicknameButton nickname="잠자는 사자" />
+      <SelectButton variant="white" isRound={false}>
+        선택버튼
+      </SelectButton>
+      <StatusButton>수락됨</StatusButton>
+      <InfoTagButton tag="직군" />
+      <SkillTagButton tag="#skillTag" />
+      <IntroTagButton tag="introTag" />
 
       <DropDownButton
         options={[

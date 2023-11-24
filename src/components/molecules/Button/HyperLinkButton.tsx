@@ -15,9 +15,9 @@ const HyperLinkButton: React.FC<HyperLinkButtonProps> = ({
   return (
     // <Link to={to}>
     <Button
-      width={{ base: 'mediumLarge', md: 'large' }}
-      height={{ base: 'mediumLarge', md: 'large' }}
-      fontSize={{ base: 'extraSmall', md: 'small' }}
+      width={{ base: '220px', md: '400px' }}
+      height={{ base: '40px', md: '50px' }}
+      fontSize={{ base: '16px', md: '20px' }}
       {...restProps}
     >
       이동하기

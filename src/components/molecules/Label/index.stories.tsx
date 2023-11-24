@@ -9,6 +9,7 @@ import { theme } from 'themes/index.ts'
 const meta: Meta<typeof Label> = {
   title: 'Molecules/Label',
   component: Label,
+  tags: ['autodocs'],
   argTypes: {
     fontSize: {
       options: Object.keys(fontSizes),

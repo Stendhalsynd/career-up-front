@@ -6,6 +6,7 @@ import { theme } from 'themes/index.ts'
 const meta: Meta<typeof Input> = {
   title: 'Molecules/Input',
   component: Input,
+  tags: ['autodocs'],
   argTypes: {
     placeholder: {
       control: { type: 'text' },

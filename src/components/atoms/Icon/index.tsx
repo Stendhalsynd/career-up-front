@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styled from 'styled-components'
 
 export type IconProps = {
+  /** 아이콘 태그에서 icon_ 뒤에 오는 이름을 붙인다. */
   iconName?: string
   width?: number
   height?: number

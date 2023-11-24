@@ -6,6 +6,7 @@ import fontSizes from 'themes/fontSizes.ts'
 const meta: Meta<typeof Text> = {
   title: 'Atoms/Text',
   component: Text,
+  tags: ['autodocs'],
   argTypes: {
     variant: {
       options: ['extraSmall', 'small', 'medium', 'mediumLarge', 'large'],

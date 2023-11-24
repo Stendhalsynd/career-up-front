@@ -34,7 +34,7 @@ const PictureComponent = styled(Image)<PictureProps>``
  */
 
 const Picture = (props: PictureProps) => {
-  const { pictureName, width = 100, height = 100 } = props
+  const { pictureName, width = 100 } = props
   const picturePath = `/assets/image/img_${pictureName}.svg`
 
   return (
@@ -42,8 +42,10 @@ const Picture = (props: PictureProps) => {
       <PictureComponent
         src={picturePath}
         alt={`${pictureName} image`}
-        width={width}
-        height={height}
+        width={0}
+        height={0}
+        style={{ width, height: 'auto' }}
+        priority
       />
     </PictureWrapper>
   )

@@ -6,6 +6,7 @@ import { theme } from 'themes/index.ts'
 const meta: Meta<typeof Avatar> = {
   title: 'Atoms/Avatar',
   component: Avatar,
+  tags: ['autodocs'],
   argTypes: {
     src: {
       control: { type: 'text' },
@@ -38,7 +39,7 @@ type Story = StoryObj<typeof Avatar>
 
 export const Circle: Story = {
   args: {
-    src: '/assets/image/sample/img_avatar.svg',
+    src: '/assets/image/img_avatar.svg',
     width: 120,
     height: 120,
   },

@@ -6,6 +6,7 @@ import { theme } from 'themes/index.ts'
 const meta: Meta<typeof Header> = {
   title: 'Molecules/Header',
   component: Header,
+  tags: ['autodocs'],
 }
 
 export default meta

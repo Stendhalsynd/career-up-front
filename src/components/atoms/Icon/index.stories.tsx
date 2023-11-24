@@ -7,12 +7,12 @@ import { theme } from 'themes/index.ts'
 const meta: Meta<typeof Icon> = {
   title: 'Atoms/Icon',
   component: Icon,
+  tags: ['autodocs'],
   argTypes: {
     iconName: {
       options: ['bussiness_bag', 'desktop', 'warning'],
       control: { type: 'select' },
       defaultValue: 'desktop',
-      description: '아이콘',
       table: {
         type: {
           summary: 'bussiness_bag, desktop, warning',

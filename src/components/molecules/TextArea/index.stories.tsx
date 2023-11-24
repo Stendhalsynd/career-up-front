@@ -6,6 +6,7 @@ import { theme } from 'themes/index.ts'
 const meta: Meta<typeof TextArea> = {
   title: 'Molecules/TextArea',
   component: TextArea,
+  tags: ['autodocs'],
   argTypes: {
     placeholder: {
       control: { type: 'text' },

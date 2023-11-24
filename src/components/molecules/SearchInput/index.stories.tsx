@@ -6,6 +6,7 @@ import { theme } from 'themes/index.ts'
 const meta: Meta<typeof SearchInput> = {
   title: 'Molecules/SearchInput',
   component: SearchInput,
+  tags: ['autodocs'],
   argTypes: {
     variant: {
       option: ['primarySmall', 'primaryLarge', 'skillSmall', 'skillLarge'],

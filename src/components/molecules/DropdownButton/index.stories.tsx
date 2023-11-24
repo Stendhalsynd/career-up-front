@@ -6,6 +6,7 @@ import { theme } from 'themes/index.ts'
 const meta: Meta<typeof DropdownButton> = {
   title: 'Molecules/Dropdown',
   component: DropdownButton,
+  tags: ['autodocs'],
   argTypes: {
     options: {
       control: { type: 'array' },

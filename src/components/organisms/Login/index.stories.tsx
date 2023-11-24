@@ -6,6 +6,7 @@ import { theme } from 'themes/index.ts'
 const meta: Meta<typeof Login> = {
   title: 'Organisms/Login',
   component: Login,
+  tags: ['autodocs'],
 }
 
 export default meta

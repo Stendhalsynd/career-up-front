@@ -6,6 +6,7 @@ import { theme } from 'themes/index.ts'
 const meta: Meta<typeof Logo> = {
   title: 'Atoms/Logo',
   component: Logo,
+  tags: ['autodocs'],
   argTypes: {
     width: {
       control: { type: 'number' },

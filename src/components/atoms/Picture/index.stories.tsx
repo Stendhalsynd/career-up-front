@@ -6,6 +6,7 @@ import { theme } from 'themes/index.ts'
 const meta: Meta<typeof Picture> = {
   title: 'Atoms/Picture',
   component: Picture,
+  tags: ['autodocs'],
   argTypes: {
     pictureName: {
       options: ['sphere', 'male', 'chatbubble'],

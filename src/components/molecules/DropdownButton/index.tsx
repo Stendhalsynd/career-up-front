@@ -32,7 +32,7 @@ const DropdownValue = styled.div`
 
 // 드롭다운 플레이스홀더
 const DropdownPlaceholder = styled.div`
-  color: #757575;
+  color: black;
   font-size: ${({ theme }) => theme.fontSizes[1]};
   min-height: 20px;
   line-height: 20px;

@@ -1,28 +1,26 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { ThemeProvider } from 'styled-components'
-import Icon from 'components/atoms/Icon/index.tsx'
+import Picture from 'components/atoms/Picture/index.tsx'
 import { theme } from 'themes/index.ts'
 
-// TODO: storybook 사용법 정리
-const meta: Meta<typeof Icon> = {
-  title: 'Atoms/Icon',
-  component: Icon,
+const meta: Meta<typeof Picture> = {
+  title: 'Atoms/Picture',
+  component: Picture,
   argTypes: {
-    iconName: {
-      options: ['bussiness_bag', 'desktop', 'warning'],
+    pictureName: {
+      options: ['sphere', 'male', 'chatbubble'],
       control: { type: 'select' },
-      defaultValue: 'desktop',
-      description: '아이콘',
+      defaultValue: 'sphere',
       table: {
         type: {
-          summary: 'bussiness_bag, desktop, warning',
-          defaultValue: { summary: 'desktop' },
+          summary: 'sphere, male, chatbubble',
+          defaultValue: { summary: 'sphere' },
         },
       },
     },
     width: {
       control: { type: 'number' },
-      defaultValue: 24,
+      defaultValue: 100,
       description: '가로 길이',
       table: {
         type: { summary: 'number' },
@@ -30,7 +28,7 @@ const meta: Meta<typeof Icon> = {
     },
     height: {
       control: { type: 'number' },
-      defaultValue: 24,
+      defaultValue: 100,
       description: '세로 길이',
       table: {
         type: { summary: 'number' },
@@ -40,11 +38,11 @@ const meta: Meta<typeof Icon> = {
 }
 
 export default meta
-type Story = StoryObj<typeof Icon>
+type Story = StoryObj<typeof Picture>
 
-export const BussinessBag: Story = {
+export const Sphere: Story = {
   args: {
-    iconName: 'bussiness_bag',
+    pictureName: 'sphere',
     width: 40,
     height: 40,
   },
@@ -57,9 +55,9 @@ export const BussinessBag: Story = {
   ],
 }
 
-export const Desktop: Story = {
+export const Male: Story = {
   args: {
-    iconName: 'desktop',
+    pictureName: 'male',
     width: 40,
     height: 40,
   },
@@ -72,9 +70,9 @@ export const Desktop: Story = {
   ],
 }
 
-export const Warning: Story = {
+export const Chatbubble: Story = {
   args: {
-    iconName: 'warning',
+    pictureName: 'chatbubble',
     width: 40,
     height: 40,
   },

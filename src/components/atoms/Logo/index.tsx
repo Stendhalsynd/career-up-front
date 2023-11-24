@@ -1,4 +1,3 @@
-// TODO: storybook 작성
 // TODO: image 태그에 반응형 웹 적용 가능한 방법 찾아보기
 
 import Image from 'next/image'

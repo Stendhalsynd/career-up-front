@@ -62,13 +62,14 @@ const PrimaryLargeSearchInput = () => (
 const SkillSmallSearchInput = () => (
   <Flex
     flexDirection={'row'}
-    width={'80vw'}
+    // width={'80vw'}
+    width={'100%'}
     borderBottom={'1px solid black'}
     paddingBottom={'6px'}
     alignItems={'center'}
     maxWidth={'fit-content'}
   >
-    <Text fontSize={'small'} color={'black'}>
+    <Text fontSize={'extraSmall'} color={'black'}>
       기술 스택
     </Text>
     <Flex padding={'4px 0'} marginLeft={'19px'} paddingRight={'33px'}>

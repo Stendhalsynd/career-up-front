@@ -1,5 +1,4 @@
 import { Avatar, Icon, Logo, Text } from 'components/atoms/index.ts'
-import { Box, Flex } from 'components/layout/index.ts'
 import HyperLinkButton from 'components/molecules/Button/HyperLinkButton.tsx'
 import NicknameButton from 'components/molecules/Button/NicknameButton.tsx'
 import RequestButton from 'components/molecules/Button/RequestButton.tsx'
@@ -15,6 +14,7 @@ import {
   Label,
   SearchInput,
 } from 'components/molecules/index.ts'
+import FilterModal from 'components/organisms/FilterModal/index.tsx'
 import Login from 'components/organisms/Login/index.tsx'
 import Signup from 'components/organisms/Signup/index.tsx'
 import { Tablet } from 'lib/useMediaQuery.tsx'
@@ -22,6 +22,7 @@ import { Tablet } from 'lib/useMediaQuery.tsx'
 export default function Home() {
   return (
     <main>
+      <FilterModal />
       <Text variant={'small'} color="danger">
         test
       </Text>
@@ -32,44 +33,6 @@ export default function Home() {
       <Icon iconName="desktop" width={100} height={100} />
       <Icon iconName="warning" width={100} height={100} />
 
-      <Flex backgroundColor={'black'} height={'140px'} padding={'5vw'}>
-        <Flex>
-          <Logo width={50} />
-        </Flex>
-
-        <Flex justifyContent={'space-evenly'}>
-          <Box>
-            <Text
-              variant="small"
-              fontSize={{ base: 'small', md: 'large' }}
-              color={'white'}
-            >
-              멘토 찾기
-            </Text>
-          </Box>
-          <Box>
-            <Text
-              variant="small"
-              fontSize={{ base: 'small', md: 'large' }}
-              color={'white'}
-            >
-              나의 채팅
-            </Text>
-          </Box>
-          <Box>
-            <Text
-              variant="small"
-              fontSize={{ base: 'small', md: 'large' }}
-              color={'white'}
-            >
-              로그인
-            </Text>
-          </Box>
-        </Flex>
-        <Box>
-          <Icon iconName="menu" width={24} height={24} />
-        </Box>
-      </Flex>
       <SearchInput variant={'primaryLarge'} />
       <Label fontSize={'extraSmall'}>
         <Text color={'white'}>

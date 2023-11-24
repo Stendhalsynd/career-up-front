@@ -5,7 +5,7 @@ import { Flex } from 'components/layout/index.ts'
 import RequestButton from 'components/molecules/Button/RequestButton.tsx'
 import { Input } from 'components/molecules/index.ts'
 
-// TODO: Flex 컴포넌트에 box-shadow, maxWidth 속성 추가해야 한다.
+// TODO: Flex 컴포넌트에 box-shadow 속성 추가해야 한다.
 // TODO: Button 컴포넌트에 maxWidth 속성 추가해야 한다.
 const Login = () => {
   return (
@@ -13,7 +13,8 @@ const Login = () => {
       backgroundColor={'white'}
       alignItems={'center'}
       flexDirection={'column'}
-      width={{ base: '88.325vw', sm: '500px' }}
+      width={{ base: '88.325vw' }}
+      maxWidth={'500px'}
       height={'415px'}
       padding={'30px'}
       borderRadius={'30px'}
@@ -24,7 +25,8 @@ const Login = () => {
 
       <Flex
         flexDirection={'column'}
-        width={{ base: '73.53vw', sm: '400px' }}
+        width={{ base: '73.53vw' }}
+        maxWidth={'400px'}
         marginBottom={'60px'}
       >
         <Flex marginBottom={'15px'}>

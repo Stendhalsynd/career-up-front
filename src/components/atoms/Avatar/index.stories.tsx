@@ -10,7 +10,7 @@ const meta: Meta<typeof Avatar> = {
     src: {
       control: { type: 'text' },
       description: '이미지 URL',
-      defaultValue: '/assets/image/sample/img_avatar.svg',
+      defaultValue: '/assets/image/img_avatar.svg',
       table: {
         type: { summary: 'string' },
       },

@@ -12,6 +12,7 @@
 # next.js
 /.next/
 /out/
+build-storybook.log
 
 # production
 /build

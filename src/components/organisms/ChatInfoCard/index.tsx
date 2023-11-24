@@ -1,15 +1,17 @@
 'use client'
 
 import React from 'react'
-//import styled from 'styled-components'
-//import Picture from 'components/atoms/Picture/index.tsx'
 import { Text } from 'components/atoms/index.ts'
 import { Flex, Box } from 'components/layout/index.ts'
 import SelectButton from 'components/molecules/Button/SelectButton.tsx'
+import StatusButton from 'components/molecules/Button/StatusButton.tsx'
 import Label from 'components/molecules/Label/index.tsx'
-//import Label from 'components/molecules/Label/index.tsx'
 
-const ChatInfoCard = () => {
+interface ChatInfoCardProps {
+  isStatus: boolean
+}
+
+const ChatInfoCard: React.FC<ChatInfoCardProps> = ({ isStatus }) => {
   return (
     <Flex flexDirection="column">
       <Box>
@@ -18,7 +20,6 @@ const ChatInfoCard = () => {
           width="250px"
           height="320px"
           borderRadius={'20px'}
-          border={'1px solid black'} // 배경이 흰색이라 영역 확인용으로 넣어둠
         >
           <Box
             backgroundColor="primary"
@@ -57,8 +58,22 @@ const ChatInfoCard = () => {
             </Label>
           </Box>
           <Box margin="20px">
-            <SelectButton style={{ marginRight: '8px' }}>수락</SelectButton>
-            <SelectButton variant="gray">거부</SelectButton>
+            {isStatus ? (
+              // isStatus가 true일 때 SelectButton 렌더링
+              <>
+                <Box margin="10px">
+                  <SelectButton style={{ marginRight: '8px' }}>
+                    수락
+                  </SelectButton>
+                  <SelectButton variant="gray">거부</SelectButton>
+                </Box>
+              </>
+            ) : (
+              // isStatus가 false일 때 StatusButton 렌더링
+              <Box marginLeft="46px">
+                <StatusButton>수락됨</StatusButton>
+              </Box>
+            )}
           </Box>
         </Box>
       </Box>

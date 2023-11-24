@@ -3,7 +3,9 @@
 import PropTypes from 'prop-types'
 import React, { ReactNode } from 'react'
 //import Icon from 'components/atoms/Icon/index.tsx'
+import { Icon } from 'components/atoms/index.ts'
 import Button, { ButtonProps } from 'components/molecules/Button/index.tsx'
+// import { Responsive } from 'types/styles'
 
 type RequestButtonProps = {
   iconName?: string
@@ -11,19 +13,14 @@ type RequestButtonProps = {
 } & ButtonProps
 
 const RequestButton: React.FC<RequestButtonProps> = ({
-  // iconName,
+  iconName,
   children,
   ...rest
 }) => {
   return (
-    <Button
-      variant="primary"
-      width={{ base: 'small' }}
-      height={{ base: 'small' }}
-      {...rest}
-    >
+    <Button variant="primary" width={'100%'} height={'fit-content'} {...rest}>
       {/* iconName이 있으면 아이콘 추가 */}
-      {/* {iconName && <Icon iconName={iconName} width={20} height={20} />} */}
+      {iconName && <Icon iconName={iconName} width={20} height={20} />}
 
       {/* children이 있으면 직접 렌더링 */}
       {children}

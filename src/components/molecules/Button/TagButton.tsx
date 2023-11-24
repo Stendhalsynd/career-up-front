@@ -19,8 +19,10 @@ export const InfoTagButton: React.FC<TagButtonProps> = ({
       {...tagButtonProps}
       variant="gray"
       color="black"
-      width={{ base: 'extraSmall' }}
-      height={{ base: 'small' }}
+      width={'fit-content'}
+      height={'fit-content'}
+      padding={'2px 11px'}
+      borderRadius={'20px'}
       fontSize={{ base: 'Small' }}
     />
   )
@@ -34,8 +36,9 @@ export const SkillTagButton: React.FC<TagButtonProps> = ({
       {...tagButtonProps}
       variant="border"
       borderRadius="4px"
-      width={{ base: 'small' }}
-      height={{ base: 'small' }}
+      width={'fit-content'}
+      height={'fit-content'}
+      padding={'1px 17px'}
       fontSize={{ base: 'extraSmall' }}
     />
   )
@@ -48,8 +51,9 @@ export const IntroTagButton: React.FC<TagButtonProps> = ({
     <TagButton
       {...tagButtonProps}
       variant="white"
-      width={{ base: 'nicknameMedium' }}
-      height={{ base: 'small' }}
+      width={'fit-content'}
+      height={'fit-content'}
+      padding={'5px 35px'}
       fontSize={{ base: 'extraSmall' }}
     />
   )

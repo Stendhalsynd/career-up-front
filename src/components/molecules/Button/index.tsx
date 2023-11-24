@@ -9,9 +9,6 @@ import {
   FontSize,
   LetterSpacing,
   LineHeight,
-  Space,
-  ButtonSize,
-  ButtonHeight,
 } from 'utils/styles'
 
 // 버튼 변형
@@ -32,24 +29,25 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   textAlign?: Responsive<string>
   color?: Responsive<Color>
   backgroundColor?: Responsive<Color>
-  width?: Responsive<ButtonSize>
-  height?: Responsive<ButtonHeight>
+  width?: Responsive<string>
+  height?: Responsive<string>
   minWidth?: Responsive<string>
   minHeight?: Responsive<string>
+  maxWidth?: Responsive<string>
   display?: Responsive<string>
   border?: Responsive<string>
   borderRadius?: Responsive<string>
   overflow?: Responsive<string>
-  margin?: Responsive<Space>
-  marginTop?: Responsive<Space>
-  marginRight?: Responsive<Space>
-  marginBottom?: Responsive<Space>
-  marginLeft?: Responsive<Space>
-  padding?: Responsive<Space>
-  paddingTop?: Responsive<Space>
-  paddingRight?: Responsive<Space>
-  paddingBottom?: Responsive<Space>
-  paddingLeft?: Responsive<Space>
+  margin?: Responsive<string>
+  marginTop?: Responsive<string>
+  marginRight?: Responsive<string>
+  marginBottom?: Responsive<string>
+  marginLeft?: Responsive<string>
+  padding?: Responsive<string>
+  paddingTop?: Responsive<string>
+  paddingRight?: Responsive<string>
+  paddingBottom?: Responsive<string>
+  paddingLeft?: Responsive<string>
   pseudoClass?: {
     hover?: {
       backgroundColor?: Responsive<Color>
@@ -207,6 +205,7 @@ const Button = styled.button<ButtonProps>`
   ${(props) => toPropValue('height', props.height, props.theme)}
   ${(props) => toPropValue('min-width', props.minWidth, props.theme)}
   ${(props) => toPropValue('min-height', props.minHeight, props.theme)}
+  ${(props) => toPropValue('max-width', props.maxWidth, props.theme)}
   ${(props) => toPropValue('display', props.display, props.theme)}
   ${(props) => toPropValue('border', props.border, props.theme)}
   ${(props) =>
@@ -240,20 +239,13 @@ const Button = styled.button<ButtonProps>`
   outline: 0;
   text-decoration: 'none';
   opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
-  /* border-radius: 4px; */
-  /* border: 'none'; */
 `
 
 Button.defaultProps = {
   variant: 'primary',
-  paddingLeft: 0,
-  paddingRight: 0,
-  paddingTop: 0,
-  paddingBottom: 0,
-  //color: 'white',
+  padding: '10px 30px',
   display: 'inline-block',
   textAlign: 'center',
-  //lineHeight: 'inherit',
   fontSize: 'inherit',
 }
 

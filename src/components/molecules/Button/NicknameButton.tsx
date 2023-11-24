@@ -14,8 +14,9 @@ const NicknameButton: React.FC<NicknameButtonProps> = ({
   return (
     <Button
       variant="dark"
-      width={{ base: 'medium', md: 'nicknameMedium' }}
-      height={{ base: 'medium' }}
+      width={'fit-content'}
+      height={'fit-content'}
+      padding={'8.5px 29px'}
       fontSize={{ base: 'xxSmall', md: 'extraSmall' }}
       {...buttonProps}
     >

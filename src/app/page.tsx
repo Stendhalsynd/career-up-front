@@ -14,6 +14,7 @@ import {
   Label,
   SearchInput,
 } from 'components/molecules/index.ts'
+import FilterModal from 'components/organisms/FilterModal/index.tsx'
 import Login from 'components/organisms/Login/index.tsx'
 import Signup from 'components/organisms/Signup/index.tsx'
 import { Tablet } from 'lib/useMediaQuery.tsx'
@@ -21,6 +22,7 @@ import { Tablet } from 'lib/useMediaQuery.tsx'
 export default function Home() {
   return (
     <main>
+      <FilterModal />
       <Text variant={'small'} color="danger">
         test
       </Text>

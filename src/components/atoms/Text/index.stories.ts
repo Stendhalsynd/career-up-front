@@ -46,7 +46,7 @@ const meta: Meta<typeof Text> = {
       options: Object.keys(colors),
       mapping: colors,
       control: { type: 'select' },
-      defaultValue: 'text',
+      defaultValue: 'black',
       description: '텍스트 색상',
       table: {
         type: { summary: 'text colors' },

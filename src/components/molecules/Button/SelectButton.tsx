@@ -25,6 +25,7 @@ const SelectButton: React.FC<SelectButtonProps> = ({
       width={'fit-content'}
       height={'fit-content'}
       borderRadius={isRound ? '100px' : '8px'}
+      padding={'8px 25px'}
       {...rest}
     >
       {children}

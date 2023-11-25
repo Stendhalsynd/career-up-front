@@ -3,19 +3,26 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 
+import { Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import { Responsive } from 'types/styles'
 import { FontSize, toPropValue } from 'utils/styles.ts'
 
+// TODO: Label 의 color 에 Responsive<Color> 를 넣을때는 안되고 string 을 넣을때만 되는 이유 찾기
 interface LabelProps {
   children: ReactNode
   fontSize?: Responsive<FontSize>
+  /**
+   * 만약 하위 모든 Text 에 같은 색상을 넣고 싶다면 color의 값을 직접 넣어줘야 한다.
+   * */
+  color?: string
   flexDirection?: string
 }
 
 const StyledLabel = styled(Flex)<LabelProps>`
-  > span {
+  & > ${Text} {
     ${(props) => toPropValue('font-size', props.fontSize, props.theme)}
+    ${(props) => toPropValue('color', props.color, props.theme)}
   }
 `
 

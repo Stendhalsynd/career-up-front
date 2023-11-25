@@ -1,25 +1,40 @@
 'use client'
 
-import Image, { ImageProps } from 'next/image'
+import Image from 'next/image'
 import styled from 'styled-components'
+import { IconProps } from 'components/atoms/Icon/index.tsx'
 
-interface OmitProp {
-  alt: string
+// interface OmitProp {
+//   alt: string
+// }
+
+// type AvatarProps = Omit<ImageProps, keyof OmitProp>
+
+export type AvatarProps = IconProps & {
+  avatarName?: string
 }
 
-type AvatarProps = Omit<ImageProps, keyof OmitProp>
-
-const ImageWithShape = styled(Image)`
+const ImageWithShape = styled(Image)<AvatarProps>`
   border-radius: '50%';
 `
 
 /**
  * 셰이프 이미지
- * TODO : Avatar src 이름이 너무 길어서 줄여서 쓰자
+ * CHECKLIST : Avatar src 이름이 너무 길어서 줄여서 쓰자
  */
 const Avatar = (props: AvatarProps) => {
-  const { ...imageProps } = props
-  return <ImageWithShape {...imageProps} alt="프로필 이미지" />
+  const { avatarName, width = 24 } = props
+  const avatarPath = `/assets/image/img_${avatarName}.svg`
+
+  return (
+    <ImageWithShape
+      src={avatarPath}
+      alt={`${avatarName} avatar`}
+      width={0}
+      height={0}
+      style={{ width, height: 'auto' }}
+    />
+  )
 }
 
 export default Avatar

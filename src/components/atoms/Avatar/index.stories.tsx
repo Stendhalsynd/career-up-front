@@ -8,10 +8,10 @@ const meta: Meta<typeof Avatar> = {
   component: Avatar,
   tags: ['autodocs'],
   argTypes: {
-    src: {
+    avatarName: {
       control: { type: 'text' },
       description: '이미지 URL',
-      defaultValue: '/assets/image/img_avatar.svg',
+      defaultValue: 'avatar',
       table: {
         type: { summary: 'string' },
       },
@@ -24,14 +24,6 @@ const meta: Meta<typeof Avatar> = {
         type: { summary: 'number' },
       },
     },
-    height: {
-      control: { type: 'number' },
-      description: '세로폭',
-      defaultValue: 120,
-      table: {
-        type: { summary: 'number' },
-      },
-    },
   },
 }
 export default meta
@@ -39,9 +31,8 @@ type Story = StoryObj<typeof Avatar>
 
 export const Circle: Story = {
   args: {
-    src: '/assets/image/img_avatar.svg',
+    avatarName: 'avatar',
     width: 120,
-    height: 120,
   },
   decorators: [
     (Story) => (

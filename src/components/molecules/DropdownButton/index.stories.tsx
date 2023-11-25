@@ -52,7 +52,6 @@ type Story = StoryObj<typeof DropdownButton>
 export const Normal: Story = {
   args: {
     options: [
-      { value: null, label: '-' },
       { value: 'frontend', label: '프론트엔드' },
       { value: 'backend', label: '백엔드' },
       { value: 'andriod', label: '안드로이드' },

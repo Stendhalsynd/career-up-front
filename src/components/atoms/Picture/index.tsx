@@ -34,7 +34,7 @@ const PictureComponent = styled(Image)<PictureProps>``
  */
 
 const Picture = (props: PictureProps) => {
-  const { pictureName, width, height } = props
+  const { pictureName, width = 100, height = 100 } = props
   const picturePath = `/assets/image/img_${pictureName}.svg`
 
   return (
@@ -47,11 +47,6 @@ const Picture = (props: PictureProps) => {
       />
     </PictureWrapper>
   )
-}
-
-Picture.defaultProps = {
-  width: 100,
-  height: 100,
 }
 
 export default Picture

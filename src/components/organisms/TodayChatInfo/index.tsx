@@ -2,14 +2,13 @@
 
 import React from 'react'
 import { Text } from 'components/atoms/index.ts'
-import { Flex, Box } from 'components/layout/index.ts'
+import { Flex } from 'components/layout/index.ts'
 import RequestButton from 'components/molecules/Button/RequestButton.tsx'
 
 const TodayChatInfo = () => {
   return (
     <Flex alignItems="center" justifyContent="center" height="100vh">
-      <Box
-        display="flex"
+      <Flex
         flexDirection="column"
         alignItems="left"
         borderRadius="20px"
@@ -29,7 +28,7 @@ const TodayChatInfo = () => {
         </Text>
 
         <RequestButton style={{ marginTop: '20px' }}>입장하기</RequestButton>
-      </Box>
+      </Flex>
     </Flex>
   )
 }

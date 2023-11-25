@@ -1,11 +1,7 @@
 'use client'
 
 import styled from 'styled-components'
-import type {
-  Responsive,
-  CSSPropertyFlexDirection,
-  CSSPropertyAlignItems,
-} from 'types/styles'
+import type { Responsive } from 'types/styles'
 import { toPropValue, Color } from 'utils/styles'
 
 export type BoxProps = {
@@ -34,8 +30,12 @@ export type BoxProps = {
   paddingRight?: Responsive<string>
   paddingBottom?: Responsive<string>
   paddingLeft?: Responsive<string>
-  flexDirection?: Responsive<CSSPropertyFlexDirection>
-  alignItems?: Responsive<CSSPropertyAlignItems>
+  position?: Responsive<string>
+  top?: Responsive<string>
+  bottom?: Responsive<string>
+  left?: Responsive<string>
+  right?: Responsive<string>
+  zIndex?: number
 }
 
 /**
@@ -78,8 +78,12 @@ const Box = styled.div<BoxProps>`
   ${(props) => toPropValue('padding-left', props.paddingLeft, props.theme)}
   ${(props) => toPropValue('padding-bottom', props.paddingBottom, props.theme)}
   ${(props) => toPropValue('padding-right', props.paddingRight, props.theme)}
-  ${(props) => toPropValue('flex-direction', props.flexDirection, props.theme)}
-  ${(props) => toPropValue('align-items', props.alignItems, props.theme)}
+  ${(props) => toPropValue('position', props.position, props.theme)}
+  ${(props) => toPropValue('top', props.top, props.theme)}
+  ${(props) => toPropValue('bottom', props.bottom, props.theme)}
+  ${(props) => toPropValue('left', props.left, props.theme)}
+  ${(props) => toPropValue('right', props.right, props.theme)}
+  ${(props) => toPropValue('z-index', props.zIndex, props.theme)}
 `
 
 export default Box

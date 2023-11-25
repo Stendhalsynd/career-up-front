@@ -1,6 +1,8 @@
 'use client'
 
 import styled, { css } from 'styled-components'
+import { Text } from 'components/atoms/index.ts'
+import { Flex } from 'components/layout/index.ts'
 
 /**
  * 텍스트 입력
@@ -30,14 +32,15 @@ const Input = styled.input<{
       return css`
         border: none;
         color: ${theme.colors.inputGray};
+        border-radius: 5px;
       `
     }
   }}
-  padding: 16px 12px 11px 9px;
+  padding: 12px 16px;
   box-sizing: border-box;
   outline: none;
   width: 100%;
-  height: 50px;
+  height: fit-content;
   font-size: 16px;
   line-height: 19px;
 
@@ -61,3 +64,17 @@ Input.defaultProps = {
 }
 
 export default Input
+
+interface InfoBlockProps {
+  text: string
+  placeholder: string
+}
+
+export const InfoBlock: React.FC<InfoBlockProps> = ({ text, placeholder }) => (
+  <Flex gap={'15px'} flexDirection={'column'} width={'100%'} zIndex={1}>
+    <Text color={'white'} fontSize={'small'}>
+      {text}
+    </Text>
+    <Input hasDarkBackground placeholder={placeholder} />
+  </Flex>
+)

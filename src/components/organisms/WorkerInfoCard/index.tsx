@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-//import styled from 'styled-components'
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Text } from 'components/atoms/index.ts'
 import { Flex, Box } from 'components/layout/index.ts'
@@ -17,7 +16,6 @@ const WorkerInfoCard = () => {
           width="260px"
           height="335px"
           borderRadius={'20px'}
-          border={'1px solid black'} // 배경이 흰색이라 영역 확인용으로 넣어둠
         >
           <Box
             backgroundColor="primary"

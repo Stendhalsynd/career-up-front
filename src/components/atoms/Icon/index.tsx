@@ -37,6 +37,7 @@ const IconComponent = styled(Image)<IconProps>``
  */
 const Icon = (props: IconProps) => {
   const { iconName, width = 24 } = props
+
   const iconPath = `/assets/icon/icon_${iconName}.svg`
 
   return (

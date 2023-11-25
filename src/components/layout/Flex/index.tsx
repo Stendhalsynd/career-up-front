@@ -30,6 +30,7 @@ type FlexProps = BoxProps & {
   alignSelf?: Responsive<CSSPropertyAlignSelf>
   order?: Responsive<string>
   display?: Responsive<string>
+  scrollSnapType?: string
 }
 
 /**
@@ -53,6 +54,8 @@ const Flex = styled(Box)<FlexProps>`
   ${(props) => toPropValue('align-self', props.alignSelf, props.theme)}
   ${(props) => toPropValue('order', props.order, props.theme)}
   ${(props) => toPropValue('display', props.display, props.theme)}
+  ${(props) =>
+    props.scrollSnapType && `scroll-snap-type: ${props.scrollSnapType};`}
 `
 
 Flex.defaultProps = {

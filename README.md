@@ -10,6 +10,10 @@ npm i -D chromatic
 npm i @mui/x-date-pickers
 npm i dayjs
 npm install @mui/styled-engine-sc styled-components
+npm install react-slick slick-carousel
+npm i --save-dev @types/react-slick
+npm install @emotion/styled
+
 ```
 
 ## 프로젝트 기간

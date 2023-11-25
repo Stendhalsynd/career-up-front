@@ -9,6 +9,9 @@ import Label from 'components/molecules/Label/index.tsx'
 
 interface ChatInfoCardProps {
   isStatus: boolean
+  nicknameContent: string
+  dateContent: string
+  timeContent: string
 }
 
 export interface CardItemProps {
@@ -34,7 +37,12 @@ export const ChatInfoCardItem: React.FC<CardItemProps> = ({
  * 나의 커피챗 리스트 카드
  * @description isStatus 로 상태 여부를 명시해줘야 한다.
  */
-const ChatInfoCard: React.FC<ChatInfoCardProps> = ({ isStatus }) => {
+const ChatInfoCard: React.FC<ChatInfoCardProps> = ({
+  isStatus,
+  nicknameContent,
+  dateContent,
+  timeContent,
+}) => {
   return (
     <Flex
       flexDirection="column"
@@ -49,9 +57,9 @@ const ChatInfoCard: React.FC<ChatInfoCardProps> = ({ isStatus }) => {
         padding={'30px'}
         gap={'15px'}
       >
-        {<ChatInfoCardItem title="nickname" content="춤추는 달빛" />}
-        {<ChatInfoCardItem title="date" content="2023.11.23" />}
-        {<ChatInfoCardItem title="time" content="04:55" />}
+        {<ChatInfoCardItem title="nickname" content={nicknameContent} />}
+        {<ChatInfoCardItem title="date" content={dateContent} />}
+        {<ChatInfoCardItem title="time" content={timeContent} />}
       </Flex>
       <Flex
         backgroundColor={'white'}

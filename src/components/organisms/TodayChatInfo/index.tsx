@@ -5,9 +5,18 @@ import { Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import RequestButton from 'components/molecules/Button/RequestButton.tsx'
 
-const TodayChatInfo = () => {
+interface TodayChatInfoProps {
+  nicknameContent: string
+  dateContent: string
+  timeContent: string
+}
+const TodayChatInfo: React.FC<TodayChatInfoProps> = ({
+  nicknameContent,
+  dateContent,
+  timeContent,
+}) => {
   return (
-    <Flex alignItems="center" justifyContent="center" height="100vh">
+    <Flex alignItems="center" justifyContent="center">
       <Flex
         flexDirection="column"
         alignItems="left"
@@ -18,13 +27,13 @@ const TodayChatInfo = () => {
         padding="30px"
       >
         <Text variant="mediumBold" margin="20px">
-          환호하는 돌고래
+          {nicknameContent}
         </Text>
         <Text variant="mediumBold" margin="20px">
-          2023.11.23
+          {dateContent}
         </Text>
         <Text variant="mediumBold" margin="20px">
-          05:33
+          {timeContent}
         </Text>
 
         <Flex width={'100%'} justifyContent={'center'}>

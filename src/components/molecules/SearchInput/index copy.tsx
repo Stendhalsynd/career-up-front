@@ -1,4 +1,4 @@
-// FilterModal Component 생성하면서 수정한 SearchInput
+// 지훈님이 작성한 SearchInput 이전 버전
 'use client'
 
 import Icon from 'components/atoms/Icon/index.tsx'
@@ -67,12 +67,12 @@ const SkillSmallSearchInput = () => (
     borderBottom={'1px solid black'}
     paddingBottom={'6px'}
     alignItems={'center'}
-    // maxWidth={'fit-content'}
+    maxWidth={'fit-content'}
   >
     <Text fontSize={'extraSmall'} color={'black'}>
       기술 스택
     </Text>
-    <Flex marginLeft={'15px'}>
+    <Flex padding={'4px 0'} marginLeft={'19px'} paddingRight={'33px'}>
       <Input color={'gray'} placeholder="직무 스킬을 검색해보세요"></Input>
     </Flex>
   </Flex>

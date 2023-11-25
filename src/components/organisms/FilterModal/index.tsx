@@ -1,24 +1,49 @@
-'use client'
-
-import { Text } from 'components/atoms/index.ts'
+import { Icon, Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
-import { DropDownButton, SearchInput } from 'components/molecules/index.ts'
+import {
+  DropDownButton,
+  RequestButton,
+  SearchInput,
+} from 'components/molecules/index.ts'
 
 const FilterModal = () => {
   return (
     <Flex
-      width={{ base: '90vw' }}
+      width={'90vw'}
       maxWidth={'500px'}
       height={'300px'}
       flexDirection={'column'}
-      borderRadius={'20px 20px 0px 0px'}
     >
-      <Flex height={'20%'} backgroundColor={'primary'}>
-        <Text color={'white'}>필터</Text>
+      {/* 필터 */}
+      <Flex
+        height={'20%'}
+        padding={'20px'}
+        backgroundColor={'primary'}
+        justifyContent={'space-between'}
+        borderRadius={'30px 30px 0 0'}
+      >
+        <Flex alignItems={'center'}>
+          <Text color={'white'}>필터</Text>
+        </Flex>
+
+        <Icon iconName="close" />
       </Flex>
       {/* 검색 */}
-      <Flex height={'80%'} flexDirection={'column'} backgroundColor={'white'}>
-        <Flex width={'90'}>
+      <Flex
+        height={'80%'}
+        backgroundColor={'white'}
+        flexDirection={'column'}
+        justifyContent={'center'}
+        alignItems={'center'}
+        gap={'30px'}
+        borderRadius={'0 0 30px 30px'}
+      >
+        <Flex
+          width={'90%'}
+          flexDirection={'column'}
+          // justifyContent={'center'}
+          gap={'10px'}
+        >
           <DropDownButton
             options={[
               { value: 'frontend', label: '프론트엔드' },
@@ -31,8 +56,12 @@ const FilterModal = () => {
             hasError={false}
             placeholder="직무"
           />
+
+          <SearchInput variant="skillSmall" />
         </Flex>
-        <SearchInput variant="skillSmall" />
+        <Flex width={'85%'}>
+          <RequestButton>적용하기</RequestButton>
+        </Flex>
       </Flex>
     </Flex>
   )

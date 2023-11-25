@@ -22,7 +22,7 @@ const SelectButton: React.FC<SelectButtonProps> = ({
   return (
     <Button
       variant={rest.variant ? rest.variant : 'primary'}
-      width={'fit-content'}
+      width={'100%'}
       height={'fit-content'}
       borderRadius={isRound ? '100px' : '8px'}
       padding={'8px 25px'}

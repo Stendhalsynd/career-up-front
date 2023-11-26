@@ -28,7 +28,7 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   lineHeight?: Responsive<LineHeight>
   textAlign?: Responsive<string>
   color?: Responsive<Color>
-  backgroundColor?: Responsive<Color>
+  backgroundColor?: Responsive<Color> | string
   width?: Responsive<string>
   height?: Responsive<string>
   minWidth?: Responsive<string>

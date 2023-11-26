@@ -13,7 +13,7 @@ export interface BasicInfoProps {
 export const BasicInfo = (props: BasicInfoProps) => {
   const { id, isUser } = props
   return (
-    <Flex width={'100%'} justifyContent={'center'} paddingBottom={'30px'}>
+    <Flex width={'100%'} justifyContent={'center'} paddingBottom={'50px'}>
       <Flex
         flexDirection={'row'}
         justifyContent={{ base: 'center', sm: 'flex-start' }}

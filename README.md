@@ -7,7 +7,9 @@ npm i react-hook-form recoil
 npm i react-router-dom
 npm install eslint-import-resolver-node --save-dev
 npm i -D chromatic
-
+npm i @mui/x-date-pickers
+npm i dayjs
+npm install @mui/styled-engine-sc styled-components
 ```
 
 ## 프로젝트 기간

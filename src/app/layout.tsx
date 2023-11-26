@@ -1,6 +1,7 @@
 // CHECKLIST : className did not match 문제 해결
 import type { Metadata } from 'next'
 
+import MUIClient from 'lib/mui.tsx'
 import StyledComponentsRegistry from 'lib/registry.tsx'
 import './globals.css'
 
@@ -21,7 +22,9 @@ export default function RootLayout({
     <html lang="en" className={notoSansKr.className}>
       <body>
         <ThemeClient>
-          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          <MUIClient>
+            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          </MUIClient>
         </ThemeClient>
       </body>
     </html>

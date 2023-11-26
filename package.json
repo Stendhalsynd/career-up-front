@@ -10,7 +10,8 @@
     "format": "next lint --fix --dir src",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build-storybook-docs": "storybook build --docs"
+    "build-storybook-docs": "storybook build --docs",
+    "chromatic": "npx chromatic --project-token=chpt_76f8ab4b51b2015"
   },
   "dependencies": {
     "next": "14.0.2",
@@ -62,5 +63,7 @@
     "tsconfig-paths-webpack-plugin": "^4.1.0",
     "typescript": "^5",
     "typescript-eslint": "^0.0.1-alpha.0"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "careerup-front@0.1.0"
 }

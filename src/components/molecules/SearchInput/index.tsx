@@ -35,7 +35,7 @@ const PrimaryLargeSearchInput = () => (
     flexDirection={'row'}
     borderBottom={'1px solid white'}
     padding={'10px 16px'}
-    width={'80vw'}
+    width={'100%'}
   >
     <Icon iconName="search" width={25} height={25} />
     <Input

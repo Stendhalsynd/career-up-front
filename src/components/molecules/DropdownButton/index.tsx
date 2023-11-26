@@ -17,7 +17,7 @@ const DropdownControl = styled.div<{ hasError?: boolean }>`
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid black;
-  border-radius: 5px;
+  // border-radius: 5px;
   box-sizing: border-box;
   cursor: default;
   outline: none;

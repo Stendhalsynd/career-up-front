@@ -14,6 +14,8 @@
     "chromatic": "npx chromatic --project-token=chpt_76f8ab4b51b2015"
   },
   "dependencies": {
+    "@mui/x-date-pickers": "^6.18.2",
+    "dayjs": "^1.11.10",
     "next": "14.0.2",
     "react": "^18",
     "react-dom": "^18",

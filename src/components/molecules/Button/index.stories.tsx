@@ -33,6 +33,10 @@ const meta: Meta<typeof Button> = {
         },
       },
     },
+    isRound: {
+      control: { type: 'boolean' },
+      defaultValue: true,
+    },
   },
 }
 

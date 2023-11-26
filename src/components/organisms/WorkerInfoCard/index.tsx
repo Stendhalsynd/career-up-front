@@ -3,7 +3,7 @@
 import React from 'react'
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Text } from 'components/atoms/index.ts'
-import { Flex } from 'components/layout/index.ts'
+import { Box, Flex } from 'components/layout/index.ts'
 import { InfoTagButton } from 'components/molecules/Button/TagButton.tsx'
 
 interface WorkerInfoItemProps {
@@ -12,7 +12,12 @@ interface WorkerInfoItemProps {
 }
 
 interface WorkerInfoCardProps {
-  pictureName: string
+  nickname?: string
+  career?: string
+  currentJob?: string
+  currentPosition?: string
+  currentSkill?: string
+  pictureName?: string
 }
 
 const WorkerInfoItem = (props: WorkerInfoItemProps) => {
@@ -27,6 +32,15 @@ const WorkerInfoItem = (props: WorkerInfoItemProps) => {
 }
 
 const WorkerInfoCard = (props: WorkerInfoCardProps) => {
+  const {
+    nickname,
+    career,
+    currentJob,
+    currentPosition,
+    currentSkill,
+    pictureName,
+  } = props
+
   return (
     <Flex
       flexDirection="column"
@@ -43,16 +57,20 @@ const WorkerInfoCard = (props: WorkerInfoCardProps) => {
         padding={'25px'}
         gap={'15px'}
       >
-        <Text variant={'mediumBold'} color="white">
-          행복한 돌고래
-        </Text>
-        <Text variant={'extraSmall'} color="white">
-          미들 (5~8년)
-        </Text>
+        <Box zIndex={3}>
+          <Text variant={'mediumBold'} color="white">
+            {nickname || '행복한 돌고래'}
+          </Text>
+        </Box>
+        <Box zIndex={3}>
+          <Text variant={'extraSmall'} color="white">
+            {career || '미들(5~8년)'}
+          </Text>
+        </Box>
       </Flex>
 
       <Flex right={'15px'} top={'23px'} position={'absolute'} zIndex={1}>
-        <Picture pictureName={props.pictureName || 'male'} width={83} />
+        <Picture pictureName={pictureName || 'male'} width={83} />
       </Flex>
 
       <Flex
@@ -64,9 +82,21 @@ const WorkerInfoCard = (props: WorkerInfoCardProps) => {
         padding={'25px'}
         borderRadius={'0 0 20px 20px'}
       >
-        <WorkerInfoItem tag="현직" text="카카오" />
-        <WorkerInfoItem tag="직군" text="프론트엔드 그 외 2개" />
-        <WorkerInfoItem tag="스킬" text="css/html/React 그 외 5개" />
+        <Box zIndex={3}>
+          <WorkerInfoItem tag="현직" text={currentJob || '카카오'} />
+        </Box>
+        <Box zIndex={3}>
+          <WorkerInfoItem
+            tag="직군"
+            text={currentPosition || '프론트엔드 그 외 2개'}
+          />
+        </Box>
+        <Box zIndex={3}>
+          <WorkerInfoItem
+            tag="스킬"
+            text={currentSkill || 'css/html/React 그 외 5개'}
+          />
+        </Box>
       </Flex>
     </Flex>
   )

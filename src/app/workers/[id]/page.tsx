@@ -1,9 +1,10 @@
 import { ReactNode } from 'react'
-import { BasicInfo } from 'app/users/[id]/page.tsx'
+
 import { Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import { IntroTagButton } from 'components/molecules/Button/TagButton.tsx'
 import { Input, RequestButton, TextArea } from 'components/molecules/index.ts'
+import { BasicInfo } from 'components/organisms/BasicInfo/index.tsx'
 import MyPageLayout from 'components/templates/MyPageLayout/index.tsx'
 
 interface InfoItemProps {

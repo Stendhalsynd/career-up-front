@@ -1,6 +1,5 @@
 'use client'
 
-import { String } from 'aws-sdk/clients/apigateway'
 /* eslint-disable prettier/prettier */
 import styled from 'styled-components'
 import type { Responsive } from 'types/styles'

@@ -7,13 +7,19 @@ import { theme } from 'themes/index.ts'
 const meta: Meta<typeof ChatInfoCard> = {
   title: 'Organisms/ChatInfoCard',
   component: ChatInfoCard,
+  tags: ['autodocs'],
   argTypes: {
-    isStatus: { control: 'boolean' },
+    isStatus: {
+      control: { type: 'boolean' },
+      description: '나의 커피챗 리스트 카드',
+      table: {
+        type: { sumary: 'boolean' },
+      },
+    },
   },
 }
 
 export default meta
-
 type Story = StoryObj<typeof ChatInfoCard>
 
 export const Default: Story = {

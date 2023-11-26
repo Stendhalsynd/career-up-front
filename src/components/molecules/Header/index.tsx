@@ -29,15 +29,15 @@ const Header = () => {
         width={'300px'}
         display={{ base: 'none', md: 'flex' }}
       >
-        <Text variant="small" fontSize={{ md: 'small' }} color={'white'}>
+        <Text variant="smallBold" color={'white'}>
           멘토 찾기
         </Text>
 
-        <Text variant="small" fontSize={{ md: 'small' }} color={'white'}>
+        <Text variant="smallBold" color={'white'}>
           나의 채팅
         </Text>
 
-        <Text variant="small" fontSize={{ md: 'small' }} color={'white'}>
+        <Text variant="smallBold" color={'white'}>
           로그인
         </Text>
       </Flex>

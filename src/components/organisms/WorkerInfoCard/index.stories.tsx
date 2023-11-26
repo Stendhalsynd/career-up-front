@@ -7,6 +7,7 @@ import { theme } from 'themes/index.ts'
 const meta: Meta<typeof WorkerInfoCard> = {
   title: 'Organisms/WorkerInfoCard',
   component: WorkerInfoCard,
+  tags: ['autodocs'],
 }
 
 export default meta

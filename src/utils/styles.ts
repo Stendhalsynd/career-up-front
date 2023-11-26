@@ -1,5 +1,20 @@
+import { Noto_Sans_KR, Notable } from 'next/font/google'
 import { theme } from 'themes'
 import type { ResponsiveProp, Responsive } from 'types'
+
+const notable = Notable({
+  weight: ['400'],
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+const notoSansKr = Noto_Sans_KR({
+  weight: ['700', '500'],
+  subsets: ['latin'],
+  display: 'swap', // 화면에 폰트가 로딩되기 전 기본 폰트가 적용되도록 함
+})
+
+export { notable, notoSansKr }
 
 // Theme의 타입
 export type AppTheme = typeof theme

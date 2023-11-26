@@ -2,14 +2,19 @@
 
 import React from 'react'
 //import { Link } from 'react-router-dom'
+import { Text } from 'components/atoms/index.ts'
 import Button, { ButtonProps } from 'components/molecules/Button/index.tsx'
 
 interface HyperLinkButtonProps extends ButtonProps {
   to: string
+  contents?: string
+  isTransparent?: boolean
 }
 
 const HyperLinkButton: React.FC<HyperLinkButtonProps> = ({
   // to,
+  contents,
+  isTransparent = false,
   ...restProps
 }) => {
   return (
@@ -20,7 +25,9 @@ const HyperLinkButton: React.FC<HyperLinkButtonProps> = ({
       fontSize={{ base: '16px', md: '20px' }}
       {...restProps}
     >
-      이동하기
+      <Text color={isTransparent ? 'black' : 'whtie'}>
+        {contents ? contents : '이동하기'}
+      </Text>
     </Button>
     // </Link>
   )

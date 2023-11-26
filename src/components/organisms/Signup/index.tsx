@@ -61,12 +61,17 @@ const Signup = () => {
         </Flex>
       </Flex>
 
-      <Flex flexDirection={'column'} alignItems={'center'} width={'100%'}>
-        <Flex marginBottom={'15px'} width={'73.53vw'} maxWidth={'400px'}>
+      <Flex
+        flexDirection={'column'}
+        alignItems={'center'}
+        width={'73.53vw'}
+        maxWidth={'400px'}
+      >
+        <Flex marginBottom={'15px'} width={'100%'}>
           <RequestButton>회원가입</RequestButton>
         </Flex>
 
-        <Flex>
+        <Flex width={'100%'}>
           <RequestButton variant="clear">로그인하기</RequestButton>
         </Flex>
       </Flex>

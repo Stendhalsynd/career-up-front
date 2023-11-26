@@ -36,6 +36,7 @@ export type BoxProps = {
   left?: Responsive<string>
   right?: Responsive<string>
   zIndex?: number
+  boxSizing?: string
 }
 
 /**
@@ -84,6 +85,8 @@ const Box = styled.div<BoxProps>`
   ${(props) => toPropValue('left', props.left, props.theme)}
   ${(props) => toPropValue('right', props.right, props.theme)}
   ${(props) => toPropValue('z-index', props.zIndex, props.theme)}
+  ${(props) =>
+    toPropValue('box-sizing', props.boxSizing || 'border-box', props.theme)}
 `
 
 export default Box

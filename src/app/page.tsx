@@ -1,5 +1,4 @@
-import TodayChatInfo from 'components/organisms/TodayChatInfo/index.tsx'
-import { FilterModal } from 'components/organisms/index.ts'
+import { FilterModal, TodayChatInfo } from 'components/organisms/index.ts'
 
 export default function Home() {
   return (

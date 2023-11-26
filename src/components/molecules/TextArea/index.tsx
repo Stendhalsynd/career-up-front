@@ -24,13 +24,13 @@ const StyledTextArea = styled.textarea<{ hasError?: boolean }>`
   border: 1px solid
     ${({ theme, hasError }) =>
       hasError ? theme.colors.red : theme.colors.primary};
-  border-radius: 5px;
+  border-radius: 30px;
   box-sizing: border-box;
   outline: none;
   width: 100%;
   font-size: 16px;
   line-height: 24px;
-  padding: 9px 12px 10px 12px;
+  padding: 30px;
   resize: none;
   overflow: auto;
   height: auto;
@@ -60,9 +60,9 @@ const StyledTextArea = styled.textarea<{ hasError?: boolean }>`
  */
 const TextArea = (props: TextAreaProps) => {
   const {
-    rows = 5,
-    minRows = 5,
-    maxRows = 10,
+    rows = 20,
+    minRows = 20,
+    maxRows = 30,
     children,
     hasError,
     onChange,
@@ -112,12 +112,6 @@ const TextArea = (props: TextAreaProps) => {
       {children}
     </StyledTextArea>
   )
-}
-
-TextArea.defaultProps = {
-  rows: 5,
-  minRows: 5,
-  maxRows: 10,
 }
 
 export default TextArea

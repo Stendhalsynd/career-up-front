@@ -22,7 +22,7 @@ const MeetingApply = () => {
             커리업 신청
           </Text>
           <Text variant={'mediumBold'} color={'white'}>
-            멘토와, 함께 커리업 해보세요!
+            멘토와 함께, 커리업 해보세요!
           </Text>
         </Flex>
       </MeetingApplyLayout>

@@ -1,10 +1,11 @@
-import { FilterModal, MentoSearch } from 'components/organisms/index.ts'
+import { FilterModal, MentoSearch, Signup } from 'components/organisms/index.ts'
 
 export default function Home() {
   return (
     <main>
       <FilterModal />
       <MentoSearch />
+      <Signup />
     </main>
   )
 }

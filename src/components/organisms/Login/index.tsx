@@ -11,9 +11,9 @@ const Login = () => {
       backgroundColor={'white'}
       alignItems={'center'}
       flexDirection={'column'}
-      width={{ base: '88.325vw' }}
+      width={'88.325vw'}
       maxWidth={'500px'}
-      height={'415px'}
+      height={'430px'}
       padding={'30px'}
       borderRadius={'30px'}
       boxShadow={'0px 4px 4px 0px rgba(0, 0, 0, 0.25)'}
@@ -22,7 +22,7 @@ const Login = () => {
 
       <Flex
         flexDirection={'column'}
-        width={{ base: '73.53vw' }}
+        width={'73.53vw'}
         maxWidth={'400px'}
         marginBottom={'60px'}
       >

@@ -221,7 +221,9 @@ export const SkillTag: Story = {
   args: {
     tag: '#tag',
   },
-  render: (args) => <SkillTagButton tag={args.tag} />,
+  render: (args) => (
+    <SkillTagButton tag={args.tag} backgroundColor={'transparent'} />
+  ),
   decorators: [
     (Story) => (
       <ThemeProvider theme={theme}>

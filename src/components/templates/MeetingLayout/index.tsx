@@ -1,9 +1,12 @@
-import { LayoutProps } from '../../../../.next/types/app/layout.ts'
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Box, Flex } from 'components/layout/index.ts'
 import Layout from 'components/templates/Layout/index.tsx'
 
-const MeetingApplyLayout = ({ children }: LayoutProps) => {
+interface ChildrenProps {
+  children: React.ReactNode
+}
+
+const MeetingApplyLayout = ({ children }: ChildrenProps) => {
   return (
     <>
       <Layout>

@@ -37,7 +37,12 @@ const MeetingApply = () => {
         zIndex={1}
         gap={'21px'}
       >
-        <Flex flexDirection={{ base: 'column', sm: 'row' }} gap={'21px'}>
+        <Flex
+          flexDirection={{ base: 'column', sm: 'row' }}
+          gap={'21px'}
+          width={'100%'}
+          maxWidth={'900px'}
+        >
           <Flex flexDirection={'column'} gap={'21px'}>
             <Text variant={'smallBold'}>원하는 날짜를 선택해주세요.</Text>
             <Calendar />
@@ -66,7 +71,12 @@ const MeetingApply = () => {
             </Flex>
           </Flex>
         </Flex>
-        <Flex flexDirection={'column'} width={'100%'} gap={'21px'}>
+        <Flex
+          flexDirection={'column'}
+          width={'100%'}
+          gap={'21px'}
+          maxWidth={'900px'}
+        >
           <Text variant={'smallBold'}>원하는 상담 내용을 작성해주세요.</Text>
           <TextArea />
           <Flex width={'100%'} justifyContent={'center'}>

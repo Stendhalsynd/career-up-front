@@ -1,10 +1,10 @@
-import { FilterModal, TodayChatInfo } from 'components/organisms/index.ts'
+import { FilterModal, MentoSearch } from 'components/organisms/index.ts'
 
 export default function Home() {
   return (
     <main>
-      <TodayChatInfo />
       <FilterModal />
+      <MentoSearch />
     </main>
   )
 }

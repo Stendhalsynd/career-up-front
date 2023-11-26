@@ -19,6 +19,7 @@ const MentoSearch = () => {
           gap={'10px'}
           padding={'15px'}
           borderRadius={'30px'}
+          boxShadow={'0px 4px 4px 0px rgba(0, 0, 0, 0.25)'}
         >
           <Box borderBottom={'1px solid black'}>
             <SearchInput variant="primaryLarge" />

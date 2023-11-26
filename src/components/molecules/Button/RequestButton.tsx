@@ -2,10 +2,8 @@
 
 import PropTypes from 'prop-types'
 import React, { ReactNode } from 'react'
-//import Icon from 'components/atoms/Icon/index.tsx'
 import { Icon } from 'components/atoms/index.ts'
 import Button, { ButtonProps } from 'components/molecules/Button/index.tsx'
-// import { Responsive } from 'types/styles'
 
 type RequestButtonProps = {
   iconName?: string

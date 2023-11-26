@@ -14,20 +14,24 @@ const TodayChatInfo = () => {
         borderRadius="20px"
         backgroundColor="white"
         width={{ base: '280px', sm: '300px' }}
-        height="300px"
-        padding="20px"
+        height={'fit-content'}
+        padding="30px"
       >
-        <Text variant="medium" margin="20px">
+        <Text variant="mediumBold" margin="20px">
           환호하는 돌고래
         </Text>
-        <Text variant="medium" margin="20px">
+        <Text variant="mediumBold" margin="20px">
           2023.11.23
         </Text>
-        <Text variant="medium" margin="20px">
+        <Text variant="mediumBold" margin="20px">
           05:33
         </Text>
 
-        <RequestButton style={{ marginTop: '20px' }}>입장하기</RequestButton>
+        <Flex width={'100%'} justifyContent={'center'}>
+          <RequestButton marginTop={'20px'} width={'fit-content'}>
+            입장하기
+          </RequestButton>
+        </Flex>
       </Flex>
     </Flex>
   )

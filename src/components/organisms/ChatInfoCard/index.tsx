@@ -21,57 +21,58 @@ export const ChatInfoCardItem: React.FC<CardItemProps> = ({
   content,
 }) => (
   <Label flexDirection="column">
-    <Text variant={'extraSmall'} color="black">
+    <Text variant={'extraSmallBold'} color="black">
       {title}
     </Text>
-
-    <Text color="white" marginTop={'8px'}>
+    <Text color="white" variant={'mediumBold'} marginTop={'8px'}>
       {content}
     </Text>
   </Label>
 )
 
+/**
+ * 나의 커피챗 리스트 카드
+ * @description isStatus 로 상태 여부를 명시해줘야 한다.
+ */
 const ChatInfoCard: React.FC<ChatInfoCardProps> = ({ isStatus }) => {
   return (
-    <Flex flexDirection="column">
-      <Box
-        backgroundColor="white"
-        width="250px"
-        height="310px"
-        borderRadius={'20px'}
-        gap={'5px'}
+    <Flex
+      flexDirection="column"
+      width={'fit-content'}
+      height={'fit-content'}
+      minWidth={'260px'}
+    >
+      <Flex
+        backgroundColor={'primary'}
+        flexDirection={'column'}
+        borderRadius={'30px 30px 0 0'}
+        padding={'30px'}
+        gap={'15px'}
       >
-        <Box
-          backgroundColor="primary"
-          width="250px"
-          height="240px"
-          borderRadius={'20px 20px 0 0'}
-        >
-          <Flex
-            padding={'30px 0 15px 31px'}
-            flexDirection={'column'}
-            gap={'10px'}
-          >
-            {<ChatInfoCardItem title="nickname" content="춤추는 달빛" />}
-            {<ChatInfoCardItem title="date" content="2023.11.23" />}
-            {<ChatInfoCardItem title="time" content="04:55" />}
+        {<ChatInfoCardItem title="nickname" content="춤추는 달빛" />}
+        {<ChatInfoCardItem title="date" content="2023.11.23" />}
+        {<ChatInfoCardItem title="time" content="04:55" />}
+      </Flex>
+      <Flex
+        backgroundColor={'white'}
+        justifyContent={'center'}
+        alignItems={'center'}
+        padding={'14.5px 31px'}
+        borderRadius={'0 0 30px 30px'}
+      >
+        {isStatus ? (
+          // isStatus가 true일 때 SelectButton 렌더링
+          <Flex gap={'20px'}>
+            <SelectButton>수락</SelectButton>
+            <SelectButton variant="gray">거부</SelectButton>
           </Flex>
-        </Box>
-        <Flex justifyContent={'center'} alignItems={'center'} height={'70px'}>
-          {isStatus ? (
-            // isStatus가 true일 때 SelectButton 렌더링
-            <Flex gap={'20px'}>
-              <SelectButton>수락</SelectButton>
-              <SelectButton variant="gray">거부</SelectButton>
-            </Flex>
-          ) : (
-            // isStatus가 false일 때 StatusButton 렌더링
-            <Box marginLeft="46px">
-              <StatusButton>수락됨</StatusButton>
-            </Box>
-          )}
-        </Flex>
-      </Box>
+        ) : (
+          // isStatus가 false일 때 StatusButton 렌더링
+          <Box>
+            <StatusButton padding={'12px 45px'}>수락됨</StatusButton>
+          </Box>
+        )}
+      </Flex>
     </Flex>
   )
 }

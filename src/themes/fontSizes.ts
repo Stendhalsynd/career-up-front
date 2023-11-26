@@ -1,4 +1,5 @@
 const fontSizes = {
+  /** xxXmall : 12px */
   xxSmall: '12px',
   xSmall: '14px',
   extraSmall: '16px',

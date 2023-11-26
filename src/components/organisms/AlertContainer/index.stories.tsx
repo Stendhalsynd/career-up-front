@@ -7,6 +7,7 @@ import { theme } from 'themes/index.ts'
 const meta: Meta<typeof AlertComponent> = {
   title: 'Organisms/AlertComponent',
   component: AlertComponent,
+  tags: ['autodocs'],
 }
 
 export default meta

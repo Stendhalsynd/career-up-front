@@ -1,4 +1,7 @@
 import type { Preview } from '@storybook/react'
+import { ThemeProvider } from 'styled-components'
+import { withThemeFromJSXProvider } from '@storybook/addon-themes'
+import { theme } from '../src/themes/index.ts'
 
 const VIEWPORTS = {
   MOBILE_MIN: {
@@ -51,6 +54,12 @@ const preview: Preview = {
       viewports: VIEWPORTS,
     },
   },
+  decorators: [
+    withThemeFromJSXProvider({
+      themes: { theme },
+      Provider: ThemeProvider,
+    }),
+  ],
 }
 
 export default preview

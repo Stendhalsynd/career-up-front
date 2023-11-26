@@ -3,94 +3,71 @@
 import React from 'react'
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Text } from 'components/atoms/index.ts'
-import { Flex, Box } from 'components/layout/index.ts'
+import { Flex } from 'components/layout/index.ts'
 import { InfoTagButton } from 'components/molecules/Button/TagButton.tsx'
-import Label from 'components/molecules/Label/index.tsx'
 
-const WorkerInfoCard = () => {
+interface WorkerInfoItemProps {
+  tag: string
+  text: string
+}
+
+interface WorkerInfoCardProps {
+  pictureName: string
+}
+
+const WorkerInfoItem = (props: WorkerInfoItemProps) => {
   return (
-    <Flex flexDirection="column">
-      <Box>
-        <Box
-          backgroundColor="white"
-          width="260px"
-          height="335px"
-          borderRadius={'20px'}
-        >
-          <Box
-            backgroundColor="primary"
-            width="260px"
-            height="96px"
-            borderRadius={'20px 20px 0 0'}
-          >
-            <Label>
-              <Text variant={'medium'} color="white" margin="18px">
-                우울한 돌고래
-              </Text>
-            </Label>
-            <Text variant={'extraSmall'} color="white" margin="18px">
-              미들 (5~8년)
-            </Text>
-          </Box>
+    <Flex flexDirection="column" gap={'7.67px'}>
+      <InfoTagButton tag={props.tag}></InfoTagButton>
+      <Text variant={'extraSmall'} color="black">
+        {props.text}
+      </Text>
+    </Flex>
+  )
+}
 
-          <Flex justifyContent="center" marginTop="-75px" marginLeft="150px">
-            <Picture pictureName="male" />
-          </Flex>
+const WorkerInfoCard = (props: WorkerInfoCardProps) => {
+  return (
+    <Flex
+      flexDirection="column"
+      position={'relative'}
+      width={'fit-content'}
+      minWidth={'260px'}
+    >
+      <Flex
+        backgroundColor="primary"
+        width={'100%'}
+        height={'fit-content'}
+        borderRadius={'20px 20px 0 0'}
+        flexDirection={'column'}
+        padding={'25px'}
+        gap={'15px'}
+      >
+        <Text variant={'mediumBold'} color="white">
+          행복한 돌고래
+        </Text>
+        <Text variant={'extraSmall'} color="white">
+          미들 (5~8년)
+        </Text>
+      </Flex>
 
-          <Box
-            backgroundColor="white"
-            width="234px"
-            height="235px"
-            marginTop="-134px"
-          >
-            <Flex
-              flexDirection="column"
-              justifyContent="flex-end"
-              margin="0 0 -32px 0"
-            >
-              <InfoTagButton tag="현직" margin="18px"></InfoTagButton>
-              <Text
-                variant={'xSmall'}
-                color="black"
-                margin="24px"
-                marginTop="-10px"
-              >
-                카카오
-              </Text>
-            </Flex>
-            <Flex
-              flexDirection="column"
-              justifyContent="flex-end"
-              margin="0 0 -32px 0"
-            >
-              <InfoTagButton tag="직군" margin="18px"></InfoTagButton>
-              <Text
-                variant={'xSmall'}
-                color="black"
-                margin="24px"
-                marginTop="-10px"
-              >
-                프론트엔드 그 외 2개
-              </Text>
-            </Flex>
-            <Flex
-              flexDirection="column"
-              justifyContent="flex-end"
-              margin="0 0 -32px 0"
-            >
-              <InfoTagButton tag="스킬" margin="18px"></InfoTagButton>
-              <Text
-                variant={'xSmall'}
-                color="black"
-                margin="24px"
-                marginTop="-10px"
-              >
-                CSS/HTML/REACT 그 외 5개
-              </Text>
-            </Flex>
-          </Box>
-        </Box>
-      </Box>
+      <Flex right={'15px'} top={'23px'} position={'absolute'} zIndex={1}>
+        <Picture pictureName={props.pictureName || 'male'} width={83} />
+      </Flex>
+
+      <Flex
+        backgroundColor="white"
+        width={'100%'}
+        height={'fit-content'}
+        flexDirection={'column'}
+        gap={'15.32px'}
+        padding={'25px'}
+        borderRadius={'0 0 20px 20px'}
+      >
+        <WorkerInfoItem tag="현직" text="카카오" />
+        <WorkerInfoItem tag="직군" text="프론트엔드 그 외 2개" />
+        <WorkerInfoItem tag="스킬" text="css/html/React 그 외 5개" />
+      </Flex>
     </Flex>
   )
 }

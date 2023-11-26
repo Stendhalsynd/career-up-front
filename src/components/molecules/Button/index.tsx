@@ -122,7 +122,7 @@ const variants = {
   // Clear
   clear: {
     color: 'black',
-    backgroundColor: 'none',
+    backgroundColor: 'transparent',
     border: 'none',
     pseudoClass: {
       hover: {
@@ -244,7 +244,7 @@ const Button = styled.button<ButtonProps>`
 
 Button.defaultProps = {
   variant: 'primary',
-  padding: '10px 30px',
+  padding: '10px 40px',
   display: 'inline-block',
   textAlign: 'center',
   fontSize: 'inherit',

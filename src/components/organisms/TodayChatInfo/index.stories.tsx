@@ -7,6 +7,7 @@ import { theme } from 'themes/index.ts'
 const meta: Meta<typeof TodayChatInfo> = {
   title: 'Organisms/TodayChatInfo',
   component: TodayChatInfo,
+  tags: ['autodocs'],
 }
 
 export default meta

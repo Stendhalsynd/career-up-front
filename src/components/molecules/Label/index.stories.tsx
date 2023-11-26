@@ -111,7 +111,7 @@ export const Detail: Story = {
       <Text>
         실력있는 개발자들이 모였습니다. 나의 고민을 해결해줄 수 있는&nbsp;
       </Text>
-      <Text color={'primary'} fontSize={'mediumLarge'}>
+      <Text color={'primary'} variant={'mediumLargeBold'}>
         파트너
       </Text>
       <Text>를 찾아보세요.</Text>

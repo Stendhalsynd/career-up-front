@@ -1,9 +1,11 @@
 // CHECKLIST : className did not match 문제 해결
 import type { Metadata } from 'next'
+
 import StyledComponentsRegistry from 'lib/registry.tsx'
 import './globals.css'
 
 import ThemeClient from 'lib/theme.tsx'
+import { notoSansKr } from 'utils/styles.ts'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={notoSansKr.className}>
       <body>
         <ThemeClient>
           <StyledComponentsRegistry>{children}</StyledComponentsRegistry>

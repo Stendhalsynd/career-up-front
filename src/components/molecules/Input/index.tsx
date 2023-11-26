@@ -41,7 +41,7 @@ const Input = styled.input<{
   outline: none;
   width: 100%;
   height: fit-content;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 19px;
 
   &::placeholder {
@@ -72,7 +72,7 @@ interface InfoBlockProps {
 
 export const InfoBlock: React.FC<InfoBlockProps> = ({ text, placeholder }) => (
   <Flex gap={'15px'} flexDirection={'column'} width={'100%'} zIndex={1}>
-    <Text color={'white'} fontSize={'small'}>
+    <Text color={'white'} variant={'smallBold'}>
       {text}
     </Text>
     <Input hasDarkBackground placeholder={placeholder} />

@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import RequestButton from 'components/molecules/Button/RequestButton.tsx'
@@ -7,14 +8,20 @@ import SelectButton from 'components/molecules/Button/SelectButton.tsx'
 import { Input } from 'components/molecules/index.ts'
 
 const Signup = () => {
+  // 구직자 또는 재직자 여부를 추적하는 상태
+  const [userType, setUserType] = useState<string>('')
+  const handleUserTypeChange = (type: string) => {
+    setUserType(type)
+  }
+
   return (
     <Flex
       backgroundColor={'white'}
       alignItems={'center'}
       flexDirection={'column'}
-      width={{ base: '88.325vw' }}
+      width={'88.325vw'}
       maxWidth={'500px'}
-      height={'660px'}
+      height={'600px'}
       padding={'15px'}
       borderRadius={'30px'}
       boxShadow={'0px 4px 4px 0px rgba(0, 0, 0, 0.25)'}
@@ -51,14 +58,28 @@ const Signup = () => {
             구직자인가요? 재직자인가요?
           </Text>
         </Flex>
-        <Flex marginBottom={'15px'} gap={'10px'}>
-          <SelectButton borderRadius={'8px'}>구직자</SelectButton>
-          <SelectButton borderRadius={'8px'}>재직자</SelectButton>
+        <Flex marginBottom={'15px'} gap={'10px'} width={'100%'}>
+          <SelectButton
+            width={'50%'}
+            borderRadius={'8px'}
+            onClick={() => handleUserTypeChange('jobSeeker')}
+          >
+            구직자
+          </SelectButton>
+          <SelectButton
+            width={'50%'}
+            borderRadius={'8px'}
+            onClick={() => handleUserTypeChange('employee')}
+          >
+            재직자
+          </SelectButton>
         </Flex>
         {/* 소속 */}
-        <Flex marginBottom={'45px'}>
-          <Input name="" type="text" placeholder="비밀번호" hasBorder />
-        </Flex>
+        {userType === 'employee' && (
+          <Flex marginBottom={'45px'}>
+            <Input name="company" type="text" placeholder="소속" hasBorder />
+          </Flex>
+        )}
       </Flex>
 
       <Flex

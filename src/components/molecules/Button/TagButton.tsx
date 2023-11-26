@@ -11,6 +11,7 @@ const TagButton: React.FC<TagButtonProps> = ({ tag, ...buttonProps }) => {
   return <Button {...buttonProps}>{tag}</Button>
 }
 
+/** 현직 / 직군 / 스킬 */
 export const InfoTagButton: React.FC<TagButtonProps> = ({
   ...tagButtonProps
 }) => {
@@ -28,6 +29,7 @@ export const InfoTagButton: React.FC<TagButtonProps> = ({
   )
 }
 
+/** 보유 스킬 */
 export const SkillTagButton: React.FC<TagButtonProps> = ({
   ...tagButtonProps
 }) => {
@@ -44,13 +46,15 @@ export const SkillTagButton: React.FC<TagButtonProps> = ({
   )
 }
 
+/** 직무 분야 */
 export const IntroTagButton: React.FC<TagButtonProps> = ({
   ...tagButtonProps
 }) => {
+  const { variant, ...rest } = tagButtonProps
   return (
     <TagButton
-      {...tagButtonProps}
-      variant="white"
+      {...rest}
+      variant={variant ? variant : 'white'}
       width={'fit-content'}
       height={'fit-content'}
       padding={'5px 35px'}

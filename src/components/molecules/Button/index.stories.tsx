@@ -59,6 +59,13 @@ export const LoginButton: Story = {
       </ThemeProvider>
     ),
   ],
+  parameters: {
+    docs: {
+      description: {
+        story: 'width 와 padding 을 자유롭게 수정해주세요',
+      },
+    },
+  },
 }
 
 export const DarkButton1: Story = {

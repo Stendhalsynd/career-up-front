@@ -26,7 +26,7 @@ export const BasicInfo = (props: BasicInfoProps) => {
           flexDirection={'column'}
           alignItems={'flex-start'}
           width={'100%'}
-          maxWidth={{ base: '100%', sm: '400px' }}
+          maxWidth={{ base: '100%', sm: '350px' }}
         >
           <Text color={'white'} variant="mediumLargeBold">
             회원 정보 수정

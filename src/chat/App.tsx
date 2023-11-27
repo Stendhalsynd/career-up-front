@@ -9,7 +9,9 @@ import { Box, Flex } from 'components/layout/index.ts'
 import { NicknameButton, RequestButton } from 'components/molecules/index.ts'
 
 const APPLICATION_SERVER_URL =
-  process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5001/'
+  process.env.NODE_ENV === 'production'
+    ? 'https://careerup.vercel.app/'
+    : 'http://localhost:5001/'
 
 export default function App() {
   const [mySessionId, setMySessionId] = useState('SessionA')

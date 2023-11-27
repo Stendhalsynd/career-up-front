@@ -34,7 +34,7 @@ const WorkerInfoItem = (props: WorkerInfoItemProps) => {
 const WorkerInfoCard = (props: WorkerInfoCardProps) => {
   const {
     nickname,
-    career,
+    // career,
     currentJob,
     currentPosition,
     currentSkill,
@@ -59,14 +59,14 @@ const WorkerInfoCard = (props: WorkerInfoCardProps) => {
       >
         <Box zIndex={3}>
           <Text variant={'mediumBold'} color="white">
-            {nickname || '행복한 돌고래'}
+            {nickname || '바람직스러운 유럽소나무담비'}
           </Text>
         </Box>
-        <Box zIndex={3}>
+        {/* <Box zIndex={3}>
           <Text variant={'extraSmall'} color="white">
             {career || '미들(5~8년)'}
           </Text>
-        </Box>
+        </Box> */}
       </Flex>
 
       <Flex right={'15px'} top={'23px'} position={'absolute'} zIndex={1}>

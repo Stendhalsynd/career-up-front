@@ -25,7 +25,7 @@ const HyperLinkButton: React.FC<HyperLinkButtonProps> = ({
       fontSize={{ base: '16px', md: '20px' }}
       {...restProps}
     >
-      <Text color={isTransparent ? 'black' : 'whtie'}>
+      <Text color={isTransparent ? 'black' : 'white'}>
         {contents ? contents : '이동하기'}
       </Text>
     </Button>

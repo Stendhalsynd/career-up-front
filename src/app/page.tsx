@@ -1,11 +1,9 @@
-import { FilterModal, MentoSearch, Signup } from 'components/organisms/index.ts'
+import MainLayout from 'components/templates/MainLayout'
 
 export default function Home() {
   return (
-    <main>
-      <FilterModal />
-      <MentoSearch />
-      <Signup />
-    </main>
+    <>
+      <MainLayout />
+    </>
   )
 }

@@ -6,15 +6,15 @@ import { Flex } from 'components/layout/index.ts'
 
 const AlertComponent = () => {
   return (
-    <Flex alignItems="center" justifyContent="center" height="100vh">
+    <Flex alignItems="center" justifyContent="center">
       <Flex
         flexDirection="column"
         alignItems="center"
         justifyContent={'center'}
         borderRadius="20px"
         backgroundColor="white"
-        width={{ base: '350px', sm: '600px' }}
-        height="190px"
+        width={{ base: '350px', sm: '1000px' }}
+        height={{ base: '190px', sm: '400px' }}
         padding="20px"
       >
         <Icon iconName="warning" width={50}></Icon>

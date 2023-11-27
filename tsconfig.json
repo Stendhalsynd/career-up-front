@@ -64,7 +64,11 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     ".next/types/**/*.ts",
-    "recoil.ts"
+    "recoil.ts",
+    "src/app/chat/page.jsx",
+    "src/openvidu/OvVideo.js",
+    "src/openvidu/registerServiceWorker.js",
+    "src/openvidu/UserVideoComponent.js"
   ],
   "exclude": ["node_modules"]
 }

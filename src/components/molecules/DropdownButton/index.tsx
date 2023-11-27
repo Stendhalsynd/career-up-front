@@ -116,6 +116,7 @@ interface DropdownProps {
 /**
  * 드롭다운 버튼
  * @description useWidth() 함수 반응형시 참고
+ * // TODO: options 는 고정적이니 따로 입력받지 않도록 수정
  */
 const DropdownButton = (props: DropdownProps) => {
   const { onChange, name, value, options, hasError } = props

@@ -27,16 +27,17 @@ export type TextVariant =
   | 'mediumBold'
   | 'mediumLargeBold'
   | 'largeBold'
+  | 'extraLargeBold'
 
 export type TextProps = {
   /**
    * @description
-   * xxXmall : 12 / xXmall : 14 / extraSmall : 16 / small : 20 / medium : 24 / mediumLarge : 32 / large : 40
+   * xxSmall : 12 / xSmall : 14 / extraSmall : 16 / small : 20 / medium : 24 / mediumLarge : 32 / large : 40
    * @description
    * 뒤에 Bold 를 붙이면 fontWeight : 700, 없으면 fontWeight : 500
    */
   variant?: TextVariant
-  /** xxXmall : 12 / xXmall : 14 / extraSmall : 16 / small : 20 / medium : 24 / mediumLarge : 32 / large : 40 */
+  /** xxSmall : 12 / xSmall : 14 / extraSmall : 16 / small : 20 / medium : 24 / mediumLarge : 32 / large : 40 */
   fontSize?: Responsive<FontSize>
   fontWeight?: Responsive<string>
   fontFamily?: String
@@ -44,6 +45,7 @@ export type TextProps = {
   lineHeight?: Responsive<LineHeight>
   textAlign?: Responsive<string>
   color?: Responsive<Color>
+  textShadow?: Responsive<string>
   backgroundColor?: Responsive<Color>
   width?: Responsive<string>
   height?: Responsive<string>
@@ -202,6 +204,8 @@ const Text = styled.span<TextProps>`
   ${(props) => toPropValue('font-weight', props.fontWeight, props.theme)}
   ${(props) => toPropValue('letter-spacing', props.letterSpacing, props.theme)}
   ${(props) => toPropValue('line-height', props.lineHeight, props.theme)}
+  ${(props) => toPropValue('text-align', props.textAlign, props.theme)}
+  ${(props) => toPropValue('text-shadow', props.textShadow, props.theme)}
   ${(props) => {
     return toPropValue('color', props.color, props.theme)
   }}

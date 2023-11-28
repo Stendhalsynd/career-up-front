@@ -75,5 +75,6 @@
     "typescript-eslint": "^0.0.1-alpha.0"
   },
   "readme": "ERROR: No README data found!",
-  "_id": "careerup-front@0.1.0"
+  "_id": "careerup-front@0.1.0",
+  "proxy": "http://api.career-up.live:8080/"
 }

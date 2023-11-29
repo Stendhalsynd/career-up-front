@@ -7,6 +7,7 @@ import Button, { ButtonProps } from 'components/molecules/Button/index.tsx'
 interface SelectButtonProps extends ButtonProps {
   children: ReactNode
   isRound?: Boolean
+  isSelected?: boolean
 }
 
 /**
@@ -17,11 +18,13 @@ interface SelectButtonProps extends ButtonProps {
 const SelectButton: React.FC<SelectButtonProps> = ({
   children,
   isRound = true,
+  isSelected = false,
+
   ...rest
 }) => {
   return (
     <Button
-      variant={rest.variant ? rest.variant : 'primary'}
+      variant={isSelected ? 'primary' : 'white'}
       width={'fit-content'}
       height={'fit-content'}
       borderRadius={isRound ? '100px' : '8px'}

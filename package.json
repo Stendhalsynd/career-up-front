@@ -17,7 +17,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/x-date-pickers": "^6.18.2",
-    "axios": "^1.6.2",
+    "axios": "^1.6.0",
     "dayjs": "^1.11.10",
     "next": "14.0.2",
     "openvidu-browser": "^2.29.1",
@@ -75,5 +75,6 @@
     "typescript-eslint": "^0.0.1-alpha.0"
   },
   "readme": "ERROR: No README data found!",
-  "_id": "careerup-front@0.1.0"
+  "_id": "careerup-front@0.1.0",
+  "proxy": "http://api.career-up.live:8080/"
 }

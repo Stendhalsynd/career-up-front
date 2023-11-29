@@ -19,6 +19,7 @@
     "@mui/x-date-pickers": "^6.18.2",
     "axios": "^1.6.0",
     "dayjs": "^1.11.10",
+    "jwt-decode": "^4.0.0",
     "next": "14.0.2",
     "openvidu-browser": "^2.29.1",
     "openvidu-react": "^2.27.0",
@@ -76,5 +77,5 @@
   },
   "readme": "ERROR: No README data found!",
   "_id": "careerup-front@0.1.0",
-  "proxy": "http://api.career-up.live:8080/"
+  "proxy": "https://api.career-up.live:8080/"
 }

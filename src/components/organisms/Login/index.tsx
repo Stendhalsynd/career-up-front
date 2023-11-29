@@ -17,12 +17,13 @@ const Login = () => {
     try {
       const response = await axios({
         method: 'POST',
-        url: 'http://api.career-up.live:8080/signin',
+        url: 'https://api.career-up.live:8080/signin',
         data: { email, password },
       })
 
       console.log(response)
       if (response.data !== 'no') {
+        localStorage.setItem('token', response.data)
         window.location.href = '/'
       } else {
         setErrorMessage('이메일 또는 비밀번호가 올바르지 않습니다.')

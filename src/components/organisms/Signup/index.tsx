@@ -58,7 +58,7 @@ const Signup = () => {
         company: roleType === 'WORKER' ? company : undefined,
       }
 
-      const response = await fetch('http://api.career-up.live:8080/signup', {
+      const response = await fetch('https://api.career-up.live:8080/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

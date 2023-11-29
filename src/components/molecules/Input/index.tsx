@@ -55,7 +55,7 @@ const Input = styled.input<{
   }
 
   &[type='number'] {
-    -moz-appearance: textfield;
+    -webkit-moz-appearance: textfield;
   }
 `
 
@@ -68,13 +68,18 @@ export default Input
 interface InfoBlockProps {
   text: string
   placeholder: string
+  readOnly: boolean
 }
 
-export const InfoBlock: React.FC<InfoBlockProps> = ({ text, placeholder }) => (
+export const InfoBlock: React.FC<InfoBlockProps> = ({
+  text,
+  placeholder,
+  readOnly,
+}) => (
   <Flex gap={'15px'} flexDirection={'column'} width={'100%'} zIndex={1}>
     <Text color={'white'} variant={'smallBold'}>
       {text}
     </Text>
-    <Input hasDarkBackground placeholder={placeholder} />
+    <Input hasDarkBackground placeholder={placeholder} readOnly={readOnly} />
   </Flex>
 )

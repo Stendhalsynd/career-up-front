@@ -57,8 +57,13 @@ const WorkerInfoCard = (props: WorkerInfoCardProps) => {
         padding={'25px'}
         gap={'15px'}
       >
-        <Box zIndex={3}>
-          <Text variant={'mediumBold'} color="white">
+        <Box zIndex={3} maxWidth={'60%'}>
+          <Text
+            variant={'mediumBold'}
+            color="white"
+            style={{ wordBreak: 'keep-all' }}
+            lineHeight={1.5}
+          >
             {nickname || '바람직스러운 유럽소나무담비'}
           </Text>
         </Box>

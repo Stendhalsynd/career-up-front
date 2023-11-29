@@ -42,7 +42,7 @@ const LoginSignupLayout = ({ children }: ChildrenProps) => {
             alignItems={'center'}
           >
             <Box position={'absolute'} top={'500px'} left={'20px'}>
-              <Picture pictureName="supertoroid2" width={200} />
+              <Picture pictureName="supertoroid2" width={300} />
             </Box>
             <Box position={'absolute'} top={'80px'} right={'-50px'}>
               <Picture pictureName="cube" width={300} />
@@ -76,10 +76,10 @@ const LoginSignupLayout = ({ children }: ChildrenProps) => {
                 </Text>
               </Flex>
               <Box position={'absolute'} top={'300px'} right={'10px'}>
-                <Picture pictureName="supertoroid" width={200} />
+                <Picture pictureName="supertoroid1" width={200} />
               </Box>
               <Box position={'absolute'} top={'100px'} left={'10px'}>
-                <Picture pictureName="roundcube" width={200} />
+                <Picture pictureName="roundcube1" width={200} />
               </Box>
             </Flex>
             <Flex

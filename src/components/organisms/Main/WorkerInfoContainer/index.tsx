@@ -3,17 +3,18 @@
 import { Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import WorkerInfoCard from 'components/organisms/WorkerInfoCard/index.tsx'
-import { Mobile, Tablet } from 'lib/useMediaQuery.tsx'
+import { Desktop, Mobile, Tablet } from 'lib/useMediaQuery.tsx'
 import { notable } from 'utils/styles.ts'
 
 // 재직자 리스트 관련 소개가 있는 컨테이너
 const WorkerInfoContainer = () => {
   return (
     <>
+      {/* 모바일 */}
       <Mobile>
         <Flex width={'100%'} justifyContent={'center'}>
           <Flex flexDirection={'column'} gap={'20px'} alignItems={'center'}>
-            <Flex flexDirection="column">
+            <Flex flexDirection="column" gap={'5px'}>
               <Text
                 className={notable.className}
                 color={'white'}
@@ -90,12 +91,15 @@ const WorkerInfoContainer = () => {
           </Flex>
         </Flex>
       </Mobile>
+
+      {/* 태블릿 */}
       <Tablet>
-        <Flex width={'100%'} justifyContent={'center'}>
-          <Flex flexDirection={'column'} gap={'20px'} alignItems={'center'}>
-            <Flex flexDirection="column">
+        <Flex width={'100%'} paddingLeft={'50px'}>
+          <Flex flexDirection={'column'} gap={'50px'} alignItems={'start'}>
+            <Flex flexDirection="column" gap={'20px'}>
               <Text
                 className={notable.className}
+                fontSize={'large'}
                 color={'white'}
                 textShadow={'4px 2px 2px #0A7EFE'}
               >
@@ -103,6 +107,7 @@ const WorkerInfoContainer = () => {
               </Text>
               <Text
                 className={notable.className}
+                fontSize={'large'}
                 color={'white'}
                 textShadow={'4px 2px 2px #0A7EFE'}
               >
@@ -110,37 +115,38 @@ const WorkerInfoContainer = () => {
               </Text>
             </Flex>
 
-            <Flex flexDirection="column">
+            <Flex flexDirection="column" gap={'10px'}>
               <Text
-                variant="smallBold"
+                variant="mediumLargeBold"
                 lineHeight={3}
                 color={'white'}
-                textAlign={'center'}
+                textAlign={'left'}
               >
                 실력있는 개발자들이 모였습니다.
               </Text>
-              <Text
-                variant="smallBold"
-                lineHeight={3}
-                color={'white'}
-                textAlign={'center'}
-              >
-                나의 고민을 해결해줄 수 있는
-              </Text>
-              <Flex justifyContent={'center'}>
+
+              <Flex justifyContent={'start'}>
                 <Text
-                  variant="smallBold"
+                  variant="mediumLargeBold"
+                  lineHeight={3}
+                  color={'white'}
+                  textAlign={'left'}
+                >
+                  나의 고민을 해결해줄 수 있는&nbsp;
+                </Text>
+                <Text
+                  variant="mediumLargeBold"
                   lineHeight={3}
                   color={'primary'}
-                  textAlign={'center'}
+                  textAlign={'left'}
                 >
                   파트너
                 </Text>
                 <Text
-                  variant="smallBold"
+                  variant="mediumLargeBold"
                   lineHeight={3}
                   color={'white'}
-                  textAlign={'center'}
+                  textAlign={'left'}
                 >
                   를 찾아보세요.
                 </Text>
@@ -149,8 +155,8 @@ const WorkerInfoContainer = () => {
             <Flex
               width={'100vw'}
               gap={'50px'}
-              paddingLeft={'50px'}
-              paddingRight={'50px'}
+              // paddingLeft={'50px'}
+              // paddingRight={'50px'}
               scrollSnapType="x mandatory"
               overflow={'auto'}
             >
@@ -170,6 +176,91 @@ const WorkerInfoContainer = () => {
           </Flex>
         </Flex>
       </Tablet>
+
+      {/* 데스크탑 */}
+      <Desktop>
+        <Flex width={'100%'} paddingLeft={'50px'}>
+          <Flex flexDirection={'column'} gap={'50px'} alignItems={'start'}>
+            <Flex flexDirection="column" gap={'20px'}>
+              <Text
+                className={notable.className}
+                fontSize={'large'}
+                color={'white'}
+                textShadow={'4px 2px 2px #0A7EFE'}
+              >
+                OUTSTANDING
+              </Text>
+              <Text
+                className={notable.className}
+                fontSize={'large'}
+                color={'white'}
+                textShadow={'4px 2px 2px #0A7EFE'}
+              >
+                PROFESSIONALS
+              </Text>
+            </Flex>
+
+            <Flex flexDirection="column" gap={'10px'}>
+              <Text
+                variant="mediumLargeBold"
+                lineHeight={3}
+                color={'white'}
+                textAlign={'left'}
+              >
+                실력있는 개발자들이 모였습니다.
+              </Text>
+
+              <Flex justifyContent={'start'}>
+                <Text
+                  variant="mediumLargeBold"
+                  lineHeight={3}
+                  color={'white'}
+                  textAlign={'left'}
+                >
+                  나의 고민을 해결해줄 수 있는&nbsp;
+                </Text>
+                <Text
+                  variant="mediumLargeBold"
+                  lineHeight={3}
+                  color={'primary'}
+                  textAlign={'left'}
+                >
+                  파트너
+                </Text>
+                <Text
+                  variant="mediumLargeBold"
+                  lineHeight={3}
+                  color={'white'}
+                  textAlign={'left'}
+                >
+                  를 찾아보세요.
+                </Text>
+              </Flex>
+            </Flex>
+            <Flex
+              width={'100vw'}
+              gap={'50px'}
+              // paddingLeft={'50px'}
+              // paddingRight={'50px'}
+              scrollSnapType="x mandatory"
+              overflow={'auto'}
+            >
+              <Flex scrollSnapAlign="center">
+                <WorkerInfoCard />
+              </Flex>
+              <Flex scrollSnapAlign="center">
+                <WorkerInfoCard />
+              </Flex>
+              <Flex scrollSnapAlign="center">
+                <WorkerInfoCard />
+              </Flex>
+              <Flex scrollSnapAlign="center">
+                <WorkerInfoCard />
+              </Flex>
+            </Flex>
+          </Flex>
+        </Flex>
+      </Desktop>
     </>
   )
 }

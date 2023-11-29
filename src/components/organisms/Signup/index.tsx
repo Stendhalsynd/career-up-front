@@ -8,28 +8,48 @@ import SelectButton from 'components/molecules/Button/SelectButton.tsx'
 import { HyperLinkButton, Input } from 'components/molecules/index.ts'
 
 const Signup = () => {
-  // 구직자 또는 재직자 여부를 추적하는 상태
+  const [errorMessage, setErrorMessage] = useState<string>('')
+  const [successMessage, setSuccessMessage] = useState<string>('')
+
   const [roleType, setRoleType] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [checkPassword, setCheckPassword] = useState<string>('')
   const [company, setCompany] = useState<string>('')
+  const [selectedUserType, setSelectedUserType] = useState<string>('')
 
   const handleUserTypeChange = (type: string) => {
     setRoleType(type)
+    setSelectedUserType(type)
   }
 
   const handleSignup = async () => {
     try {
+      // 이메일 유효성 검사
+      if (!/^[a-zA-Z0-9-_]+@[a-zA-Z0-9]+\.[A-Za-z]{2,4}$/.test(email)) {
+        setErrorMessage('올바른 이메일 주소를 입력하세요.')
+        return
+      }
+
+      // 비밀번호 유효성 검사
+      if (!/^[a-zA-Z0-9-_]+$/.test(password)) {
+        setErrorMessage(
+          '비밀번호는 영문자, 숫자, 대시, 언더스코어만 허용됩니다.',
+        )
+        return
+      }
+
       if (!email || !password || !checkPassword || !roleType) {
-        console.error('모든 필드를 작성하세요.')
+        setErrorMessage('모든 필드를 작성하세요.')
         return
       }
 
       if (password !== checkPassword) {
-        console.error('비밀번호가 일치하지 않습니다.')
+        setErrorMessage('비밀번호가 일치하지 않습니다.')
         return
       }
+
+      setErrorMessage('')
 
       const data = {
         email,
@@ -49,13 +69,21 @@ const Signup = () => {
       console.log(response.status)
 
       if (response.ok) {
+        setSuccessMessage('회원가입 성공!')
+        setEmail('')
+        setPassword('')
+        setCheckPassword('')
+        setCompany('')
+        console.log('Email:', email)
+        console.log('Password:', password)
+        console.log('Check Password:', checkPassword)
+        console.log('Company:', company)
         console.log('회원가입 성공!')
-        window.location.reload()
       } else {
-        console.error('회원가입 실패:', await response.json())
+        setErrorMessage(`회원가입 실패: ${await response.json()}`)
       }
     } catch (error) {
-      console.error('회원가입 중 오류 발생:', error)
+      setErrorMessage(`회원가입 중 오류 발생: ${error}`)
     }
   }
 
@@ -94,7 +122,7 @@ const Signup = () => {
         <Flex marginBottom={'20px'}>
           <Input
             name="password"
-            type="text"
+            type="password"
             placeholder="비밀번호"
             hasBorder
             onChange={(e) => setPassword(e.target.value)}
@@ -104,7 +132,7 @@ const Signup = () => {
         <Flex marginBottom={'20px'}>
           <Input
             name="checkPassword"
-            type="text"
+            type="password"
             placeholder="비밀번호 재확인"
             hasBorder
             onChange={(e) => setCheckPassword(e.target.value)}
@@ -120,6 +148,7 @@ const Signup = () => {
           <SelectButton
             width={'50%'}
             borderRadius={'8px'}
+            isSelected={selectedUserType === 'SEEKER'}
             onClick={() => handleUserTypeChange('SEEKER')}
           >
             구직자
@@ -127,6 +156,7 @@ const Signup = () => {
           <SelectButton
             width={'50%'}
             borderRadius={'8px'}
+            isSelected={selectedUserType === 'WORKER'}
             onClick={() => handleUserTypeChange('WORKER')}
           >
             재직자
@@ -152,6 +182,42 @@ const Signup = () => {
         width={'73.53vw'}
         maxWidth={'400px'}
       >
+        {/* 오류 메시지 (구직자 선택 시) */}
+        {errorMessage && roleType === 'SEEKER' && (
+          <Flex marginBottom="10px">
+            <Text color={'red'} fontSize="extraSmall">
+              {errorMessage}
+            </Text>
+          </Flex>
+        )}
+
+        {/* 성공 메시지 (구직자 선택 시) */}
+        {successMessage && roleType === 'SEEKER' && (
+          <Flex marginBottom="10px">
+            <Text color={'green'} fontSize="extraSmall">
+              {successMessage}
+            </Text>
+          </Flex>
+        )}
+
+        {/* 오류 메시지 (재직자 선택 시) */}
+        {errorMessage && roleType === 'WORKER' && (
+          <Flex marginTop="-30px" marginBottom="10px">
+            <Text color={'red'} fontSize="extraSmall">
+              {errorMessage}
+            </Text>
+          </Flex>
+        )}
+
+        {/* 성공 메시지 (재직자 선택 시) */}
+        {successMessage && roleType === 'WORKER' && (
+          <Flex marginTop="-30px" marginBottom="10px">
+            <Text color={'green'} fontSize="extraSmall">
+              {successMessage}
+            </Text>
+          </Flex>
+        )}
+
         <Flex marginBottom={'15px'} width={'100%'}>
           <RequestButton onClick={handleSignup}>회원가입</RequestButton>
         </Flex>

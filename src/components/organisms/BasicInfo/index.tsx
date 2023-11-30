@@ -1,16 +1,57 @@
+'use client'
+
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Avatar, Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import SelectButton from 'components/molecules/Button/SelectButton.tsx'
 import { InfoBlock } from 'components/molecules/Input/index.tsx'
 
+interface User {
+  profile: string
+  nickname: string
+  email: string
+  password: string
+  company: string
+  contents: string
+  roleType: string
+  fields: string
+  skills: string
+}
+
 export interface BasicInfoProps {
-  id: string
   isUser: boolean
 }
 
-export const BasicInfo = (props: BasicInfoProps) => {
-  const { id, isUser } = props
+export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
+  const { isUser } = props
+  const [userData, setUserData] = useState<User | null>(null)
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(
+          'https://api.career-up.live:8080/mypage',
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          },
+        )
+
+        setUserData(response.data)
+      } catch (error) {
+        console.error('사용자 데이터를 가져오는 중 오류 발생:', error)
+      }
+    }
+
+    fetchUserData()
+  }, [])
+
+  if (!userData) {
+    return <div>로딩 중...</div>
+  }
   return (
     <Flex width={'100%'} justifyContent={'center'} paddingBottom={'50px'}>
       <Flex
@@ -42,7 +83,7 @@ export const BasicInfo = (props: BasicInfoProps) => {
             </Text>
 
             <Flex gap={'33px'} marginTop={'23px'}>
-              <Avatar avatarName={'avatar'} width={80} />
+              <Avatar avatarName="avatar" width={80} />
               <Flex
                 width={'100%'}
                 height={'100%'}
@@ -62,10 +103,34 @@ export const BasicInfo = (props: BasicInfoProps) => {
             flexDirection={'column'}
             marginTop={'34px'}
           >
-            {<InfoBlock text="닉네임" placeholder={`내 닉네임${id}`} />}
-            {<InfoBlock text="이메일" placeholder="{내 이메일}" />}
-            {<InfoBlock text="비밀번호" placeholder="{내 비밀번호}" />}
-            {<InfoBlock text="소속" placeholder="{내 소속}" />}
+            {
+              <InfoBlock
+                text="닉네임"
+                placeholder={userData.nickname}
+                readOnly={true}
+              />
+            }
+            {
+              <InfoBlock
+                text="이메일"
+                placeholder={userData.email}
+                readOnly={true}
+              />
+            }
+            {
+              <InfoBlock
+                text="비밀번호"
+                placeholder={userData.password}
+                readOnly={false}
+              />
+            }
+            {
+              <InfoBlock
+                text="소속"
+                placeholder={userData.company}
+                readOnly={true}
+              />
+            }
 
             <Flex
               justifyContent={'center'}

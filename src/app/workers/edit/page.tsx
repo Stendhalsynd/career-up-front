@@ -21,10 +21,10 @@ const InfoItem = (props: InfoItemProps) => {
   )
 }
 
-const WorkerMyPage = ({ params }: { params: { id: string } }) => {
+const WorkerMyPage = () => {
   return (
     <MyPageLayout>
-      <BasicInfo id={params.id} isUser={false} />
+      <BasicInfo isUser={false} />
       <Flex
         width={'100%'}
         backgroundColor={'white'}

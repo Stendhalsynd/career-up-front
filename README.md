@@ -13,6 +13,7 @@ npm install @mui/styled-engine-sc styled-components
 npm install react-slick slick-carousel
 npm i --save-dev @types/react-slick
 npm install @emotion/styled
+npm install jwt-decode
 
 ```
 

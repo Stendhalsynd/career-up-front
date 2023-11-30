@@ -28,7 +28,7 @@ const InfoItem = (props: InfoItemProps) => {
   )
 }
 
-const WorkerMyPage = ({ params }: { params: { id: string } }) => {
+const WorkerMyPage = () => {
   return (
     <Layout>
       <Flex
@@ -61,9 +61,8 @@ const WorkerMyPage = ({ params }: { params: { id: string } }) => {
               </Box>
             </Flex>
             <Flex flexDirection={'column'} gap={{ base: '10px', sm: '15px' }}>
-              <Text variant={'mediumBold'}>슬픈 돌고래 {params.id}</Text>
+              <Text variant={'mediumBold'}>슬픈 돌고래</Text>
               <InfoItem tag={'현직'} text={'네이버'} color="primary" />
-              <InfoItem tag={'경력'} text={'미들(4 ~ 8년)'} />
               <InfoItem tag={'직군'} text={'프론트엔드/웹퍼블리셔'} />
             </Flex>
 
@@ -103,7 +102,7 @@ const WorkerMyPage = ({ params }: { params: { id: string } }) => {
                 fontWeight={'700'}
                 color={'primary'}
               >
-                커리업 파트너 {params.id} 입니다. :)
+                커리업 파트너 입니다:)
               </Text>
               <Text variant="extraSmall" color={'white'}>
                 안녕하세요. 현재 프론트엔드 5년차 개발자입니다. 경영학을

@@ -1,20 +1,17 @@
-import OtherComponent from 'chats/Temp.tsx'
+import App from 'chat/App.tsx'
 import { Flex } from 'components/layout/index.ts'
-import Layout from 'components/templates/Layout/index.tsx'
 
 const Chat = () => {
   return (
-    <Layout>
-      <Flex
-        width={'100vw'}
-        height={'100vh'}
-        backgroundColor={'white'}
-        justifyContent={'center'}
-        alignItems={'center'}
-      >
-        <OtherComponent />
-      </Flex>
-    </Layout>
+    <Flex
+      width={'100vw'}
+      height={'calc(100vh - 50px)'}
+      backgroundColor={'white'}
+      justifyContent={'center'}
+      alignItems={'center'}
+    >
+      <App />
+    </Flex>
   )
 }
 

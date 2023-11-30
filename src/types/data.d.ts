@@ -1,9 +1,9 @@
-// 상품 카테고리
+/** 상품 카테고리 */
 export type Category = 'shoes' | 'clothes' | 'book'
-// 상품 상태
+/** 상품 상태 */
 export type Condition = 'new' | 'used'
 
-// 사용자
+/** 사용자 */
 export type User = {
   id: number
   username: string
@@ -13,7 +13,7 @@ export type User = {
   description: string
 }
 
-// 상품
+/** 상품 */
 export type Product = {
   id: number
   category: Category
@@ -26,7 +26,21 @@ export type Product = {
   owner: User
 }
 
-// API 컨텍스트
+/** API 컨텍스트 */
 export type ApiContext = {
   apiRootUrl: string
+}
+
+/** 마이페이지 유저 데이터 */
+export interface UserData {
+  id: null
+  email: string
+  password: null
+  profile: null
+  nickname: string
+  company: null
+  contents: null
+  roleType: string
+  fields: any[]
+  skills: any[]
 }

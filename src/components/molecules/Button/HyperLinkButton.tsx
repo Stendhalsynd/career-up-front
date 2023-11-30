@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { Text } from 'components/atoms/index.ts'
 import Button, { ButtonProps } from 'components/molecules/Button/index.tsx'
 
@@ -9,12 +9,14 @@ interface HyperLinkButtonProps extends ButtonProps {
   to: string
   contents?: string
   isTransparent?: boolean
+  children?: ReactNode
 }
 
 const HyperLinkButton: React.FC<HyperLinkButtonProps> = ({
   to,
   contents,
   isTransparent = false,
+  children,
   ...restProps
 }) => {
   return (
@@ -26,8 +28,12 @@ const HyperLinkButton: React.FC<HyperLinkButtonProps> = ({
         fontSize={{ base: '16px', md: '20px' }}
         {...restProps}
       >
-        <Text color={isTransparent ? 'black' : 'white'}>
+        <Text
+          color={isTransparent ? 'black' : 'white'}
+          fontSize={{ base: 'extraSmall', md: 'small' }}
+        >
           {contents ? contents : '이동하기'}
+          {children}
         </Text>
       </Button>{' '}
     </Link>

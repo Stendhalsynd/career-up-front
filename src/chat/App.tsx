@@ -3,10 +3,9 @@
 import axios from 'axios'
 import { OpenVidu, Session } from 'openvidu-browser'
 import { useEffect, useState, useCallback, useRef } from 'react'
+import { useRecoilValue } from 'recoil'
 import VideoRoomComponent from '../chat/src/components/VideoRoomComponent.js'
-import { Text } from 'components/atoms/index.ts'
-import { Box, Flex } from 'components/layout/index.ts'
-import { RequestButton } from 'components/molecules/index.ts'
+import { myNameState, sessionState } from 'utils/state.ts'
 
 const APPLICATION_SERVER_URL =
   process.env.NODE_ENV === 'production'
@@ -14,59 +13,26 @@ const APPLICATION_SERVER_URL =
     : 'http://localhost:5001/'
 
 export default function App() {
-  const [mySessionId, setMySessionId] = useState('SessionA')
+  const mySessionIdState: string = useRecoilValue(sessionState)
+  const myUserNameState: string = useRecoilValue(myNameState)
+
+  console.log('mySessionId, myUserName : ', mySessionIdState, myUserNameState)
+
+  const [mySessionId, setMySessionId] = useState(mySessionIdState)
+
+  console.log('mySessionId : ', mySessionId)
+
   const [myUserName, setMyUserName] = useState(
     `Participant${Math.floor(Math.random() * 100)}`,
   )
-  // const [session, setSession] = useState<OpenVidu | undefined>(undefined)
   const [session, setSession] = useState<Session>()
-  // const [mainStreamManager, setMainStreamManager] = useState<any>(undefined)
-  // const [publisher, setPublisher] = useState<any>(undefined)
-  // const [subscribers, setSubscribers] = useState<any[]>([])
-  // const [currentVideoDevice, setCurrentVideoDevice] = useState<any>(null)
   const [toggleSession, setToggleSession] = useState<Boolean>(false)
 
   const OV = useRef(new OpenVidu())
 
-  const handleChangeSessionId = useCallback((e: any) => {
-    setMySessionId(e.target.value)
-  }, [])
-
-  const handleChangeUserName = useCallback((e: any) => {
-    setMyUserName(e.target.value)
-  }, [])
-
-  // const handleMainVideoStream = useCallback(
-  //   (stream: any) => {
-  //     if (mainStreamManager !== stream) {
-  //       setMainStreamManager(stream)
-  //     }
-  //   },
-  //   [mainStreamManager],
-  // )
-
   const handleSession = useCallback(() => {
     setToggleSession(!toggleSession)
   }, [])
-
-  // const joinSession = useCallback(() => {
-  //   const mySession = OV.current.initSession()
-
-  //   mySession.on('streamCreated', (event) => {
-  //     const subscriber = mySession.subscribe(event.stream, undefined)
-  //     setSubscribers((prevSubscribers) => [...prevSubscribers, subscriber])
-  //   })
-
-  //   mySession.on('streamDestroyed', (event) => {
-  //     deleteSubscriber(event.stream.streamManager)
-  //   })
-
-  //   mySession.on('exception', (exception) => {
-  //     console.warn(exception)
-  //   })
-
-  //   setSession(mySession)
-  // }, [])
 
   useEffect(() => {
     if (session) {
@@ -86,22 +52,6 @@ export default function App() {
           })
 
           session.publish(publisher)
-
-          // const devices = await OV.current.getDevices()
-          // const videoDevices = devices.filter(
-          //   (device) => device.kind === 'videoinput',
-          // )
-          // const currentVideoDeviceId = publisher.stream
-          //   .getMediaStream()
-          //   .getVideoTracks()[0]
-          //   .getSettings().deviceId
-          // const currentVideoDevice = videoDevices.find(
-          //   (device) => device.deviceId === currentVideoDeviceId,
-          // )
-
-          // setMainStreamManager(publisher)
-          // setPublisher(publisher)
-          // setCurrentVideoDevice(currentVideoDevice)
         } catch (error: any) {
           console.log(
             'There was an error connecting to the session:',
@@ -120,25 +70,9 @@ export default function App() {
 
     OV.current = new OpenVidu()
     setSession(undefined)
-    // setSubscribers([])
     setMySessionId('SessionA')
     setMyUserName('Participant' + Math.floor(Math.random() * 100))
-    // setMainStreamManager(undefined)
-    // setPublisher(undefined)
   }, [session])
-
-  // const deleteSubscriber = useCallback((streamManager: any) => {
-  //   setSubscribers((prevSubscribers) => {
-  //     const index = prevSubscribers.indexOf(streamManager)
-  //     if (index > -1) {
-  //       const newSubscribers = [...prevSubscribers]
-  //       newSubscribers.splice(index, 1)
-  //       return newSubscribers
-  //     } else {
-  //       return prevSubscribers
-  //     }
-  //   })
-  // }, [])
 
   useEffect(() => {
     const handleBeforeUnload = () => {
@@ -181,69 +115,11 @@ export default function App() {
 
   return (
     <div className="container">
-      {/* {session === undefined ? ( */}
-      {!toggleSession ? (
-        <div id="join">
-          <div id="join-dialog" className="jumbotron vertical-center">
-            <Flex marginBottom={'20px'}>
-              <Text variant={'mediumLargeBold'}>비디오 세션에 참여하세요</Text>
-            </Flex>
-
-            {/* <form className="form-group" onSubmit={joinSession}> */}
-            <Flex flexDirection={'column'} gap={'20px'}>
-              <Flex alignItems={'center'} width={'fit-content'}>
-                <Box width={'150px'}>
-                  <Text>참석자:</Text>
-                </Box>
-                <input
-                  className="form-control"
-                  type="text"
-                  id="userName"
-                  value={myUserName}
-                  onChange={handleChangeUserName}
-                  required
-                />
-              </Flex>
-              <Flex alignItems={'center'} width={'fit-content'}>
-                <Box width={'150px'}>
-                  <Text> 세션: </Text>
-                </Box>
-
-                <input
-                  className="form-control"
-                  type="text"
-                  id="sessionId"
-                  value={mySessionId}
-                  onChange={handleChangeSessionId}
-                  required
-                />
-              </Flex>
-            </Flex>
-
-            <Flex justifyContent={'center'} marginTop={'20px'}>
-              <RequestButton onClick={handleSession}>
-                {/* <input
-                  className="btn btn-lg btn-success"
-                  name="commit"
-                  type="submit"
-                  value="참석하기"
-                /> */}
-                참석하기
-              </RequestButton>
-            </Flex>
-
-            {/* </form> */}
-          </div>
-        </div>
-      ) : null}
-
-      {toggleSession ? (
-        <VideoRoomComponent
-          user={myUserName}
-          handleSession={handleSession}
-          sessionName={mySessionId}
-        />
-      ) : null}
+      <VideoRoomComponent
+        user={myUserName}
+        handleSession={handleSession}
+        sessionName={mySessionId}
+      />
     </div>
   )
 }

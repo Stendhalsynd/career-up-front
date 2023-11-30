@@ -2,6 +2,7 @@
 import type { Metadata } from 'next'
 
 import MUIClient from 'lib/mui.tsx'
+import RecoilClient from 'lib/recoil.tsx'
 import StyledComponentsRegistry from 'lib/registry.tsx'
 import OpenViduClient from 'lib/serviceWorker.tsx'
 import './globals.css'
@@ -25,7 +26,9 @@ export default function RootLayout({
         <ThemeClient>
           <MUIClient>
             <OpenViduClient>
-              <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+              <RecoilClient>
+                <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+              </RecoilClient>
             </OpenViduClient>
           </MUIClient>
         </ThemeClient>

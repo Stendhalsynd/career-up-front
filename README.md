@@ -14,6 +14,8 @@ npm install react-slick slick-carousel
 npm i --save-dev @types/react-slick
 npm install @emotion/styled
 npm install jwt-decode
+npm i swr
+npm i recoil
 
 ```
 

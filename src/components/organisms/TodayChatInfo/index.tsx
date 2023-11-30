@@ -1,20 +1,31 @@
 'use client'
 
 import React from 'react'
+import { useSetRecoilState } from 'recoil'
 import { Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
-import RequestButton from 'components/molecules/Button/RequestButton.tsx'
+
+import { HyperLinkButton } from 'components/molecules/index.ts'
+
+import { myNameState, sessionState } from 'utils/state.ts'
 
 interface TodayChatInfoProps {
   nicknameContent: string
   dateContent: string
   timeContent: string
+  myNickname: string
 }
+// TODO: - nicknameContent -> 상대방 닉네임으로 수정, 세션 이름은 SessionId 데이터를 넘겨받으면 그것으로 전환
 const TodayChatInfo: React.FC<TodayChatInfoProps> = ({
   nicknameContent,
   dateContent,
   timeContent,
+  myNickname,
 }) => {
+  const setSessionState = useSetRecoilState(sessionState)
+  const setMyNameState = useSetRecoilState(myNameState)
+  const regex = /[^0-9]/g
+
   return (
     <Flex alignItems="center" justifyContent="center">
       <Flex
@@ -37,9 +48,15 @@ const TodayChatInfo: React.FC<TodayChatInfoProps> = ({
         </Text>
 
         <Flex width={'100%'} justifyContent={'center'}>
-          <RequestButton marginTop={'20px'} width={'fit-content'}>
-            입장하기
-          </RequestButton>
+          <HyperLinkButton
+            to="chat"
+            width={'fit-content'}
+            contents="입장하기"
+            onClick={() => {
+              setSessionState(`Session${dateContent.replace(regex, '')}`)
+              setMyNameState(myNickname)
+            }}
+          />
         </Flex>
       </Flex>
     </Flex>

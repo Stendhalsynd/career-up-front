@@ -98,7 +98,8 @@
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "react/no-unknown-property": "off",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "import/named": 0
   },
   "plugins": ["@typescript-eslint", "import"]
 }

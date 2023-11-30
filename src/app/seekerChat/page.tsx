@@ -12,6 +12,7 @@ import { Header, Label } from 'components/molecules/index.ts'
 import AlertComponent from 'components/organisms/AlertContainer/index.tsx'
 import ChatInfoCard from 'components/organisms/ChatInfoCard/index.tsx'
 import { TodayChatInfo } from 'components/organisms/index.ts'
+import useRequest, { GetRequest } from 'lib/useRequest.ts' // useRequest 파일 경로에 맞게 수정하세요
 
 const useWidth = () => {
   const [width, setWidth] = React.useState(0)
@@ -214,6 +215,22 @@ const ChatInfo = () => {
 
   //조건
   const showTodayChatInfoSlider = true
+
+  const { data, response, error, isValidating } = useRequest({
+    method: 'get',
+    url: '/mypage',
+  } as GetRequest)
+
+  // 결과 사용 예시
+  if (isValidating) {
+    console.log('Loading...')
+  } else if (error) {
+    console.error('Error:', error)
+  } else if (response) {
+    console.log('Response:', response)
+    console.log('Data:', data)
+    // 여기에서 데이터를 처리하는 로직을 추가하세요
+  }
 
   return (
     <Box>

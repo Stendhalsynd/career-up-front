@@ -54,7 +54,6 @@ const WorkerInfoCard = () => {
         'https://api.career-up.live:8080/workers',
       )
       const data = response.data
-      console.log(data)
       setWorkerData(data)
     } catch (error) {
       console.error('사용자 데이터를 가져오는 중  오류 발생: ', error)

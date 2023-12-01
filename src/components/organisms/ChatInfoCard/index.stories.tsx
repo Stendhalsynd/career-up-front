@@ -9,7 +9,7 @@ const meta: Meta<typeof ChatInfoCard> = {
   component: ChatInfoCard,
   tags: ['autodocs'],
   argTypes: {
-    isStatus: {
+    isApproved: {
       control: { type: 'boolean' },
       description: '나의 커피챗 리스트 카드',
       table: {
@@ -24,7 +24,7 @@ type Story = StoryObj<typeof ChatInfoCard>
 
 export const Default: Story = {
   args: {
-    isStatus: true,
+    isApproved: true,
   },
   decorators: [
     (Story) => (
@@ -37,7 +37,7 @@ export const Default: Story = {
 
 export const WithoutStatus: Story = {
   args: {
-    isStatus: false,
+    isApproved: false,
   },
   decorators: [
     (Story) => (

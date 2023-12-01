@@ -74,10 +74,6 @@ const Signup = () => {
         setPassword('')
         setCheckPassword('')
         setCompany('')
-        console.log('Email:', email)
-        console.log('Password:', password)
-        console.log('Check Password:', checkPassword)
-        console.log('Company:', company)
         console.log('회원가입 성공!')
       } else {
         setErrorMessage(`회원가입 실패: ${await response.json()}`)

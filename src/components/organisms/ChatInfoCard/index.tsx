@@ -1,5 +1,6 @@
 'use client'
 
+import axios from 'axios'
 import React from 'react'
 import { Text } from 'components/atoms/index.ts'
 import { Flex, Box } from 'components/layout/index.ts'
@@ -8,10 +9,11 @@ import StatusButton from 'components/molecules/Button/StatusButton.tsx'
 import Label from 'components/molecules/Label/index.tsx'
 
 interface ChatInfoCardProps {
-  isStatus: boolean
+  isApproved: boolean
   nicknameContent: string
   dateContent: string
   timeContent: string
+  id?: number
 }
 
 export interface CardItemProps {
@@ -19,6 +21,7 @@ export interface CardItemProps {
   content: string
 }
 
+// TODO: 요청 수락 / 거절 시 데이터가 바뀌어서 reload 로 임시로 처리해두었으나 revalidate 를 잘 할수 있도록 개선해야 한다.
 export const ChatInfoCardItem: React.FC<CardItemProps> = ({
   title,
   content,
@@ -35,14 +38,63 @@ export const ChatInfoCardItem: React.FC<CardItemProps> = ({
 
 /**
  * 나의 커피챗 리스트 카드
- * @description isStatus 로 상태 여부를 명시해줘야 한다.
+ * @description isApproved 로 상태 여부를 명시해줘야 한다.
  */
 const ChatInfoCard: React.FC<ChatInfoCardProps> = ({
-  isStatus,
+  isApproved,
   nicknameContent,
   dateContent,
   timeContent,
+  id,
 }) => {
+  const handleApproveChat = async () => {
+    try {
+      const response = await axios({
+        method: 'patch',
+        url: 'https://api.career-up.live:8080/chat-status',
+        data: {
+          id,
+          status: 'APPROVED',
+        },
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+        },
+      })
+
+      if (response) {
+        console.log('화상채팅 신청을 수락했습니다.')
+        window.location.reload()
+      }
+    } catch (error) {
+      console.error('[ERROR] 화상 채팅 수락 중 오류 발생:', error)
+    }
+  }
+
+  const handleRejectChat = async () => {
+    try {
+      const response = await axios({
+        method: 'patch',
+        url: 'https://api.career-up.live:8080/chat-status',
+        data: {
+          id,
+          status: 'REJECTED',
+        },
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+        },
+      })
+
+      if (response) {
+        console.log('화상채팅 신청을 거절했습니다.')
+        window.location.reload()
+      }
+    } catch (error) {
+      console.error('[ERROR] 화상 채팅 거절 중 오류 발생:', error)
+    }
+  }
+
   return (
     <Flex
       flexDirection="column"
@@ -68,17 +120,18 @@ const ChatInfoCard: React.FC<ChatInfoCardProps> = ({
         padding={'14.5px 31px'}
         borderRadius={'0 0 30px 30px'}
       >
-        {isStatus ? (
-          // isStatus가 true일 때 SelectButton 렌더링
-          <Flex gap={'20px'}>
-            <SelectButton>수락</SelectButton>
-            <SelectButton variant="gray">거부</SelectButton>
-          </Flex>
-        ) : (
-          // isStatus가 false일 때 StatusButton 렌더링
+        {isApproved ? (
           <Box>
             <StatusButton padding={'12px 45px'}>수락됨</StatusButton>
           </Box>
+        ) : (
+          // isApproved false 때 SelectButton 렌더링
+          <Flex gap={'20px'}>
+            <SelectButton onClick={handleApproveChat}>수락</SelectButton>
+            <SelectButton variant="gray" onClick={handleRejectChat}>
+              거부
+            </SelectButton>
+          </Flex>
         )}
       </Flex>
     </Flex>

@@ -13,7 +13,6 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState<string>('')
 
   const handleLogin = async () => {
-    console.log(email, password)
     try {
       const response = await axios({
         method: 'POST',
@@ -21,7 +20,6 @@ const Login = () => {
         data: { email, password },
       })
 
-      console.log(response)
       if (response.data !== 'no') {
         localStorage.setItem('token', response.data)
         window.location.href = '/'

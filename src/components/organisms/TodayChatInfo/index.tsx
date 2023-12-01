@@ -14,6 +14,7 @@ interface TodayChatInfoProps {
   dateContent: string
   timeContent: string
   myNickname: string
+  sessionId: string
 }
 // TODO: - nicknameContent -> 상대방 닉네임으로 수정, 세션 이름은 SessionId 데이터를 넘겨받으면 그것으로 전환
 const TodayChatInfo: React.FC<TodayChatInfoProps> = ({
@@ -21,10 +22,10 @@ const TodayChatInfo: React.FC<TodayChatInfoProps> = ({
   dateContent,
   timeContent,
   myNickname,
+  sessionId,
 }) => {
   const setSessionState = useSetRecoilState(sessionState)
   const setMyNameState = useSetRecoilState(myNameState)
-  const regex = /[^0-9]/g
 
   return (
     <Flex alignItems="center" justifyContent="center">
@@ -53,7 +54,7 @@ const TodayChatInfo: React.FC<TodayChatInfoProps> = ({
             width={'fit-content'}
             contents="입장하기"
             onClick={() => {
-              setSessionState(`Session${dateContent.replace(regex, '')}`)
+              setSessionState(sessionId)
               setMyNameState(myNickname)
             }}
           />

@@ -23,12 +23,12 @@ const meta: Meta<typeof Button> = {
   tags: ['autodocs'],
   argTypes: {
     iconName: {
-      options: ['bussiness_bag', 'desktop', 'warning'],
+      options: ['business_bag', 'desktop', 'warning'],
       control: { type: 'select' },
       defaultValue: 'desktop',
       table: {
         type: {
-          summary: 'bussiness_bag, desktop, warning',
+          summary: 'business_bag, desktop, warning',
           defaultValue: { summary: 'desktop' },
         },
       },

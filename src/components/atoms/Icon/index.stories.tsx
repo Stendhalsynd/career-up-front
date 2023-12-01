@@ -10,12 +10,12 @@ const meta: Meta<typeof Icon> = {
   tags: ['autodocs'],
   argTypes: {
     iconName: {
-      options: ['bussiness_bag', 'desktop', 'warning'],
+      options: ['business_bag', 'desktop', 'warning'],
       control: { type: 'select' },
       defaultValue: 'desktop',
       table: {
         type: {
-          summary: 'bussiness_bag, desktop, warning',
+          summary: 'business_bag, desktop, warning',
           defaultValue: { summary: 'desktop' },
         },
       },
@@ -42,9 +42,9 @@ const meta: Meta<typeof Icon> = {
 export default meta
 type Story = StoryObj<typeof Icon>
 
-export const BussinessBag: Story = {
+export const BusinessBag: Story = {
   args: {
-    iconName: 'bussiness_bag',
+    iconName: 'business_bag',
     width: 40,
     height: 40,
   },

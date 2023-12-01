@@ -251,7 +251,10 @@ class VideoRoomComponent extends Component {
     }
     if (this.props.handleSession) {
       this.state.handleSession()
-      window.location.href = 'http://localhost:3000/seekerChat'
+      window.location.href =
+        process.env.NODE_ENV === 'production'
+          ? 'https://career-up.live/'
+          : 'http://localhost:3000/'
     }
   }
   camStatusChanged() {

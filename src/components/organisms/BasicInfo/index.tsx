@@ -71,7 +71,7 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
         response.data,
       )
     } catch (error) {
-      console.error('사용자 데이터 업데이트 중 오류 발생:', error)
+      console.error('[ERROR] 사용자 데이터 업데이트 중 오류 발생:', error)
     }
   }
   useEffect(() => {

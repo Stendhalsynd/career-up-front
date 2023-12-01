@@ -22,9 +22,7 @@ export default function App() {
 
   console.log('mySessionId : ', mySessionId)
 
-  const [myUserName, setMyUserName] = useState(
-    `Participant${Math.floor(Math.random() * 100)}`,
-  )
+  const [myUserName, setMyUserName] = useState(myUserNameState)
   const [session, setSession] = useState<Session>()
   const [toggleSession, setToggleSession] = useState<Boolean>(false)
 

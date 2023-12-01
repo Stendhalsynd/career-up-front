@@ -41,6 +41,13 @@ const ChatInfo = () => {
 
   const imageWidth = Math.min(maxImageWidth, Math.max(minImageWidth, width / 2))
 
+  const { data: chatInfoData0 } = useRequest<UserData>({
+    method: 'get',
+    url: '/chats',
+  } as GetRequest)
+
+  console.log('chatInfoDat0 : ', chatInfoData0)
+
   // 챗 인포 임시 데이터
   const chatInfoData = [
     {
@@ -178,6 +185,7 @@ const ChatInfo = () => {
     overflow-x: auto;
     overflow-y: hidden;
     width: 100%;
+    height: 100%;
     scroll-snap-type: x mandatory;
 
     .slick-slide {
@@ -302,7 +310,7 @@ const ChatInfo = () => {
         <Picture width={imageWidth} pictureName="cube" />
       </Flex>
       <Flex marginTop="-400px" marginLeft="20px">
-        <Picture width={180} pictureName="roundcube" />
+        <Picture width={180} pictureName="roundcube1" />
       </Flex>
     </Box>
   )

@@ -16,11 +16,7 @@ export default function App() {
   const mySessionIdState: string = useRecoilValue(sessionState)
   const myUserNameState: string = useRecoilValue(myNameState)
 
-  console.log('mySessionId, myUserName : ', mySessionIdState, myUserNameState)
-
   const [mySessionId, setMySessionId] = useState(mySessionIdState)
-
-  console.log('mySessionId : ', mySessionId)
 
   const [myUserName, setMyUserName] = useState(myUserNameState)
   const [session, setSession] = useState<Session>()
@@ -52,7 +48,7 @@ export default function App() {
           session.publish(publisher)
         } catch (error: any) {
           console.log(
-            'There was an error connecting to the session:',
+            '[ERROR] There was an error connecting to the session:',
             error.code,
             error.message,
           )

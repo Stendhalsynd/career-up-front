@@ -36,7 +36,6 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
           },
         },
       )
-      console.log(response)
       setUserData(response.data)
       setEditedPassword(response.data.password)
       // setEditedCompany(response.data.company)
@@ -54,7 +53,6 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
         'user',
         new Blob([JSON.stringify(data)], { type: 'application/json' }),
       )
-      console.log(data)
 
       const response = await axios({
         method: 'patch',
@@ -65,7 +63,6 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
           'Content-Type': 'multipart/form-data',
         },
       })
-      console.log(response)
       console.log(
         '사용자 데이터가 성공적으로 업데이트되었습니다:',
         response.data,

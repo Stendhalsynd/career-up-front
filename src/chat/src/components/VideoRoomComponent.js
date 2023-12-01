@@ -12,7 +12,9 @@ import ToolbarComponent from './toolbar/ToolbarComponent'
 
 var localUser = new UserModel()
 const APPLICATION_SERVER_URL =
-  process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5001/'
+  process.env.NODE_ENV === 'production'
+    ? 'https://career-up.live:5001/'
+    : 'http://localhost:5001/'
 
 class VideoRoomComponent extends Component {
   constructor(props) {

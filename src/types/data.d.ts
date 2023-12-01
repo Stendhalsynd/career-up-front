@@ -35,12 +35,12 @@ export type ApiContext = {
 export interface UserData {
   id: null
   email: string
-  password: null
-  profile: null
+  password: string
+  profile: string
   nickname: string
-  company: null
-  contents: null
+  company: string
+  contents: string
   roleType: string
-  fields: any[]
-  skills: any[]
+  fields: string[]
+  skills: string[]
 }

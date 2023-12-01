@@ -69,17 +69,24 @@ interface InfoBlockProps {
   text: string
   placeholder: string
   readOnly: boolean
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export const InfoBlock: React.FC<InfoBlockProps> = ({
   text,
   placeholder,
   readOnly,
+  onChange,
 }) => (
   <Flex gap={'15px'} flexDirection={'column'} width={'100%'} zIndex={1}>
     <Text color={'white'} variant={'smallBold'}>
       {text}
     </Text>
-    <Input hasDarkBackground placeholder={placeholder} readOnly={readOnly} />
+    <Input
+      hasDarkBackground
+      placeholder={placeholder}
+      readOnly={readOnly}
+      onChange={onChange}
+    />
   </Flex>
 )

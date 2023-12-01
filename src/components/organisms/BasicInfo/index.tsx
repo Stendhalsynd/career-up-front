@@ -1,5 +1,4 @@
 'use client'
-
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Picture from 'components/atoms/Picture/index.tsx'
@@ -7,7 +6,7 @@ import { Avatar, Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import SelectButton from 'components/molecules/Button/SelectButton.tsx'
 import { InfoBlock } from 'components/molecules/Input/index.tsx'
-
+import { RequestButton } from 'components/molecules/index.ts'
 interface User {
   profile: string
   nickname: string
@@ -19,36 +18,65 @@ interface User {
   fields: string
   skills: string
 }
-
 export interface BasicInfoProps {
   isUser: boolean
 }
-
 export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
   const { isUser } = props
   const [userData, setUserData] = useState<User | null>(null)
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await axios.get(
-          'https://api.career-up.live:8080/mypage',
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem('token')}`,
-            },
+  const [editedPassword, setEditedPassword] = useState('')
+  // const [editedCompany, setEditedCompany] = useState('')
+  const fetchUserData = async () => {
+    try {
+      const response = await axios.get(
+        'https://api.career-up.live:8080/mypage',
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
-        )
-
-        setUserData(response.data)
-      } catch (error) {
-        console.error('사용자 데이터를 가져오는 중 오류 발생:', error)
-      }
+        },
+      )
+      console.log(response)
+      setUserData(response.data)
+      setEditedPassword(response.data.password)
+      // setEditedCompany(response.data.company)
+    } catch (error) {
+      console.error('사용자 데이터를 가져오는 중 오류 발생:', error)
     }
+  }
+  const handleSaveClick = async () => {
+    try {
+      const data = {
+        password: editedPassword,
+      }
+      const formData = new FormData()
+      formData.append(
+        'user',
+        new Blob([JSON.stringify(data)], { type: 'application/json' }),
+      )
+      console.log(data)
 
+      const response = await axios({
+        method: 'patch',
+        url: 'https://api.career-up.live:8080/mypage',
+        data: formData,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      console.log(response)
+      console.log(
+        '사용자 데이터가 성공적으로 업데이트되었습니다:',
+        response.data,
+      )
+    } catch (error) {
+      console.error('사용자 데이터 업데이트 중 오류 발생:', error)
+    }
+  }
+  useEffect(() => {
     fetchUserData()
   }, [])
-
   if (!userData) {
     return <div>로딩 중...</div>
   }
@@ -71,7 +99,6 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
           <Text color={'white'} variant="mediumLargeBold">
             회원 정보 수정
           </Text>
-
           <Flex
             flexDirection={'column'}
             alignContent={'flex-start'}
@@ -81,7 +108,6 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
             <Text color={'white'} variant={'smallBold'}>
               프로필 이미지
             </Text>
-
             <Flex gap={'33px'} marginTop={'23px'}>
               <Avatar avatarName="avatar" width={80} />
               <Flex
@@ -121,6 +147,7 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
               <InfoBlock
                 text="비밀번호"
                 placeholder={userData.password}
+                onChange={(e) => setEditedPassword(e.target.value)}
                 readOnly={false}
               />
             }
@@ -128,21 +155,22 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
               <InfoBlock
                 text="소속"
                 placeholder={userData.company}
-                readOnly={true}
+                readOnly={false}
+                // onChange={(e) => setEditedCompany(e.target.value)}
               />
             }
-
             <Flex
               justifyContent={'center'}
               marginTop={'15px'}
               display={isUser ? 'flex' : 'none'}
             >
-              <SelectButton
+              <RequestButton
                 variant="primary"
                 padding={{ base: '8px 15vw', sm: '8px 6vw' }}
+                onClick={handleSaveClick}
               >
                 저장하기
-              </SelectButton>
+              </RequestButton>
             </Flex>
           </Flex>
         </Flex>

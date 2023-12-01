@@ -5,6 +5,7 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import styled from 'styled-components'
+
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Text } from 'components/atoms/index.ts'
 import { Box, Flex } from 'components/layout/index.ts'
@@ -12,6 +13,8 @@ import { Header, Label } from 'components/molecules/index.ts'
 import AlertComponent from 'components/organisms/AlertContainer/index.tsx'
 import ChatInfoCard from 'components/organisms/ChatInfoCard/index.tsx'
 import { TodayChatInfo } from 'components/organisms/index.ts'
+import useRequest, { GetRequest } from 'lib/useRequest.ts'
+import { UserData } from 'types/data'
 
 const useWidth = () => {
   const [width, setWidth] = React.useState(0)
@@ -214,6 +217,22 @@ const ChatInfo = () => {
 
   const showTodayChatInfoSlider = true
 
+  const { data, response, error, isValidating } = useRequest<UserData>({
+    method: 'get',
+    url: '/mypage',
+  } as GetRequest)
+
+  // 결과 사용 예시
+  if (isValidating) {
+    console.log('Loading...')
+  } else if (error) {
+    console.error('Error:', error)
+  } else if (response) {
+    console.log('Response:', response)
+    console.log('Data:', data)
+    // 여기에서 데이터를 처리하는 로직을 추가하세요
+  }
+
   return (
     <Box>
       <Header />
@@ -267,6 +286,7 @@ const ChatInfo = () => {
                 {todayChatInfoData.map((todayChatInfoItem) => (
                   <TodayChatInfo
                     key={todayChatInfoItem.id}
+                    myNickname={data ? data.nickname : '나의닉네임'}
                     {...todayChatInfoItem}
                   />
                 ))}

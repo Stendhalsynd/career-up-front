@@ -13,6 +13,7 @@ import AlertComponent from 'components/organisms/AlertContainer/index.tsx'
 import ChatInfoCard from 'components/organisms/ChatInfoCard/index.tsx'
 import { TodayChatInfo } from 'components/organisms/index.ts'
 import useRequest, { GetRequest } from 'lib/useRequest.ts' // useRequest 파일 경로에 맞게 수정하세요
+import { UserData } from 'types/data'
 
 const useWidth = () => {
   const [width, setWidth] = React.useState(0)
@@ -216,7 +217,7 @@ const ChatInfo = () => {
   //조건
   const showTodayChatInfoSlider = true
 
-  const { data, response, error, isValidating } = useRequest({
+  const { data, response, error, isValidating } = useRequest<UserData>({
     method: 'get',
     url: '/mypage',
   } as GetRequest)
@@ -285,6 +286,7 @@ const ChatInfo = () => {
                 {todayChatInfoData.map((todayChatInfoItem) => (
                   <TodayChatInfo
                     key={todayChatInfoItem.id}
+                    myNickname={data ? data.nickname : '나의닉네임'}
                     {...todayChatInfoItem}
                   />
                 ))}

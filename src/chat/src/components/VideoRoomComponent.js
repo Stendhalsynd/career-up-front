@@ -249,7 +249,7 @@ class VideoRoomComponent extends Component {
     }
     if (this.props.handleSession) {
       this.state.handleSession()
-      window.location.reload()
+      window.location.href = 'http://localhost:3000/seekerChat'
     }
   }
   camStatusChanged() {

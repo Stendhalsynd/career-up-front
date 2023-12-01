@@ -34,6 +34,17 @@ const nextConfig = {
     })
     return config
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'kdt8-bucket.s3.ap-northeast-2.amazonaws.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+    imageSizes: [64, 96, 128, 256],
+  },
 }
 
 module.exports = nextConfig

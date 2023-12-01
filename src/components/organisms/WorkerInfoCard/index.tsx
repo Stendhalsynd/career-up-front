@@ -1,6 +1,7 @@
 'use client'
 
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Text } from 'components/atoms/index.ts'
 import { Box, Flex } from 'components/layout/index.ts'
@@ -11,13 +12,12 @@ interface WorkerInfoItemProps {
   text: string
 }
 
-interface WorkerInfoCardProps {
-  nickname?: string
-  career?: string
-  currentJob?: string
-  currentPosition?: string
-  currentSkill?: string
-  pictureName?: string
+// 배포된 DB 서버에서 재직자 리스트 불러오기 위해 설정한 interface
+interface WorkerInfo {
+  nickname: string
+  company: string
+  skills: string[]
+  fields: string[]
 }
 
 const WorkerInfoItem = (props: WorkerInfoItemProps) => {
@@ -31,80 +31,127 @@ const WorkerInfoItem = (props: WorkerInfoItemProps) => {
   )
 }
 
-const WorkerInfoCard = (props: WorkerInfoCardProps) => {
-  const {
-    nickname,
-    // career,
-    currentJob,
-    currentPosition,
-    currentSkill,
-    pictureName,
-  } = props
+// 경력 '주니어', '미들', '시니어'로 랜덤으로 설정
+const getRandomCareer = () => {
+  const careers = ['주니어(1~4년)', '미들(5~8년)', '시니어(9~12년)']
+  const randomIndex = Math.floor(Math.random() * careers.length)
+  return careers[randomIndex]
+}
+
+// 사람 이미지 'male' 또는 'female'로 랜덤으로 설정
+const getRandomGender = () => {
+  const genders = ['male', 'female']
+  const randomIndex = Math.floor(Math.random() * genders.length)
+  return genders[randomIndex]
+}
+
+const WorkerInfoCard = () => {
+  const [workerData, setWorkerData] = useState<WorkerInfo[]>()
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        'https://api.career-up.live:8080/workers',
+      )
+      const data = response.data
+      console.log(data)
+      setWorkerData(data)
+    } catch (error) {
+      console.error('사용자 데이터를 가져오는 중  오류 발생: ', error)
+    }
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   return (
-    <Flex
-      flexDirection="column"
-      position={'relative'}
-      width={'fit-content'}
-      minWidth={'260px'}
-    >
-      <Flex
-        backgroundColor="primary"
-        width={'100%'}
-        height={'fit-content'}
-        borderRadius={'20px 20px 0 0'}
-        flexDirection={'column'}
-        padding={'25px'}
-        gap={'15px'}
-      >
-        <Box zIndex={3} maxWidth={'60%'}>
-          <Text
-            variant={'mediumBold'}
-            color="white"
-            style={{ wordBreak: 'keep-all' }}
-            lineHeight={1.5}
+    <>
+      {workerData?.map((value: any, index: number) => (
+        <Flex
+          flexDirection="column"
+          position={'relative'}
+          width={'fit-content'}
+          minWidth={'260px'}
+          height={'fit-content'}
+          scrollSnapAlign="center"
+          key={index}
+        >
+          <Flex
+            backgroundColor="primary"
+            width={'100%'}
+            height={'170px'}
+            borderRadius={'20px 20px 0 0'}
+            flexDirection={'column'}
+            padding={'25px'}
+            gap={'15px'}
           >
-            {nickname || '바람직스러운 유럽소나무담비'}
-          </Text>
-        </Box>
-        {/* <Box zIndex={3}>
-          <Text variant={'extraSmall'} color="white">
-            {career || '미들(5~8년)'}
-          </Text>
-        </Box> */}
-      </Flex>
+            {/* 닉네임 */}
+            <Box zIndex={3} maxWidth={'60%'}>
+              <Text
+                variant={'mediumBold'}
+                color="white"
+                style={{ wordBreak: 'keep-all' }}
+                lineHeight={1.5}
+              >
+                {value.nickname}
+              </Text>
+            </Box>
 
-      <Flex right={'15px'} top={'23px'} position={'absolute'} zIndex={1}>
-        <Picture pictureName={pictureName || 'male'} width={83} />
-      </Flex>
+            {/* 경력 */}
+            <Box zIndex={3}>
+              <Text variant={'extraSmall'} color="white">
+                {getRandomCareer()}
+              </Text>
+            </Box>
+          </Flex>
 
-      <Flex
-        backgroundColor="white"
-        width={'100%'}
-        height={'fit-content'}
-        flexDirection={'column'}
-        gap={'15.32px'}
-        padding={'25px'}
-        borderRadius={'0 0 20px 20px'}
-      >
-        <Box zIndex={3}>
-          <WorkerInfoItem tag="현직" text={currentJob || '카카오'} />
-        </Box>
-        <Box zIndex={3}>
-          <WorkerInfoItem
-            tag="직군"
-            text={currentPosition || '프론트엔드 그 외 2개'}
-          />
-        </Box>
-        <Box zIndex={3}>
-          <WorkerInfoItem
-            tag="스킬"
-            text={currentSkill || 'css/html/React 그 외 5개'}
-          />
-        </Box>
-      </Flex>
-    </Flex>
+          {/* 사용자 이미지 */}
+          <Flex right={'15px'} top={'23px'} position={'absolute'} zIndex={1}>
+            <Picture pictureName={getRandomGender()} width={83} />
+          </Flex>
+
+          <Flex
+            backgroundColor="white"
+            width={'100%'}
+            height={'230px'}
+            flexDirection={'column'}
+            gap={'15.32px'}
+            padding={'25px'}
+            borderRadius={'0 0 20px 20px'}
+          >
+            <Box zIndex={3}>
+              <WorkerInfoItem tag="현직" text={value.company} />
+            </Box>
+            <Box zIndex={3}>
+              <WorkerInfoItem tag="직군" text={formatFields(value.fields)} />
+            </Box>
+            <Box zIndex={3}>
+              <WorkerInfoItem tag="스킬" text={formatSkills(value.skills)} />
+            </Box>
+          </Flex>
+        </Flex>
+      ))}
+    </>
   )
+}
+
+// fields 불러오는 형태 설정: "프론트엔드 외 1개"
+const formatFields = (fields: string[]) => {
+  if (fields.length > 1) {
+    return `${fields[0]} 외 ${fields.length - 1}개`
+  } else {
+    return fields[0]
+  }
+}
+
+// skills 불러오는 형태 설정: "html/css 외 1개"
+const formatSkills = (skills: string[]) => {
+  if (skills.length > 1) {
+    return `${skills[0]} 외 ${skills.length - 1}개`
+  } else {
+    return skills[0]
+  }
 }
 
 export default WorkerInfoCard

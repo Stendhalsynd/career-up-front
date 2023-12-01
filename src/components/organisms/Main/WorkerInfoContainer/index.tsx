@@ -69,24 +69,13 @@ const WorkerInfoContainer = () => {
             </Flex>
             <Flex
               width={'100vw'}
-              gap={'50px'}
-              paddingLeft={'50px'}
               paddingRight={'50px'}
+              paddingLeft={'50px'}
+              gap={'50px'}
               scrollSnapType="x mandatory"
               overflow={'auto'}
             >
-              <Flex scrollSnapAlign="center">
-                <WorkerInfoCard />
-              </Flex>
-              <Flex scrollSnapAlign="center">
-                <WorkerInfoCard />
-              </Flex>
-              <Flex scrollSnapAlign="center">
-                <WorkerInfoCard />
-              </Flex>
-              <Flex scrollSnapAlign="center">
-                <WorkerInfoCard />
-              </Flex>
+              <WorkerInfoCard />
             </Flex>
           </Flex>
         </Flex>
@@ -155,23 +144,12 @@ const WorkerInfoContainer = () => {
             <Flex
               width={'100vw'}
               gap={'50px'}
-              // paddingLeft={'50px'}
-              // paddingRight={'50px'}
+              paddingLeft={'50px'}
+              paddingRight={'50px'}
               scrollSnapType="x mandatory"
               overflow={'auto'}
             >
-              <Flex scrollSnapAlign="center">
-                <WorkerInfoCard />
-              </Flex>
-              <Flex scrollSnapAlign="center">
-                <WorkerInfoCard />
-              </Flex>
-              <Flex scrollSnapAlign="center">
-                <WorkerInfoCard />
-              </Flex>
-              <Flex scrollSnapAlign="center">
-                <WorkerInfoCard />
-              </Flex>
+              <WorkerInfoCard />
             </Flex>
           </Flex>
         </Flex>
@@ -240,23 +218,10 @@ const WorkerInfoContainer = () => {
             <Flex
               width={'100vw'}
               gap={'50px'}
-              // paddingLeft={'50px'}
-              // paddingRight={'50px'}
               scrollSnapType="x mandatory"
               overflow={'auto'}
             >
-              <Flex scrollSnapAlign="center">
-                <WorkerInfoCard />
-              </Flex>
-              <Flex scrollSnapAlign="center">
-                <WorkerInfoCard />
-              </Flex>
-              <Flex scrollSnapAlign="center">
-                <WorkerInfoCard />
-              </Flex>
-              <Flex scrollSnapAlign="center">
-                <WorkerInfoCard />
-              </Flex>
+              <WorkerInfoCard />
             </Flex>
           </Flex>
         </Flex>

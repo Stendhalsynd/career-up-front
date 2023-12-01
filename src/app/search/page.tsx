@@ -109,20 +109,7 @@ const WorkerInfoList = () => {
           </Flex>
 
           {/* 하단 */}
-          <Flex gap={'16px'} overflow={'auto'}>
-            <WorkerInfoCard />
-            <WorkerInfoCard
-              pictureName="female"
-              currentJob="쿠팡"
-              nickname="달리는 사자1"
-            />
-            <WorkerInfoCard
-              currentJob="배달의 민족"
-              currentPosition="백엔드"
-              nickname="졸린 햄스터2"
-            />
-            <WorkerInfoCard pictureName="female" />
-            <WorkerInfoCard />
+          <Flex gap={'30px'} overflow={'auto'}>
             <WorkerInfoCard />
           </Flex>
         </Flex>

@@ -1,4 +1,3 @@
-import { RecoilRoot } from 'recoil'
 import { Box, Flex } from 'components/layout/index.ts'
 import { DropDownButton, SearchInput } from 'components/molecules/index.ts'
 import { Desktop, Mobile, Tablet } from 'lib/useMediaQuery.tsx'
@@ -7,15 +6,11 @@ const MentoSearch = () => {
   return (
     <Box>
       <Mobile>
-        <RecoilRoot>
-          <SearchInput variant="primarySmall" />
-        </RecoilRoot>
+        <SearchInput variant="primarySmall" />
       </Mobile>
 
       <Tablet>
-        <RecoilRoot>
-          <SearchInput variant="primarySmall" />
-        </RecoilRoot>
+        <SearchInput variant="primarySmall" />
       </Tablet>
       <Desktop>
         <Flex

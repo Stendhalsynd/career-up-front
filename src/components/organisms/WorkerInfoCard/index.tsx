@@ -6,6 +6,7 @@ import Picture from 'components/atoms/Picture/index.tsx'
 import { Text } from 'components/atoms/index.ts'
 import { Box, Flex } from 'components/layout/index.ts'
 import { InfoTagButton } from 'components/molecules/Button/TagButton.tsx'
+import { HyperLinkButton } from 'components/molecules/index.ts'
 
 interface WorkerInfoItemProps {
   tag: string
@@ -76,59 +77,61 @@ const WorkerInfoCard = () => {
           scrollSnapAlign="center"
           key={index}
         >
-          <Flex
-            backgroundColor="primary"
-            width={'100%'}
-            height={'170px'}
-            borderRadius={'20px 20px 0 0'}
-            flexDirection={'column'}
-            padding={'25px'}
-            gap={'15px'}
-          >
-            {/* 닉네임 */}
-            <Box zIndex={3} maxWidth={'60%'}>
-              <Text
-                variant={'mediumBold'}
-                color="white"
-                style={{ wordBreak: 'keep-all' }}
-                lineHeight={1.5}
-              >
-                {value.nickname}
-              </Text>
-            </Box>
+          <HyperLinkButton>
+            <Flex
+              backgroundColor="primary"
+              width={'100%'}
+              height={'170px'}
+              borderRadius={'20px 20px 0 0'}
+              flexDirection={'column'}
+              padding={'25px'}
+              gap={'15px'}
+            >
+              {/* 닉네임 */}
+              <Box zIndex={3} maxWidth={'60%'}>
+                <Text
+                  variant={'mediumBold'}
+                  color="white"
+                  style={{ wordBreak: 'keep-all' }}
+                  lineHeight={1.5}
+                >
+                  {value.nickname}
+                </Text>
+              </Box>
 
-            {/* 경력 */}
-            <Box zIndex={3}>
-              <Text variant={'extraSmall'} color="white">
-                {getRandomCareer()}
-              </Text>
-            </Box>
-          </Flex>
+              {/* 경력 */}
+              <Box zIndex={3}>
+                <Text variant={'extraSmall'} color="white">
+                  {getRandomCareer()}
+                </Text>
+              </Box>
+            </Flex>
 
-          {/* 사용자 이미지 */}
-          <Flex right={'15px'} top={'23px'} position={'absolute'} zIndex={1}>
-            <Picture pictureName={getRandomGender()} width={83} />
-          </Flex>
+            {/* 사용자 이미지 */}
+            <Flex right={'15px'} top={'23px'} position={'absolute'} zIndex={1}>
+              <Picture pictureName={getRandomGender()} width={83} />
+            </Flex>
 
-          <Flex
-            backgroundColor="white"
-            width={'100%'}
-            height={'230px'}
-            flexDirection={'column'}
-            gap={'15.32px'}
-            padding={'25px'}
-            borderRadius={'0 0 20px 20px'}
-          >
-            <Box zIndex={3}>
-              <WorkerInfoItem tag="현직" text={value.company} />
-            </Box>
-            <Box zIndex={3}>
-              <WorkerInfoItem tag="직군" text={formatFields(value.fields)} />
-            </Box>
-            <Box zIndex={3}>
-              <WorkerInfoItem tag="스킬" text={formatSkills(value.skills)} />
-            </Box>
-          </Flex>
+            <Flex
+              backgroundColor="white"
+              width={'100%'}
+              height={'230px'}
+              flexDirection={'column'}
+              gap={'15.32px'}
+              padding={'25px'}
+              borderRadius={'0 0 20px 20px'}
+            >
+              <Box zIndex={3}>
+                <WorkerInfoItem tag="현직" text={value.company} />
+              </Box>
+              <Box zIndex={3}>
+                <WorkerInfoItem tag="직군" text={formatFields(value.fields)} />
+              </Box>
+              <Box zIndex={3}>
+                <WorkerInfoItem tag="스킬" text={formatSkills(value.skills)} />
+              </Box>
+            </Flex>
+          </HyperLinkButton>
         </Flex>
       ))}
     </>

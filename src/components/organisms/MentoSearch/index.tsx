@@ -6,16 +6,17 @@ import { Desktop, Mobile, Tablet } from 'lib/useMediaQuery.tsx'
 const MentoSearch = () => {
   return (
     <Box>
-      <RecoilRoot>
-        <Mobile>
+      <Mobile>
+        <RecoilRoot>
           <SearchInput variant="primarySmall" />
-        </Mobile>
-      </RecoilRoot>
-      <RecoilRoot>
-        <Tablet>
+        </RecoilRoot>
+      </Mobile>
+
+      <Tablet>
+        <RecoilRoot>
           <SearchInput variant="primarySmall" />
-        </Tablet>
-      </RecoilRoot>
+        </RecoilRoot>
+      </Tablet>
       <Desktop>
         <Flex
           backgroundColor={'white'}

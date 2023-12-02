@@ -3,26 +3,9 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 
-export type IconVariant =
-  | 'business_bag'
-  | 'close'
-  | 'desktop'
-  | 'dropdown'
-  | 'filter'
-  | 'menu'
-  | 'mic_off'
-  | 'mic'
-  | 'phone'
-  | 'screen_share'
-  | 'search'
-  | 'stop_screen_share'
-  | 'videocam_off'
-  | 'videocam'
-  | 'warning'
-
 export type IconProps = {
   /** 아이콘 태그에서 icon_ 뒤에 오는 이름을 붙인다. */
-  iconName?: IconVariant
+  iconName?: string
   width?: number
   height?: number
   onClick?: () => void

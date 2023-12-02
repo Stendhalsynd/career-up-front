@@ -1,3 +1,5 @@
+'use client'
+
 import { Box } from 'components/layout/index.ts'
 import { Signup } from 'components/organisms/index.ts'
 import LoginSignupLayout from 'components/templates/LoginSignupLayout'

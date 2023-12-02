@@ -1,6 +1,6 @@
 'use client'
 
-import { useRecoilState } from 'recoil'
+import { RecoilRoot, useRecoilState } from 'recoil'
 import Icon from 'components/atoms/Icon/index.tsx'
 import Text from 'components/atoms/Text'
 import Flex from 'components/layout/Flex'
@@ -47,7 +47,11 @@ const PrimarySmallSearchInput = () => {
           onClick={handleOpenModal}
         />
       </Flex>
-      {modalOpenState && <FilterModal />}
+      {modalOpenState && (
+        <RecoilRoot>
+          <FilterModal />
+        </RecoilRoot>
+      )}
     </Flex>
   )
 }

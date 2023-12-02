@@ -20,9 +20,10 @@ const LoginSignupLayout = ({ children }: ChildrenProps) => {
             position={'relatvie'}
             justifyContent={'center'}
             alignItems={'center'}
+            overflow={'hidden'}
           >
             <Box position={'absolute'} top={'500px'} left={'20px'}>
-              <Picture pictureName="supertoroid2" width={200} />
+              <Picture pictureName="supertoroid2" width={300} />
             </Box>
             <Box position={'absolute'} top={'80px'} right={'-50px'}>
               <Picture pictureName="cube" width={300} />
@@ -40,6 +41,7 @@ const LoginSignupLayout = ({ children }: ChildrenProps) => {
             position={'relatvie'}
             justifyContent={'center'}
             alignItems={'center'}
+            overflow={'hidden'}
           >
             <Box position={'absolute'} top={'500px'} left={'20px'}>
               <Picture pictureName="supertoroid2" width={300} />
@@ -54,7 +56,7 @@ const LoginSignupLayout = ({ children }: ChildrenProps) => {
       {/* Desktop */}
       <Desktop>
         <Layout>
-          <Flex height={'calc(100vh - 50px)'}>
+          <Flex height={'calc(100vh - 50px)'} overflow={'hidden'}>
             <Flex
               width={'40%'}
               backgroundColor={'black'}

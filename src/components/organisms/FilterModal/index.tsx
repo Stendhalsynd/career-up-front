@@ -1,3 +1,6 @@
+'use client'
+
+import { useRecoilState } from 'recoil'
 import { Icon, Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import {
@@ -5,66 +8,72 @@ import {
   RequestButton,
   SearchInput,
 } from 'components/molecules/index.ts'
+import { modalState } from 'utils/state.ts'
 
 const FilterModal = () => {
+  const [modalOpenState, setModalOpenState] = useRecoilState(modalState)
+
+  const handleCloseModal = () => {
+    setModalOpenState(false)
+  }
+
   return (
-    <Flex
-      width={'90vw'}
-      maxWidth={'500px'}
-      height={'300px'}
-      flexDirection={'column'}
-    >
-      {/* 필터 */}
+    modalOpenState && (
       <Flex
-        height={'20%'}
-        padding={'20px'}
-        backgroundColor={'primary'}
-        justifyContent={'space-between'}
-        borderRadius={'30px 30px 0 0'}
-      >
-        <Flex alignItems={'center'}>
-          <Text color={'white'}>필터</Text>
-        </Flex>
-
-        <Icon iconName="close" />
-      </Flex>
-      {/* 검색 */}
-      <Flex
-        height={'80%'}
-        backgroundColor={'white'}
+        width={'80vw'}
+        maxWidth={'500px'}
+        height={'300px'}
         flexDirection={'column'}
-        justifyContent={'center'}
-        alignItems={'center'}
-        gap={'30px'}
-        borderRadius={'0 0 30px 30px'}
-        boxShadow={'0px 4px 4px 0px rgba(0, 0, 0, 0.25)'}
+        position={'absolute'}
+        zIndex={5}
       >
+        {/* 제목 */}
         <Flex
-          width={'90%'}
-          flexDirection={'column'}
-          // justifyContent={'center'}
-          gap={'10px'}
+          height={'20%'}
+          padding={'20px'}
+          backgroundColor={'primary'}
+          justifyContent={'space-between'}
+          borderRadius={'30px 30px 0 0'}
         >
-          <DropDownButton
-            options={[
-              { value: 'frontend', label: '프론트엔드' },
-              { value: 'backend', label: '백엔드' },
-              { value: 'andriod', label: '안드로이드' },
-              { value: 'ios', label: 'IOS' },
-              { value: 'game', label: '게임' },
-              { value: 'ai', label: 'AI' },
-            ]}
-            hasError={false}
-            placeholder="직무"
-          />
+          <Flex alignItems={'center'}>
+            <Text color={'white'}>필터</Text>
+          </Flex>
 
-          <SearchInput variant="skillSmall" />
+          <Icon iconName="close" onClick={handleCloseModal} />
         </Flex>
-        <Flex width={'85%'}>
-          <RequestButton>적용하기</RequestButton>
+        {/* 검색 */}
+        <Flex
+          height={'80%'}
+          backgroundColor={'white'}
+          flexDirection={'column'}
+          justifyContent={'center'}
+          alignItems={'center'}
+          gap={'30px'}
+          borderRadius={'0 0 30px 30px'}
+          boxShadow={'0px 4px 4px 0px rgba(0, 0, 0, 0.25)'}
+        >
+          <Flex width={'90%'} flexDirection={'column'} gap={'10px'}>
+            <DropDownButton
+              options={[
+                { value: 'frontend', label: '프론트엔드' },
+                { value: 'backend', label: '백엔드' },
+                { value: 'andriod', label: '안드로이드' },
+                { value: 'ios', label: 'IOS' },
+                { value: 'game', label: '게임' },
+                { value: 'ai', label: 'AI' },
+              ]}
+              hasError={false}
+              placeholder="직무"
+            />
+
+            <SearchInput variant="skillSmall" />
+          </Flex>
+          <Flex width={'85%'}>
+            <RequestButton onClick={handleCloseModal}>적용하기</RequestButton>
+          </Flex>
         </Flex>
       </Flex>
-    </Flex>
+    )
   )
 }
 

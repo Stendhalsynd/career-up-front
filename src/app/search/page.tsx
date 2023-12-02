@@ -1,15 +1,10 @@
-import { Icon, Text } from 'components/atoms/index.ts'
-import { Box, Flex } from 'components/layout/index.ts'
-import {
-  DropDownButton,
-  Input,
-  SearchInput,
-} from 'components/molecules/index.ts'
-import { WorkerInfoCard } from 'components/organisms/index.ts'
-import WorkerInfoListLayout from 'components/templates/WorkerInfoListLayout/index.tsx'
-import { theme } from 'themes/index.ts'
+'use client'
 
-// TODO: <SearchInput variant="primarySmall" /> 에서 filter 아이콘을 클릭했을 때 FilterModal 컴포넌트가 나타나도록 로직을 생성해야 한다.
+import { Text } from 'components/atoms/index.ts'
+import { Flex } from 'components/layout/index.ts'
+import { MentoSearch, WorkerInfoCard } from 'components/organisms/index.ts'
+import WorkerInfoListLayout from 'components/templates/WorkerInfoListLayout/index.tsx'
+
 const WorkerInfoList = () => {
   return (
     <WorkerInfoListLayout>
@@ -47,65 +42,7 @@ const WorkerInfoList = () => {
             >
               업계 전문가들의 노하우를 확인하세요!
             </Text>
-
-            <Box display={{ base: 'block', sm: 'none' }}>
-              <SearchInput variant="primarySmall" />
-            </Box>
-            <Flex
-              display={{ base: 'none', sm: 'block' }}
-              borderRadius={'10px'}
-              padding={'11px 16px'}
-              backgroundColor={'white'}
-              width={'60vw'}
-              maxWidth={'800px'}
-              marginTop={'30px'}
-            >
-              <Box borderBottom={`1px solid ${theme.colors.black}`}>
-                <SearchInput variant="primaryLarge" />
-              </Box>
-              <Box padding={'11px 0'}>
-                <DropDownButton
-                  options={[
-                    {
-                      label: '프론트엔드',
-                      value: 'frontend',
-                    },
-                    {
-                      label: '백엔드',
-                      value: 'backend',
-                    },
-                    {
-                      label: '안드로이드',
-                      value: 'andriod',
-                    },
-                    {
-                      label: 'IOS',
-                      value: 'ios',
-                    },
-                    {
-                      label: '게임',
-                      value: 'game',
-                    },
-                    {
-                      label: 'AI',
-                      value: 'ai',
-                    },
-                  ]}
-                  placeholder="직무"
-                />
-              </Box>
-              <Flex gap={'10px'} alignItems={'center'} paddingLeft={'13px'}>
-                <Icon iconName="desktop" width={27}></Icon>
-                <Text
-                  width={'fit-content'}
-                  variant="extraSmall"
-                  minWidth={'64px'}
-                >
-                  기술 스택
-                </Text>
-                <Input placeholder="직무 스킬을 검색해보세요."></Input>
-              </Flex>
-            </Flex>
+            <MentoSearch />
           </Flex>
 
           {/* 하단 */}

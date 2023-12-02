@@ -10,7 +10,7 @@ const WorkerInfoListLayout = ({ children }: WorkerInfoListLayoutProps) => {
   return (
     <>
       <Layout>
-        <Box width={'100%'} position={'relative'}>
+        <Box width={'100%'} position={'relative'} overflow={'hidden'}>
           <Box position={'absolute'} top={'56px'} left={'-50px'}>
             <Picture pictureName="sphere" width={207} />
           </Box>

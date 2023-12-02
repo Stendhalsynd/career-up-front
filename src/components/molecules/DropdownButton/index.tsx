@@ -222,7 +222,7 @@ const DropdownButton = (props: DropdownProps) => {
         >
           <Flex>
             <Box paddingRight={'11px'}>
-              <Icon iconName="bussiness_bag" />
+              <Icon iconName="business_bag" />
             </Box>
             {selectedItem && (
               <DropdownValue>

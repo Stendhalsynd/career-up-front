@@ -8,6 +8,7 @@ export type IconProps = {
   iconName?: string
   width?: number
   height?: number
+  onClick?: () => void
 }
 
 const IconWrapper = styled.button`
@@ -33,15 +34,18 @@ const IconComponent = styled(Image)<IconProps>``
  * @example <Icon
         iconName="close"
         width={24}
+        onClick={() => {
+          // 클릭 이벤트 핸들러 작성
+        }}
       />
  */
 const Icon = (props: IconProps) => {
-  const { iconName, width = 24 } = props
+  const { iconName, width = 24, onClick } = props
 
   const iconPath = `/assets/icon/icon_${iconName}.svg`
 
   return (
-    <IconWrapper>
+    <IconWrapper onClick={onClick}>
       <IconComponent
         src={iconPath}
         alt={`${iconName} icon`}

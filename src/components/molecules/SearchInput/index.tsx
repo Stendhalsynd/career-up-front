@@ -1,10 +1,12 @@
-// FilterModal Component 생성하면서 수정한 SearchInput
 'use client'
 
+import { useRecoilState } from 'recoil'
 import Icon from 'components/atoms/Icon/index.tsx'
 import Text from 'components/atoms/Text'
 import Flex from 'components/layout/Flex'
 import Input from 'components/molecules/Input/index.tsx'
+import { FilterModal } from 'components/organisms/index.ts'
+import { modalState } from 'utils/state.ts'
 
 export type SearchInputVariant =
   | 'primarySmall'
@@ -16,19 +18,39 @@ type SearchInputProps = {
   variant: SearchInputVariant
 }
 
-const PrimarySmallSearchInput = () => (
-  <Flex
-    flexDirection={'row'}
-    backgroundColor={'white'}
-    borderRadius={'50px'}
-    padding={'10px 16px'}
-    width={'80vw'}
-  >
-    <Icon iconName="search" width={25} height={25} />
-    <Input name="SearchInput/company" type="text" placeholder="회사로 검색" />
-    <Icon iconName="filter" width={40} height={40} />
-  </Flex>
-)
+const PrimarySmallSearchInput = () => {
+  const [modalOpenState, setModalOpenState] = useRecoilState(modalState)
+
+  const handleOpenModal = () => {
+    setModalOpenState(true)
+  }
+
+  return (
+    <Flex flexDirection={'column'} alignItems={'center'} gap={'20px'}>
+      <Flex
+        flexDirection={'row'}
+        backgroundColor={'white'}
+        borderRadius={'50px'}
+        padding={'10px 16px'}
+        width={'80vw'}
+      >
+        <Icon iconName="search" width={25} height={25} />
+        <Input
+          name="SearchInput/company"
+          type="text"
+          placeholder="회사로 검색"
+        />
+        <Icon
+          iconName="filter"
+          width={40}
+          height={40}
+          onClick={handleOpenModal}
+        />
+      </Flex>
+      {modalOpenState && <FilterModal />}
+    </Flex>
+  )
+}
 
 const PrimaryLargeSearchInput = () => (
   <Flex
@@ -43,7 +65,6 @@ const PrimaryLargeSearchInput = () => (
       type="text"
       placeholder="회사/기술 스택/직무로 검색"
     />
-    {/* Box 는 버튼 임시 대체 */}
     <Flex
       backgroundColor={'darkGray'}
       borderRadius={'50px'}

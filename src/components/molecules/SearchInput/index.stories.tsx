@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { ThemeProvider } from 'styled-components'
 import { SearchInput } from 'components/molecules/index.ts'
+import RecoilClient from 'lib/recoil.tsx'
 import { theme } from 'themes/index.ts'
 
 const meta: Meta<typeof SearchInput> = {
@@ -26,7 +27,9 @@ export const PrimarySmall: Story = {
   decorators: [
     (Story) => (
       <ThemeProvider theme={theme}>
-        <Story />
+        <RecoilClient>
+          <Story />
+        </RecoilClient>
       </ThemeProvider>
     ),
   ],

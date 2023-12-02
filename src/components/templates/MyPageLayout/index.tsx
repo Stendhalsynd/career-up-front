@@ -10,7 +10,7 @@ const MyPageLayout = ({ children }: MyPageLayoutProps) => {
   return (
     <>
       <Layout>
-        <Box width={'100%'} position={'relative'}>
+        <Box width={'100%'} position={'relative'} overflow={'hidden'}>
           <Box position={'absolute'} top={'367px'} left={'-10px'}>
             <Picture pictureName="supertoroid2" width={143} />
           </Box>

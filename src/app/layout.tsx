@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import MUIClient from 'lib/mui.tsx'
 import RecoilClient from 'lib/recoil.tsx'
 import StyledComponentsRegistry from 'lib/registry.tsx'
-import OpenViduClient from 'lib/serviceWorker.tsx'
+// import OpenViduClient from 'lib/serviceWorker.tsx'
 import './globals.css'
 
 import ThemeClient from 'lib/theme.tsx'
@@ -25,11 +25,11 @@ export default function RootLayout({
       <body>
         <ThemeClient>
           <MUIClient>
-            <OpenViduClient>
-              <RecoilClient>
-                <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-              </RecoilClient>
-            </OpenViduClient>
+            {/* <OpenViduClient> */}
+            <RecoilClient>
+              <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+            </RecoilClient>
+            {/* </OpenViduClient> */}
           </MUIClient>
         </ThemeClient>
       </body>

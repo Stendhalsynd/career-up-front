@@ -15,14 +15,14 @@ const meta: Meta<typeof FilterModal> = {
 export default meta
 type Story = StoryObj<typeof FilterModal>
 
-const FilterModalTest = () => {
+const FilterModalState = () => {
   const setState = useSetRecoilState(modalState)
   setState(true)
   return <FilterModal />
 }
 
 export const Normal: Story = {
-  render: () => <FilterModalTest />,
+  render: () => <FilterModalState />,
   decorators: [
     (Story) => (
       <ThemeProvider theme={theme}>

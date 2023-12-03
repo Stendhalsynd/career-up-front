@@ -17,6 +17,7 @@ const MentoSearch = () => {
           backgroundColor={'white'}
           flexDirection={'column'}
           width={'86.89vw'}
+          maxWidth={'1500px'}
           gap={'10px'}
           padding={'15px'}
           borderRadius={'30px'}

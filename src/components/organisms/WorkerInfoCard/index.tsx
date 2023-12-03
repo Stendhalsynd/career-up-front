@@ -1,11 +1,14 @@
 'use client'
 
 import axios from 'axios'
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Text } from 'components/atoms/index.ts'
 import { Box, Flex } from 'components/layout/index.ts'
 import { InfoTagButton } from 'components/molecules/Button/TagButton.tsx'
+import { selectedNicknameState } from 'utils/state.ts'
 
 interface WorkerInfoItemProps {
   tag: string
@@ -46,6 +49,7 @@ const getRandomGender = () => {
 }
 
 const WorkerInfoCard = () => {
+  // 재직자 데이터 불러오기
   const [workerData, setWorkerData] = useState<WorkerInfo[]>()
 
   const fetchData = async () => {
@@ -64,6 +68,10 @@ const WorkerInfoCard = () => {
     fetchData()
   }, [])
 
+  // 선택한 WorkerInfoCard의 닉네임 저장
+  const setSelectedNickname = useSetRecoilState(selectedNicknameState)
+  console.log(useRecoilValue(selectedNicknameState))
+
   return (
     <>
       {workerData?.map((value: any, index: number) => (
@@ -75,60 +83,65 @@ const WorkerInfoCard = () => {
           height={'fit-content'}
           scrollSnapAlign="center"
           key={index}
+          onClick={() => {
+            setSelectedNickname(value.nickname)
+          }}
         >
-          <Flex
-            backgroundColor="primary"
-            width={'100%'}
-            height={'170px'}
-            borderRadius={'20px 20px 0 0'}
-            flexDirection={'column'}
-            padding={'25px'}
-            gap={'15px'}
-          >
-            {/* 닉네임 */}
-            <Box zIndex={3} maxWidth={'60%'}>
-              <Text
-                variant={'mediumBold'}
-                color="white"
-                style={{ wordBreak: 'keep-all' }}
-                lineHeight={1.5}
-              >
-                {value.nickname}
-              </Text>
-            </Box>
+          <Link href={'/workers/info'}>
+            <Flex
+              backgroundColor="primary"
+              width={'100%'}
+              height={'170px'}
+              borderRadius={'20px 20px 0 0'}
+              flexDirection={'column'}
+              padding={'25px'}
+              gap={'15px'}
+            >
+              {/* 닉네임 */}
+              <Box zIndex={3} maxWidth={'60%'}>
+                <Text
+                  variant={'mediumBold'}
+                  color="white"
+                  style={{ wordBreak: 'keep-all' }}
+                  lineHeight={1.5}
+                >
+                  {value.nickname}
+                </Text>
+              </Box>
 
-            {/* 경력 */}
-            <Box zIndex={3}>
-              <Text variant={'extraSmall'} color="white">
-                {getRandomCareer()}
-              </Text>
-            </Box>
-          </Flex>
+              {/* 경력 */}
+              <Box zIndex={3}>
+                <Text variant={'extraSmall'} color="white">
+                  {getRandomCareer()}
+                </Text>
+              </Box>
+            </Flex>
 
-          {/* 사용자 이미지 */}
-          <Flex right={'15px'} top={'23px'} position={'absolute'} zIndex={1}>
-            <Picture pictureName={getRandomGender()} width={83} />
-          </Flex>
+            {/* 사용자 이미지 */}
+            <Flex right={'15px'} top={'23px'} position={'absolute'} zIndex={1}>
+              <Picture pictureName={getRandomGender()} width={83} />
+            </Flex>
 
-          <Flex
-            backgroundColor="white"
-            width={'100%'}
-            height={'230px'}
-            flexDirection={'column'}
-            gap={'15.32px'}
-            padding={'25px'}
-            borderRadius={'0 0 20px 20px'}
-          >
-            <Box zIndex={3}>
-              <WorkerInfoItem tag="현직" text={value.company} />
-            </Box>
-            <Box zIndex={3}>
-              <WorkerInfoItem tag="직군" text={formatFields(value.fields)} />
-            </Box>
-            <Box zIndex={3}>
-              <WorkerInfoItem tag="스킬" text={formatSkills(value.skills)} />
-            </Box>
-          </Flex>
+            <Flex
+              backgroundColor="white"
+              width={'100%'}
+              height={'230px'}
+              flexDirection={'column'}
+              gap={'15.32px'}
+              padding={'25px'}
+              borderRadius={'0 0 20px 20px'}
+            >
+              <Box zIndex={3}>
+                <WorkerInfoItem tag="현직" text={value.company} />
+              </Box>
+              <Box zIndex={3}>
+                <WorkerInfoItem tag="직군" text={formatFields(value.fields)} />
+              </Box>
+              <Box zIndex={3}>
+                <WorkerInfoItem tag="스킬" text={formatSkills(value.skills)} />
+              </Box>
+            </Flex>
+          </Link>
         </Flex>
       ))}
     </>
@@ -139,8 +152,10 @@ const WorkerInfoCard = () => {
 const formatFields = (fields: string[]) => {
   if (fields.length > 1) {
     return `${fields[0]} 외 ${fields.length - 1}개`
-  } else {
+  } else if (fields.length === 1) {
     return fields[0]
+  } else {
+    return '입력 예정'
   }
 }
 
@@ -148,8 +163,10 @@ const formatFields = (fields: string[]) => {
 const formatSkills = (skills: string[]) => {
   if (skills.length > 1) {
     return `${skills[0]} 외 ${skills.length - 1}개`
-  } else {
+  } else if (skills.length === 1) {
     return skills[0]
+  } else {
+    return '입력 예정'
   }
 }
 

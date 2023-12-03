@@ -12,14 +12,12 @@ const WorkerInfoList = () => {
         flexDirection={'column'}
         padding={'62px 35px 30px 35px'}
         width={'100vw'}
-        maxWidth={'100vw'}
         alignItems={'center'}
       >
         <Flex
           flexDirection={'column'}
-          maxWidth={{ base: '100vw', sm: '1000px' }}
+          maxWidth={{ base: '100vw', sm: '1500px' }}
           zIndex={1}
-          paddingLeft={'30px'}
         >
           {/* 상단 */}
           <Flex
@@ -46,7 +44,7 @@ const WorkerInfoList = () => {
           </Flex>
 
           {/* 하단 */}
-          <Flex gap={'30px'} overflow={'auto'}>
+          <Flex flexWrap={'wrap'} gap={'30px'} justifyContent={'center'}>
             <WorkerInfoCard />
           </Flex>
         </Flex>

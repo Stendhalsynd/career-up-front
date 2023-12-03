@@ -1,12 +1,14 @@
 'use client'
 
 import axios from 'axios'
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Text } from 'components/atoms/index.ts'
 import { Box, Flex } from 'components/layout/index.ts'
 import { InfoTagButton } from 'components/molecules/Button/TagButton.tsx'
-import { HyperLinkButton } from 'components/molecules/index.ts'
+import { selectedNicknameState } from 'utils/state.ts'
 
 interface WorkerInfoItemProps {
   tag: string
@@ -47,6 +49,7 @@ const getRandomGender = () => {
 }
 
 const WorkerInfoCard = () => {
+  // 재직자 데이터 불러오기
   const [workerData, setWorkerData] = useState<WorkerInfo[]>()
 
   const fetchData = async () => {
@@ -65,6 +68,10 @@ const WorkerInfoCard = () => {
     fetchData()
   }, [])
 
+  // 선택한 WorkerInfoCard의 닉네임 저장
+  const setSelectedNickname = useSetRecoilState(selectedNicknameState)
+  console.log(useRecoilValue(selectedNicknameState))
+
   return (
     <>
       {workerData?.map((value: any, index: number) => (
@@ -76,8 +83,11 @@ const WorkerInfoCard = () => {
           height={'fit-content'}
           scrollSnapAlign="center"
           key={index}
+          onClick={() => {
+            setSelectedNickname(value.nickname)
+          }}
         >
-          <HyperLinkButton>
+          <Link href={'/workers/info'}>
             <Flex
               backgroundColor="primary"
               width={'100%'}
@@ -131,7 +141,7 @@ const WorkerInfoCard = () => {
                 <WorkerInfoItem tag="스킬" text={formatSkills(value.skills)} />
               </Box>
             </Flex>
-          </HyperLinkButton>
+          </Link>
         </Flex>
       ))}
     </>
@@ -142,8 +152,10 @@ const WorkerInfoCard = () => {
 const formatFields = (fields: string[]) => {
   if (fields.length > 1) {
     return `${fields[0]} 외 ${fields.length - 1}개`
-  } else {
+  } else if (fields.length === 1) {
     return fields[0]
+  } else {
+    return '입력 예정'
   }
 }
 
@@ -151,8 +163,10 @@ const formatFields = (fields: string[]) => {
 const formatSkills = (skills: string[]) => {
   if (skills.length > 1) {
     return `${skills[0]} 외 ${skills.length - 1}개`
-  } else {
+  } else if (skills.length === 1) {
     return skills[0]
+  } else {
+    return '입력 예정'
   }
 }
 

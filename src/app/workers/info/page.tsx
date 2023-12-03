@@ -1,3 +1,6 @@
+'use client'
+
+import { useRecoilValue } from 'recoil'
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Avatar, Text } from 'components/atoms/index.ts'
 import { Box, Flex } from 'components/layout/index.ts'
@@ -5,6 +8,7 @@ import { SkillTagButton } from 'components/molecules/Button/TagButton.tsx'
 import { RequestButton } from 'components/molecules/index.ts'
 import Layout from 'components/templates/Layout/index.tsx'
 import { theme } from 'themes/index.ts'
+import { selectedNicknameState } from 'utils/state.ts'
 
 interface InfoItemProps {
   tag: string
@@ -29,6 +33,9 @@ const InfoItem = (props: InfoItemProps) => {
 }
 
 const WorkerMyPage = () => {
+  const selectedNickname = useRecoilValue(selectedNicknameState)
+  console.log(selectedNickname)
+
   return (
     <Layout>
       <Flex

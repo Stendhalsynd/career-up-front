@@ -13,6 +13,7 @@ import { modalState } from 'utils/state.ts'
 const FilterModal = () => {
   const [modalOpenState, setModalOpenState] = useRecoilState(modalState)
 
+  // 모달 닫는 이벤트
   const handleCloseModal = () => {
     setModalOpenState(false)
   }
@@ -69,7 +70,7 @@ const FilterModal = () => {
             <SearchInput variant="skillSmall" />
           </Flex>
           <Flex width={'85%'}>
-            <RequestButton onClick={handleCloseModal}>적용하기</RequestButton>
+            <RequestButton>적용하기</RequestButton>
           </Flex>
         </Flex>
       </Flex>

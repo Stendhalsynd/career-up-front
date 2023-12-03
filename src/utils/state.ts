@@ -14,3 +14,16 @@ export const modalState = atom({
   key: 'modalState',
   default: false,
 })
+
+export const filterState = atom({
+  key: 'filterState',
+  default: {
+    job: '', // 선택한 직무
+    skill: '', // 입력한 기술
+  },
+})
+
+export const selectedNicknameState = atom({
+  key: 'selectedNicknameState',
+  default: '',
+})

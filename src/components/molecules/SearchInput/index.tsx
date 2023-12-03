@@ -4,6 +4,7 @@ import { useRecoilState } from 'recoil'
 import Icon from 'components/atoms/Icon/index.tsx'
 import Text from 'components/atoms/Text'
 import Flex from 'components/layout/Flex'
+import RequestButton from 'components/molecules/Button/RequestButton.tsx'
 import Input from 'components/molecules/Input/index.tsx'
 import { FilterModal } from 'components/organisms/index.ts'
 import { modalState } from 'utils/state.ts'
@@ -38,7 +39,7 @@ const PrimarySmallSearchInput = () => {
         <Input
           name="SearchInput/company"
           type="text"
-          placeholder="회사로 검색"
+          placeholder="회사를 검색해보세요"
         />
         <Icon
           iconName="filter"
@@ -63,21 +64,11 @@ const PrimaryLargeSearchInput = () => (
     <Input
       name="SearchInput/total"
       type="text"
-      placeholder="회사/기술 스택/직무로 검색"
+      placeholder="회사를 검색해보세요"
     />
-    <Flex
-      backgroundColor={'darkGray'}
-      borderRadius={'50px'}
-      padding={'0 20px'}
-      minWidth={'fit-content'}
-      flexDirection={'row'}
-      alignItems={'center'}
-      style={{ cursor: 'pointer' }}
-    >
-      <Text color={'white'} fontSize={'extraSmall'}>
-        검색
-      </Text>
-    </Flex>
+    <RequestButton variant="dark" width={'130px'} height={'45px'}>
+      검색
+    </RequestButton>
   </Flex>
 )
 
@@ -135,6 +126,8 @@ const SearchInput = ({ variant }: SearchInputProps) => {
       return <SkillSmallSearchInput />
     case 'skillLarge':
       return <SkillLargeSearchInput />
+    default:
+      return null
   }
 }
 

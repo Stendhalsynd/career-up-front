@@ -8,6 +8,7 @@ const colors = {
   red: '#EB5757',
   inputGray: '#828282',
   inputDarkGray: '#F2F2F2',
+  backgroundBlur: 'rgba( 255, 255, 255, 0.3 )',
 } as const
 
 export default colors

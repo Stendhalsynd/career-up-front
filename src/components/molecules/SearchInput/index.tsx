@@ -1,13 +1,14 @@
 'use client'
 
-import { useRecoilState } from 'recoil'
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import { useSetRecoilState } from 'recoil'
 import Icon from 'components/atoms/Icon/index.tsx'
 import Text from 'components/atoms/Text'
 import Flex from 'components/layout/Flex'
 import RequestButton from 'components/molecules/Button/RequestButton.tsx'
 import Input from 'components/molecules/Input/index.tsx'
-import { FilterModal } from 'components/organisms/index.ts'
-import { modalState } from 'utils/state.ts'
+import { companyInputState, modalState, skillInputState } from 'utils/state.ts'
 
 export type SearchInputVariant =
   | 'primarySmall'
@@ -20,92 +21,166 @@ type SearchInputProps = {
 }
 
 const PrimarySmallSearchInput = () => {
-  const [modalOpenState, setModalOpenState] = useRecoilState(modalState)
+  const { register, handleSubmit } = useForm()
+
+  const setModalOpenState = useSetRecoilState(modalState)
 
   const handleOpenModal = () => {
     setModalOpenState(true)
   }
 
+  const setCompanySearchInput = useSetRecoilState(companyInputState)
+
+  const onSubmit = (data: any) => {
+    setCompanySearchInput(data['SearchInput/company'])
+    console.log(data)
+  }
+
   return (
-    <Flex flexDirection={'column'} alignItems={'center'} gap={'20px'}>
-      <Flex
-        flexDirection={'row'}
-        backgroundColor={'white'}
-        borderRadius={'50px'}
-        padding={'10px 16px'}
-        width={'80vw'}
-      >
-        <Icon iconName="search" width={25} height={25} />
-        <Input
-          name="SearchInput/company"
-          type="text"
-          placeholder="회사를 검색해보세요"
-        />
-        <Icon
-          iconName="filter"
-          width={40}
-          height={40}
-          onClick={handleOpenModal}
-        />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Flex flexDirection={'column'} alignItems={'center'}>
+        <Flex
+          flexDirection={'row'}
+          backgroundColor={'white'}
+          borderRadius={'50px'}
+          padding={'10px 16px'}
+          justifyContent={'space-between'}
+          width={'80vw'}
+        >
+          <Flex>
+            <Icon iconName="search" width={25} height={25} />
+            <Input
+              type="text"
+              placeholder="회사 검색"
+              {...register('SearchInput/company')}
+            />
+          </Flex>
+
+          <Flex gap={'10px'}>
+            <Icon
+              iconName="filter"
+              width={40}
+              height={40}
+              onClick={handleOpenModal}
+            />
+            <RequestButton
+              variant="dark"
+              width={'130px'}
+              height={'45px'}
+              padding={'0px'}
+              type="submit"
+            >
+              검색
+            </RequestButton>
+          </Flex>
+        </Flex>
       </Flex>
-      {modalOpenState && <FilterModal />}
-    </Flex>
+    </form>
   )
 }
 
-const PrimaryLargeSearchInput = () => (
-  <Flex
-    flexDirection={'row'}
-    borderBottom={'1px solid white'}
-    padding={'10px 16px'}
-    width={'100%'}
-  >
-    <Icon iconName="search" width={25} height={25} />
-    <Input
-      name="SearchInput/total"
-      type="text"
-      placeholder="회사를 검색해보세요"
-    />
-    <RequestButton variant="dark" width={'130px'} height={'45px'}>
-      검색
-    </RequestButton>
-  </Flex>
-)
+const PrimaryLargeSearchInput = () => {
+  const { register, handleSubmit } = useForm()
 
-const SkillSmallSearchInput = () => (
-  <Flex
-    flexDirection={'row'}
-    width={'100%'}
-    borderBottom={'1px solid black'}
-    paddingBottom={'6px'}
-    alignItems={'center'}
-    // maxWidth={'fit-content'}
-  >
-    <Text fontSize={'extraSmall'} color={'black'}>
-      기술 스택
-    </Text>
-    <Flex marginLeft={'15px'}>
-      <Input color={'gray'} placeholder="직무 스킬을 검색해보세요"></Input>
-    </Flex>
-  </Flex>
-)
+  const setCompanySearchInput = useSetRecoilState(companyInputState)
 
-const SkillLargeSearchInput = () => (
-  <Flex
-    flexDirection={'row'}
-    width={'80vw'}
-    alignItems={'center'}
-    maxWidth={'fit-content'}
-  >
-    <Icon iconName="desktop" width={24} height={24} />
-    <Text fontSize={'extraSmall'} color={'darkGray'} marginLeft={'10px'}>
-      기술 스택
-    </Text>
-    <Flex padding={'4px 0'} marginLeft={'20px'} paddingRight={'33px'}>
-      <Input color={'gray'} placeholder="직무 스킬을 검색해보세요"></Input>
-    </Flex>
-  </Flex>
-)
+  const onSubmit = (data: any) => {
+    setCompanySearchInput(data['SearchInput/company'])
+  }
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Flex
+        flexDirection={'row'}
+        borderBottom={'1px solid white'}
+        padding={'10px 16px'}
+        width={'100%'}
+      >
+        <Icon iconName="search" width={25} height={25} />
+        <Input
+          type="text"
+          placeholder="회사를 검색해보세요"
+          {...register('SearchInput/company')}
+        />
+        <RequestButton
+          variant="dark"
+          width={'130px'}
+          height={'45px'}
+          type="submit"
+        >
+          검색
+        </RequestButton>
+      </Flex>
+    </form>
+  )
+}
+
+const SkillSmallSearchInput = () => {
+  const { register, handleSubmit } = useForm({ mode: 'onBlur' })
+
+  const setSkillSearchInput = useSetRecoilState(skillInputState)
+
+  const onSubmit = (data: any) => {
+    setSkillSearchInput(data['SearchInput/skill'])
+    console.log(data)
+  }
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Flex
+        flexDirection={'row'}
+        width={'100%'}
+        borderBottom={'1px solid black'}
+        paddingBottom={'6px'}
+        alignItems={'center'}
+      >
+        <Text fontSize={'extraSmall'} color={'black'}>
+          기술 스택
+        </Text>
+        <Flex marginLeft={'15px'}>
+          <Input
+            color={'gray'}
+            placeholder="직무 스킬을 검색해보세요"
+            {...register('SearchInput/skill')}
+          ></Input>
+        </Flex>
+      </Flex>
+    </form>
+  )
+}
+
+const SkillLargeSearchInput = () => {
+  const { register, handleSubmit } = useForm({ mode: 'onBlur' })
+
+  const setSkillSearchInput = useSetRecoilState(skillInputState)
+
+  const onSubmit = (data: any) => {
+    setSkillSearchInput(data['SearchInput/skill'])
+    console.log(data)
+  }
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Flex
+        flexDirection={'row'}
+        width={'80vw'}
+        alignItems={'center'}
+        maxWidth={'fit-content'}
+      >
+        <Icon iconName="desktop" width={24} height={24} />
+        <Text fontSize={'extraSmall'} color={'darkGray'} marginLeft={'10px'}>
+          기술 스택
+        </Text>
+        <Flex padding={'4px 0'} marginLeft={'20px'} paddingRight={'33px'}>
+          <Input
+            color={'gray'}
+            placeholder="직무 스킬을 검색해보세요"
+            {...register('SearchInput/skill')}
+          ></Input>
+        </Flex>
+      </Flex>
+    </form>
+  )
+}
 
 /**
  * 검색 입력

@@ -3,7 +3,7 @@
 import axios from 'axios'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Text } from 'components/atoms/index.ts'
 import { Box, Flex } from 'components/layout/index.ts'
@@ -48,15 +48,28 @@ const getRandomGender = () => {
   return genders[randomIndex]
 }
 
-const WorkerInfoCard = () => {
+const WorkerInfoCard = (props: any) => {
   // 재직자 데이터 불러오기
   const [workerData, setWorkerData] = useState<WorkerInfo[]>()
+  const { company, skill, field } = props
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        'https://api.career-up.live:8080/workers',
-      )
+      let url = 'https://api.career-up.live:8080/workers'
+
+      if (company) {
+        url += `?company=${company}`
+      }
+
+      if (skill) {
+        url += `${company ? '&' : '?'}skill=${skill}`
+      }
+
+      if (field) {
+        url += `${company || skill ? '&' : '?'}field=${field}`
+      }
+
+      const response = await axios.get(url)
       const data = response.data
       setWorkerData(data)
     } catch (error) {
@@ -66,11 +79,11 @@ const WorkerInfoCard = () => {
 
   useEffect(() => {
     fetchData()
-  }, [])
+  }, [company, skill, field])
 
   // 선택한 WorkerInfoCard의 닉네임 저장
   const setSelectedNickname = useSetRecoilState(selectedNicknameState)
-  console.log(useRecoilValue(selectedNicknameState))
+  // console.log(useRecoilValue(selectedNicknameState))
 
   return (
     <>

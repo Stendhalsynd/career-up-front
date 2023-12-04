@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import styled, { css } from 'styled-components'
 import { Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
@@ -63,7 +64,17 @@ Input.defaultProps = {
   hasBorder: false,
 }
 
-export default Input
+const ForwardedInput = React.forwardRef<
+  HTMLInputElement,
+  {
+    hasBorder?: boolean
+    hasDarkBackground?: boolean
+  } & React.InputHTMLAttributes<HTMLInputElement>
+>((props, ref) => <Input {...props} ref={ref} />)
+
+ForwardedInput.displayName = 'ForwardedInput'
+
+export default ForwardedInput
 
 interface InfoBlockProps {
   text: string
@@ -82,7 +93,7 @@ export const InfoBlock: React.FC<InfoBlockProps> = ({
     <Text color={'white'} variant={'smallBold'}>
       {text}
     </Text>
-    <Input
+    <ForwardedInput
       hasDarkBackground
       placeholder={placeholder}
       readOnly={readOnly}

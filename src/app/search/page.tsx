@@ -1,11 +1,28 @@
 'use client'
 
+import { useRecoilValue } from 'recoil'
 import { Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
-import { MentoSearch, WorkerInfoCard } from 'components/organisms/index.ts'
+import {
+  FilterModal,
+  MentoSearch,
+  WorkerInfoCard,
+} from 'components/organisms/index.ts'
 import WorkerInfoListLayout from 'components/templates/WorkerInfoListLayout/index.tsx'
+import {
+  companyInputState,
+  modalState,
+  selectedFieldState,
+  skillInputState,
+} from 'utils/state.ts'
 
 const WorkerInfoList = () => {
+  const companyInput = useRecoilValue(companyInputState)
+  const skillInput = useRecoilValue(skillInputState)
+  const fieldInput = useRecoilValue(selectedFieldState)
+  console.log(fieldInput)
+
+  const modalOpenState = useRecoilValue(modalState)
   return (
     <WorkerInfoListLayout>
       <Flex
@@ -18,6 +35,7 @@ const WorkerInfoList = () => {
           flexDirection={'column'}
           maxWidth={{ base: '100vw', sm: '1500px' }}
           zIndex={1}
+          alignItems={'center'}
         >
           {/* 상단 */}
           <Flex
@@ -41,11 +59,39 @@ const WorkerInfoList = () => {
               업계 전문가들의 노하우를 확인하세요!
             </Text>
             <MentoSearch />
+            {modalOpenState && (
+              <Flex
+                width={'100vw'}
+                justifyContent={'center'}
+                alignItems={'center'}
+                backgroundColor={'backgroundBlur'}
+                position={'fixed'}
+                zIndex={5}
+                top={'0'}
+                left={'0'}
+                bottom={'0'}
+                right={'0'}
+              >
+                <FilterModal />
+              </Flex>
+            )}
           </Flex>
 
           {/* 하단 */}
-          <Flex flexWrap={'wrap'} gap={'30px'} justifyContent={'center'}>
-            <WorkerInfoCard />
+          {/* 1개: 260px, 2개: 555px 3개: 840px, 4개: 1130px 5개: 1420px*/}
+          <Flex justifyContent={'center'}>
+            <Flex
+              flexWrap={'wrap'}
+              gap={'30px'}
+              justifyItems={'flex-start'}
+              width={{ base: '260px', sm: '550px', md: '840px' }}
+            >
+              <WorkerInfoCard
+                company={companyInput}
+                skill={skillInput}
+                field={fieldInput}
+              />
+            </Flex>
           </Flex>
         </Flex>
       </Flex>

@@ -66,11 +66,29 @@ const FilterModal = () => {
               hasError={false}
               placeholder="직무"
             />
-
             <SearchInput variant="skillSmall" />
+
+            {/* <Flex
+                flexDirection={'row'}
+                width={'100%'}
+                borderBottom={'1px solid black'}
+                paddingBottom={'6px'}
+                alignItems={'center'}
+              >
+                <Text fontSize={'extraSmall'} color={'black'}>
+                  기술 스택
+                </Text>
+                <Flex marginLeft={'15px'}>
+                  <Input
+                    color={'gray'}
+                    placeholder="직무 스킬을 검색해보세요"
+                    {...register('SearchInput/skill')}
+                  ></Input>
+                </Flex>
+              </Flex> */}
           </Flex>
           <Flex width={'85%'}>
-            <RequestButton>적용하기</RequestButton>
+            <RequestButton type="submit">적용하기</RequestButton>
           </Flex>
         </Flex>
       </Flex>

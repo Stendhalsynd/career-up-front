@@ -20,7 +20,6 @@ const WorkerInfoList = () => {
   const companyInput = useRecoilValue(companyInputState)
   const skillInput = useRecoilValue(skillInputState)
   const fieldInput = useRecoilValue(selectedFieldState)
-  console.log(fieldInput)
 
   const modalOpenState = useRecoilValue(modalState)
   return (

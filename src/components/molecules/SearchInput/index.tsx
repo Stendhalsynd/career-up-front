@@ -33,7 +33,6 @@ const PrimarySmallSearchInput = () => {
 
   const onSubmit = (data: any) => {
     setCompanySearchInput(data['SearchInput/company'])
-    console.log(data)
   }
 
   return (
@@ -156,7 +155,6 @@ const SkillLargeSearchInput = () => {
 
   const onSubmit = (data: any) => {
     setSkillSearchInput(data['SearchInput/skill'])
-    console.log(data)
   }
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

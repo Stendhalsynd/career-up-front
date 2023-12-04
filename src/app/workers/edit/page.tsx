@@ -57,7 +57,6 @@ const WorkerMyPageEdit = () => {
           },
         },
       )
-      console.log('response : ', response)
       setUserData(response.data)
       setProfileImageUrl(response.data.profile)
       setContents(response.data.contents || '')
@@ -66,7 +65,7 @@ const WorkerMyPageEdit = () => {
       setSelectedTags(response.data.fields)
       setEditedCompany(response.data.company)
     } catch (error) {
-      console.error('사용자 데이터를 가져오는 중 오류 발생:', error)
+      console.error('[ERROR] 사용자 데이터를 가져오는 중 오류 발생:', error)
     }
   }
 
@@ -87,8 +86,6 @@ const WorkerMyPageEdit = () => {
       )
 
       if (fileInputRef.current && fileInputRef.current.files) {
-        console.log('file[0] : ', fileInputRef.current.files[0])
-
         if (!profileImage) {
           formData.append('profile', '') // 빈 값으로 설정하거나 원하는 값으로 설정 가능
           console.log('Profile Image not modified')
@@ -108,8 +105,6 @@ const WorkerMyPageEdit = () => {
         },
       }
 
-      console.log('userData : ', userData)
-
       const response = await axios({
         method: 'put',
         url: apiUrl,
@@ -117,14 +112,6 @@ const WorkerMyPageEdit = () => {
         headers: requestConfig.headers,
       })
 
-      console.log('요청 형태 : ', {
-        method: 'put',
-        url: apiUrl,
-        data: formData,
-        headers: requestConfig.headers,
-      })
-
-      console.log(response)
       if (response.data === true) {
         console.log('사용자 데이터가 성공적으로 업데이트되었습니다.')
         window.location.reload()
@@ -143,13 +130,11 @@ const WorkerMyPageEdit = () => {
 
   const handleProfileImageChange = (files: FileList | null) => {
     if (files && files.length > 0) {
-      console.log('Files selected:', files[0])
       setProfileImage(files[0])
 
       const reader = new FileReader()
       reader.onload = () => {
         const result = reader.result as string
-        console.log('Profile Image URL:', result)
         setProfileImageUrl(result)
       }
       reader.readAsDataURL(files[0])

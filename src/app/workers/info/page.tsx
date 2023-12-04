@@ -2,7 +2,7 @@
 
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useRecoilValue } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Avatar, Text } from 'components/atoms/index.ts'
 import { Box, Flex } from 'components/layout/index.ts'
@@ -35,9 +35,7 @@ const InfoItem = (props: InfoItemProps) => {
 
 const WorkerMyPageInfo = () => {
   const selectedNickname = useRecoilValue(selectedNicknameState)
-  console.log(selectedNickname)
 
-  //const otherNickname = selectedNickname
   const [workerData, setWorkerData] = useState<any>({})
   const [profileImage, setProfileImageUrl] = useState<string | undefined>(
     undefined,
@@ -51,8 +49,6 @@ const WorkerMyPageInfo = () => {
         )
         setProfileImageUrl(response.data.profile)
         setWorkerData(response.data)
-        console.log(response.data)
-        console.log(response.data.profile)
       } catch (error) {
         console.error('Error fetching worker data:', error)
       }
@@ -63,13 +59,16 @@ const WorkerMyPageInfo = () => {
     }
   }, [selectedNickname, profileImage])
 
+  const setSelectedNickname = useSetRecoilState(selectedNicknameState)
+
   return (
     <Layout>
-      <Flex
-        width={{ base: 'fit-content', md: '100vw' }}
-        justifyContent={'center'}
-      >
-        <Flex flexDirection={{ base: 'column', sm: 'row' }} maxWidth={'1200px'}>
+      <Flex width={{ base: '100%', md: '100vw' }} justifyContent={'center'}>
+        <Flex
+          width={'100%'}
+          flexDirection={{ base: 'column', sm: 'row' }}
+          maxWidth={'1200px'}
+        >
           {/* 상단 */}
           <Flex
             backgroundColor={'white'}
@@ -131,9 +130,10 @@ const WorkerMyPageInfo = () => {
           {/* 하단 */}
           <Flex
             flexDirection={'column'}
-            padding={{ base: '20px 25px', md: '0' }}
+            padding={{ base: '20px 25px', sm: '30px 40px', md: '0' }}
             gap={'29px'}
             margin={{ base: '0', md: '30px' }}
+            alignItems={'flex-start'}
           >
             <Flex
               border={`1px solid ${theme.colors.primary}`}
@@ -142,7 +142,8 @@ const WorkerMyPageInfo = () => {
               flexDirection={'column'}
               backgroundColor={'white'}
               alignItems={'center'}
-              gap={'20px'}
+              alignSelf={'center'}
+              maxWidth={'460px'}
             >
               <Picture pictureName="vector" width={27} />
               <Text variant="smallBold">
@@ -187,6 +188,10 @@ const WorkerMyPageInfo = () => {
               justifyContent={'center'}
               marginTop={'15px'}
               display={{ base: 'flex', sm: 'none' }}
+              onClick={() => {
+                setSelectedNickname(selectedNickname)
+              }}
+              alignSelf={'center'}
             >
               <HyperLinkButton
                 to="/meeting"

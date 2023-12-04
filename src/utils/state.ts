@@ -41,3 +41,8 @@ export const selectedNicknameState = atom({
   key: 'selectedNicknameState',
   default: '',
 })
+
+export const selectedDateState = atom({
+  key: 'selectedDateState',
+  default: '2023-12-06',
+})

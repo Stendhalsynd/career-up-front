@@ -18,13 +18,13 @@ interface SelectButtonProps extends ButtonProps {
 const SelectButton: React.FC<SelectButtonProps> = ({
   children,
   isRound = true,
-  isSelected = false,
-
+  // isSelected = false,
+  variant,
   ...rest
 }) => {
   return (
     <Button
-      variant={isSelected ? 'primary' : 'white'}
+      variant={variant ? variant : 'white'}
       width={'fit-content'}
       height={'fit-content'}
       borderRadius={isRound ? '100px' : '8px'}

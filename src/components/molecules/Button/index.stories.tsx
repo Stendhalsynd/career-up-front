@@ -265,9 +265,12 @@ export const SelectPrimary: Story = {
   args: {
     isRound: false,
     children: '구직자',
+    variant: 'primary',
   },
   render: (args) => (
-    <SelectButton isRound={args.isRound}>{args.children}</SelectButton>
+    <SelectButton variant={args.variant} isRound={args.isRound}>
+      {args.children}
+    </SelectButton>
   ),
   decorators: [
     (Story) => (

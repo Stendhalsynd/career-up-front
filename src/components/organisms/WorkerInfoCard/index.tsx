@@ -83,7 +83,6 @@ const WorkerInfoCard = (props: any) => {
 
   // 선택한 WorkerInfoCard의 닉네임 저장
   const setSelectedNickname = useSetRecoilState(selectedNicknameState)
-  // console.log(useRecoilValue(selectedNicknameState))
 
   return (
     <>

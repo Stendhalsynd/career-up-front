@@ -61,8 +61,6 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
       )
 
       if (fileInputRef.current && fileInputRef.current.files) {
-        console.log('file[0] : ', fileInputRef.current.files[0])
-
         if (!profileImage) {
           formData.append('profile', '') // 빈 값으로 설정하거나 원하는 값으로 설정 가능
           console.log('Profile Image not modified')
@@ -74,8 +72,6 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
         console.log('Profile Image to be Uploaded:', profileImage)
       }
 
-      console.log(data)
-
       const apiUrl = 'https://api.career-up.live:8080/mypage'
       const requestConfig = {
         headers: {
@@ -83,15 +79,12 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
           'Content-Type': 'multipart/form-data',
         },
       }
-      console.log(userData?.roleType?.toUpperCase())
       if (userData?.roleType?.toUpperCase() === 'WORKER') {
         // roleType이 'worker'이면 PUT 메서드 사용
-        const response = await axios.put(apiUrl, formData, requestConfig)
-        console.log(response)
+        await axios.put(apiUrl, formData, requestConfig)
       } else if (userData?.roleType?.toUpperCase() === 'SEEKER') {
         // roleType이 'seeker'이면 PATCH 메서드 사용
         const response = await axios.patch(apiUrl, formData, requestConfig)
-        console.log(response)
         if (response.data === true) {
           window.location.reload()
         }
@@ -110,13 +103,11 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
 
   const handleProfileImageChange = (files: FileList | null) => {
     if (files && files.length > 0) {
-      console.log('Files selected:', files[0])
       setProfileImage(files[0])
 
       const reader = new FileReader()
       reader.onload = () => {
         const result = reader.result as string
-        console.log('Profile Image URL:', result)
         setProfileImageUrl(result)
       }
       reader.readAsDataURL(files[0])

@@ -66,8 +66,6 @@ const Signup = () => {
         body: JSON.stringify(data),
       })
 
-      console.log(response.status)
-
       if (response.ok) {
         setSuccessMessage('회원가입 성공!')
         setEmail('')

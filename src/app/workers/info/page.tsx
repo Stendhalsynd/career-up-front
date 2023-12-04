@@ -49,8 +49,6 @@ const WorkerMyPageInfo = () => {
         )
         setProfileImageUrl(response.data.profile)
         setWorkerData(response.data)
-        console.log(response.data)
-        console.log(response.data.profile)
       } catch (error) {
         console.error('Error fetching worker data:', error)
       }

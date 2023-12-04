@@ -26,6 +26,8 @@ const MeetingApplyLayout = ({ children }: ChildrenProps) => {
             position={'relative'}
             flexDirection={'column'}
             justifyContent={'center'}
+            width={{ base: '450px', sm: '768px', md: '901px' }}
+            style={{ transition: '1s' }}
           >
             <Box position={'absolute'} right={'-30px'}>
               <Picture pictureName="supertoroid1" width={157} />

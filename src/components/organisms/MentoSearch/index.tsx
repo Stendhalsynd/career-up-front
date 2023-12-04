@@ -17,7 +17,7 @@ const MentoSearch = () => {
           backgroundColor={'white'}
           flexDirection={'column'}
           width={'86.89vw'}
-          maxWidth={'1500px'}
+          maxWidth={'1000px'}
           gap={'10px'}
           padding={'15px'}
           borderRadius={'30px'}
@@ -29,6 +29,7 @@ const MentoSearch = () => {
           <Box>
             <DropDownButton
               options={[
+                { value: 'all', label: '' },
                 { value: 'frontend', label: '프론트엔드' },
                 { value: 'backend', label: '백엔드' },
                 { value: 'andriod', label: '안드로이드' },
@@ -44,62 +45,6 @@ const MentoSearch = () => {
             <SearchInput variant="skillLarge" />
           </Box>
         </Flex>
-
-        {/* <Flex
-              display={{ base: 'none', sm: 'block' }}
-              borderRadius={'10px'}
-              padding={'11px 16px'}
-              backgroundColor={'white'}
-              width={'60vw'}
-              maxWidth={'800px'}
-              marginTop={'30px'}
-            >
-              <Box borderBottom={`1px solid ${theme.colors.black}`}>
-                <SearchInput variant="primaryLarge" />
-              </Box>
-              <Box padding={'11px 0'}>
-                <DropDownButton
-                  options={[
-                    {
-                      label: '프론트엔드',
-                      value: 'frontend',
-                    },
-                    {
-                      label: '백엔드',
-                      value: 'backend',
-                    },
-                    {
-                      label: '안드로이드',
-                      value: 'andriod',
-                    },
-                    {
-                      label: 'IOS',
-                      value: 'ios',
-                    },
-                    {
-                      label: '게임',
-                      value: 'game',
-                    },
-                    {
-                      label: 'AI',
-                      value: 'ai',
-                    },
-                  ]}
-                  placeholder="직무"
-                />
-              </Box>
-              <Flex gap={'10px'} alignItems={'center'} paddingLeft={'13px'}>
-                <Icon iconName="desktop" width={27}></Icon>
-                <Text
-                  width={'fit-content'}
-                  variant="extraSmall"
-                  minWidth={'64px'}
-                >
-                  기술 스택
-                </Text>
-                <Input placeholder="직무 스킬을 검색해보세요."></Input>
-              </Flex>
-            </Flex> */}
       </Desktop>
     </Box>
   )

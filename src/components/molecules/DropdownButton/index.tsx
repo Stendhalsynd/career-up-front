@@ -1,11 +1,13 @@
 'use client'
 
 import React, { useEffect, useState, useRef, useCallback } from 'react'
+import { useSetRecoilState } from 'recoil'
 import styled from 'styled-components'
 import Text from 'components/atoms/Text'
 import { Icon } from 'components/atoms/index.ts'
 import Flex from 'components/layout/Flex'
 import { Box } from 'components/layout/index.ts'
+import { selectedFieldState } from 'utils/state.ts'
 
 const DropdownRoot = styled.div`
   position: relative;
@@ -79,7 +81,14 @@ const DropdownItem = (props: DropdownItemProps) => {
   )
 }
 
-type LabelTag = '프론트엔드' | '백엔드' | '안드로이드' | 'IOS' | '게임' | 'AI'
+type LabelTag =
+  | '프론트엔드'
+  | '백엔드'
+  | '안드로이드'
+  | 'IOS'
+  | '게임'
+  | 'AI'
+  | ''
 
 export interface DropdownItem {
   value: string | number | null
@@ -120,9 +129,10 @@ interface DropdownProps {
  */
 const DropdownButton = (props: DropdownProps) => {
   const { onChange, name, value, options, hasError } = props
-  const initialItem = options.find((i) => i.value === value)
   const [isOpen, setIsOpenValue] = useState(false)
+  const initialItem = options.find((i) => i.value === value)
   const [selectedItem, setSelectedItem] = useState(initialItem)
+  const setSelectedField = useSetRecoilState(selectedFieldState)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   const useWidth = () => {
@@ -169,7 +179,9 @@ const DropdownButton = (props: DropdownProps) => {
     e.stopPropagation()
 
     setSelectedItem(item)
+    setSelectedField(item !== null ? item.label : '')
     setIsOpenValue(false)
+
     onChange && onChange(item)
   }
 

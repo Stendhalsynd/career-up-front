@@ -17,14 +17,24 @@ const MeetingApplyLayout = ({ children }: ChildrenProps) => {
           position={'relative'}
           flexDirection={'column'}
           justifyContent={'center'}
+          alignItems={'center'}
         >
-          <Box position={'absolute'} right={'-30px'}>
-            <Picture pictureName="supertoroid" width={157} />
-          </Box>
-          <Box position={'absolute'} left={'-30px'} bottom={'-30px'}>
-            <Picture pictureName="supertoroid2" width={149} />
-          </Box>
-          {children}
+          <Flex
+            maxWidth={'1000px'}
+            height={'fit-content'}
+            minHeight={'190px'}
+            position={'relative'}
+            flexDirection={'column'}
+            justifyContent={'center'}
+          >
+            <Box position={'absolute'} right={'-30px'}>
+              <Picture pictureName="supertoroid1" width={157} />
+            </Box>
+            <Box position={'absolute'} left={'-30px'} bottom={'-30px'}>
+              <Picture pictureName="supertoroid2" width={149} />
+            </Box>
+            {children}
+          </Flex>
         </Flex>
       </Layout>
     </>

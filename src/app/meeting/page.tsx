@@ -1,11 +1,35 @@
+'use client'
+
+// import { useState } from 'react'
+import { useRecoilValue } from 'recoil'
 import { Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import SelectButton from 'components/molecules/Button/SelectButton.tsx'
 import Calendar from 'components/molecules/Calendar/index.tsx'
 import { RequestButton, TextArea } from 'components/molecules/index.ts'
 import MeetingApplyLayout from 'components/templates/MeetingLayout/index.tsx'
+import useRequest, { GetRequest } from 'lib/useRequest.ts'
+import { selectedDateState, selectedNicknameState } from 'utils/state.ts'
+
+type ReservationData = {
+  date: string
+  time: string
+}
 
 const MeetingApply = () => {
+  const selectedNickname = useRecoilValue(selectedNicknameState)
+  const selectedDate = useRecoilValue(selectedDateState)
+
+  console.log('selectedNickname : ', selectedNickname)
+  console.log('selectedDate : ', selectedDate)
+
+  const { data } = useRequest<ReservationData[]>({
+    method: 'get',
+    url: `/reservation/${selectedNickname}`,
+  } as GetRequest)
+
+  console.log(`${selectedNickname} 의 예약 내용 : `, data)
+
   return (
     <Flex flexDirection={'column'}>
       <MeetingApplyLayout>

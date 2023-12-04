@@ -32,7 +32,7 @@ const HyperLinkButton: React.FC<HyperLinkButtonProps> = ({
           color={isTransparent ? 'black' : 'white'}
           fontSize={{ base: 'extraSmall', md: 'small' }}
         >
-          {contents ? contents : '이동하기'}
+          {contents ? contents : ''}
           {children}
         </Text>
       </Button>{' '}

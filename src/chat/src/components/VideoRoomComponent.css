@@ -2,13 +2,14 @@
   color: #ffffff;
   background-color: transparent;
   /* background-color: gray; */
-  padding: 0 14px 0 0;
+  padding: 0 14px 14px 0;
   position: absolute;
   /* top: 0; */
-  bottom: 0;
+  bottom: 7px;
   left: 0;
   z-index: 999999;
-  min-width: 400px !important;
+  min-width: 380px !important;
+  box-shadow: none;
 }
 
 .toolbar {
@@ -29,7 +30,7 @@
   height: 40px !important;
   text-align: center;
   margin: auto;
-  min-width: 400px;
+  min-width: 380px;
 }
 .navButton {
   height: 40px !important;

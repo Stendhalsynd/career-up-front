@@ -1,13 +1,10 @@
 import './ChatComponent.css'
 
-import HighlightOffIcon from '@mui/icons-material/HighlightOff'
 import SendIcon from '@mui/icons-material/Send'
-import { Fab, IconButton, Tooltip } from '@mui/material'
+import { Fab, Tooltip } from '@mui/material'
 
 import React, { Component } from 'react'
-// import { Text } from 'components/atoms'
 import { Input } from 'components/molecules'
-
 export default class ChatComponent extends Component {
   constructor(props) {
     super(props)
@@ -102,9 +99,6 @@ export default class ChatComponent extends Component {
               {this.props.user.getStreamManager().stream.session.sessionId} -
               CHAT
             </span>
-            <IconButton id="closeButton" onClick={this.close}>
-              <HighlightOffIcon color="secondary" />
-            </IconButton>
           </div>
           <div className="message-wrap" ref={this.chatScroll}>
             {this.state.messageList.map((data, i) => (
@@ -149,16 +143,9 @@ export default class ChatComponent extends Component {
                 borderBottomRightRadius: '20px',
               }}
             />
-            {/* <input
-              placeholder="메세지를 입력하세요."
-              id="chatInput"
-              value={this.state.message}
-              onChange={this.handleChange}
-              onKeyPress={this.handlePressKey}
-            /> */}
             <Tooltip title="Send message">
               <Fab size="small" id="sendButton" onClick={this.sendMessage}>
-                <SendIcon />
+                <SendIcon style={{ color: 'white' }} />
               </Fab>
             </Tooltip>
           </div>

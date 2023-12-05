@@ -7,7 +7,6 @@ import {
   QuestionAnswer,
   ScreenShare,
   StopScreenShare,
-  SwitchVideo,
 } from '@mui/icons-material'
 
 import { AppBar, Toolbar, Tooltip } from '@mui/material'
@@ -76,100 +75,114 @@ export default class ToolbarComponent extends Component {
         <Toolbar className="toolbar">
           <div className="buttonsContent">
             <Flex justifyContent={'center'}>
-              <Flex gap={'15px'}>
+              <Flex gap={{ base: '7px', sm: '15px' }}>
                 {localUser !== undefined && localUser.isAudioActive() ? (
                   <Flex
                     backgroundColor={'primary'}
-                    padding={'10px'}
-                    width={'fit-content'}
+                    width={{ base: '35px', sm: '40px' }}
+                    height={{ base: '35px', sm: '40px' }}
+                    justifyContent={'center'}
+                    alignItems={'center'}
                     borderRadius={'20px'}
                     onClick={this.micStatusChanged}
+                    style={{ cursor: 'pointer' }}
                   >
-                    <Icon iconName="mic" width={25} height={25} />
+                    <Icon iconName="mic" fill />
                   </Flex>
                 ) : (
                   <Flex
                     backgroundColor={'red'}
-                    padding={'10px'}
-                    width={'fit-content'}
+                    width={{ base: '35px', sm: '40px' }}
+                    height={{ base: '35px', sm: '40px' }}
+                    justifyContent={'center'}
+                    alignItems={'center'}
                     borderRadius={'20px'}
                     onClick={this.micStatusChanged}
+                    style={{ cursor: 'pointer' }}
                   >
-                    <Icon iconName="mic_off" width={25} height={25} />
+                    <Icon iconName="mic_off" fill />
                   </Flex>
                 )}
 
                 {localUser !== undefined && localUser.isVideoActive() ? (
                   <Flex
                     backgroundColor={'primary'}
-                    padding={'10px'}
-                    width={'fit-content'}
+                    width={{ base: '35px', sm: '40px' }}
+                    height={{ base: '35px', sm: '40px' }}
+                    justifyContent={'center'}
+                    alignItems={'center'}
                     borderRadius={'20px'}
                     onClick={this.camStatusChanged}
+                    style={{ cursor: 'pointer' }}
                   >
-                    <Icon iconName="videocam" width={25} height={25} />
+                    <Icon iconName="videocam" fill />
                   </Flex>
                 ) : (
                   <Flex
                     backgroundColor={'red'}
-                    padding={'10px'}
-                    width={'fit-content'}
+                    width={{ base: '35px', sm: '40px' }}
+                    height={{ base: '35px', sm: '40px' }}
+                    justifyContent={'center'}
+                    alignItems={'center'}
                     borderRadius={'20px'}
                     onClick={this.camStatusChanged}
+                    style={{ cursor: 'pointer' }}
                   >
-                    <Icon iconName="videocam_off" width={25} height={25} />
+                    <Icon iconName="videocam_off" fill />
                   </Flex>
                 )}
 
                 {localUser !== undefined && localUser.isScreenShareActive() ? (
                   <Flex
                     backgroundColor={'red'}
-                    padding={'10px'}
-                    width={'fit-content'}
+                    width={{ base: '35px', sm: '40px' }}
+                    height={{ base: '35px', sm: '40px' }}
+                    justifyContent={'center'}
+                    alignItems={'center'}
                     borderRadius={'20px'}
                     onClick={this.stopScreenShare}
+                    style={{ cursor: 'pointer' }}
                   >
                     <StopScreenShare />
                   </Flex>
                 ) : (
                   <Flex
                     backgroundColor={'primary'}
-                    padding={'10px'}
-                    width={'fit-content'}
+                    width={{ base: '35px', sm: '40px' }}
+                    height={{ base: '35px', sm: '40px' }}
+                    justifyContent={'center'}
+                    alignItems={'center'}
                     borderRadius={'20px'}
                     onClick={this.screenShare}
+                    style={{ cursor: 'pointer' }}
                   >
                     <ScreenShare />
                   </Flex>
                 )}
 
-                <Flex
-                  backgroundColor={'primary'}
-                  padding={'10px'}
-                  width={'fit-content'}
-                  borderRadius={'20px'}
-                  onClick={this.switchCamera}
-                >
-                  <SwitchVideo />
-                </Flex>
-
                 {localUser !== undefined && this.state.fullscreen ? (
                   <Flex
                     backgroundColor={'red'}
-                    padding={'10px'}
-                    width={'fit-content'}
+                    width={{ base: '35px', sm: '40px' }}
+                    height={{ base: '35px', sm: '40px' }}
+                    justifyContent={'center'}
+                    alignItems={'center'}
                     borderRadius={'20px'}
                     onClick={this.toggleFullscreen}
+                    style={{ cursor: 'pointer' }}
                   >
                     <FullscreenExit />
                   </Flex>
                 ) : (
                   <Flex
                     backgroundColor={'primary'}
-                    padding={'10px'}
-                    width={'fit-content'}
+                    width={{ base: '35px', sm: '40px' }}
+                    height={{ base: '35px', sm: '40px' }}
+                    justifyContent={'center'}
+                    alignItems={'center'}
                     borderRadius={'20px'}
                     onClick={this.toggleFullscreen}
+                    style={{ cursor: 'pointer' }}
                   >
                     <Fullscreen />
                   </Flex>
@@ -177,23 +190,29 @@ export default class ToolbarComponent extends Component {
 
                 <Flex
                   backgroundColor={'primary'}
-                  padding={'10px'}
-                  width={'fit-content'}
+                  width={{ base: '35px', sm: '40px' }}
+                  height={{ base: '35px', sm: '40px' }}
+                  justifyContent={'center'}
+                  alignItems={'center'}
                   borderRadius={'20px'}
                   onClick={this.leaveSession}
+                  style={{ cursor: 'pointer' }}
                 >
                   <PowerSettingsNew />
                 </Flex>
 
                 <Flex
                   backgroundColor={'primary'}
-                  padding={'10px'}
-                  width={'fit-content'}
+                  width={{ base: '35px', sm: '40px' }}
+                  height={{ base: '35px', sm: '40px' }}
+                  justifyContent={'center'}
+                  alignItems={'center'}
                   borderRadius={'20px'}
                   onClick={this.toggleChat}
                   position={'absolute'}
                   top={'0px'}
                   right={'10px'}
+                  style={{ cursor: 'pointer' }}
                 >
                   {this.props.showNotification && (
                     <div id="point" className="" />

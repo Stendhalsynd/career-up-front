@@ -1,7 +1,7 @@
 'use client'
 
 import { useRecoilValue } from 'recoil'
-import { Text } from 'components/atoms/index.ts'
+import { Icon, Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import {
   FilterModal,
@@ -14,14 +14,15 @@ import {
   modalState,
   fieldInputState,
   skillInputState,
+  countDataState,
 } from 'utils/state.ts'
 
 const WorkerInfoList = () => {
   const companyInput = useRecoilValue(companyInputState)
   const skillInput = useRecoilValue(skillInputState)
   const fieldInput = useRecoilValue(fieldInputState)
-
   const modalOpenState = useRecoilValue(modalState)
+  const countData = useRecoilValue(countDataState)
   return (
     <WorkerInfoListLayout>
       <Flex
@@ -78,6 +79,7 @@ const WorkerInfoList = () => {
 
           {/* 하단 */}
           {/* 1개: 260px, 2개: 555px 3개: 840px, 4개: 1130px 5개: 1420px*/}
+
           <Flex justifyContent={'center'}>
             <Flex
               flexWrap={'wrap'}
@@ -92,6 +94,38 @@ const WorkerInfoList = () => {
               />
             </Flex>
           </Flex>
+
+          {countData === 0 && (
+            <Flex alignItems="center" justifyContent="center">
+              <Flex
+                flexDirection="column"
+                alignItems="center"
+                justifyContent={'center'}
+                borderRadius="20px"
+                backgroundColor="white"
+                width={{ base: '350px', sm: '700px' }}
+                height={{ base: '190px', sm: '400px' }}
+                padding="20px"
+                gap={'40px'}
+              >
+                <Icon iconName="warning" width={50}></Icon>
+                <Flex flexDirection={'column'} gap={'10px'}>
+                  <Text
+                    textAlign="center"
+                    fontSize={{ base: 'small', sm: 'medium' }}
+                  >
+                    입력한 재직자의 정보가
+                  </Text>
+                  <Text
+                    textAlign="center"
+                    fontSize={{ base: 'small', sm: 'medium' }}
+                  >
+                    존재하지 않습니다.
+                  </Text>
+                </Flex>
+              </Flex>
+            </Flex>
+          )}
         </Flex>
       </Flex>
     </WorkerInfoListLayout>

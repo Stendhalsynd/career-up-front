@@ -8,7 +8,7 @@ import Picture from 'components/atoms/Picture/index.tsx'
 import { Text } from 'components/atoms/index.ts'
 import { Box, Flex } from 'components/layout/index.ts'
 import { InfoTagButton } from 'components/molecules/Button/TagButton.tsx'
-import { selectedNicknameState } from 'utils/state.ts'
+import { countDataState, selectedNicknameState } from 'utils/state.ts'
 
 interface WorkerInfoItemProps {
   tag: string
@@ -51,6 +51,7 @@ const getRandomGender = () => {
 const WorkerInfoCard = (props: any) => {
   // 재직자 데이터 불러오기
   const [workerData, setWorkerData] = useState<WorkerInfo[]>()
+  const setCountData = useSetRecoilState(countDataState)
   const { company, skill, field } = props
 
   const fetchData = async () => {
@@ -71,8 +72,8 @@ const WorkerInfoCard = (props: any) => {
 
       const response = await axios.get(url)
       const data = response.data
+      setCountData(data.length)
       setWorkerData(data)
-      console.log(data)
     } catch (error) {
       console.error('사용자 데이터를 가져오는 중  오류 발생: ', error)
     }

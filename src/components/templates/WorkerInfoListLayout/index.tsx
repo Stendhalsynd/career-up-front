@@ -1,16 +1,29 @@
+import { useRecoilValue } from 'recoil'
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Box } from 'components/layout/index.ts'
 import Layout from 'components/templates/Layout/index.tsx'
+import { countDataState } from 'utils/state.ts'
 
 interface WorkerInfoListLayoutProps {
   children: React.ReactNode
 }
 
 const WorkerInfoListLayout = ({ children }: WorkerInfoListLayoutProps) => {
+  const countData = useRecoilValue(countDataState)
+
   return (
     <>
       <Layout>
-        <Box width={'100%'} position={'relative'} overflow={'hidden'}>
+        <Box
+          width={'100%'}
+          position={'relative'}
+          overflow={'hidden'}
+          height={
+            countData === 0
+              ? { base: 'calc(100vh - 40px)', sm: 'calc(100vh - 50px)' }
+              : 'auto'
+          }
+        >
           <Box position={'absolute'} top={'56px'} left={'-50px'}>
             <Picture pictureName="sphere" width={400} />
           </Box>

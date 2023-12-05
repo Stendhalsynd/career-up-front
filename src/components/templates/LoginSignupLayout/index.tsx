@@ -15,18 +15,18 @@ const LoginSignupLayout = ({ children }: ChildrenProps) => {
       <Mobile>
         <Layout>
           <Flex
-            width={'100vw'}
+            width={'100%'}
             height={'calc(100vh - 40px)'}
-            position={'relatvie'}
+            position={'relative'}
             justifyContent={'center'}
             alignItems={'center'}
             overflow={'hidden'}
           >
             <Box position={'absolute'} top={'500px'} left={'20px'}>
-              <Picture pictureName="supertoroid2" width={300} />
+              <Picture pictureName="supertoroid2" width={200} />
             </Box>
             <Box position={'absolute'} top={'80px'} right={'-50px'}>
-              <Picture pictureName="cube" width={300} />
+              <Picture pictureName="cube" width={230} />
             </Box>
             {children}
           </Flex>
@@ -36,9 +36,9 @@ const LoginSignupLayout = ({ children }: ChildrenProps) => {
       <Tablet>
         <Layout>
           <Flex
-            width={'100vw'}
+            width={'100%'}
             height={'calc(100vh - 40px)'}
-            position={'relatvie'}
+            position={'relative'}
             justifyContent={'center'}
             alignItems={'center'}
             overflow={'hidden'}

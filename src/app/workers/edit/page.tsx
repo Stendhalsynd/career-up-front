@@ -198,7 +198,6 @@ const WorkerMyPageEdit = () => {
       <Flex
         width={'100%'}
         justifyContent={'center'}
-        paddingBottom={'50px'}
         flexDirection="column"
         alignItems={'center'}
       >

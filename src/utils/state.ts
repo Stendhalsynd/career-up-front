@@ -25,14 +25,24 @@ export const companyInputState = atom({
 })
 
 // input에 입력한 skill 정보
+export const skillModalState = atom({
+  key: 'skillModalState',
+  default: '',
+})
+
+// dropdown button에서 선택한 직무 정보
+export const fieldModalState = atom<DropdownItem | string | undefined>({
+  key: 'selectedModalState',
+  default: '',
+})
+
 export const skillInputState = atom({
   key: 'skillInputState',
   default: '',
 })
 
-// dropdown button에서 선택한 직무 정보
-export const selectedFieldState = atom<DropdownItem | string | undefined>({
-  key: 'selectedFieldState',
+export const fieldInputState = atom<DropdownItem | string | undefined>({
+  key: 'fieldInputState',
   default: '',
 })
 

@@ -7,7 +7,7 @@ import Text from 'components/atoms/Text'
 import { Icon } from 'components/atoms/index.ts'
 import Flex from 'components/layout/Flex'
 import { Box } from 'components/layout/index.ts'
-import { selectedFieldState } from 'utils/state.ts'
+import { fieldModalState } from 'utils/state.ts'
 
 const DropdownRoot = styled.div`
   position: relative;
@@ -132,7 +132,7 @@ const DropdownButton = (props: DropdownProps) => {
   const [isOpen, setIsOpenValue] = useState(false)
   const initialItem = options.find((i) => i.value === value)
   const [selectedItem, setSelectedItem] = useState(initialItem)
-  const setSelectedField = useSetRecoilState(selectedFieldState)
+  const setSelectedField = useSetRecoilState(fieldModalState)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   const useWidth = () => {

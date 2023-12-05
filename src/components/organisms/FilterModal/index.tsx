@@ -1,6 +1,6 @@
 'use client'
 
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { Icon, Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import {
@@ -8,7 +8,13 @@ import {
   RequestButton,
   SearchInput,
 } from 'components/molecules/index.ts'
-import { modalState } from 'utils/state.ts'
+import {
+  fieldInputState,
+  fieldModalState,
+  modalState,
+  skillInputState,
+  skillModalState,
+} from 'utils/state.ts'
 
 const FilterModal = () => {
   const [modalOpenState, setModalOpenState] = useRecoilState(modalState)
@@ -16,6 +22,23 @@ const FilterModal = () => {
   // 모달 닫는 이벤트
   const handleCloseModal = () => {
     setModalOpenState(false)
+  }
+
+  const skillInput = useRecoilValue(skillModalState)
+  const fieldInput = useRecoilValue(fieldModalState)
+
+  const setSkillInputState = useSetRecoilState(skillInputState)
+  const setFieldInputState = useSetRecoilState(fieldInputState)
+
+  const handleApplyFilter = () => {
+    if (skillInput) {
+      setSkillInputState(skillInput)
+    }
+    if (fieldInput) {
+      setFieldInputState(fieldInput)
+    }
+
+    handleCloseModal()
   }
 
   return (
@@ -56,6 +79,7 @@ const FilterModal = () => {
           <Flex width={'90%'} flexDirection={'column'} gap={'10px'}>
             <DropDownButton
               options={[
+                { value: 'all', label: '' },
                 { value: 'frontend', label: '프론트엔드' },
                 { value: 'backend', label: '백엔드' },
                 { value: 'andriod', label: '안드로이드' },
@@ -88,7 +112,9 @@ const FilterModal = () => {
               </Flex> */}
           </Flex>
           <Flex width={'85%'}>
-            <RequestButton type="submit">적용하기</RequestButton>
+            <RequestButton onClick={handleApplyFilter} type="submit">
+              적용하기
+            </RequestButton>
           </Flex>
         </Flex>
       </Flex>

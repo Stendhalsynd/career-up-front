@@ -12,14 +12,14 @@ import WorkerInfoListLayout from 'components/templates/WorkerInfoListLayout/inde
 import {
   companyInputState,
   modalState,
-  selectedFieldState,
+  fieldInputState,
   skillInputState,
 } from 'utils/state.ts'
 
 const WorkerInfoList = () => {
   const companyInput = useRecoilValue(companyInputState)
   const skillInput = useRecoilValue(skillInputState)
-  const fieldInput = useRecoilValue(selectedFieldState)
+  const fieldInput = useRecoilValue(fieldInputState)
 
   const modalOpenState = useRecoilValue(modalState)
   return (

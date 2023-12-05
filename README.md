@@ -17,6 +17,7 @@ npm install jwt-decode
 npm i swr
 npm i recoil
 npm i -D aos@next
+npm i @types/aos
 
 ```
 

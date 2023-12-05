@@ -123,31 +123,26 @@ const MeetingApply = () => {
           </Flex>
           <Flex flexDirection={'column'} gap={'21px'}>
             <Text variant={'smallBold'}>원하는 시간을 선택해주세요.</Text>
-            <Flex flexWrap={'wrap'} gap={'10px'}>
-              {[
-                '18:00:00',
-                '19:00:00',
-                '20:00:00',
-                '21:00:00',
-                '22:00:00',
-                '23:00:00',
-              ].map((time) => (
-                <SelectButton
-                  key={time}
-                  variant={
-                    isTimeReserved(time)
-                      ? 'dark'
-                      : time === selectedTime
-                        ? 'primary'
-                        : 'white'
-                  }
-                  isRound={false}
-                  onClick={() => handleButtonClick(time)}
-                  disabled={isTimeReserved(time)}
-                >
-                  {time}
-                </SelectButton>
-              ))}
+            <Flex flexWrap={'wrap'} gap={'10px'} alignSelf={'center'}>
+              {['18:00', '19:00', '20:00', '21:00', '22:00', '23:00'].map(
+                (time) => (
+                  <SelectButton
+                    key={time}
+                    variant={
+                      isTimeReserved(time)
+                        ? 'dark'
+                        : time === selectedTime
+                          ? 'primary'
+                          : 'white'
+                    }
+                    isRound={false}
+                    onClick={() => handleButtonClick(time)}
+                    disabled={isTimeReserved(time)}
+                  >
+                    {time}
+                  </SelectButton>
+                ),
+              )}
             </Flex>
           </Flex>
         </Flex>

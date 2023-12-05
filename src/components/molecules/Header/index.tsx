@@ -1,7 +1,9 @@
 'use client'
 
+import { useState } from 'react'
 import { Icon, Logo, Text } from 'components/atoms/index.ts'
 import Flex from 'components/layout/Flex/index.tsx'
+import { Box } from 'components/layout/index.ts'
 
 /**
  * 헤더
@@ -12,6 +14,9 @@ import Flex from 'components/layout/Flex/index.tsx'
  */
 
 const Header = () => {
+  const [isHovered, setHovered] = useState(false)
+  const [menuName, setMenuName] = useState('menu')
+
   return (
     <Flex
       backgroundColor={'black'}
@@ -42,8 +47,38 @@ const Header = () => {
         </Text>
       </Flex>
 
-      <Flex>
+      {/* <Flex>
         <Icon iconName="menu" width={28} height={28} />
+      </Flex> */}
+      <Flex
+        onMouseEnter={() => {
+          setHovered(true)
+          setMenuName('menu_black')
+        }}
+        onMouseLeave={() => {
+          setHovered(false)
+          setMenuName('menu')
+        }}
+        position={'relative'}
+        justifyContent={'center'}
+        alignItems={'center'}
+        style={{ transition: '0.6s' }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            width: `${isHovered ? '40px' : '0'}`,
+            height: `${isHovered ? '40px' : '0'}`,
+            borderRadius: '50%',
+            backgroundColor: 'white',
+            zIndex: 1,
+            pointerEvents: 'none',
+            transition: '0.6s',
+          }}
+        />
+        <Box zIndex={2}>
+          <Icon iconName={menuName} width={28} height={28} />
+        </Box>
       </Flex>
     </Flex>
   )

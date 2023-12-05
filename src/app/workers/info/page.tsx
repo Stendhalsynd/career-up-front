@@ -121,6 +121,7 @@ const WorkerMyPageInfo = () => {
                 to="/meeting"
                 width={'fit-content'}
                 contents="멘토링 신청"
+                hasBorder={true}
               />
             </Flex>
             <Flex display={{ base: 'none', sm: 'flex' }} marginTop={'100px'}>
@@ -133,7 +134,7 @@ const WorkerMyPageInfo = () => {
             padding={{ base: '20px 25px', sm: '30px 40px', md: '0' }}
             gap={'29px'}
             margin={{ base: '0', md: '30px' }}
-            alignItems={'flex-start'}
+            alignItems={'center'}
           >
             <Flex
               border={`1px solid ${theme.colors.primary}`}
@@ -152,38 +153,47 @@ const WorkerMyPageInfo = () => {
                   : ''}
               </Text>
             </Flex>
-            <Flex flexDirection={'column'} gap={{ base: '10px', sm: '15px' }}>
-              <Text
-                fontSize={{ base: 'extraSmall', sm: 'small' }}
-                fontWeight={'700'}
-                color={'primary'}
-              >
-                커리업 파트너 {workerData.nickname} 입니다:)
-              </Text>
-              <Text variant="extraSmall" color={'white'}>
-                {workerData.contents}
-              </Text>
+            <Flex
+              flexDirection={'column'}
+              alignItems={'flex-start'}
+              gap={{ base: '10px', sm: '15px' }}
+              width={'100%'}
+              maxWidth={'460px'}
+            >
+              <Flex flexDirection={'column'} gap={{ base: '10px', sm: '15px' }}>
+                <Text
+                  fontSize={{ base: 'extraSmall', sm: 'small' }}
+                  fontWeight={'700'}
+                  color={'primary'}
+                >
+                  커리업 파트너 {workerData.nickname} 입니다:)
+                </Text>
+                <Text variant="extraSmall" color={'white'}>
+                  {workerData.contents}
+                </Text>
+              </Flex>
+              <Flex flexDirection={'column'} gap={{ base: '10px', sm: '15px' }}>
+                <Text
+                  fontSize={{ base: 'extraSmall', sm: 'small' }}
+                  fontWeight={'700'}
+                  color={'primary'}
+                >
+                  자신있게 설명할 수 있는 분야는
+                </Text>
+                {workerData.skills && (
+                  <Flex gap={'17px'} flexWrap={'wrap'}>
+                    {workerData.skills.map((skill: string) => (
+                      <SkillTagButton
+                        key={skill}
+                        backgroundColor="transparent"
+                        tag={`#${skill}`}
+                      />
+                    ))}
+                  </Flex>
+                )}
+              </Flex>
             </Flex>
-            <Flex flexDirection={'column'} gap={{ base: '10px', sm: '15px' }}>
-              <Text
-                fontSize={{ base: 'extraSmall', sm: 'small' }}
-                fontWeight={'700'}
-                color={'primary'}
-              >
-                자신있게 설명할 수 있는 분야는
-              </Text>
-              {workerData.skills && (
-                <Flex gap={'17px'} flexWrap={'wrap'}>
-                  {workerData.skills.map((skill: string) => (
-                    <SkillTagButton
-                      key={skill}
-                      backgroundColor="transparent"
-                      tag={`#${skill}`}
-                    />
-                  ))}
-                </Flex>
-              )}
-            </Flex>
+
             <Flex
               justifyContent={'center'}
               marginTop={'15px'}
@@ -196,7 +206,7 @@ const WorkerMyPageInfo = () => {
               <HyperLinkButton
                 to="/meeting"
                 width={'60vw'}
-                maxWidth={'400px'}
+                maxWidth={'300px'}
                 contents="멘토링 신청"
               ></HyperLinkButton>
             </Flex>

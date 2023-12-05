@@ -53,6 +53,7 @@ const TodayChatInfo: React.FC<TodayChatInfoProps> = ({
             to="chat"
             width={'fit-content'}
             contents="입장하기"
+            hasBorder={true}
             onClick={() => {
               setSessionState(sessionId)
               setMyNameState(myNickname)

@@ -21,6 +21,14 @@ const MyPageLayout = ({ children }: MyPageLayoutProps) => {
           >
             <Picture pictureName="cube" width={252} />
           </Box>
+          <Box
+            position={'absolute'}
+            right={'50px'}
+            top={'500px'}
+            display={{ base: 'none', sm: 'block' }}
+          >
+            <Picture pictureName="supertoroid1" width={252} />
+          </Box>
           {children}
         </Box>
       </Layout>

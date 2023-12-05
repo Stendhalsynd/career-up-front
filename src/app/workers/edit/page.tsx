@@ -198,7 +198,6 @@ const WorkerMyPageEdit = () => {
       <Flex
         width={'100%'}
         justifyContent={'center'}
-        paddingBottom={'50px'}
         flexDirection="column"
         alignItems={'center'}
       >
@@ -313,6 +312,8 @@ const WorkerMyPageEdit = () => {
             width={'fit-conent'}
             flexDirection={'column-reverse'}
             position={'relative'}
+            left={{ sm: '30px', md: '50px' }}
+            zIndex={1}
           >
             <Picture pictureName="male" width={216} />
           </Flex>

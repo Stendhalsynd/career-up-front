@@ -16,6 +16,7 @@ npm install @emotion/styled
 npm install jwt-decode
 npm i swr
 npm i recoil
+npm i -D aos@next
 
 ```
 

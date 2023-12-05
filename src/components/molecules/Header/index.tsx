@@ -1,9 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import axios from 'axios'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import { Icon, Logo, Text } from 'components/atoms/index.ts'
-import Flex from 'components/layout/Flex/index.tsx'
-import { Box } from 'components/layout/index.ts'
+import { Flex } from 'components/layout/index.ts'
+import SideMenu from 'components/molecules/SideMenu/index.tsx'
 
 /**
  * 헤더
@@ -12,44 +14,110 @@ import { Box } from 'components/layout/index.ts'
  * 반응형 웹 적용: viewport가 모바일 사이즈인 경우, 텍스트 컴포넌트 display: none / 901px부터 텍스트 컴포넌트 display: flex
  * @example <Header />
  */
-
 const Header = () => {
   const [isHovered, setHovered] = useState(false)
   const [menuName, setMenuName] = useState('menu')
+  const [roleType, setRoleType] = useState(null)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false)
+  const [menuClicked, setMenuClicked] = useState(false)
+
+  const toggleSideMenu = () => {
+    setIsSideMenuOpen(!isSideMenuOpen)
+    setMenuName('menu')
+    setHovered(false)
+    setTimeout(
+      () => {
+        setMenuClicked(false)
+      },
+      menuClicked ? 1000 : 1200,
+    )
+  }
+
+  const handleClickMenu = () => {
+    setMenuName('menu')
+    setMenuClicked(true)
+    setTimeout(() => {
+      toggleSideMenu()
+    }, 1000)
+  }
+
+  useEffect(() => {
+    const apiUrl = 'https://api.career-up.live:8080/mypage'
+    const token = localStorage.getItem('token')
+
+    if (token) {
+      setIsLoggedIn(true)
+      const requestConfig = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+
+      axios
+        .get(apiUrl, requestConfig)
+        .then((response) => {
+          setRoleType(response.data.roleType)
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+    }
+  }, [])
 
   return (
     <Flex
       backgroundColor={'black'}
       justifyContent={'space-between'}
       alignItems={'center'}
-      height={{ base: '40px', md: '50px' }}
-      padding={'10px'}
+      height={{ base: '40px', md: '60px' }}
+      padding={'15px'}
+      position={'sticky'}
+      top={'0'}
+      zIndex={999}
     >
-      <Flex>
-        <Logo width={60} />
-      </Flex>
-
+      <Link href="/" scroll={false}>
+        <Flex>
+          <Logo width={60} />
+        </Flex>
+      </Link>
       <Flex
         justifyContent={'space-evenly'}
         width={'300px'}
         display={{ base: 'none', md: 'flex' }}
       >
-        <Text variant="smallBold" color={'white'}>
-          멘토 찾기
-        </Text>
-
-        <Text variant="smallBold" color={'white'}>
-          나의 채팅
-        </Text>
-
-        <Text variant="smallBold" color={'white'}>
-          로그인
-        </Text>
+        <Link href="/search" scroll={false}>
+          <Text variant="smallBold" color={'white'}>
+            멘토 찾기
+          </Text>
+        </Link>
+        <Link
+          href={roleType === 'WORKER' ? '/workerChat' : '/seekerChat'}
+          scroll={false}
+        >
+          <Text variant="smallBold" color={'white'}>
+            나의 채팅
+          </Text>
+        </Link>
+        {isLoggedIn ? (
+          <Link
+            href={roleType === 'WORKER' ? '/workers/edit' : '/seekers/edit'}
+            scroll={false}
+          >
+            <Text variant="smallBold" color={'white'}>
+              마이페이지
+            </Text>
+          </Link>
+        ) : (
+          <Link href="/login" scroll={false}>
+            <Text variant="smallBold" color={'white'}>
+              로그인
+            </Text>
+          </Link>
+        )}
       </Flex>
 
-      {/* <Flex>
-        <Icon iconName="menu" width={28} height={28} />
-      </Flex> */}
       <Flex
         onMouseEnter={() => {
           setHovered(true)
@@ -67,18 +135,36 @@ const Header = () => {
         <div
           style={{
             position: 'absolute',
-            width: `${isHovered ? '40px' : '0'}`,
-            height: `${isHovered ? '40px' : '0'}`,
+            width: `${
+              isHovered && !menuClicked ? '50px' : menuClicked ? '500vw' : '0'
+            }`,
+            height: `${
+              isHovered && !menuClicked ? '50px' : menuClicked ? '500vw' : '0'
+            }`,
             borderRadius: '50%',
             backgroundColor: 'white',
-            zIndex: 1,
+            zIndex: 100,
             pointerEvents: 'none',
-            transition: '0.6s',
+            transition: `${!menuClicked ? '0.6s' : '1.4s'}`,
           }}
         />
-        <Box zIndex={2}>
-          <Icon iconName={menuName} width={28} height={28} />
-        </Box>
+        <Flex zIndex={101}>
+          <div>
+            <Icon
+              iconName={isSideMenuOpen ? 'close' : menuName}
+              width={28}
+              height={28}
+              onClick={handleClickMenu}
+            />
+          </div>
+        </Flex>
+
+        <SideMenu
+          closeMenu={toggleSideMenu}
+          isLoggedIn={isLoggedIn}
+          roleType={roleType}
+          isSideMenuOpen={isSideMenuOpen}
+        />
       </Flex>
     </Flex>
   )

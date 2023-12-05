@@ -28,7 +28,6 @@ const Login = () => {
         setErrorMessage('이메일 또는 비밀번호가 올바르지 않습니다.')
       }
     } catch (error) {
-      console.error('로그인 중 오류 발생:', error)
       setErrorMessage('로그인 중 오류가 발생했습니다.')
     }
   }

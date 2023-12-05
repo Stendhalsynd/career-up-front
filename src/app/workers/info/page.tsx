@@ -144,7 +144,8 @@ const WorkerMyPageInfo = () => {
               backgroundColor={'white'}
               alignItems={'center'}
               alignSelf={'center'}
-              maxWidth={'460px'}
+              width={{ base: '460px', md: '600px' }}
+              //maxWidth={'460px'}
             >
               <Picture pictureName="vector" width={27} />
               <Text variant="smallBold">

@@ -120,7 +120,7 @@ const SeekerChatInfo = () => {
   // 챗 인포 슬라이드 설정
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 3, // 한 화면에 보여질 컨텐츠 개수
     slidesToScroll: 1, // 스크롤 한 번에 움직일 컨텐츠 개수
@@ -142,7 +142,7 @@ const SeekerChatInfo = () => {
 
   const todayChatInfoSettings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow:
       todayChatInfoData && todayChatInfoData.length >= 3

@@ -46,7 +46,8 @@ export type ChatInfoDataType = {
 const CustomSlider = styled(Slider)`
   overflow-x: auto;
   overflow-y: hidden;
-  width: 100%;
+  width: 100vw;
+  //overflow: hidden;
   scroll-snap-type: x mandatory;
   max-width: 900px;
 
@@ -72,7 +73,7 @@ const CustomSlider = styled(Slider)`
 const TodayChatInfoSlider = styled(Slider)`
   overflow-x: auto;
   overflow-y: hidden;
-
+  width: 100%;
   scroll-snap-type: x mandatory;
   max-width: 1000px;
 
@@ -132,7 +133,7 @@ const ChatInfo = () => {
   // 챗 인포 슬라이드 설정
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 3, // 한 화면에 보여질 컨텐츠 개수
     slidesToScroll: 1, // 스크롤 한 번에 움직일 컨텐츠 개수
@@ -154,7 +155,7 @@ const ChatInfo = () => {
 
   const todayChatInfoSettings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow:
       todayChatInfoData && todayChatInfoData.length >= 3
@@ -196,7 +197,7 @@ const ChatInfo = () => {
               </Text>
             </Label>
           </Flex>
-          <Flex justifyContent={'center'} width="100%">
+          <Flex justifyContent={'center'} width="100%" zIndex={3}>
             <CustomSlider {...settings}>
               {chatInfoData?.map(
                 ({ id, status, date, time, otherNickname }) => (
@@ -260,11 +261,44 @@ const ChatInfo = () => {
         </Flex>
       </Flex>
 
-      <Flex justifyContent="flex-end" marginTop="-200px">
-        <Picture width={imageWidth} pictureName="cube" />
-      </Flex>
-      <Flex marginTop="-400px" marginLeft="20px">
-        <Picture width={180} pictureName="roundcube1" />
+      <Flex
+        width={'100%'}
+        height={'fit-content'}
+        minHeight={'190px'}
+        position={'relative'}
+        flexDirection={'column'}
+        justifyContent={'center'}
+        alignItems={'center'}
+      >
+        <Flex>
+          <Flex
+            maxWidth={'1000px'}
+            height={'fit-content'}
+            minHeight={'190px'}
+            position={'relative'}
+            flexDirection={'column'}
+            justifyContent={'center'}
+            width={{ base: '450px', sm: '768px', md: '901px' }}
+            style={{ transition: '1s' }}
+          >
+            <Box
+              position={'absolute'}
+              right={{ base: '-100px', sm: '-200px ' }}
+              bottom={{ base: '300px', sm: '400px ' }}
+              width={{ base: '200px', sm: '300px ' }}
+            >
+              <Picture pictureName="cube" width={imageWidth} />
+            </Box>
+            <Box
+              position={'absolute'}
+              left={{ base: '-60px', sm: '-180px' }}
+              bottom={'80px'}
+              width={{ base: '160px', sm: '220px ' }}
+            >
+              <Picture pictureName="roundcube2" width={imageWidth} />
+            </Box>
+          </Flex>
+        </Flex>
       </Flex>
     </Box>
   )

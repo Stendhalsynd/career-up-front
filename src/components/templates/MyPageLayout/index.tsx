@@ -1,5 +1,5 @@
 import Picture from 'components/atoms/Picture/index.tsx'
-import { Box } from 'components/layout/index.ts'
+import { Box, Flex } from 'components/layout/index.ts'
 import Layout from 'components/templates/Layout/index.tsx'
 
 interface MyPageLayoutProps {
@@ -10,27 +10,48 @@ const MyPageLayout = ({ children }: MyPageLayoutProps) => {
   return (
     <>
       <Layout>
-        <Box width={'100%'} position={'relative'} overflow={'hidden'}>
-          <Box position={'absolute'} top={'367px'} left={'-10px'}>
-            <Picture pictureName="supertoroid2" width={143} />
-          </Box>
-          <Box
-            position={'absolute'}
-            right={'-50px'}
-            display={{ base: 'none', sm: 'block' }}
+        <Flex
+          width={'100%'}
+          height={'fit-content'}
+          minHeight={'190px'}
+          position={'relative'}
+          flexDirection={'column'}
+          justifyContent={'center'}
+          alignItems={'center'}
+        >
+          <Flex
+            width={{ base: '95%', sm: '98%', md: '100%' }}
+            height={'fit-content'}
+            minHeight={'190px'}
+            flexDirection={'column'}
+            justifyContent={'center'}
+            position={'relative'}
+            overflow={'hidden'}
+            style={{ transition: '1s' }}
           >
-            <Picture pictureName="cube" width={252} />
-          </Box>
-          <Box
-            position={'absolute'}
-            right={'50px'}
-            top={'500px'}
-            display={{ base: 'none', sm: 'block' }}
-          >
-            <Picture pictureName="supertoroid1" width={252} />
-          </Box>
-          {children}
-        </Box>
+            <Box position={'absolute'} top={'367px'} left={'-10px'}>
+              <Picture pictureName="supertoroid2" width={143} />
+            </Box>
+            <Box
+              position={'absolute'}
+              right={'-50px'}
+              bottom={'1600px'}
+              display={{ base: 'none', sm: 'block' }}
+            >
+              <Picture pictureName="cube" width={252} />
+            </Box>
+            <Box
+              position={'absolute'}
+              right={'50px'}
+              top={'500px'}
+              width={{ sm: '200px', md: '252px' }}
+              display={{ base: 'none', sm: 'block' }}
+            >
+              <Picture pictureName="supertoroid1" width={252} />
+            </Box>
+            {children}
+          </Flex>
+        </Flex>
       </Layout>
     </>
   )

@@ -72,6 +72,7 @@ const WorkerInfoCard = (props: any) => {
       const response = await axios.get(url)
       const data = response.data
       setWorkerData(data)
+      console.log(data)
     } catch (error) {
       console.error('사용자 데이터를 가져오는 중  오류 발생: ', error)
     }

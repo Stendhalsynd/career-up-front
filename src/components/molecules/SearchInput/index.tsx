@@ -8,7 +8,12 @@ import Text from 'components/atoms/Text'
 import Flex from 'components/layout/Flex'
 import RequestButton from 'components/molecules/Button/RequestButton.tsx'
 import Input from 'components/molecules/Input/index.tsx'
-import { companyInputState, modalState, skillInputState } from 'utils/state.ts'
+import {
+  companyInputState,
+  modalState,
+  skillInputState,
+  skillModalState,
+} from 'utils/state.ts'
 
 export type SearchInputVariant =
   | 'primarySmall'
@@ -117,7 +122,7 @@ const PrimaryLargeSearchInput = () => {
 const SkillSmallSearchInput = () => {
   const { register, handleSubmit } = useForm({ mode: 'onBlur' })
 
-  const setSkillSearchInput = useSetRecoilState(skillInputState)
+  const setSkillSearchInput = useSetRecoilState(skillModalState)
 
   const onSubmit = (data: any) => {
     setSkillSearchInput(data['SearchInput/skill'])
@@ -149,7 +154,7 @@ const SkillSmallSearchInput = () => {
 }
 
 const SkillLargeSearchInput = () => {
-  const { register, handleSubmit } = useForm({ mode: 'onBlur' })
+  const { register, handleSubmit } = useForm()
 
   const setSkillSearchInput = useSetRecoilState(skillInputState)
 

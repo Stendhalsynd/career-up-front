@@ -1,6 +1,12 @@
 'use client'
 import axios from 'axios'
-import React, { useEffect, useState, useRef, ReactNode } from 'react'
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  ReactNode,
+  useCallback,
+} from 'react'
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Avatar, Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
@@ -44,10 +50,11 @@ const WorkerMyPageEdit = () => {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const skillInputRef = useRef<HTMLInputElement>(null)
   const [selectedTags, setSelectedTags] = useState<string[]>([])
+  const [selectedSkills, setSelectedSkills] = useState<string[]>([])
   const [skillInput, setSkillInput] = useState<string>('')
   const [contents, setContents] = useState('')
 
-  const fetchUserData = async () => {
+  const fetchUserData = useCallback(async () => {
     try {
       const response = await axios.get(
         'https://api.career-up.live:8080/mypage',
@@ -61,13 +68,13 @@ const WorkerMyPageEdit = () => {
       setProfileImageUrl(response.data.profile)
       setContents(response.data.contents || '')
       setEditedPassword(response.data.password)
-      setSkillInput(response.data.skills)
+      setSelectedSkills(response.data.skills)
       setSelectedTags(response.data.fields)
       setEditedCompany(response.data.company)
     } catch (error) {
       console.error('[ERROR] 사용자 데이터를 가져오는 중 오류 발생:', error)
     }
-  }
+  }, [])
 
   const handleSaveClick = async () => {
     try {
@@ -75,7 +82,7 @@ const WorkerMyPageEdit = () => {
         email: userData?.email,
         password: editedPassword,
         fields: selectedTags,
-        skills: selectedTags,
+        skills: selectedSkills,
         contents: contents,
         company: editedCompany,
       }
@@ -113,8 +120,9 @@ const WorkerMyPageEdit = () => {
       })
 
       if (response.data === true) {
-        console.log('사용자 데이터가 성공적으로 업데이트되었습니다.')
-        window.location.reload()
+        setTimeout(() => {
+          window.location.href = '/'
+        }, 1000)
       } else {
         console.error('사용자 데이터 업데이트 실패:', response.data)
       }
@@ -152,6 +160,16 @@ const WorkerMyPageEdit = () => {
     }
   }
 
+  const handleSkillClick = (skill: string) => {
+    if (selectedSkills.includes(skill)) {
+      setSelectedSkills(
+        selectedSkills.filter((selectedSkill) => selectedSkill !== skill),
+      )
+    } else {
+      setSelectedSkills([...selectedSkills, skill])
+    }
+  }
+
   const handleSkillInputChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
@@ -162,8 +180,8 @@ const WorkerMyPageEdit = () => {
     event: React.KeyboardEvent<HTMLInputElement>,
   ) => {
     if (event.key === 'Enter' && skillInput.trim() !== '') {
-      setSelectedTags([...selectedTags, skillInput.trim()])
       setSkillInput('')
+      setSelectedSkills([...selectedSkills, skillInput.trim()])
       skillInputRef.current!.value = ''
     }
   }
@@ -286,7 +304,6 @@ const WorkerMyPageEdit = () => {
                   text="소속"
                   placeholder={userData.company || '회사 정보 없음'}
                   readOnly={true}
-                  // onChange={(e) => setEditedCompany(e.target.value)}
                 />
               }
             </Flex>
@@ -339,12 +356,12 @@ const WorkerMyPageEdit = () => {
                 />
 
                 <Flex gap={'7px'} flexWrap={'wrap'}>
-                  {selectedTags.map((tag) => (
+                  {selectedSkills.map((tag) => (
                     <IntroTagButton
                       key={tag}
                       tag={tag}
                       variant="white"
-                      onClick={() => handleTagClick(tag)}
+                      onClick={() => handleSkillClick(tag)}
                     />
                   ))}
                 </Flex>

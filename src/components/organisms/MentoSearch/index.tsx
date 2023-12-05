@@ -1,17 +1,29 @@
+import { useSetRecoilState } from 'recoil'
 import { Box, Flex } from 'components/layout/index.ts'
 import { DropDownButton, SearchInput } from 'components/molecules/index.ts'
 import { Desktop, Mobile, Tablet } from 'lib/useMediaQuery.tsx'
+import { fieldInputState } from 'utils/state.ts'
 
 const MentoSearch = () => {
+  const setFieldInputState = useSetRecoilState(fieldInputState)
+
+  const handleDropDownChange = (selectedOption: any) => {
+    setFieldInputState(selectedOption.label)
+  }
+
   return (
     <Box>
+      {/* 모바일 */}
       <Mobile>
         <SearchInput variant="primarySmall" />
       </Mobile>
 
+      {/* 태블릿 */}
       <Tablet>
         <SearchInput variant="primarySmall" />
       </Tablet>
+
+      {/* 데스크탑 */}
       <Desktop>
         <Flex
           backgroundColor={'white'}
@@ -29,7 +41,6 @@ const MentoSearch = () => {
           <Box>
             <DropDownButton
               options={[
-                { value: 'all', label: '' },
                 { value: 'frontend', label: '프론트엔드' },
                 { value: 'backend', label: '백엔드' },
                 { value: 'andriod', label: '안드로이드' },
@@ -39,6 +50,7 @@ const MentoSearch = () => {
               ]}
               hasError={false}
               placeholder="직무"
+              onChange={handleDropDownChange}
             />
           </Box>
           <Box paddingLeft={'11px'}>

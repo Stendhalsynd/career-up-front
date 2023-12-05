@@ -79,7 +79,6 @@ const FilterModal = () => {
           <Flex width={'90%'} flexDirection={'column'} gap={'10px'}>
             <DropDownButton
               options={[
-                { value: 'all', label: '' },
                 { value: 'frontend', label: '프론트엔드' },
                 { value: 'backend', label: '백엔드' },
                 { value: 'andriod', label: '안드로이드' },
@@ -91,25 +90,6 @@ const FilterModal = () => {
               placeholder="직무"
             />
             <SearchInput variant="skillSmall" />
-
-            {/* <Flex
-                flexDirection={'row'}
-                width={'100%'}
-                borderBottom={'1px solid black'}
-                paddingBottom={'6px'}
-                alignItems={'center'}
-              >
-                <Text fontSize={'extraSmall'} color={'black'}>
-                  기술 스택
-                </Text>
-                <Flex marginLeft={'15px'}>
-                  <Input
-                    color={'gray'}
-                    placeholder="직무 스킬을 검색해보세요"
-                    {...register('SearchInput/skill')}
-                  ></Input>
-                </Flex>
-              </Flex> */}
           </Flex>
           <Flex width={'85%'}>
             <RequestButton onClick={handleApplyFilter} type="submit">

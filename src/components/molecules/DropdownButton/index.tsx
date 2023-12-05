@@ -81,14 +81,7 @@ const DropdownItem = (props: DropdownItemProps) => {
   )
 }
 
-type LabelTag =
-  | '프론트엔드'
-  | '백엔드'
-  | '안드로이드'
-  | 'IOS'
-  | '게임'
-  | 'AI'
-  | ''
+type LabelTag = '프론트엔드' | '백엔드' | '안드로이드' | 'IOS' | '게임' | 'AI'
 
 export interface DropdownItem {
   value: string | number | null

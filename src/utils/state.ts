@@ -11,7 +11,7 @@ export const myNameState = atom({
   default: '행복한 다람쥐',
 })
 
-// 모달 열고 닫는 상태 조절
+// 모달 열고 닫는 상태 조절하기 위한 state
 export const modalState = atom({
   key: 'modalState',
   // default: 모달이 닫힌 상태
@@ -44,6 +44,11 @@ export const skillInputState = atom({
 export const fieldInputState = atom<DropdownItem | string | undefined>({
   key: 'fieldInputState',
   default: '',
+})
+
+export const countDataState = atom({
+  key: 'countDataState',
+  default: 0,
 })
 
 // 재직자 리스트들 중 하나를 선택했을 때, 닉네임 정보 불러올 때  사용

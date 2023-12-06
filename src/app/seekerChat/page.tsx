@@ -98,8 +98,6 @@ const SeekerChatInfo = () => {
     url: '/chats',
   } as GetRequest)
 
-  console.log('data : ', data)
-
   useEffect(() => {
     // 챗 인포 데이터
     setChatData(data)

@@ -57,6 +57,16 @@ const MeetingApply = () => {
 
   const handleReservationClick = async () => {
     try {
+      if (!selectedDate) {
+        console.warn('[WARN] 예약을 요청하기 전에 날짜를 선택해주세요.')
+        return
+      }
+
+      if (!selectedTime) {
+        console.warn('[WARN] 예약을 요청하기 전에 시간을 선택해주세요.')
+        return
+      }
+
       const data = {
         date: selectedDate,
         time: selectedTime,

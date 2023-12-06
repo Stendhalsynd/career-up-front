@@ -13,7 +13,7 @@ import { Header, Label } from 'components/molecules/index.ts'
 import AlertComponent from 'components/organisms/AlertContainer/index.tsx'
 import ChatInfoCard from 'components/organisms/ChatInfoCard/index.tsx'
 import { TodayChatInfo } from 'components/organisms/index.ts'
-import useRequest, { GetRequest } from 'lib/useRequest.ts' // useRequest 파일 경로에 맞게 수정하세요
+import useRequest, { GetRequest } from 'lib/useRequest.ts'
 
 const useWidth = () => {
   const [width, setWidth] = React.useState(0)
@@ -61,7 +61,7 @@ const useWidth = () => {
 const TodayChatInfoSlider = styled(Slider)`
   overflow-x: auto;
   overflow-y: hidden;
-
+  width: 100%;
   scroll-snap-type: x mandatory;
   max-width: 1000px;
 
@@ -251,12 +251,44 @@ const SeekerChatInfo = () => {
           </Flex>
         </Flex>
       </Flex>
-
-      <Flex justifyContent="flex-end" marginTop="-200px">
-        <Picture width={imageWidth} pictureName="cube" />
-      </Flex>
-      <Flex marginTop="-400px" marginLeft="20px">
-        <Picture width={180} pictureName="roundcube1" />
+      <Flex
+        width={'100%'}
+        height={'fit-content'}
+        minHeight={'190px'}
+        position={'relative'}
+        flexDirection={'column'}
+        justifyContent={'center'}
+        alignItems={'center'}
+      >
+        <Flex>
+          <Flex
+            maxWidth={'1000px'}
+            height={'fit-content'}
+            minHeight={'190px'}
+            position={'relative'}
+            flexDirection={'column'}
+            justifyContent={'center'}
+            width={{ base: '450px', sm: '768px', md: '901px' }}
+            style={{ transition: '1s' }}
+          >
+            <Box
+              position={'absolute'}
+              right={{ base: '-100px', sm: '-200px ' }}
+              bottom={{ base: '300px', sm: '400px ' }}
+              width={{ base: '200px', sm: '300px ' }}
+            >
+              <Picture pictureName="cube" width={imageWidth} />
+            </Box>
+            <Box
+              position={'absolute'}
+              left={{ base: '-60px', sm: '-180px' }}
+              bottom={'80px'}
+              width={{ base: '160px', sm: '220px ' }}
+            >
+              <Picture pictureName="roundcube2" width={imageWidth} />
+            </Box>
+          </Flex>
+        </Flex>
       </Flex>
     </Box>
   )

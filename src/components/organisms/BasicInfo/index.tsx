@@ -6,6 +6,7 @@ import { Avatar, Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import SelectButton from 'components/molecules/Button/SelectButton.tsx'
 import { InfoBlock } from 'components/molecules/Input/index.tsx'
+import { successAlert, warningAlert } from 'lib/sweetAlert.tsx'
 
 interface User {
   profile: string
@@ -50,7 +51,7 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
     try {
       const data = {
         email: userData?.email,
-        password: editedPassword,
+        password: editedPassword || '',
       }
       const formData = new FormData()
       formData.append(
@@ -61,13 +62,11 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
       if (fileInputRef.current && fileInputRef.current.files) {
         if (!profileImage) {
           formData.append('profile', '') // 빈 값으로 설정하거나 원하는 값으로 설정 가능
-          console.log('Profile Image not modified')
         }
       }
 
       if (profileImage) {
         formData.append('profile', profileImage)
-        console.log('Profile Image to be Uploaded:', profileImage)
       }
 
       const apiUrl = 'https://api.career-up.live:8080/mypage'
@@ -80,17 +79,40 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
       if (userData?.roleType?.toUpperCase() === 'WORKER') {
         // roleType이 'worker'이면 PUT 메서드 사용
         await axios.put(apiUrl, formData, requestConfig)
+        successAlert(
+          '수정 완료',
+          '사용자 데이터가 성공적으로 업데이트되었습니다.',
+          '확인',
+        ).then(() => {
+          window.location.href = '/'
+        })
       } else if (userData?.roleType?.toUpperCase() === 'SEEKER') {
         // roleType이 'seeker'이면 PATCH 메서드 사용
         const response = await axios.patch(apiUrl, formData, requestConfig)
         if (response.data === true) {
-          window.location.reload()
+          successAlert(
+            '수정 완료',
+            '사용자 데이터가 성공적으로 업데이트되었습니다.',
+            '확인',
+          ).then(() => {
+            window.location.href = '/'
+          })
+        } else {
+          warningAlert(
+            '수정 실패',
+            '사용자 데이터 업데이트 중 오류가 발생하였습니다.',
+            '확인',
+          )
         }
       }
-
-      console.log('사용자 데이터가 성공적으로 업데이트되었습니다:')
+      //console.log('사용자 데이터가 성공적으로 업데이트되었습니다:')
     } catch (error) {
-      console.error('[ERROR] 사용자 데이터 업데이트 중 오류 발생:', error)
+      // console.error('[ERROR] 사용자 데이터 업데이트 중 오류 발생:', error)
+      warningAlert(
+        '수정 실패',
+        '사용자 데이터 업데이트 중 오류가 발생하였습니다.',
+        '확인',
+      )
     }
   }
 
@@ -225,7 +247,6 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
                 text="소속"
                 placeholder={userData.company || '회사 정보 없음'}
                 readOnly={true}
-                // onChange={(e) => setEditedCompany(e.target.value)}
               />
             }
             <Flex

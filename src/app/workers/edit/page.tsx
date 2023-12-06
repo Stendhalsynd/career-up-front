@@ -16,6 +16,7 @@ import { IntroTagButton } from 'components/molecules/Button/TagButton.tsx'
 import Input, { InfoBlock } from 'components/molecules/Input/index.tsx'
 import { RequestButton, TextArea } from 'components/molecules/index.ts'
 import MyPageLayout from 'components/templates/MyPageLayout/index.tsx'
+import { successAlert, warningAlert } from 'lib/sweetAlert.tsx'
 
 interface User {
   profile: string
@@ -96,13 +97,11 @@ const WorkerMyPageEdit = () => {
       if (fileInputRef.current && fileInputRef.current.files) {
         if (!profileImage) {
           formData.append('profile', '') // 빈 값으로 설정하거나 원하는 값으로 설정 가능
-          console.log('Profile Image not modified')
         }
       }
 
       if (profileImage) {
         formData.append('profile', profileImage)
-        console.log('Profile Image to be Uploaded:', profileImage)
       }
 
       const apiUrl = 'https://api.career-up.live:8080/mypage'
@@ -121,14 +120,27 @@ const WorkerMyPageEdit = () => {
       })
 
       if (response.data === true) {
-        setTimeout(() => {
+        successAlert(
+          '수정 완료',
+          '사용자 데이터가 성공적으로 업데이트되었습니다.',
+          '확인',
+        ).then(() => {
           window.location.href = '/'
-        }, 1000)
+        })
       } else {
-        console.error('사용자 데이터 업데이트 실패:', response.data)
+        warningAlert(
+          '수정 실패',
+          '사용자 데이터 업데이트 중 오류가 발생하였습니다.',
+          '확인',
+        )
       }
     } catch (error) {
-      console.error('사용자 데이터 업데이트 중 오류 발생:', error)
+      //console.error('사용자 데이터 업데이트 중 오류 발생:', error)
+      warningAlert(
+        '수정 실패',
+        '사용자 데이터 업데이트 중 오류가 발생하였습니다.',
+        '확인',
+      )
     }
   }
 

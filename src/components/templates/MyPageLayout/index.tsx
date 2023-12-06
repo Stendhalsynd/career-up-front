@@ -20,7 +20,7 @@ const MyPageLayout = ({ children }: MyPageLayoutProps) => {
           alignItems={'center'}
         >
           <Flex
-            width={{ base: '95%', sm: '98%', md: '100%' }}
+            width={{ base: '95%', sm: '99%', md: '100%' }}
             height={'fit-content'}
             minHeight={'190px'}
             flexDirection={'column'}
@@ -34,8 +34,9 @@ const MyPageLayout = ({ children }: MyPageLayoutProps) => {
             </Box>
             <Box
               position={'absolute'}
-              right={'-50px'}
+              right={{ sm: '-60px', md: '100px' }}
               bottom={'1600px'}
+              width={{ base: '200px', md: '252px' }}
               display={{ base: 'none', sm: 'block' }}
             >
               <Picture pictureName="cube" width={252} />

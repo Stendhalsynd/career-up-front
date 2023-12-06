@@ -46,7 +46,11 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem('token')
     setIsLoggedIn(false)
-    successAlert('로그아웃 성공', '로그아웃이 완료되었습니다.', '확인')
+    successAlert('로그아웃 성공', '로그아웃이 완료되었습니다.', '확인').then(
+      () => {
+        window.location.href = '/'
+      },
+    )
   }
 
   useEffect(() => {

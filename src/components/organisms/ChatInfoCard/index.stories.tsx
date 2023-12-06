@@ -9,11 +9,18 @@ const meta: Meta<typeof ChatInfoCard> = {
   component: ChatInfoCard,
   tags: ['autodocs'],
   argTypes: {
-    isApproved: {
-      control: { type: 'boolean' },
-      description: '나의 커피챗 리스트 카드',
+    status: {
+      control: { type: 'string' },
+      description: '상태',
       table: {
-        type: { sumary: 'boolean' },
+        type: { sumary: 'APPROVED, WAITING, REJECTED' },
+      },
+    },
+    role: {
+      control: { type: 'string' },
+      description: '나의 역할',
+      table: {
+        type: { sumary: 'string' },
       },
     },
   },
@@ -24,7 +31,8 @@ type Story = StoryObj<typeof ChatInfoCard>
 
 export const Default: Story = {
   args: {
-    isApproved: true,
+    status: 'APPROVED',
+    role: 'WORKER',
   },
   decorators: [
     (Story) => (
@@ -37,7 +45,22 @@ export const Default: Story = {
 
 export const WithoutStatus: Story = {
   args: {
-    isApproved: false,
+    status: 'WAITING',
+    role: 'SEEKER',
+  },
+  decorators: [
+    (Story) => (
+      <ThemeProvider theme={theme}>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
+}
+
+export const APPROVED: Story = {
+  args: {
+    status: 'APPROVED',
+    role: 'SEEKER',
   },
   decorators: [
     (Story) => (

@@ -17,14 +17,14 @@ interface InfoItemProps {
   text: string
   color?: string
 }
-const InfoItem = (props: InfoItemProps) => {
+function InfoItem(props: InfoItemProps) {
   return (
-    <Flex gap={'12px'}>
-      <Text variant={'extraSmall'} color={'gray'}>
+    <Flex gap="12px">
+      <Text variant="extraSmall" color="gray">
         {props.tag}
       </Text>
       <Text
-        variant={'extraSmallBold'}
+        variant="extraSmallBold"
         color={props.color ? props.color : 'darkGray'}
       >
         {props.text}
@@ -33,7 +33,7 @@ const InfoItem = (props: InfoItemProps) => {
   )
 }
 
-const WorkerMyPageInfo = () => {
+function WorkerMyPageInfo() {
   const selectedNickname = useRecoilValue(selectedNicknameState)
 
   const [workerData, setWorkerData] = useState<any>({})
@@ -63,19 +63,19 @@ const WorkerMyPageInfo = () => {
 
   return (
     <Layout>
-      <Flex width={{ base: '100%', md: '100vw' }} justifyContent={'center'}>
+      <Flex width={{ base: '100%', md: '100vw' }} justifyContent="center">
         <Flex
-          width={'100%'}
+          width="100%"
           flexDirection={{ base: 'column', sm: 'row' }}
-          maxWidth={'1200px'}
+          maxWidth="1200px"
         >
           {/* 상단 */}
           <Flex
-            backgroundColor={'white'}
+            backgroundColor="white"
             padding={{ base: '40px 20px', sm: '40px 46px' }}
             gap={{ base: '18px', sm: '25px' }}
             justifyContent={{ base: 'center', sm: 'flex-start' }}
-            alignItems={'center'}
+            alignItems="center"
             flexDirection={{ base: 'row', sm: 'column' }}
             height={{ base: 'fit-content', sm: '100vh' }}
             minWidth={{ base: 'fit-content', sm: '300px' }}
@@ -102,39 +102,32 @@ const WorkerMyPageInfo = () => {
                 </Box>
               )}
             </Flex>
-            <Flex flexDirection={'column'} gap={{ base: '10px', sm: '15px' }}>
-              <Text variant={'mediumBold'} textAlign="center">
+            <Flex flexDirection="column" gap={{ base: '10px', sm: '15px' }}>
+              <Text variant="mediumBold" textAlign="center">
                 {workerData.nickname}
               </Text>
-              <InfoItem
-                tag={'현직'}
-                text={workerData.company}
-                color="primary"
-              />
-              <InfoItem
-                tag={'직군'}
-                text={workerData.fields?.join(', ') || ''}
-              />
+              <InfoItem tag="현직" text={workerData.company} color="primary" />
+              <InfoItem tag="직군" text={workerData.fields?.join(', ') || ''} />
             </Flex>
             <Flex display={{ base: 'none', sm: 'flex' }}>
               <HyperLinkButton
                 to="/meeting"
-                width={'fit-content'}
+                width="fit-content"
                 contents="멘토링 신청"
-                hasBorder={true}
+                hasBorder
               />
             </Flex>
-            <Flex display={{ base: 'none', sm: 'flex' }} marginTop={'100px'}>
+            <Flex display={{ base: 'none', sm: 'flex' }} marginTop="100px">
               <Picture pictureName="computer" width={235} />
             </Flex>
           </Flex>
           {/* 하단 */}
           <Flex
-            flexDirection={'column'}
+            flexDirection="column"
             padding={{ base: '20px 25px', sm: '30px 40px', md: '0' }}
-            gap={'29px'}
+            gap="29px"
             margin={{ base: '0', md: '30px' }}
-            alignItems={'center'}
+            alignItems="center"
           >
             <Flex
               border={`1px solid ${theme.colors.primary}`}
@@ -155,34 +148,34 @@ const WorkerMyPageInfo = () => {
               </Text>
             </Flex>
             <Flex
-              flexDirection={'column'}
-              alignItems={'flex-start'}
+              flexDirection="column"
+              alignItems="flex-start"
               gap={{ base: '10px', sm: '15px' }}
-              width={'100%'}
-              maxWidth={'460px'}
+              width="100%"
+              maxWidth="460px"
             >
-              <Flex flexDirection={'column'} gap={{ base: '10px', sm: '15px' }}>
+              <Flex flexDirection="column" gap={{ base: '10px', sm: '15px' }}>
                 <Text
                   fontSize={{ base: 'extraSmall', sm: 'small' }}
-                  fontWeight={'700'}
-                  color={'primary'}
+                  fontWeight="700"
+                  color="primary"
                 >
                   커리업 파트너 {workerData.nickname} 입니다:)
                 </Text>
-                <Text variant="extraSmall" color={'white'}>
+                <Text variant="extraSmall" color="white">
                   {workerData.contents}
                 </Text>
               </Flex>
-              <Flex flexDirection={'column'} gap={{ base: '10px', sm: '15px' }}>
+              <Flex flexDirection="column" gap={{ base: '10px', sm: '15px' }}>
                 <Text
                   fontSize={{ base: 'extraSmall', sm: 'small' }}
-                  fontWeight={'700'}
-                  color={'primary'}
+                  fontWeight="700"
+                  color="primary"
                 >
                   자신있게 설명할 수 있는 분야는
                 </Text>
                 {workerData.skills && (
-                  <Flex gap={'17px'} flexWrap={'wrap'}>
+                  <Flex gap="17px" flexWrap="wrap">
                     {workerData.skills.map((skill: string) => (
                       <SkillTagButton
                         key={skill}
@@ -196,20 +189,20 @@ const WorkerMyPageInfo = () => {
             </Flex>
 
             <Flex
-              justifyContent={'center'}
-              marginTop={'15px'}
+              justifyContent="center"
+              marginTop="15px"
               display={{ base: 'flex', sm: 'none' }}
               onClick={() => {
                 setSelectedNickname(selectedNickname)
               }}
-              alignSelf={'center'}
+              alignSelf="center"
             >
               <HyperLinkButton
                 to="/meeting"
-                width={'60vw'}
-                maxWidth={'300px'}
+                width="60vw"
+                maxWidth="300px"
                 contents="멘토링 신청"
-              ></HyperLinkButton>
+              />
             </Flex>
           </Flex>
         </Flex>

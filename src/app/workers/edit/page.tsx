@@ -81,7 +81,7 @@ const WorkerMyPageEdit = () => {
     try {
       const data = {
         email: userData?.email,
-        password: editedPassword,
+        password: editedPassword || '',
         fields: selectedTags,
         skills: selectedSkills,
         contents: contents,

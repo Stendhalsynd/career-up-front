@@ -24,7 +24,7 @@ const HyperLinkButton: React.FC<HyperLinkButtonProps> = ({
   ...restProps
 }) => {
   return (
-    <Link href={to}>
+    <Link href={to} scroll={false}>
       <Button
         height={'fit-content'}
         fontSize={{ base: '16px', md: '20px' }}

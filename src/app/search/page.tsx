@@ -103,7 +103,7 @@ const WorkerInfoList = () => {
                 justifyContent={'center'}
                 borderRadius="20px"
                 backgroundColor="white"
-                width={{ base: '350px', sm: '700px' }}
+                width={{ base: '300px', sm: '700px' }}
                 height={{ base: '190px', sm: '400px' }}
                 padding="20px"
                 gap={'40px'}

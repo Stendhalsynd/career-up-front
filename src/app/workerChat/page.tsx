@@ -43,31 +43,31 @@ export type ChatInfoDataType = {
 }
 
 // 챗 인포 슬라이드 스타일
-const CustomSlider = styled(Slider)`
-  overflow-x: auto;
-  overflow-y: hidden;
-  width: 100vw;
-  //overflow: hidden;
-  scroll-snap-type: x mandatory;
-  max-width: 900px;
+// const CustomSlider = styled(Slider)`
+//   overflow-x: auto;
+//   overflow-y: hidden;
+//   width: 100vw;
+//   //overflow: hidden;
+//   scroll-snap-type: x mandatory;
+//   max-width: 900px;
 
-  .slick-slide {
-    padding: 0 5px;
-    box-sizing: border-box;
-    scroll-snap-align: center;
-    gap: 20px;
-  }
+//   .slick-slide {
+//     padding: 0 5px;
+//     box-sizing: border-box;
+//     scroll-snap-align: center;
+//     gap: 20px;
+//   }
 
-  .slick-list {
-    transition: transform 0.5s ease;
-  }
+//   .slick-list {
+//     transition: transform 0.5s ease;
+//   }
 
-  .slick-track {
-    display: flex;
-    gap: 20px;
-    max-width: 900px;
-  }
-`
+//   .slick-track {
+//     display: flex;
+//     gap: 20px;
+//     max-width: 900px;
+//   }
+// `
 
 // 투데이챗인포 슬라이드 설정
 const TodayChatInfoSlider = styled(Slider)`
@@ -131,27 +131,27 @@ const ChatInfo = () => {
   })
 
   // 챗 인포 슬라이드 설정
-  const settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 3, // 한 화면에 보여질 컨텐츠 개수
-    slidesToScroll: 1, // 스크롤 한 번에 움직일 컨텐츠 개수
-    responsive: [
-      {
-        breakpoint: 845,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
-  }
+  // const settings = {
+  //   dots: true,
+  //   infinite: false,
+  //   speed: 500,
+  //   slidesToShow: 3, // 한 화면에 보여질 컨텐츠 개수
+  //   slidesToScroll: 1, // 스크롤 한 번에 움직일 컨텐츠 개수
+  //   responsive: [
+  //     {
+  //       breakpoint: 845,
+  //       settings: {
+  //         slidesToShow: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 767,
+  //       settings: {
+  //         slidesToShow: 1,
+  //       },
+  //     },
+  //   ],
+  // }
 
   const todayChatInfoSettings = {
     dots: true,
@@ -197,21 +197,24 @@ const ChatInfo = () => {
               </Text>
             </Label>
           </Flex>
-          <Flex justifyContent={'center'} width="100%" zIndex={3}>
-            <CustomSlider {...settings}>
-              {chatInfoData?.map(
-                ({ id, status, date, time, otherNickname }) => (
-                  <ChatInfoCard
-                    key={id}
-                    id={id}
-                    isApproved={status === 'APPROVED' ? true : false}
-                    dateContent={date}
-                    timeContent={time}
-                    nicknameContent={otherNickname}
-                  />
-                ),
-              )}
-            </CustomSlider>
+          <Flex
+            justifyContent={'center'}
+            width="100%"
+            zIndex={3}
+            maxWidth={'1000px'}
+            flexWrap={'wrap'}
+            gap={'20px'}
+          >
+            {chatInfoData?.map(({ id, status, date, time, otherNickname }) => (
+              <ChatInfoCard
+                key={id}
+                id={id}
+                isApproved={status === 'APPROVED' ? true : false}
+                dateContent={date}
+                timeContent={time}
+                nicknameContent={otherNickname}
+              />
+            ))}
           </Flex>
         </Flex>
 

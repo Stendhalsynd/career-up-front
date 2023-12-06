@@ -143,7 +143,7 @@ const ProcessInfoContainer = () => {
           <Flex flexDirection={'column'} gap={'100px'} alignItems={'center'}>
             <AosContainer dataAos="zoom-in-down">
               {/* 제목 */}
-              <Flex flexDirection="column" gap={'20px'}>
+              <Flex flexDirection="column" gap={'30px'}>
                 <Text
                   className={notable.className}
                   color={'white'}

@@ -16,7 +16,7 @@ const MainBlackBackgroundLayout = ({ children }: ChildrenProps) => {
         {/* 모바일 */}
         <Mobile>
           <Flex
-            width={'100vw'}
+            width={'100%'}
             flexDirection={'column'}
             gap={'350px'}
             padding={'100px calc((100% - 1400px) / 2)'}
@@ -69,7 +69,7 @@ const MainBlackBackgroundLayout = ({ children }: ChildrenProps) => {
         {/* 태블릿 */}
         <Tablet>
           <Flex
-            width={'100vw'}
+            width={'100%'}
             flexDirection={'column'}
             gap={'350px'}
             padding={'100px calc((100% - 1400px) / 2)'}
@@ -122,7 +122,7 @@ const MainBlackBackgroundLayout = ({ children }: ChildrenProps) => {
         {/* 데스크탑 */}
         <Desktop>
           <Flex
-            width={'100vw'}
+            width={'100%'}
             flexDirection={'column'}
             gap={'350px'}
             padding={'100px calc((100% - 1400px) / 2)'}

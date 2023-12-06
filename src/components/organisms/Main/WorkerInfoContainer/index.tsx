@@ -73,26 +73,19 @@ const WorkerInfoContainer = () => {
               </Flex>
             </AosContainer>
 
-            {/* <Flex
-              width={'100%'}
-              paddingRight={'50px'}
-              paddingLeft={'50px'}
-              gap={'50px'}
-              scrollSnapType="x mandatory"
-              overflow={'auto'}
-            > */}
-            <WorkerInfoCardSlider />
-            {/* </Flex> */}
+            <AosContainer dataAos="zoom-in">
+              <WorkerInfoCardSlider />
+            </AosContainer>
           </Flex>
         </Flex>
       </Mobile>
 
       {/* 태블릿 */}
       <Tablet>
-        <Flex width={'100%'} paddingLeft={'50px'}>
+        <Flex width={'100%'}>
           <Flex flexDirection={'column'} gap={'50px'} alignItems={'start'}>
             <AosContainer dataAos="fade-right">
-              <Flex flexDirection="column" gap={'20px'}>
+              <Flex flexDirection="column" gap={'20px'} paddingLeft={'50px'}>
                 <Text
                   className={notable.className}
                   fontSize={'large'}
@@ -113,7 +106,7 @@ const WorkerInfoContainer = () => {
             </AosContainer>
 
             <AosContainer dataAos="fade-right">
-              <Flex flexDirection="column" gap={'20px'}>
+              <Flex flexDirection="column" gap={'20px'} paddingLeft={'50px'}>
                 <Text
                   variant="mediumLargeBold"
                   lineHeight={3}
@@ -151,26 +144,19 @@ const WorkerInfoContainer = () => {
                 </Flex>
               </Flex>
             </AosContainer>
-            {/* <Flex
-              width={'100vw'}
-              gap={'50px'}
-              paddingLeft={'50px'}
-              paddingRight={'50px'}
-              scrollSnapType="x mandatory"
-              overflow={'auto'}
-            > */}
-            <WorkerInfoCardSlider />
-            {/* </Flex> */}
+            <AosContainer dataAos="fade-right">
+              <WorkerInfoCardSlider />
+            </AosContainer>
           </Flex>
         </Flex>
       </Tablet>
 
       {/* 데스크탑 */}
       <Desktop>
-        <Flex width={'100%'} paddingLeft={'50px'}>
+        <Flex width={'100%'} gap={'10px'}>
           <Flex flexDirection={'column'} gap={'50px'} alignItems={'start'}>
             <AosContainer dataAos="fade-right">
-              <Flex flexDirection="column" gap={'20px'}>
+              <Flex flexDirection="column" gap={'20px'} paddingLeft={'50px'}>
                 <Text
                   className={notable.className}
                   fontSize={'large'}
@@ -190,53 +176,55 @@ const WorkerInfoContainer = () => {
               </Flex>
             </AosContainer>
             <AosContainer dataAos="fade-right">
-              <Flex flexDirection="column" gap={'20px'}>
+              <Flex flexDirection="column" gap={'20px'} paddingLeft={'50px'}>
                 <Text
                   variant="mediumLargeBold"
-                  lineHeight={3}
+                  lineHeight={5}
                   color={'white'}
                   textAlign={'left'}
+                  style={{ wordBreak: 'keep-all' }}
                 >
                   실력있는 개발자들이 모였습니다.
                 </Text>
 
-                <Flex justifyContent={'start'}>
+                <Flex
+                  justifyContent={'start'}
+                  flexDirection={'column'}
+                  gap={'13px'}
+                >
                   <Text
                     variant="mediumLargeBold"
                     lineHeight={3}
                     color={'white'}
                     textAlign={'left'}
                   >
-                    나의 고민을 해결해줄 수 있는&nbsp;
+                    나의 고민을 해결해줄 수 있는
                   </Text>
-                  <Text
-                    variant="mediumLargeBold"
-                    lineHeight={3}
-                    color={'primary'}
-                    textAlign={'left'}
-                  >
-                    파트너
-                  </Text>
-                  <Text
-                    variant="mediumLargeBold"
-                    lineHeight={3}
-                    color={'white'}
-                    textAlign={'left'}
-                  >
-                    를 찾아보세요.
-                  </Text>
+                  <Flex>
+                    <Text
+                      variant="mediumLargeBold"
+                      lineHeight={3}
+                      color={'primary'}
+                      textAlign={'left'}
+                    >
+                      파트너
+                    </Text>
+                    <Text
+                      variant="mediumLargeBold"
+                      lineHeight={3}
+                      color={'white'}
+                      textAlign={'left'}
+                    >
+                      를 찾아보세요.
+                    </Text>
+                  </Flex>
                 </Flex>
               </Flex>
             </AosContainer>
-            {/* <Flex
-              width={'100vw'}
-              gap={'50px'}
-              scrollSnapType="x mandatory"
-              overflow={'auto'}
-            > */}
-            <WorkerInfoCardSlider />
-            {/* </Flex> */}
           </Flex>
+          <AosContainer dataAos="fade-left">
+            <WorkerInfoCardSlider />
+          </AosContainer>
         </Flex>
       </Desktop>
     </>

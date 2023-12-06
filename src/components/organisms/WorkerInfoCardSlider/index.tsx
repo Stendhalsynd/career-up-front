@@ -4,8 +4,6 @@ import axios from 'axios'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
 import { useSetRecoilState } from 'recoil'
 import styled from 'styled-components'
 import Picture from 'components/atoms/Picture/index.tsx'
@@ -13,6 +11,8 @@ import { Text } from 'components/atoms/index.ts'
 import { Box, Flex } from 'components/layout/index.ts'
 import { InfoTagButton } from 'components/molecules/Button/TagButton.tsx'
 import { countDataState, selectedNicknameState } from 'utils/state.ts'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 interface WorkerInfoItemProps {
   tag: string
@@ -54,49 +54,62 @@ const getRandomGender = () => {
 
 const CustomSlider = styled(Slider)`
   width: 100vw;
-  scroll-snap-type: x mandatory;
-  overflow: hidden;
-
+  max-width: 1200px;
   .slick-slide {
-    padding: 0 5px;
-    box-sizing: border-box;
-    gap: 60px;
-  }
-
-  .slick-list {
-    transition: transform 1s ease;
-  }
-
-  .slick-track {
     display: flex;
-    gap: 30px;
-    max-width: 260px;
+    box-sizing: border-box;
+    justify-content: center;
   }
 `
 
 const settings = {
+  dots: true,
+  arrows: false,
   infinite: true,
   speed: 2000,
-  slidesToShow: 3, // 한 화면에 보여질 컨텐츠 개수
+  slidesToShow: 4, // 한 화면에 보여질 컨텐츠 개수
   slidesToScroll: 1, // 스크롤 한 번에 움직일 컨텐츠 개수
   autoplay: true,
   responsive: [
     {
-      breakpoint: 845,
+      breakpoint: 600,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 1,
+        slidesToScroll: 1,
       },
     },
     {
-      breakpoint: 767,
+      breakpoint: 800,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 900,
       settings: {
         slidesToShow: 3,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 1000,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 1100,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
       },
     },
   ],
 }
 
-const WorkerInfoCardSlider = () => {
+const WorkerInfoCard = () => {
   // 재직자 데이터 불러오기
   const [workerData, setWorkerData] = useState<WorkerInfo[]>()
   const setCountData = useSetRecoilState(countDataState)
@@ -219,4 +232,4 @@ const formatSkills = (skills: string[]) => {
   }
 }
 
-export default WorkerInfoCardSlider
+export default WorkerInfoCard

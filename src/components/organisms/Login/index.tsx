@@ -7,6 +7,7 @@ import { Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import RequestButton from 'components/molecules/Button/RequestButton.tsx'
 import { HyperLinkButton, Input } from 'components/molecules/index.ts'
+import { successAlert, warningAlert } from 'lib/sweetAlert.tsx'
 
 const Login = () => {
   const [email, setEmail] = useState<string>('')
@@ -23,12 +24,14 @@ const Login = () => {
 
       if (response.data !== 'no') {
         localStorage.setItem('token', response.data)
-        window.location.href = '/'
+        successAlert('로그인 성공', '환영합니다!', '확인').then(() => {
+          window.location.href = '/'
+        })
       } else {
         setErrorMessage('이메일 또는 비밀번호가 올바르지 않습니다.')
       }
     } catch (error) {
-      setErrorMessage('로그인 중 오류가 발생했습니다.')
+      warningAlert('로그인 실패', '로그인 중 오류가 발생했습니다.', '확인')
     }
   }
 

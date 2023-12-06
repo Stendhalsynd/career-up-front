@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { Icon, Logo, Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import SideMenu from 'components/molecules/SideMenu/index.tsx'
+import { successAlert } from 'lib/sweetAlert.tsx'
 
 /**
  * 헤더
@@ -40,6 +41,12 @@ const Header = () => {
     setTimeout(() => {
       toggleSideMenu()
     }, 1000)
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    setIsLoggedIn(false)
+    successAlert('로그아웃 성공', '로그아웃이 완료되었습니다.', '확인')
   }
 
   useEffect(() => {
@@ -84,7 +91,7 @@ const Header = () => {
       </Link>
       <Flex
         justifyContent={'space-evenly'}
-        width={'300px'}
+        width={'400px'}
         display={{ base: 'none', md: 'flex' }}
       >
         <Link href="/search" scroll={false}>
@@ -101,14 +108,24 @@ const Header = () => {
           </Text>
         </Link>
         {isLoggedIn ? (
-          <Link
-            href={roleType === 'WORKER' ? '/workers/edit' : '/seekers/edit'}
-            scroll={false}
-          >
-            <Text variant="smallBold" color={'white'}>
-              마이페이지
+          <>
+            <Link
+              href={roleType === 'WORKER' ? '/workers/edit' : '/seekers/edit'}
+              scroll={false}
+            >
+              <Text variant="smallBold" color={'white'}>
+                마이페이지
+              </Text>
+            </Link>
+            <Text
+              variant="smallBold"
+              color={'white'}
+              onClick={handleLogout}
+              style={{ cursor: 'pointer' }}
+            >
+              로그아웃
             </Text>
-          </Link>
+          </>
         ) : (
           <Link href="/login" scroll={false}>
             <Text variant="smallBold" color={'white'}>

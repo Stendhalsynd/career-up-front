@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
+import { successAlert } from 'lib/sweetAlert.tsx'
 
 interface SideMenuProps {
   closeMenu: () => void
@@ -25,6 +26,15 @@ const SideMenu = ({
       setAnimationActive(false)
     }
   }, [isSideMenuOpen])
+
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    successAlert('로그아웃 성공', '로그아웃이 완료되었습니다.', '확인').then(
+      () => {
+        window.location.reload()
+      },
+    )
+  }
 
   return (
     <Flex
@@ -79,19 +89,31 @@ const SideMenu = ({
           </Text>
         </Link>
         {isLoggedIn ? (
-          <Link
-            href={roleType === 'WORKER' ? '/workers/edit' : '/seekers/edit'}
-            scroll={false}
-          >
+          <>
+            <Link
+              href={roleType === 'WORKER' ? '/workers/edit' : '/seekers/edit'}
+              scroll={false}
+            >
+              <Text
+                variant="smallBold"
+                color={'primary'}
+                fontSize={{ base: 'medium', sm: 'large' }}
+                fontWeight={'900'}
+              >
+                마이페이지
+              </Text>
+            </Link>
             <Text
               variant="smallBold"
               color={'primary'}
               fontSize={{ base: 'medium', sm: 'large' }}
               fontWeight={'900'}
+              onClick={handleLogout}
+              style={{ cursor: 'pointer' }}
             >
-              마이페이지
+              로그아웃
             </Text>
-          </Link>
+          </>
         ) : (
           <Link href="/login" scroll={false}>
             <Text

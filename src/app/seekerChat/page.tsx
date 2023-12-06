@@ -103,7 +103,9 @@ const SeekerChatInfo = () => {
     setChatData(data)
   }, [data])
 
-  const chatInfoData = chatData?.filter((item) => item.status === 'APPROVED')
+  const chatInfoData = chatData?.filter(
+    (item) => item.status === 'APPROVED' || item.status === 'WAITING',
+  )
 
   // 투데이챗인포 데이터
   const today = new Date()

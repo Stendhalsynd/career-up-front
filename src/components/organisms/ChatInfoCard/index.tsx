@@ -1,10 +1,8 @@
 'use client'
 
-import axios from 'axios'
 import React from 'react'
 import { Text } from 'components/atoms/index.ts'
 import { Flex, Box } from 'components/layout/index.ts'
-import SelectButton from 'components/molecules/Button/SelectButton.tsx'
 import StatusButton from 'components/molecules/Button/StatusButton.tsx'
 import Label from 'components/molecules/Label/index.tsx'
 
@@ -45,56 +43,7 @@ const ChatInfoCard: React.FC<ChatInfoCardProps> = ({
   nicknameContent,
   dateContent,
   timeContent,
-  id,
 }) => {
-  const handleApproveChat = async () => {
-    try {
-      const response = await axios({
-        method: 'patch',
-        url: 'https://api.career-up.live:8080/chat-status',
-        data: {
-          id,
-          status: 'APPROVED',
-        },
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-          'Content-Type': 'application/json',
-        },
-      })
-
-      if (response) {
-        console.log('화상채팅 신청을 수락했습니다.')
-        window.location.reload()
-      }
-    } catch (error) {
-      console.error('[ERROR] 화상 채팅 수락 중 오류 발생:', error)
-    }
-  }
-
-  const handleRejectChat = async () => {
-    try {
-      const response = await axios({
-        method: 'patch',
-        url: 'https://api.career-up.live:8080/chat-status',
-        data: {
-          id,
-          status: 'REJECTED',
-        },
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-          'Content-Type': 'application/json',
-        },
-      })
-
-      if (response) {
-        console.log('화상채팅 신청을 거절했습니다.')
-        window.location.reload()
-      }
-    } catch (error) {
-      console.error('[ERROR] 화상 채팅 거절 중 오류 발생:', error)
-    }
-  }
-
   return (
     <Flex
       flexDirection="column"
@@ -125,12 +74,10 @@ const ChatInfoCard: React.FC<ChatInfoCardProps> = ({
             <StatusButton padding={'12px 45px'}>수락됨</StatusButton>
           </Box>
         ) : (
-          // isApproved false 때 SelectButton 렌더링
-          <Flex gap={'20px'}>
-            <SelectButton onClick={handleApproveChat}>수락</SelectButton>
-            <SelectButton variant="gray" onClick={handleRejectChat}>
-              거부
-            </SelectButton>
+          <Flex>
+            <StatusButton padding={'12px 45px'} variant={'dark'}>
+              대기중
+            </StatusButton>
           </Flex>
         )}
       </Flex>

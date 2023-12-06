@@ -1,6 +1,6 @@
 import { useRecoilValue } from 'recoil'
 import Picture from 'components/atoms/Picture/index.tsx'
-import { Box } from 'components/layout/index.ts'
+import { Box, Flex } from 'components/layout/index.ts'
 import Layout from 'components/templates/Layout/index.tsx'
 import { countDataState } from 'utils/state.ts'
 
@@ -14,40 +14,74 @@ const WorkerInfoListLayout = ({ children }: WorkerInfoListLayoutProps) => {
   return (
     <>
       <Layout>
-        <Box
+        <Flex
           width={'100%'}
+          height={'fit-content'}
+          minHeight={'190px'}
           position={'relative'}
-          overflow={'hidden'}
-          height={
-            countData === 0
-              ? { base: 'calc(100vh - 40px)', sm: 'calc(100vh - 50px)' }
-              : 'auto'
-          }
+          flexDirection={'column'}
+          justifyContent={'center'}
+          alignItems={'center'}
         >
-          <Box position={'absolute'} top={'56px'} left={'-50px'}>
-            <Picture pictureName="sphere" width={400} />
-          </Box>
-          <Box position={'absolute'} right={'0'} top={'204px'}>
-            <Picture pictureName="supertoroid2" width={400} />
-          </Box>
-          <Box
-            position={'absolute'}
-            bottom={'500px'}
-            right={'50px'}
-            display={{ base: 'none', sm: 'block' }}
+          <Flex
+            width={{ base: '98%', sm: '99%', md: '100%' }}
+            height={'fit-content'}
+            minHeight={'190px'}
+            flexDirection={'column'}
+            justifyContent={'center'}
+            position={'relative'}
+            overflow={'hidden'}
+            style={{ transition: '1s' }}
           >
-            <Picture pictureName="roundcube2" width={400} />
-          </Box>
-          <Box
-            position={'absolute'}
-            bottom={'100px'}
-            left={'50px'}
-            display={{ base: 'none', sm: 'block' }}
-          >
-            <Picture pictureName="roundcube1" width={400} />
-          </Box>
-          {children}
-        </Box>
+            <Box
+              width={'100%'}
+              position={'relative'}
+              overflow={'hidden'}
+              height={
+                countData === 0
+                  ? { base: 'calc(100vh - 40px)', sm: 'calc(100vh - 50px)' }
+                  : 'auto'
+              }
+            >
+              <Box
+                position={'absolute'}
+                top={'56px'}
+                left={{ base: '-50px', sm: '30px', md: '100px' }}
+                width={{ base: '180px', sm: '250px', md: '280px' }}
+              >
+                <Picture pictureName="sphere" width={400} />
+              </Box>
+              <Box
+                position={'absolute'}
+                right={{ base: '0', sm: '20px', md: '100px' }}
+                top={{ base: '204px', sm: '200px', md: '230px' }}
+                width={{ base: '180px', md: '220px' }}
+              >
+                <Picture pictureName="supertoroid2" width={400} />
+              </Box>
+
+              <Box
+                position={'absolute'}
+                bottom={'500px'}
+                right={'50px'}
+                width={{ base: '180px', md: '300px' }}
+                display={{ base: 'none', sm: 'block' }}
+              >
+                <Picture pictureName="roundcube2" width={400} />
+              </Box>
+              <Box
+                position={'absolute'}
+                bottom={'100px'}
+                left={'50px'}
+                width={{ base: '180px', md: '300px' }}
+                display={{ base: 'none', sm: 'block' }}
+              >
+                <Picture pictureName="roundcube1" width={400} />
+              </Box>
+              {children}
+            </Box>
+          </Flex>
+        </Flex>
       </Layout>
     </>
   )

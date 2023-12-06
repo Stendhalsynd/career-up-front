@@ -13,8 +13,8 @@ const AlertComponent = () => {
         justifyContent={'center'}
         borderRadius="20px"
         backgroundColor="white"
-        width={{ base: '350px', sm: '600px', md: '1000px' }}
-        height={{ base: '190px', sm: '300px', md: '400px' }}
+        width={{ base: '350px', sm: '600px', md: '800px' }}
+        height={{ base: '190px', sm: '300px', md: '350px' }}
         padding="20px"
       >
         <Icon iconName="warning" width={50}></Icon>

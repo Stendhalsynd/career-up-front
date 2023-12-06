@@ -84,7 +84,6 @@ const Signup = () => {
         setPassword('')
         setCheckPassword('')
         setCompany('')
-        console.log('회원가입 성공!')
         window.location.href = '/login'
       } else {
         setErrorMessage(`회원가입 실패: ${await response.json()}`)

@@ -8,7 +8,7 @@
   bottom: 7px;
   left: 0;
   z-index: 999999;
-  min-width: 380px !important;
+  min-width: 340px !important;
   box-shadow: none;
 }
 
@@ -30,7 +30,7 @@
   height: 40px !important;
   text-align: center;
   margin: auto;
-  min-width: 380px;
+  min-width: 340px;
 }
 .navButton {
   height: 40px !important;
@@ -55,7 +55,7 @@
   top: 0;
   bottom: 0;
   height: inherit;
-  min-width: 400px !important;
+  min-width: 340px !important;
   width: inherit;
 }
 

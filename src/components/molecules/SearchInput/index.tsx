@@ -6,7 +6,7 @@ import { useSetRecoilState } from 'recoil'
 import Icon from 'components/atoms/Icon/index.tsx'
 import Text from 'components/atoms/Text'
 import Flex from 'components/layout/Flex'
-import RequestButton from 'components/molecules/Button/RequestButton.tsx'
+import SelectButton from 'components/molecules/Button/SelectButton.tsx'
 import Input from 'components/molecules/Input/index.tsx'
 import {
   companyInputState,
@@ -67,7 +67,7 @@ const PrimarySmallSearchInput = () => {
               height={40}
               onClick={handleOpenModal}
             />
-            <RequestButton
+            <SelectButton
               variant="dark"
               width={'130px'}
               height={'45px'}
@@ -75,7 +75,7 @@ const PrimarySmallSearchInput = () => {
               type="submit"
             >
               검색
-            </RequestButton>
+            </SelectButton>
           </Flex>
         </Flex>
       </Flex>
@@ -106,14 +106,14 @@ const PrimaryLargeSearchInput = () => {
           placeholder="회사를 검색해보세요"
           {...register('SearchInput/company')}
         />
-        <RequestButton
+        <SelectButton
           variant="dark"
           width={'130px'}
           height={'45px'}
           type="submit"
         >
           검색
-        </RequestButton>
+        </SelectButton>
       </Flex>
     </form>
   )

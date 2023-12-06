@@ -7,6 +7,7 @@ import React, {
   ReactNode,
   useCallback,
 } from 'react'
+import styles from '../../../components/molecules/Button/RequestButton.module.css'
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Avatar, Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
@@ -380,8 +381,11 @@ const WorkerMyPageEdit = () => {
                 width={'50vw'}
                 maxWidth={'350px'}
                 onClick={handleSaveClick}
+                hasBorder
               >
-                저장하기
+                <Text variant={'extraSmall'} className={styles.text}>
+                  저장하기
+                </Text>
               </RequestButton>
             </Flex>
           </Flex>

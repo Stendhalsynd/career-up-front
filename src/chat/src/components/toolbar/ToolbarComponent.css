@@ -8,7 +8,7 @@
   bottom: 7px;
   left: 0;
   z-index: 999999;
-  min-width: 380px !important;
+  min-width: 340px !important;
   box-shadow: none;
 }
 .toolbar {

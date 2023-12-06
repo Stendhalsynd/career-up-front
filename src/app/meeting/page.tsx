@@ -5,6 +5,7 @@ import axios from 'axios'
 import dayjs from 'dayjs'
 import { useEffect, useState } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
+import styles from '../../components/molecules/Button/RequestButton.module.css'
 import { Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import SelectButton from 'components/molecules/Button/SelectButton.tsx'
@@ -162,8 +163,11 @@ const MeetingApply = () => {
               width={'50vw'}
               maxWidth={'350px'}
               onClick={handleReservationClick}
+              hasBorder
             >
-              신청하기
+              <Text variant={'extraSmallBold'} className={styles.text}>
+                신청하기
+              </Text>
             </RequestButton>
           </Flex>
         </Flex>

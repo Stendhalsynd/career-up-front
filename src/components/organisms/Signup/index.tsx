@@ -1,10 +1,12 @@
 'use client'
 
 import React, { useState } from 'react'
+import styles from '../../molecules/Button/HyperLinkButton.module.css'
 import { Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import RequestButton from 'components/molecules/Button/RequestButton.tsx'
 import SelectButton from 'components/molecules/Button/SelectButton.tsx'
+import { ButtonVariant } from 'components/molecules/Button/index.tsx'
 import { HyperLinkButton, Input } from 'components/molecules/index.ts'
 
 const Signup = () => {
@@ -17,10 +19,20 @@ const Signup = () => {
   const [checkPassword, setCheckPassword] = useState<string>('')
   const [company, setCompany] = useState<string>('')
   const [selectedUserType, setSelectedUserType] = useState<string>('')
+  const [seekerVariant, setSeekerVariant] = useState<ButtonVariant>('white')
+  const [workerVariant, setWorkerVariant] = useState<ButtonVariant>('white')
 
   const handleUserTypeChange = (type: string) => {
     setRoleType(type)
     setSelectedUserType(type)
+
+    if (type === 'SEEKER') {
+      setSeekerVariant('primary')
+      setWorkerVariant('white')
+    } else if (type === 'WORKER') {
+      setSeekerVariant('white')
+      setWorkerVariant('primary')
+    }
   }
 
   const handleSignup = async () => {
@@ -89,7 +101,7 @@ const Signup = () => {
       flexDirection={'column'}
       width={'88.325vw'}
       maxWidth={'500px'}
-      height={'600px'}
+      height={'fit-content'}
       padding={'15px'}
       borderRadius={'30px'}
       boxShadow={'0px 4px 4px 0px rgba(0, 0, 0, 0.25)'}
@@ -143,6 +155,7 @@ const Signup = () => {
           <SelectButton
             width={'50%'}
             borderRadius={'8px'}
+            variant={seekerVariant}
             isSelected={selectedUserType === 'SEEKER'}
             onClick={() => handleUserTypeChange('SEEKER')}
           >
@@ -151,6 +164,7 @@ const Signup = () => {
           <SelectButton
             width={'50%'}
             borderRadius={'8px'}
+            variant={workerVariant}
             isSelected={selectedUserType === 'WORKER'}
             onClick={() => handleUserTypeChange('WORKER')}
           >
@@ -214,7 +228,14 @@ const Signup = () => {
         )}
 
         <Flex marginBottom={'15px'} width={'100%'}>
-          <RequestButton onClick={handleSignup}>회원가입</RequestButton>
+          <RequestButton onClick={handleSignup} hasBorder>
+            <Text
+              fontSize={{ base: 'extraSmall', md: 'small' }}
+              className={styles.text}
+            >
+              회원가입
+            </Text>
+          </RequestButton>
         </Flex>
 
         <Flex width={'100%'} justifyContent="center">

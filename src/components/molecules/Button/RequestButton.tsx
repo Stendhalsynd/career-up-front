@@ -2,12 +2,15 @@
 
 import PropTypes from 'prop-types'
 import React, { ReactNode } from 'react'
+import styles from './RequestButton.module.css'
 import { Icon } from 'components/atoms/index.ts'
 import Button, { ButtonProps } from 'components/molecules/Button/index.tsx'
+import colors from 'themes/colors.ts'
 
 type RequestButtonProps = {
   iconName?: string
   children?: ReactNode
+  hasBorder?: boolean
 } & ButtonProps
 
 /**
@@ -25,6 +28,7 @@ type RequestButtonProps = {
 const RequestButton: React.FC<RequestButtonProps> = ({
   iconName,
   children,
+  hasBorder,
   ...rest
 }) => {
   return (
@@ -33,8 +37,18 @@ const RequestButton: React.FC<RequestButtonProps> = ({
       width={iconName ? 'fit-content' : '100%'}
       height={'fit-content'}
       padding={iconName && '10px'}
+      className={styles.button}
+      border={hasBorder ? `1px solid ${colors.primary}` : 'none'}
       {...rest}
     >
+      <span className={styles.circle}></span>
+      <span className={styles.circle}></span>
+      <span className={styles.circle}></span>
+      <span className={styles.circle}></span>
+      <span className={styles.circle}></span>
+      <span className={styles.circle}></span>
+      <span className={styles.circle}></span>
+      <span className={styles.circle}></span>
       {/* iconName이 있으면 아이콘 추가 */}
       {iconName && <Icon iconName={iconName} width={20} height={20} />}
 

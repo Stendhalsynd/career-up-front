@@ -2,6 +2,7 @@
 
 import axios from 'axios'
 import React, { useState } from 'react'
+import styles from '../../molecules/Button/RequestButton.module.css'
 import { Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import RequestButton from 'components/molecules/Button/RequestButton.tsx'
@@ -82,7 +83,11 @@ const Login = () => {
         )}
 
         <Flex marginBottom={'15px'} width={'73.53vw'} maxWidth={'400px'}>
-          <RequestButton onClick={handleLogin}>로그인</RequestButton>
+          <RequestButton onClick={handleLogin} hasBorder>
+            <Text variant={'extraSmall'} className={styles.text}>
+              로그인
+            </Text>
+          </RequestButton>
         </Flex>
         <Flex>
           <HyperLinkButton

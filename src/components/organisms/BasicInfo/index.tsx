@@ -6,7 +6,6 @@ import { Avatar, Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import SelectButton from 'components/molecules/Button/SelectButton.tsx'
 import { InfoBlock } from 'components/molecules/Input/index.tsx'
-import { RequestButton } from 'components/molecules/index.ts'
 
 interface User {
   profile: string
@@ -234,13 +233,14 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
               marginTop={'15px'}
               display={isUser ? 'flex' : 'none'}
             >
-              <RequestButton
+              <SelectButton
                 variant="primary"
                 padding={{ base: '8px 15vw', sm: '8px 6vw' }}
                 onClick={handleSaveClick}
+                width={'100%'}
               >
                 저장하기
-              </RequestButton>
+              </SelectButton>
             </Flex>
           </Flex>
         </Flex>

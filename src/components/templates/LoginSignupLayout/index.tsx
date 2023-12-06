@@ -73,9 +73,11 @@ const LoginSignupLayout = ({ children }: ChildrenProps) => {
               >
                 <Text color={'white'}>커리어의 안내서</Text>
                 <Logo />
-                <Text color={'white'}>
-                  1:1 화상채팅 개발자 커리어 상담 서비스
-                </Text>
+                <Flex display={{ base: 'flex', md: 'flex' }}>
+                  <Text color={'white'}>
+                    1:1 화상채팅 개발자 커리어 상담 서비스
+                  </Text>
+                </Flex>
               </Flex>
               <Box position={'absolute'} top={'300px'} right={'10px'}>
                 <Picture pictureName="supertoroid1" width={200} />

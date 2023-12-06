@@ -62,7 +62,7 @@ const PromoteTextContainer = () => {
 
       {/* 태블릿 */}
       <Tablet>
-        <Flex flexDirection={'column'} gap={'50px'} alignItems={'center'}>
+        <Flex flexDirection={'column'} gap={'40px'} alignItems={'center'}>
           <AosContainer dataAos="fade-down">
             <Flex flexDirection={'column'} gap={'10px'}>
               <Text

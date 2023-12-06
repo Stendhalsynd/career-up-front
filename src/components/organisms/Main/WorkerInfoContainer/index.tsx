@@ -1,11 +1,8 @@
 'use client'
 
-// import Slider from 'react-slick'
-// import 'slick-carousel/slick/slick.css'
-// import 'slick-carousel/slick/slick-theme.css'
 import { Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
-import WorkerInfoCard from 'components/organisms/WorkerInfoCard/index.tsx'
+import WorkerInfoCardSlider from 'components/organisms/WorkerInfoCardSlider/index.tsx'
 import AosContainer from 'containers/AosContainer/index.tsx'
 import { Desktop, Mobile, Tablet } from 'lib/useMediaQuery.tsx'
 import { notable } from 'utils/styles.ts'
@@ -76,16 +73,16 @@ const WorkerInfoContainer = () => {
               </Flex>
             </AosContainer>
 
-            <Flex
-              width={'100vw'}
+            {/* <Flex
+              width={'100%'}
               paddingRight={'50px'}
               paddingLeft={'50px'}
               gap={'50px'}
               scrollSnapType="x mandatory"
               overflow={'auto'}
-            >
-              <WorkerInfoCard />
-            </Flex>
+            > */}
+            <WorkerInfoCardSlider />
+            {/* </Flex> */}
           </Flex>
         </Flex>
       </Mobile>
@@ -116,7 +113,7 @@ const WorkerInfoContainer = () => {
             </AosContainer>
 
             <AosContainer dataAos="fade-right">
-              <Flex flexDirection="column" gap={'10px'}>
+              <Flex flexDirection="column" gap={'20px'}>
                 <Text
                   variant="mediumLargeBold"
                   lineHeight={3}
@@ -154,16 +151,16 @@ const WorkerInfoContainer = () => {
                 </Flex>
               </Flex>
             </AosContainer>
-            <Flex
+            {/* <Flex
               width={'100vw'}
               gap={'50px'}
               paddingLeft={'50px'}
               paddingRight={'50px'}
               scrollSnapType="x mandatory"
               overflow={'auto'}
-            >
-              <WorkerInfoCard />
-            </Flex>
+            > */}
+            <WorkerInfoCardSlider />
+            {/* </Flex> */}
           </Flex>
         </Flex>
       </Tablet>
@@ -193,7 +190,7 @@ const WorkerInfoContainer = () => {
               </Flex>
             </AosContainer>
             <AosContainer dataAos="fade-right">
-              <Flex flexDirection="column" gap={'10px'}>
+              <Flex flexDirection="column" gap={'20px'}>
                 <Text
                   variant="mediumLargeBold"
                   lineHeight={3}
@@ -231,14 +228,14 @@ const WorkerInfoContainer = () => {
                 </Flex>
               </Flex>
             </AosContainer>
-            <Flex
+            {/* <Flex
               width={'100vw'}
               gap={'50px'}
               scrollSnapType="x mandatory"
               overflow={'auto'}
-            >
-              <WorkerInfoCard />
-            </Flex>
+            > */}
+            <WorkerInfoCardSlider />
+            {/* </Flex> */}
           </Flex>
         </Flex>
       </Desktop>

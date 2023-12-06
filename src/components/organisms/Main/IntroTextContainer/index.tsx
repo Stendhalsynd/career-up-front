@@ -35,7 +35,7 @@ const IntroTextContainer = () => {
                   성공을 위한 동반자
                 </Text>
               </Flex>
-              <Logo />
+              <Logo width={250} />
               <Flex flexDirection={'column'} gap={'5px'}>
                 <Text
                   variant="smallBold"
@@ -65,7 +65,7 @@ const IntroTextContainer = () => {
           <Flex width={'100%'} justifyContent={'center'}>
             <Flex
               flexDirection={'column'}
-              width={'75vw'}
+              width={'80vw'}
               height={'fit-content'}
               gap={'20px'}
               alignItems={'center'}
@@ -81,7 +81,7 @@ const IntroTextContainer = () => {
                 개발자 커리어의 성공을 위한 동반자
               </Text>
 
-              <Logo width={300} />
+              <Logo width={400} />
 
               <Text
                 variant="mediumLargeBold"

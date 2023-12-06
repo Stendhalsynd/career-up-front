@@ -108,7 +108,7 @@ const ChatInfoContainer = () => {
             </AosContainer>
             {/* 내용 */}
             <AosContainer dataAos="fade-left">
-              <Flex flexDirection="column" gap={'10px'}>
+              <Flex flexDirection="column" gap={'20px'}>
                 <Flex justifyContent={'center'}>
                   <Text
                     variant="mediumLargeBold"
@@ -174,7 +174,7 @@ const ChatInfoContainer = () => {
             </AosContainer>
             {/* 내용 */}
             <AosContainer dataAos="fade-left">
-              <Flex flexDirection="column" gap={'10px'}>
+              <Flex flexDirection="column" gap={'20px'}>
                 <Flex justifyContent={'center'}>
                   <Text
                     variant="mediumLargeBold"

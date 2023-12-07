@@ -129,7 +129,7 @@ const MeetingApply = () => {
   }
 
   return (
-    <Flex flexDirection={'column'}>
+    <Flex flexDirection={'column'} overflow={'hidden'}>
       <MeetingApplyLayout>
         <Flex
           width={'100%'}
@@ -200,7 +200,13 @@ const MeetingApply = () => {
           gap={'21px'}
           maxWidth={'900px'}
         >
-          <Text variant={'smallBold'}>원하는 상담 내용을 작성해주세요.</Text>
+          <Text
+            variant={'smallBold'}
+            style={{ wordBreak: 'keep-all' }}
+            lineHeight={3}
+          >
+            원하는 상담 내용을 작성해주세요.
+          </Text>
           <TextArea
             value={consult}
             onChange={(e) => setConsult(e.target.value)}

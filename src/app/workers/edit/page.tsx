@@ -124,9 +124,7 @@ const WorkerMyPageEdit = () => {
           '수정 완료',
           '사용자 데이터가 성공적으로 업데이트되었습니다.',
           '확인',
-        ).then(() => {
-          window.location.href = '/'
-        })
+        )
       } else {
         warningAlert(
           '수정 실패',

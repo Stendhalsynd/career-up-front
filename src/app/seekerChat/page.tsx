@@ -31,32 +31,6 @@ const useWidth = () => {
   return width
 }
 
-// 챗 인포 슬라이드 스타일
-// const CustomSlider = styled(Slider)`
-//   overflow-x: auto;
-//   overflow-y: hidden;
-//   width: 100%;
-//   scroll-snap-type: x mandatory;
-//   max-width: 900px;
-
-//   .slick-slide {
-//     padding: 0 5px;
-//     box-sizing: border-box;
-//     scroll-snap-align: center;
-//     gap: 20px;
-//   }
-
-//   .slick-list {
-//     transition: transform 0.5s ease;
-//   }
-
-//   .slick-track {
-//     display: flex;
-//     gap: 20px;
-//     max-width: 900px;
-//   }
-// `
-
 // 투데이챗인포 슬라이드 설정
 const TodayChatInfoSlider = styled(Slider)`
   overflow-x: auto;
@@ -103,7 +77,8 @@ const SeekerChatInfo = () => {
     setChatData(data)
   }, [data])
 
-  const chatInfoData = chatData?.filter((item) => item.status !== 'REJECTED')
+  // const chatInfoData = chatData?.filter((item) => item.status !== 'REJECTED')
+  const chatInfoData = chatData
 
   // 투데이챗인포 데이터
   const today = new Date()
@@ -156,7 +131,7 @@ const SeekerChatInfo = () => {
                 나의
               </Text>
               <Text color="white" fontSize={textSize}>
-                커피챗 리스트
+                커리업 리스트
               </Text>
             </Label>
           </Flex>

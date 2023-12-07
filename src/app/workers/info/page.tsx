@@ -176,8 +176,17 @@ function WorkerMyPageInfo() {
                 >
                   커리업 파트너 {workerData.nickname} 입니다:)
                 </Text>
-                <Text variant="extraSmall" color="white">
-                  {workerData.contents}
+                <Text variant="extraSmall" color="white" lineHeight={'every'}>
+                  {workerData.contents &&
+                    workerData.contents
+                      .split('\n\n')
+                      .map((paragraph: string, i: number) => (
+                        <React.Fragment key={i}>
+                          {paragraph}
+                          <br />
+                          <br />
+                        </React.Fragment>
+                      ))}
                 </Text>
               </Flex>
               <Flex flexDirection="column" gap={{ base: '10px', sm: '15px' }}>

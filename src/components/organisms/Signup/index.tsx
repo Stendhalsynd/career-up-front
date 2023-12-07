@@ -85,6 +85,15 @@ const Signup = () => {
         body: JSON.stringify(data),
       })
 
+      //  이메일 중복처리
+      // if (!response.ok) {
+      //   const result = await response.json()
+      //   if (result.error === '에러메세지 입력해야하는데 알 수가 없어요 ㅜㅜ') {
+      //     warningAlert('회원가입 실패', '이미 사용 중인 이메일입니다.', '확인')
+      //     return
+      //   }
+      // }
+
       if (response.ok) {
         successAlert(
           '회원가입 성공',

@@ -81,6 +81,7 @@ function WorkerMyPageInfo() {
         <Flex
           width="100%"
           flexDirection={{ base: 'column', sm: 'row' }}
+          justifyContent={{ sm: 'center', md: 'center' }}
           maxWidth="1200px"
         >
           {/* 상단 */}
@@ -97,7 +98,7 @@ function WorkerMyPageInfo() {
             width={{ sm: '35vw' }}
             borderRadius={{ base: '0', md: '30px' }}
             margin={{ base: '0', md: '30px' }}
-            maxHeight={{ md: '800px' }}
+            maxHeight={{ md: '1100px' }}
           >
             <Flex alignSelf={{ base: 'flex-start', sm: 'center' }}>
               {workerData.profile && (
@@ -152,14 +153,20 @@ function WorkerMyPageInfo() {
               backgroundColor={'white'}
               alignItems={'center'}
               alignSelf={'center'}
-              width={{ base: '460px', sm: '400px', md: '500px' }}
+              width={'400px'}
+              gap={'15px'}
             >
               <Picture pictureName="vector" width={27} />
-              <Text variant="smallBold">
-                {workerData.fields && workerData.fields.length > 0
-                  ? `${workerData.fields[0]} 개발 분야가 궁금하다면, 저와 커리업 어떠세요?`
-                  : ''}
-              </Text>
+              <Flex flexDirection={'column'} gap={'10px'}>
+                <Text variant="smallBold" textAlign={'center'}>
+                  {workerData.fields && workerData.fields.length > 0
+                    ? `${workerData.fields[0]} 개발 분야가 궁금하다면,`
+                    : ''}
+                </Text>
+                <Text variant="smallBold" textAlign={'center'}>
+                  저와 커리업 어떠세요?
+                </Text>
+              </Flex>
             </Flex>
             <Flex
               flexDirection="column"

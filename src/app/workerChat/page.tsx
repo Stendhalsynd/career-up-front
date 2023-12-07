@@ -104,29 +104,6 @@ const ChatInfo = () => {
     return isSameDate && (isApproved || isFinished)
   })
 
-  // 챗 인포 슬라이드 설정
-  // const settings = {
-  //   dots: true,
-  //   infinite: false,
-  //   speed: 500,
-  //   slidesToShow: 3, // 한 화면에 보여질 컨텐츠 개수
-  //   slidesToScroll: 1, // 스크롤 한 번에 움직일 컨텐츠 개수
-  //   responsive: [
-  //     {
-  //       breakpoint: 845,
-  //       settings: {
-  //         slidesToShow: 2,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 767,
-  //       settings: {
-  //         slidesToShow: 1,
-  //       },
-  //     },
-  //   ],
-  // }
-
   const todayChatInfoSettings = {
     dots: true,
     infinite: false,
@@ -167,7 +144,7 @@ const ChatInfo = () => {
                 나의
               </Text>
               <Text color="white" fontSize={textSize}>
-                커피챗 리스트
+                커리업 리스트
               </Text>
             </Label>
           </Flex>

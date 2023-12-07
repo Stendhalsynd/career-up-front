@@ -137,7 +137,7 @@ const ChatInfoCard: React.FC<ChatInfoCardProps> = ({
         {status === 'REJECTED' && role === 'SEEKER' && (
           <Flex>
             <StatusButton padding={'12px 45px'} variant={'dark'}>
-              거절됨
+              거부됨
             </StatusButton>
           </Flex>
         )}

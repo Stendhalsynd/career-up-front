@@ -1,6 +1,7 @@
 'use client'
 
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import styles from '../../../components/molecules/Button/RequestButton.module.css'
 import { Icon, Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import {
@@ -92,8 +93,10 @@ const FilterModal = () => {
             <SearchInput variant="skillSmall" />
           </Flex>
           <Flex width={'85%'}>
-            <RequestButton onClick={handleApplyFilter} type="submit">
-              적용하기
+            <RequestButton onClick={handleApplyFilter} hasBorder type="submit">
+              <Text variant="small" className={styles.text}>
+                적용하기
+              </Text>
             </RequestButton>
           </Flex>
         </Flex>

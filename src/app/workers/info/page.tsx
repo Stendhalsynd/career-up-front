@@ -27,6 +27,7 @@ function InfoItem(props: InfoItemProps) {
       <Text
         variant="extraSmallBold"
         color={props.color ? props.color : 'darkGray'}
+        style={{ wordBreak: 'keep-all' }}
       >
         {props.text}
       </Text>
@@ -117,7 +118,7 @@ function WorkerMyPageInfo() {
                 </Box>
               )}
             </Flex>
-            <Flex flexDirection="column" gap={{ base: '10px', sm: '15px' }}>
+            <Flex flexDirection="column" gap={{ base: '15px', sm: '20px' }}>
               <Text variant="mediumBold" textAlign="center">
                 {workerData.nickname}
               </Text>
@@ -153,12 +154,17 @@ function WorkerMyPageInfo() {
               backgroundColor={'white'}
               alignItems={'center'}
               alignSelf={'center'}
-              width={'400px'}
+              width={{ base: '300px', sm: '400px', md: '400px' }}
               gap={'15px'}
             >
               <Picture pictureName="vector" width={27} />
               <Flex flexDirection={'column'} gap={'10px'}>
-                <Text variant="smallBold" textAlign={'center'}>
+                <Text
+                  variant="smallBold"
+                  textAlign={'center'}
+                  lineHeight={5}
+                  style={{ wordBreak: 'keep-all' }}
+                >
                   {workerData.fields && workerData.fields.length > 0
                     ? `${workerData.fields[0]} 개발 분야가 궁금하다면,`
                     : ''}

@@ -1,6 +1,5 @@
 'use client'
 
-// import { useState } from 'react'
 import axios from 'axios'
 import dayjs from 'dayjs'
 import { useEffect, useState } from 'react'
@@ -23,6 +22,17 @@ type ReservationData = {
 }
 
 const MeetingApply = () => {
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsDesktop(window.innerWidth >= 768)
+      const handleResize = () => setIsDesktop(window.innerWidth >= 768)
+      window.addEventListener('resize', handleResize)
+      return () => window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
   const selectedNickname = useRecoilValue(selectedNicknameState)
   const [selectedDate, setSelectedDate] = useRecoilState(selectedDateState)
   const [reservedTimes, setReservedTimes] = useState<string[]>([])
@@ -171,7 +181,20 @@ const MeetingApply = () => {
           </Flex>
           <Flex flexDirection={'column'} gap={'21px'}>
             <Text variant={'smallBold'}>원하는 시간을 선택해주세요.</Text>
-            <Flex flexWrap={'wrap'} gap={'10px'} alignSelf={'center'}>
+            <Flex
+              flexWrap={'wrap'}
+              gap={'10px'}
+              alignSelf={'center'}
+              style={
+                isDesktop
+                  ? {
+                      height: 'calc((42px + 10px) * 2)',
+                      flexFlow: 'column wrap',
+                      alignContent: 'flex-start',
+                    }
+                  : {}
+              }
+            >
               {['18:00', '19:00', '20:00', '21:00', '22:00', '23:00'].map(
                 (time) => (
                   <SelectButton

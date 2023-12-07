@@ -40,11 +40,13 @@ const MeetingApply = () => {
       const selectedDateData = data.find((info) => info.date === selectedDate)
       if (selectedDateData) {
         setReservedTimes(selectedDateData.time)
+      } else {
+        setReservedTimes([])
       }
     } else {
       setSelectedDate(today.format('YYYY-MM-DD'))
     }
-  })
+  }, [data, selectedDate])
 
   const isTimeReserved = (time: string) => reservedTimes.includes(time)
 

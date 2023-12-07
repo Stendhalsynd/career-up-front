@@ -142,6 +142,13 @@ const ChatInfoCard: React.FC<ChatInfoCardProps> = ({
             </SelectButton>
           </Flex>
         )}
+        {status === 'FINISHED' && (
+          <Flex>
+            <StatusButton padding={'12px 45px'} variant={'dark'}>
+              종료됨
+            </StatusButton>
+          </Flex>
+        )}
       </Flex>
     </Flex>
   )

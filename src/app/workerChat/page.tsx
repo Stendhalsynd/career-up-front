@@ -42,33 +42,6 @@ export type ChatInfoDataType = {
   otherNickname: string
 }
 
-// 챗 인포 슬라이드 스타일
-// const CustomSlider = styled(Slider)`
-//   overflow-x: auto;
-//   overflow-y: hidden;
-//   width: 100vw;
-//   //overflow: hidden;
-//   scroll-snap-type: x mandatory;
-//   max-width: 900px;
-
-//   .slick-slide {
-//     padding: 0 5px;
-//     box-sizing: border-box;
-//     scroll-snap-align: center;
-//     gap: 20px;
-//   }
-
-//   .slick-list {
-//     transition: transform 0.5s ease;
-//   }
-
-//   .slick-track {
-//     display: flex;
-//     gap: 20px;
-//     max-width: 900px;
-//   }
-// `
-
 // 투데이챗인포 슬라이드 설정
 const TodayChatInfoSlider = styled(Slider)`
   overflow-x: auto;
@@ -126,8 +99,9 @@ const ChatInfo = () => {
     const itemDate = new Date(item.date)
     const isSameDate = itemDate.toDateString() === today.toDateString()
     const isApproved = item.status === 'APPROVED'
+    const isFinished = item.status === 'FINISHED'
 
-    return isSameDate && isApproved
+    return isSameDate && (isApproved || isFinished)
   })
 
   // 챗 인포 슬라이드 설정
@@ -241,6 +215,7 @@ const ChatInfo = () => {
                 {todayChatInfoData?.map(
                   ({
                     id,
+                    status,
                     otherNickname,
                     date,
                     time,
@@ -249,6 +224,7 @@ const ChatInfo = () => {
                   }) => (
                     <TodayChatInfo
                       key={id}
+                      status={status}
                       myNickname={myNickname}
                       nicknameContent={otherNickname}
                       dateContent={date}

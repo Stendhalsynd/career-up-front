@@ -103,9 +103,7 @@ const SeekerChatInfo = () => {
     setChatData(data)
   }, [data])
 
-  const chatInfoData = chatData?.filter(
-    (item) => item.status === 'APPROVED' || item.status === 'WAITING',
-  )
+  const chatInfoData = chatData?.filter((item) => item.status !== 'REJECTED')
 
   // 투데이챗인포 데이터
   const today = new Date()
@@ -113,32 +111,10 @@ const SeekerChatInfo = () => {
     const itemDate = new Date(item.date)
     const isSameDate = itemDate.toDateString() === today.toDateString()
     const isApproved = item.status === 'APPROVED'
+    const isFinished = item.status === 'FINISHED'
 
-    return isSameDate && isApproved
+    return isSameDate && (isApproved || isFinished)
   })
-
-  // 챗 인포 슬라이드 설정
-  // const settings = {
-  //   dots: true,
-  //   infinite: false,
-  //   speed: 500,
-  //   slidesToShow: 3, // 한 화면에 보여질 컨텐츠 개수
-  //   slidesToScroll: 1, // 스크롤 한 번에 움직일 컨텐츠 개수
-  //   responsive: [
-  //     {
-  //       breakpoint: 845,
-  //       settings: {
-  //         slidesToShow: 2,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 767,
-  //       settings: {
-  //         slidesToShow: 1,
-  //       },
-  //     },
-  //   ],
-  // }
 
   const todayChatInfoSettings = {
     dots: true,
@@ -228,6 +204,7 @@ const SeekerChatInfo = () => {
                 {todayChatInfoData?.map(
                   ({
                     id,
+                    status,
                     otherNickname,
                     date,
                     time,
@@ -236,6 +213,7 @@ const SeekerChatInfo = () => {
                   }) => (
                     <TodayChatInfo
                       key={id}
+                      status={status}
                       myNickname={myNickname}
                       nicknameContent={otherNickname}
                       dateContent={date}

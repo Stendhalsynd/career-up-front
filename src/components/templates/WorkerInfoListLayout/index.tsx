@@ -37,11 +37,12 @@ const WorkerInfoListLayout = ({ children }: WorkerInfoListLayoutProps) => {
               width={'100%'}
               position={'relative'}
               overflow={'hidden'}
-              height={
-                countData === 0
-                  ? { base: 'calc(100vh - 40px)', sm: 'calc(100vh - 50px)' }
-                  : 'auto'
-              }
+              // height={
+              //   countData === 0
+              //     ? { base: 'calc(100vh - 40px)', sm: 'calc(100vh - 50px)' }
+              //     : 'auto'
+              // }
+              height={'auto'}
             >
               <Box
                 position={'absolute'}
@@ -65,7 +66,9 @@ const WorkerInfoListLayout = ({ children }: WorkerInfoListLayoutProps) => {
                 bottom={'500px'}
                 right={'50px'}
                 width={{ base: '180px', md: '300px' }}
-                display={{ base: 'none', sm: 'block' }}
+                display={
+                  countData == 0 ? 'none' : { base: 'none', sm: 'block' }
+                }
               >
                 <Picture pictureName="roundcube2" width={400} />
               </Box>

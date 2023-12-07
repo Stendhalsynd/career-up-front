@@ -209,7 +209,8 @@ const ChatInfo = () => {
               <ChatInfoCard
                 key={id}
                 id={id}
-                isApproved={status === 'APPROVED' ? true : false}
+                status={status}
+                role={'WORKER'}
                 dateContent={date}
                 timeContent={time}
                 nicknameContent={otherNickname}

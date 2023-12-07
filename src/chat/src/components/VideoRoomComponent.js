@@ -94,6 +94,9 @@ class VideoRoomComponent extends Component {
 
   joinSession() {
     this.OV = new OpenVidu()
+    this.OV.getDevices().then((result) => {
+      console.log('devices : ', result)
+    })
 
     this.setState(
       {

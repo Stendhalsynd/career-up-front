@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
-import { successAlert } from 'lib/sweetAlert.tsx'
+import { successAlert, warningAlert } from 'lib/sweetAlert.tsx'
 
 interface SideMenuProps {
   closeMenu: () => void
@@ -34,6 +34,17 @@ const SideMenu = ({
         window.location.reload()
       },
     )
+  }
+
+  const handleClickChat = (e: React.MouseEvent) => {
+    if (!isLoggedIn) {
+      e.preventDefault()
+      warningAlert('로그인 필요', '로그인 후 이용해주세요.', '확인').then(
+        () => {
+          window.location.href = '/login'
+        },
+      )
+    }
   }
 
   return (
@@ -77,6 +88,7 @@ const SideMenu = ({
         <Link
           href={roleType === 'WORKER' ? '/workerChat' : '/seekerChat'}
           scroll={false}
+          onClick={handleClickChat}
         >
           <Text
             variant="smallBold"

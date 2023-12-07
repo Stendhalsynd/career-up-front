@@ -13,6 +13,7 @@ interface HyperLinkButtonProps extends ButtonProps {
   isTransparent?: boolean
   children?: ReactNode
   hasBorder?: boolean
+  onClick?: (e: React.MouseEvent) => void | undefined
 }
 
 const HyperLinkButton: React.FC<HyperLinkButtonProps> = ({
@@ -21,13 +22,20 @@ const HyperLinkButton: React.FC<HyperLinkButtonProps> = ({
   isTransparent = false,
   children,
   hasBorder,
+  onClick,
   ...restProps
 }) => {
+  const handleClick = (e: React.MouseEvent) => {
+    if (onClick) {
+      onClick(e)
+    }
+  }
   return (
     <Link href={to} scroll={false}>
       <Button
         height={'fit-content'}
         fontSize={{ base: '16px', md: '20px' }}
+        onClick={handleClick}
         {...restProps}
         className={styles.button}
         border={hasBorder ? `1px solid ${colors.primary}` : 'none'}

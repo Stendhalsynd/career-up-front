@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { Icon, Logo, Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import SideMenu from 'components/molecules/SideMenu/index.tsx'
-import { successAlert } from 'lib/sweetAlert.tsx'
+import { successAlert, warningAlert } from 'lib/sweetAlert.tsx'
 
 /**
  * 헤더
@@ -51,6 +51,17 @@ const Header = () => {
         window.location.href = '/'
       },
     )
+  }
+
+  const handleClickChat = (e: React.MouseEvent) => {
+    if (!isLoggedIn) {
+      e.preventDefault()
+      warningAlert('로그인 필요', '로그인 후 이용해주세요.', '확인').then(
+        () => {
+          window.location.href = '/login'
+        },
+      )
+    }
   }
 
   useEffect(() => {
@@ -106,6 +117,7 @@ const Header = () => {
         <Link
           href={roleType === 'WORKER' ? '/workerChat' : '/seekerChat'}
           scroll={false}
+          onClick={handleClickChat}
         >
           <Text variant="smallBold" color={'white'}>
             나의 채팅

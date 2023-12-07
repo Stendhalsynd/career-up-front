@@ -1,12 +1,12 @@
 'use client'
 
-import { useRouter } from 'next/router'
 import React from 'react'
 import { useSetRecoilState } from 'recoil'
 import { Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
+
 import { HyperLinkButton } from 'components/molecules/index.ts'
-import { warningAlert } from 'lib/sweetAlert.tsx'
+
 import { myNameState, sessionState } from 'utils/state.ts'
 
 interface TodayChatInfoProps {
@@ -26,20 +26,6 @@ const TodayChatInfo: React.FC<TodayChatInfoProps> = ({
 }) => {
   const setSessionState = useSetRecoilState(sessionState)
   const setMyNameState = useSetRecoilState(myNameState)
-  const router = useRouter()
-
-  const handleEnter = async () => {
-    try {
-      if (typeof navigator !== 'undefined') {
-        await navigator.mediaDevices.getUserMedia({ video: true })
-        setSessionState(sessionId)
-        setMyNameState(myNickname)
-        router.push('chat')
-      }
-    } catch {
-      warningAlert('입장 실패', '카메라가 내장된 기기를 사용해주세요.', '확인')
-    }
-  }
 
   return (
     <Flex alignItems="center" justifyContent="center">
@@ -68,11 +54,10 @@ const TodayChatInfo: React.FC<TodayChatInfoProps> = ({
             width={'fit-content'}
             contents="입장하기"
             hasBorder={true}
-            // onClick={() => {
-            //   setSessionState(sessionId)
-            //   setMyNameState(myNickname)
-            // }}
-            onClick={handleEnter}
+            onClick={() => {
+              setSessionState(sessionId)
+              setMyNameState(myNickname)
+            }}
           />
         </Flex>
       </Flex>

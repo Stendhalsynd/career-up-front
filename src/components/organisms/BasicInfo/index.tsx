@@ -1,11 +1,13 @@
 'use client'
 import axios from 'axios'
 import React, { useEffect, useState, useRef } from 'react'
+import styles from '../../../components/molecules/Button/RequestButton.module.css'
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Avatar, Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 import SelectButton from 'components/molecules/Button/SelectButton.tsx'
 import { InfoBlock } from 'components/molecules/Input/index.tsx'
+import { RequestButton } from 'components/molecules/index.ts'
 import { successAlert, warningAlert } from 'lib/sweetAlert.tsx'
 
 interface User {
@@ -83,9 +85,7 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
           '수정 완료',
           '사용자 데이터가 성공적으로 업데이트되었습니다.',
           '확인',
-        ).then(() => {
-          window.location.href = '/'
-        })
+        )
       } else if (userData?.roleType?.toUpperCase() === 'SEEKER') {
         // roleType이 'seeker'이면 PATCH 메서드 사용
         const response = await axios.patch(apiUrl, formData, requestConfig)
@@ -94,9 +94,7 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
             '수정 완료',
             '사용자 데이터가 성공적으로 업데이트되었습니다.',
             '확인',
-          ).then(() => {
-            window.location.href = '/'
-          })
+          )
         } else {
           warningAlert(
             '수정 실패',
@@ -249,19 +247,17 @@ export const BasicInfo: React.FC<BasicInfoProps> = (props) => {
                 readOnly={true}
               />
             }
-            <Flex
-              justifyContent={'center'}
-              marginTop={'15px'}
-              display={isUser ? 'flex' : 'none'}
-            >
-              <SelectButton
-                variant="primary"
-                padding={{ base: '8px 15vw', sm: '8px 6vw' }}
+            <Flex justifyContent={'center'} marginTop={'32px'}>
+              <RequestButton
+                width={'50vw'}
+                maxWidth={'350px'}
                 onClick={handleSaveClick}
-                width={'100%'}
+                hasBorder
               >
-                저장하기
-              </SelectButton>
+                <Text variant={'extraSmall'} className={styles.text}>
+                  저장하기
+                </Text>
+              </RequestButton>
             </Flex>
           </Flex>
         </Flex>

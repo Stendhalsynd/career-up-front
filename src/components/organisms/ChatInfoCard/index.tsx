@@ -134,6 +134,13 @@ const ChatInfoCard: React.FC<ChatInfoCardProps> = ({
             </StatusButton>
           </Flex>
         )}
+        {status === 'REJECTED' && role === 'SEEKER' && (
+          <Flex>
+            <StatusButton padding={'12px 45px'} variant={'dark'}>
+              거절됨
+            </StatusButton>
+          </Flex>
+        )}
         {status === 'WAITING' && role === 'WORKER' && (
           <Flex gap={'22px'}>
             <SelectButton onClick={handleApproveChat}>수락</SelectButton>

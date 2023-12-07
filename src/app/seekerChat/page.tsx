@@ -13,6 +13,7 @@ import { Header, Label } from 'components/molecules/index.ts'
 import AlertComponent from 'components/organisms/AlertContainer/index.tsx'
 import ChatInfoCard from 'components/organisms/ChatInfoCard/index.tsx'
 import { TodayChatInfo } from 'components/organisms/index.ts'
+import FloatingComponent from 'containers/FloatingContainer/index.tsx'
 import useRequest, { GetRequest } from 'lib/useRequest.ts'
 
 const useWidth = () => {
@@ -121,7 +122,7 @@ const SeekerChatInfo = () => {
     todayChatInfoData && todayChatInfoData.length > 0 ? true : false
 
   return (
-    <Box>
+    <Box overflow={'hidden'}>
       <Header />
       <Flex flexDirection="column" width={'100%'}>
         <Flex flexDirection="column" width={'100%'} alignItems={'center'}>
@@ -230,15 +231,19 @@ const SeekerChatInfo = () => {
               bottom={{ base: '300px', sm: '400px ' }}
               width={{ base: '200px', sm: '300px ' }}
             >
-              <Picture pictureName="cube" width={imageWidth} />
+              <FloatingComponent>
+                <Picture pictureName="cube" width={imageWidth} />
+              </FloatingComponent>
             </Box>
             <Box
               position={'absolute'}
               left={{ base: '-60px', sm: '-180px' }}
               bottom={'80px'}
-              width={{ base: '160px', sm: '220px ' }}
+              width={{ base: '200px', sm: '300px ' }}
             >
-              <Picture pictureName="roundcube2" width={imageWidth} />
+              <FloatingComponent>
+                <Picture pictureName="roundcube2" width={imageWidth} />
+              </FloatingComponent>
             </Box>
           </Flex>
         </Flex>

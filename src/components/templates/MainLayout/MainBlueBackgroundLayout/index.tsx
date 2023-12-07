@@ -1,7 +1,10 @@
 // 메인페이지 배경 레이아웃
 
+'use client'
+
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Box, Flex } from 'components/layout/index.ts'
+import FloatingComponent from 'containers/FloatingContainer/index.tsx'
 import { Desktop, Mobile, Tablet } from 'lib/useMediaQuery.tsx'
 
 interface ChildrenProps {
@@ -23,10 +26,14 @@ const MainBlueBackgroundLayout = ({ children }: ChildrenProps) => {
           overflow={'hidden'}
         >
           <Box position={'absolute'} top={'50px'} left={'-100px'}>
-            <Picture pictureName="roundcube2" width={280} />
+            <FloatingComponent>
+              <Picture pictureName="roundcube2" width={280} />
+            </FloatingComponent>
           </Box>
           <Box position={'absolute'} top={'900px'} right={'-100px'}>
-            <Picture pictureName="roundcube1" width={280} />
+            <FloatingComponent>
+              <Picture pictureName="roundcube1" width={280} />
+            </FloatingComponent>
           </Box>
           {children}
         </Flex>
@@ -44,10 +51,14 @@ const MainBlueBackgroundLayout = ({ children }: ChildrenProps) => {
           overflow={'hidden'}
         >
           <Box position={'absolute'} top={'50px'} left={'-100px'}>
-            <Picture pictureName="roundcube2" width={400} />
+            <FloatingComponent>
+              <Picture pictureName="roundcube2" width={400} />
+            </FloatingComponent>
           </Box>
           <Box position={'absolute'} top={'900px'} right={'-100px'}>
-            <Picture pictureName="roundcube1" width={400} />
+            <FloatingComponent>
+              <Picture pictureName="roundcube1" width={400} />
+            </FloatingComponent>
           </Box>
           {children}
         </Flex>
@@ -65,10 +76,14 @@ const MainBlueBackgroundLayout = ({ children }: ChildrenProps) => {
           overflow={'hidden'}
         >
           <Box position={'absolute'} top={'50px'} left={'-100px'}>
-            <Picture pictureName="roundcube2" width={500} />
+            <FloatingComponent>
+              <Picture pictureName="roundcube2" width={500} />
+            </FloatingComponent>
           </Box>
           <Box position={'absolute'} top={'300px'} right={'-100px'}>
-            <Picture pictureName="roundcube1" width={500} />
+            <FloatingComponent>
+              <Picture pictureName="roundcube1" width={500} />
+            </FloatingComponent>
           </Box>
           {children}
         </Flex>

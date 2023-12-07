@@ -1,15 +1,16 @@
-import { useRecoilValue } from 'recoil'
+// import { useRecoilValue } from 'recoil'
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Box, Flex } from 'components/layout/index.ts'
 import Layout from 'components/templates/Layout/index.tsx'
-import { countDataState } from 'utils/state.ts'
+import FloatingComponent from 'containers/FloatingContainer/index.tsx'
+// import { countDataState } from 'utils/state.ts'
 
 interface WorkerInfoListLayoutProps {
   children: React.ReactNode
 }
 
 const WorkerInfoListLayout = ({ children }: WorkerInfoListLayoutProps) => {
-  const countData = useRecoilValue(countDataState)
+  // const countData = useRecoilValue(countDataState)
 
   return (
     <>
@@ -37,49 +38,53 @@ const WorkerInfoListLayout = ({ children }: WorkerInfoListLayoutProps) => {
               width={'100%'}
               position={'relative'}
               overflow={'hidden'}
-              // height={
-              //   countData === 0
-              //     ? { base: 'calc(100vh - 40px)', sm: 'calc(100vh - 50px)' }
-              //     : 'auto'
-              // }
               height={'auto'}
             >
               <Box
-                position={'absolute'}
-                top={'56px'}
+                position={'fixed'}
+                top={'80px'}
                 left={{ base: '-50px', sm: '30px', md: '100px' }}
-                width={{ base: '180px', sm: '250px', md: '280px' }}
+                width={{ base: '200px', sm: '250px', md: '280px' }}
               >
-                <Picture pictureName="sphere" width={400} />
+                <FloatingComponent>
+                  <Picture pictureName="sphere" width={400} />
+                </FloatingComponent>
               </Box>
               <Box
-                position={'absolute'}
+                position={'fixed'}
                 right={{ base: '0', sm: '20px', md: '100px' }}
                 top={{ base: '204px', sm: '200px', md: '230px' }}
-                width={{ base: '180px', md: '220px' }}
+                width={{ base: '180px', md: '300px' }}
               >
-                <Picture pictureName="supertoroid2" width={400} />
+                <FloatingComponent>
+                  <Picture pictureName="supertoroid2" width={400} />
+                </FloatingComponent>
               </Box>
 
               <Box
-                position={'absolute'}
-                bottom={'500px'}
+                position={'fixed'}
+                top={'800px'}
                 right={'50px'}
-                width={{ base: '180px', md: '300px' }}
-                display={
-                  countData == 0 ? 'none' : { base: 'none', sm: 'block' }
-                }
+                width={{ base: '200px', md: '300px' }}
+                // display={
+                //   countData == 0 ? 'none' : { base: 'none', sm: 'block' }
+                // }
               >
-                <Picture pictureName="roundcube2" width={400} />
+                <FloatingComponent>
+                  <Picture pictureName="roundcube2" width={400} />
+                </FloatingComponent>
               </Box>
+
               <Box
-                position={'absolute'}
-                bottom={'100px'}
+                position={'fixed'}
+                top={'1200px'}
                 left={'50px'}
-                width={{ base: '180px', md: '300px' }}
-                display={{ base: 'none', sm: 'block' }}
+                width={{ base: '200px', md: '300px' }}
+                // display={{ base: 'none', sm: 'block' }}
               >
-                <Picture pictureName="roundcube1" width={400} />
+                <FloatingComponent>
+                  <Picture pictureName="roundcube1" width={400} />
+                </FloatingComponent>
               </Box>
               {children}
             </Box>

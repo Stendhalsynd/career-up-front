@@ -5,11 +5,13 @@ import { useSetRecoilState } from 'recoil'
 import { Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
 
+import StatusButton from 'components/molecules/Button/StatusButton.tsx'
 import { HyperLinkButton } from 'components/molecules/index.ts'
 
 import { myNameState, sessionState } from 'utils/state.ts'
 
 interface TodayChatInfoProps {
+  status: string
   nicknameContent: string
   dateContent: string
   timeContent: string
@@ -18,6 +20,7 @@ interface TodayChatInfoProps {
 }
 // TODO: - nicknameContent -> 상대방 닉네임으로 수정, 세션 이름은 SessionId 데이터를 넘겨받으면 그것으로 전환
 const TodayChatInfo: React.FC<TodayChatInfoProps> = ({
+  status,
   nicknameContent,
   dateContent,
   timeContent,
@@ -47,19 +50,27 @@ const TodayChatInfo: React.FC<TodayChatInfoProps> = ({
         <Text variant="mediumBold" margin="20px">
           {timeContent}
         </Text>
-
-        <Flex width={'100%'} justifyContent={'center'}>
-          <HyperLinkButton
-            to="chat"
-            width={'fit-content'}
-            contents="입장하기"
-            hasBorder={true}
-            onClick={() => {
-              setSessionState(sessionId)
-              setMyNameState(myNickname)
-            }}
-          />
-        </Flex>
+        {status === 'APPROVED' && (
+          <Flex width={'100%'} justifyContent={'center'}>
+            <HyperLinkButton
+              to="chat"
+              width={'fit-content'}
+              contents="입장하기"
+              hasBorder={true}
+              onClick={() => {
+                setSessionState(sessionId)
+                setMyNameState(myNickname)
+              }}
+            />
+          </Flex>
+        )}
+        {status === 'FINISHED' && (
+          <Flex justifyContent={'center'}>
+            <StatusButton padding={'12px 45px'} variant={'dark'}>
+              종료됨
+            </StatusButton>
+          </Flex>
+        )}
       </Flex>
     </Flex>
   )

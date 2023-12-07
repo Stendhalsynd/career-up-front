@@ -11,11 +11,12 @@ import {
 
 import { AppBar, Toolbar, Tooltip } from '@mui/material'
 
+import axios from 'axios'
 import React, { Component } from 'react'
 
 import { Icon } from 'components/atoms'
 import { Flex } from 'components/layout'
-import { confirmAlert } from 'lib/sweetAlert'
+import { confirmAlert, warningAlert } from 'lib/sweetAlert'
 
 export default class ToolbarComponent extends Component {
   constructor(props) {
@@ -62,9 +63,25 @@ export default class ToolbarComponent extends Component {
       '화상 채팅을 종료하겠습니까?',
       '예',
       '아니오',
-    ).then((result) => {
+    ).then(async (result) => {
+      const data = {
+        sessionId: this.props.sessionId,
+      }
       if (result.isConfirmed) {
-        this.props.leaveSession()
+        const response = await axios.patch(
+          `https://api.career-up.live:8080/chat-finished`,
+          data,
+        )
+        if (response) {
+          this.props.leaveSession()
+        } else {
+          // 회의 종료 실패
+          warningAlert(
+            '회의 종료 실패',
+            '회의의 종료를 요청하는 중 오류가 발생하였습니다.',
+            '확인',
+          )
+        }
       }
     })
   }

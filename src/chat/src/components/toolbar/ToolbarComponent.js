@@ -15,6 +15,7 @@ import React, { Component } from 'react'
 
 import { Icon } from 'components/atoms'
 import { Flex } from 'components/layout'
+import { confirmAlert } from 'lib/sweetAlert'
 
 export default class ToolbarComponent extends Component {
   constructor(props) {
@@ -55,8 +56,17 @@ export default class ToolbarComponent extends Component {
     this.props.switchCamera()
   }
 
-  leaveSession() {
-    this.props.leaveSession()
+  leaveSession = () => {
+    confirmAlert(
+      '화상 채팅 종료',
+      '화상 채팅을 종료하겠습니까?',
+      '예',
+      '아니오',
+    ).then((result) => {
+      if (result.isConfirmed) {
+        this.props.leaveSession()
+      }
+    })
   }
 
   toggleChat() {

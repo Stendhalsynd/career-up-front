@@ -142,7 +142,7 @@ function WorkerMyPageInfo() {
             padding={{ base: '20px 25px', sm: '30px 40px', md: '0' }}
             gap="29px"
             margin={{ base: '0', md: '30px' }}
-            alignItems="center"
+            alignItems={'center'}
           >
             <Flex
               border={`1px solid ${theme.colors.primary}`}
@@ -152,8 +152,7 @@ function WorkerMyPageInfo() {
               backgroundColor={'white'}
               alignItems={'center'}
               alignSelf={'center'}
-              width={{ base: '460px', md: '500px' }}
-              //maxWidth={'460px'}
+              width={{ base: '460px', sm: '400px', md: '500px' }}
             >
               <Picture pictureName="vector" width={27} />
               <Text variant="smallBold">

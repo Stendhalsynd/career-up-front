@@ -5,6 +5,7 @@ import axios from 'axios'
 import dayjs from 'dayjs'
 import { useEffect, useState } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
+import { SweetAlertResult } from 'sweetalert2'
 import styles from '../../components/molecules/Button/RequestButton.module.css'
 import { Text } from 'components/atoms/index.ts'
 import { Flex } from 'components/layout/index.ts'
@@ -12,7 +13,7 @@ import SelectButton from 'components/molecules/Button/SelectButton.tsx'
 import Calendar from 'components/molecules/Calendar/index.tsx'
 import { RequestButton, TextArea } from 'components/molecules/index.ts'
 import MeetingApplyLayout from 'components/templates/MeetingLayout/index.tsx'
-import { successAlert, warningAlert } from 'lib/sweetAlert.tsx'
+import { confirmAlert, successAlert, warningAlert } from 'lib/sweetAlert.tsx'
 import useRequest, { GetRequest } from 'lib/useRequest.ts'
 import { selectedDateState, selectedNicknameState } from 'utils/state.ts'
 
@@ -86,29 +87,42 @@ const MeetingApply = () => {
         consult,
       }
 
-      const response = await axios.post(
-        `https://api.career-up.live:8080/reservation/${selectedNickname}`,
-        data,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        },
-      )
+      confirmAlert(
+        '카메라 환경 설정 안내',
+        '화상 채팅을 하기 위해서 카메라가 설치된 디바이스가 필요합니다.\n 디바이스에 카메라가 존재합니까?',
+        '네',
+        '아니오',
+      ).then(async (result: SweetAlertResult<any>) => {
+        if (result.isConfirmed) {
+          const response = await axios.post(
+            `https://api.career-up.live:8080/reservation/${selectedNickname}`,
+            data,
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+              },
+            },
+          )
 
-      if (response) {
-        successAlert('예약 완료', '예약 신청이 완료되었습니다.', '확인').then(
-          () => {
-            window.location.href = '/seekerChat'
-          },
-        )
-      } else {
-        warningAlert(
-          '예약 실패',
-          '예약을 요청하는 중 오류가 발생하였습니다.',
-          '확인',
-        )
-      }
+          if (response) {
+            // Reservation was successful
+            successAlert(
+              '예약 완료',
+              '예약 신청이 완료되었습니다.',
+              '확인',
+            ).then(() => {
+              window.location.href = '/seekerChat'
+            })
+          } else {
+            // Reservation failed
+            warningAlert(
+              '예약 실패',
+              '예약을 요청하는 중 오류가 발생하였습니다.',
+              '확인',
+            )
+          }
+        }
+      })
     } catch (error) {
       console.error('[ERROR] 예약을 요청하는 중 오류 발생', error)
     }

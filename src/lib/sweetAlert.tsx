@@ -1,5 +1,5 @@
 // utils/sweetalert.js
-import Swal, { SweetAlertOptions, SweetAlertResult } from 'sweetalert2'
+import Swal, { SweetAlertResult } from 'sweetalert2'
 
 export const successAlert = (
   title: string,
@@ -69,16 +69,17 @@ export const questionAlert = (
 export const confirmAlert = (
   title: string,
   text: string,
-  icon: SweetAlertOptions['icon'] = 'warning',
+  confirmButtonText: string,
+  cancelButtonText: string,
 ): Promise<SweetAlertResult<any>> => {
   return Swal.fire({
     title: title,
     text: text,
-    icon: icon,
+    icon: 'question',
     showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
     confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
     cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
-    confirmButtonText: '승인', // confirm 버튼 텍스트 지정
-    cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+    confirmButtonText: confirmButtonText, // confirm 버튼 텍스트 지정
+    cancelButtonText: cancelButtonText, // cancel 버튼 텍스트 지정
   })
 }

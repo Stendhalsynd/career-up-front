@@ -152,7 +152,7 @@ function WorkerMyPageInfo() {
               backgroundColor={'white'}
               alignItems={'center'}
               alignSelf={'center'}
-              width={{ base: '460px', md: '600px' }}
+              width={{ base: '460px', md: '500px' }}
               //maxWidth={'460px'}
             >
               <Picture pictureName="vector" width={27} />

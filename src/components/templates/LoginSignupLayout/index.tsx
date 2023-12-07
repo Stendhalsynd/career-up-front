@@ -66,16 +66,29 @@ const LoginSignupLayout = ({ children }: ChildrenProps) => {
             >
               <Flex
                 flexDirection={'column'}
-                gap={'10px'}
+                gap={'25px'}
                 justifyContent={'center'}
                 alignItems={'center'}
                 zIndex={1}
               >
-                <Text color={'white'}>커리어의 안내서</Text>
-                <Logo />
-                <Flex display={{ base: 'flex', md: 'flex' }}>
-                  <Text color={'white'}>
-                    1:1 화상채팅 개발자 커리어 상담 서비스
+                <Text color={'white'} variant="mediumLargeBold">
+                  커리어의 안내서
+                </Text>
+                <Logo width={250} />
+                <Flex flexDirection={'column'} gap={'10px'}>
+                  <Text
+                    color={'white'}
+                    textAlign={'center'}
+                    variant="mediumBold"
+                  >
+                    1:1 화상채팅
+                  </Text>
+                  <Text
+                    color={'white'}
+                    textAlign={'center'}
+                    variant="mediumBold"
+                  >
+                    개발자 커리어 상담 서비스
                   </Text>
                 </Flex>
               </Flex>

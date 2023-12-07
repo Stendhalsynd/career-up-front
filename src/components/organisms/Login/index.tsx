@@ -31,7 +31,11 @@ const Login = () => {
         setErrorMessage('이메일 또는 비밀번호가 올바르지 않습니다.')
       }
     } catch (error) {
-      warningAlert('로그인 실패', '로그인 중 오류가 발생했습니다.', '확인')
+      warningAlert(
+        '로그인 실패',
+        '이메일 또는 비밀번호가 올바르지 않습니다.',
+        '확인',
+      )
     }
   }
 

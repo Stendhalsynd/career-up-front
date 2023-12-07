@@ -12,6 +12,7 @@ import SelectButton from 'components/molecules/Button/SelectButton.tsx'
 import Calendar from 'components/molecules/Calendar/index.tsx'
 import { RequestButton, TextArea } from 'components/molecules/index.ts'
 import MeetingApplyLayout from 'components/templates/MeetingLayout/index.tsx'
+import { successAlert, warningAlert } from 'lib/sweetAlert.tsx'
 import useRequest, { GetRequest } from 'lib/useRequest.ts'
 import { selectedDateState, selectedNicknameState } from 'utils/state.ts'
 
@@ -58,12 +59,22 @@ const MeetingApply = () => {
   const handleReservationClick = async () => {
     try {
       if (!selectedDate) {
-        console.warn('[WARN] 예약을 요청하기 전에 날짜를 선택해주세요.')
+        //console.warn('[WARN] 예약을 요청하기 전에 날짜를 선택해주세요.')
+        warningAlert(
+          '예약 실패',
+          '예약을 요청하기 전에 날짜를 선택해주세요.',
+          '확인',
+        )
         return
       }
 
       if (!selectedTime) {
-        console.warn('[WARN] 예약을 요청하기 전에 시간을 선택해주세요.')
+        //console.warn('[WARN] 예약을 요청하기 전에 시간을 선택해주세요.')
+        warningAlert(
+          '예약 실패',
+          '예약을 요청하기 전에 시간을 선택해주세요.',
+          '확인',
+        )
         return
       }
 
@@ -84,7 +95,17 @@ const MeetingApply = () => {
       )
 
       if (response) {
-        window.location.href = '/'
+        successAlert('예약 완료', '예약 신청이 완료되었습니다.', '확인').then(
+          () => {
+            window.location.href = '/seekerChat'
+          },
+        )
+      } else {
+        warningAlert(
+          '예약 실패',
+          '예약을 요청하는 중 오류가 발생하였습니다.',
+          '확인',
+        )
       }
     } catch (error) {
       console.error('[ERROR] 예약을 요청하는 중 오류 발생', error)

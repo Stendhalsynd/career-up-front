@@ -9,6 +9,7 @@ import { Box, Flex } from 'components/layout/index.ts'
 import { SkillTagButton } from 'components/molecules/Button/TagButton.tsx'
 import { HyperLinkButton } from 'components/molecules/index.ts'
 import Layout from 'components/templates/Layout/index.tsx'
+import { warningAlert } from 'lib/sweetAlert.tsx'
 import { theme } from 'themes/index.ts'
 import { selectedNicknameState } from 'utils/state.ts'
 
@@ -40,6 +41,19 @@ function WorkerMyPageInfo() {
   const [profileImage, setProfileImageUrl] = useState<string | undefined>(
     undefined,
   )
+
+  const handleClickMentoring = (e: React.MouseEvent) => {
+    const token = localStorage.getItem('token')
+
+    if (!token) {
+      e.preventDefault()
+      warningAlert('로그인 필요', '로그인 후 이용해주세요.', '확인').then(
+        () => {
+          window.location.href = '/login'
+        },
+      )
+    }
+  }
 
   useEffect(() => {
     const fetchWorkerData = async () => {
@@ -115,6 +129,7 @@ function WorkerMyPageInfo() {
                 width="fit-content"
                 contents="멘토링 신청"
                 hasBorder
+                onClick={handleClickMentoring}
               />
             </Flex>
             <Flex display={{ base: 'none', sm: 'flex' }} marginTop="100px">

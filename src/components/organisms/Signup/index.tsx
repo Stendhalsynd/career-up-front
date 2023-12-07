@@ -8,10 +8,11 @@ import RequestButton from 'components/molecules/Button/RequestButton.tsx'
 import SelectButton from 'components/molecules/Button/SelectButton.tsx'
 import { ButtonVariant } from 'components/molecules/Button/index.tsx'
 import { HyperLinkButton, Input } from 'components/molecules/index.ts'
+import { successAlert, warningAlert } from 'lib/sweetAlert.tsx'
 
 const Signup = () => {
-  const [errorMessage, setErrorMessage] = useState<string>('')
-  const [successMessage, setSuccessMessage] = useState<string>('')
+  //const [errorMessage, setErrorMessage] = useState<string>('')
+  //const [successMessage, setSuccessMessage] = useState<string>('')
 
   const [roleType, setRoleType] = useState<string>('')
   const [email, setEmail] = useState<string>('')
@@ -39,29 +40,35 @@ const Signup = () => {
     try {
       // 이메일 유효성 검사
       if (!/^[a-zA-Z0-9-_]+@[a-zA-Z0-9]+\.[A-Za-z]{2,4}$/.test(email)) {
-        setErrorMessage('올바른 이메일 주소를 입력하세요.')
+        warningAlert(
+          '회원가입 실패',
+          '올바른 이메일 주소를 입력하세요.',
+          '확인',
+        )
         return
       }
 
       // 비밀번호 유효성 검사
       if (!/^[a-zA-Z0-9-_]+$/.test(password)) {
-        setErrorMessage(
+        warningAlert(
+          '회원가입 실패',
           '비밀번호는 영문자, 숫자, 대시, 언더스코어만 허용됩니다.',
+          '확인',
         )
         return
       }
 
       if (!email || !password || !checkPassword || !roleType) {
-        setErrorMessage('모든 필드를 작성하세요.')
+        warningAlert('회원가입 실패', '모든 필드를 작성하세요.', '확인')
         return
       }
 
       if (password !== checkPassword) {
-        setErrorMessage('비밀번호가 일치하지 않습니다.')
+        warningAlert('회원가입 실패', '비밀번호가 일치하지 않습니다.', '확인')
         return
       }
 
-      setErrorMessage('')
+      //setErrorMessage('')
 
       const data = {
         email,
@@ -79,17 +86,23 @@ const Signup = () => {
       })
 
       if (response.ok) {
-        setSuccessMessage('회원가입 성공!')
+        successAlert(
+          '회원가입 성공',
+          '회원가입이 완료되었습니다!',
+          '확인',
+        ).then(() => {
+          window.location.href = '/login'
+        })
         setEmail('')
         setPassword('')
         setCheckPassword('')
         setCompany('')
-        window.location.href = '/login'
+        //window.location.href = '/login'
       } else {
-        setErrorMessage(`회원가입 실패: ${await response.json()}`)
+        //setErrorMessage(`회원가입 실패: ${await response.json()}`)
       }
     } catch (error) {
-      setErrorMessage(`회원가입 중 오류 발생: ${error}`)
+      //setErrorMessage(`회원가입 중 오류 발생: ${error}`)
     }
   }
 
@@ -190,7 +203,7 @@ const Signup = () => {
         width={'73.53vw'}
         maxWidth={'400px'}
       >
-        {/* 오류 메시지 (구직자 선택 시) */}
+        {/* 오류 메시지 (구직자 선택 시)
         {errorMessage && roleType === 'SEEKER' && (
           <Flex marginBottom="10px">
             <Text color={'red'} fontSize="extraSmall">
@@ -200,31 +213,31 @@ const Signup = () => {
         )}
 
         {/* 성공 메시지 (구직자 선택 시) */}
-        {successMessage && roleType === 'SEEKER' && (
+        {/* {successMessage && roleType === 'SEEKER' && (
           <Flex marginBottom="10px">
             <Text color={'green'} fontSize="extraSmall">
               {successMessage}
             </Text>
           </Flex>
-        )}
+        )} */}
 
         {/* 오류 메시지 (재직자 선택 시) */}
-        {errorMessage && roleType === 'WORKER' && (
+        {/* {errorMessage && roleType === 'WORKER' && (
           <Flex marginTop="-30px" marginBottom="10px">
             <Text color={'red'} fontSize="extraSmall">
               {errorMessage}
             </Text>
           </Flex>
-        )}
+        )} */}
 
         {/* 성공 메시지 (재직자 선택 시) */}
-        {successMessage && roleType === 'WORKER' && (
+        {/* {successMessage && roleType === 'WORKER' && (
           <Flex marginTop="-30px" marginBottom="10px">
             <Text color={'green'} fontSize="extraSmall">
               {successMessage}
             </Text>
           </Flex>
-        )}
+        )} */}
 
         <Flex marginBottom={'15px'} width={'100%'}>
           <RequestButton onClick={handleSignup} hasBorder>

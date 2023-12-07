@@ -1,5 +1,8 @@
 import { atom } from 'recoil'
+import { recoilPersist } from 'recoil-persist'
 import { DropdownItem } from 'components/molecules/DropdownButton/index.tsx'
+
+const { persistAtom } = recoilPersist()
 
 export const sessionState = atom({
   key: 'sessionState',
@@ -55,6 +58,7 @@ export const countDataState = atom({
 export const selectedNicknameState = atom({
   key: 'selectedNicknameState',
   default: '',
+  effects_UNSTABLE: [persistAtom],
 })
 
 export const selectedDateState = atom({

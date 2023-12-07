@@ -1,8 +1,11 @@
 // 메인페이지 배경 레이아웃
 
+'use client'
+
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Box, Flex } from 'components/layout/index.ts'
 import Layout from 'components/templates/Layout/index.tsx'
+import FloatingComponent from 'containers/FloatingContainer/index.tsx'
 import { Desktop, Mobile, Tablet } from 'lib/useMediaQuery.tsx'
 
 interface ChildrenProps {
@@ -25,7 +28,9 @@ const MainBlackBackgroundLayout = ({ children }: ChildrenProps) => {
             overflow={'hidden'}
           >
             <Box position={'absolute'} zIndex={-1} right={'-250px'}>
-              <Picture pictureName="cube" width={355} />
+              <FloatingComponent>
+                <Picture pictureName="cube" width={355} />
+              </FloatingComponent>
             </Box>
             <Box
               position={'absolute'}
@@ -33,7 +38,9 @@ const MainBlackBackgroundLayout = ({ children }: ChildrenProps) => {
               top={'250px'}
               left={'-200px'}
             >
-              <Picture pictureName="roundcube1" width={355} />
+              <FloatingComponent>
+                <Picture pictureName="roundcube1" width={355} />
+              </FloatingComponent>
             </Box>
             <Box
               position={'absolute'}
@@ -41,7 +48,9 @@ const MainBlackBackgroundLayout = ({ children }: ChildrenProps) => {
               top={'600px'}
               right={'-100px'}
             >
-              <Picture pictureName="supertoroid1" width={300} />
+              <FloatingComponent>
+                <Picture pictureName="supertoroid1" width={300} />
+              </FloatingComponent>
             </Box>
             <Box
               position={'absolute'}
@@ -49,10 +58,14 @@ const MainBlackBackgroundLayout = ({ children }: ChildrenProps) => {
               top={'1200px'}
               left={'-100px'}
             >
-              <Picture pictureName="sphere" width={300} />
+              <FloatingComponent>
+                <Picture pictureName="sphere" width={300} />
+              </FloatingComponent>
             </Box>
             <Box position={'absolute'} zIndex={-1} top={'1900px'}>
-              <Picture pictureName="workvideoconference" width={300} />
+              <FloatingComponent>
+                <Picture pictureName="workvideoconference" width={300} />
+              </FloatingComponent>
             </Box>
             <Box
               position={'absolute'}
@@ -60,7 +73,9 @@ const MainBlackBackgroundLayout = ({ children }: ChildrenProps) => {
               top={'2000px'}
               right={'-100px'}
             >
-              <Picture pictureName="cone" width={300} />
+              <FloatingComponent>
+                <Picture pictureName="cone" width={300} />
+              </FloatingComponent>
             </Box>
             {children}
           </Flex>
@@ -78,7 +93,9 @@ const MainBlackBackgroundLayout = ({ children }: ChildrenProps) => {
             overflow={'hidden'}
           >
             <Box position={'absolute'} zIndex={-1} top={'0px'} right={'-100px'}>
-              <Picture pictureName="cube" width={400} />
+              <FloatingComponent>
+                <Picture pictureName="cube" width={400} />
+              </FloatingComponent>
             </Box>
             <Box
               position={'absolute'}
@@ -86,7 +103,9 @@ const MainBlackBackgroundLayout = ({ children }: ChildrenProps) => {
               top={'350px'}
               left={'-100px'}
             >
-              <Picture pictureName="roundcube1" width={400} />
+              <FloatingComponent>
+                <Picture pictureName="roundcube1" width={400} />
+              </FloatingComponent>
             </Box>
             <Box
               position={'absolute'}
@@ -94,7 +113,9 @@ const MainBlackBackgroundLayout = ({ children }: ChildrenProps) => {
               top={'600px'}
               right={'-100px'}
             >
-              <Picture pictureName="supertoroid1" width={400} />
+              <FloatingComponent>
+                <Picture pictureName="supertoroid1" width={400} />
+              </FloatingComponent>
             </Box>
             <Box
               position={'absolute'}
@@ -102,10 +123,14 @@ const MainBlackBackgroundLayout = ({ children }: ChildrenProps) => {
               top={'1000px'}
               left={'-100px'}
             >
-              <Picture pictureName="sphere" width={400} />
+              <FloatingComponent>
+                <Picture pictureName="sphere" width={400} />
+              </FloatingComponent>
             </Box>
             <Box position={'absolute'} zIndex={-1} top={'1900px'}>
-              <Picture pictureName="workvideoconference" width={400} />
+              <FloatingComponent>
+                <Picture pictureName="workvideoconference" width={400} />
+              </FloatingComponent>
             </Box>
             <Box
               position={'absolute'}
@@ -113,7 +138,9 @@ const MainBlackBackgroundLayout = ({ children }: ChildrenProps) => {
               top={'2000px'}
               right={'-100px'}
             >
-              <Picture pictureName="cone" width={400} />
+              <FloatingComponent>
+                <Picture pictureName="cone" width={400} />
+              </FloatingComponent>
             </Box>
             {children}
           </Flex>
@@ -131,7 +158,9 @@ const MainBlackBackgroundLayout = ({ children }: ChildrenProps) => {
             overflow={'hidden'}
           >
             <Box position={'absolute'} zIndex={-1} top={'0px'} right={'-100px'}>
-              <Picture pictureName="cube" width={500} />
+              <FloatingComponent>
+                <Picture pictureName="cube" width={500} />
+              </FloatingComponent>
             </Box>
             <Box
               position={'absolute'}
@@ -139,7 +168,9 @@ const MainBlackBackgroundLayout = ({ children }: ChildrenProps) => {
               top={'400px'}
               left={'-100px'}
             >
-              <Picture pictureName="roundcube1" width={500} />
+              <FloatingComponent>
+                <Picture pictureName="roundcube1" width={500} />
+              </FloatingComponent>
             </Box>
             <Box
               position={'absolute'}
@@ -147,7 +178,9 @@ const MainBlackBackgroundLayout = ({ children }: ChildrenProps) => {
               top={'600px'}
               right={'-100px'}
             >
-              <Picture pictureName="supertoroid1" width={500} />
+              <FloatingComponent>
+                <Picture pictureName="supertoroid1" width={500} />
+              </FloatingComponent>
             </Box>
             <Box
               position={'absolute'}
@@ -155,23 +188,29 @@ const MainBlackBackgroundLayout = ({ children }: ChildrenProps) => {
               top={'1100px'}
               left={'-100px'}
             >
-              <Picture pictureName="sphere" width={500} />
+              <FloatingComponent>
+                <Picture pictureName="sphere" width={500} />
+              </FloatingComponent>
+            </Box>
+            <Box
+              position={'absolute'}
+              zIndex={-1}
+              top={'1800px'}
+              left={'100px'}
+            >
+              <FloatingComponent>
+                <Picture pictureName="workvideoconference" width={500} />
+              </FloatingComponent>
             </Box>
             <Box
               position={'absolute'}
               zIndex={-1}
               top={'1900px'}
-              left={'100px'}
-            >
-              <Picture pictureName="workvideoconference" width={500} />
-            </Box>
-            <Box
-              position={'absolute'}
-              zIndex={-1}
-              top={'2000px'}
               right={'-100px'}
             >
-              <Picture pictureName="cone" width={500} />
+              <FloatingComponent>
+                <Picture pictureName="cone" width={500} />
+              </FloatingComponent>
             </Box>
             {children}
           </Flex>

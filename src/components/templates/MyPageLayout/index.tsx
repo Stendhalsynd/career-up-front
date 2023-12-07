@@ -1,6 +1,9 @@
+'use client'
+
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Box, Flex } from 'components/layout/index.ts'
 import Layout from 'components/templates/Layout/index.tsx'
+import FloatingComponent from 'containers/FloatingContainer/index.tsx'
 
 interface MyPageLayoutProps {
   children: React.ReactNode
@@ -21,6 +24,7 @@ const MyPageLayout = ({ children }: MyPageLayoutProps) => {
         >
           <Flex
             width={{ base: '95%', sm: '99%', md: '100%' }}
+            maxWidth={'1200px'}
             height={'fit-content'}
             minHeight={'190px'}
             flexDirection={'column'}
@@ -29,8 +33,10 @@ const MyPageLayout = ({ children }: MyPageLayoutProps) => {
             overflow={'hidden'}
             style={{ transition: '1s' }}
           >
-            <Box position={'absolute'} top={'367px'} left={'-10px'}>
-              <Picture pictureName="supertoroid2" width={143} />
+            <Box position={'absolute'} top={'367px'} left={'10px'}>
+              <FloatingComponent>
+                <Picture pictureName="supertoroid2" width={300} />
+              </FloatingComponent>
             </Box>
             <Box
               position={'absolute'}
@@ -39,7 +45,9 @@ const MyPageLayout = ({ children }: MyPageLayoutProps) => {
               width={{ base: '200px', md: '252px' }}
               display={{ base: 'none', sm: 'block' }}
             >
-              <Picture pictureName="cube" width={252} />
+              <FloatingComponent>
+                <Picture pictureName="cube" width={252} />
+              </FloatingComponent>
             </Box>
             <Box
               position={'absolute'}
@@ -48,7 +56,9 @@ const MyPageLayout = ({ children }: MyPageLayoutProps) => {
               width={{ sm: '200px', md: '252px' }}
               display={{ base: 'none', sm: 'block' }}
             >
-              <Picture pictureName="supertoroid1" width={252} />
+              <FloatingComponent>
+                <Picture pictureName="supertoroid3" width={300} />
+              </FloatingComponent>
             </Box>
             {children}
           </Flex>

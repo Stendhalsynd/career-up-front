@@ -1,6 +1,7 @@
 import Picture from 'components/atoms/Picture/index.tsx'
 import { Box, Flex } from 'components/layout/index.ts'
 import Layout from 'components/templates/Layout/index.tsx'
+import FloatingComponent from 'containers/FloatingContainer/index.tsx'
 
 interface ChildrenProps {
   children: React.ReactNode
@@ -30,10 +31,14 @@ const MeetingApplyLayout = ({ children }: ChildrenProps) => {
             style={{ transition: '1s' }}
           >
             <Box position={'absolute'} right={'-30px'}>
-              <Picture pictureName="supertoroid1" width={157} />
+              <FloatingComponent>
+                <Picture pictureName="supertoroid1" width={157} />
+              </FloatingComponent>
             </Box>
             <Box position={'absolute'} left={'-30px'} bottom={'-30px'}>
-              <Picture pictureName="supertoroid2" width={149} />
+              <FloatingComponent>
+                <Picture pictureName="supertoroid2" width={149} />
+              </FloatingComponent>
             </Box>
             {children}
           </Flex>

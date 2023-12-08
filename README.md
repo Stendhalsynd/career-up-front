@@ -85,6 +85,30 @@
 
 </details>
 
+<details>
+
+<summary>마이 페이지</summary>
+
+![Dec-09-2023 05-59-44](https://github.com/Stendhalsynd/career-up-front/assets/96957774/964ad67f-69a5-4fd4-8c2d-a4c00d6cf9e7)
+
+</details>
+
+<details>
+
+<summary>로그인 및 회원가입 페이지</summary>
+
+![Dec-09-2023 06-00-58](https://github.com/Stendhalsynd/career-up-front/assets/96957774/84bf0dac-30e0-4d52-a41b-bad3f77ba7cb)
+
+</details>
+
+<details>
+
+<summary>헤더 및 메뉴바</summary>
+
+![Dec-09-2023 06-02-25](https://github.com/Stendhalsynd/career-up-front/assets/96957774/b476d34d-e950-4b23-896d-ecfd844496f7)
+
+</details>
+
 ## 설치 라이브러리
 
 ```
@@ -103,8 +127,121 @@ npm i swr
 npm i recoil
 npm i -D aos@next
 npm i @types/aos
+npm i openvidu-browser
+npm i openvidu-react
+npm i react-slick
+npm i sweetalert2
 
 ```
+
+# 2. 아키텍쳐
+
+![스크린샷 2023-12-09 오전 6 05 52](https://github.com/Stendhalsynd/career-up-front/assets/96957774/2a5a4ee1-c5c7-446e-8177-546db1aa3121)
+
+# 3. 기술스택
+
+![스크린샷 2023-12-09 오전 6 07 01](https://github.com/Stendhalsynd/career-up-front/assets/96957774/97cd4780-6ec5-49c4-995b-56648324312e)
+
+# 4. 파일 구조
+
+<details>
+
+<summary>프론트 프로젝트 구조</summary>
+
+```
+.
+├── public
+│   └── assets
+│       ├── icon
+│       ├── image
+│       └── lottie
+└── src
+    ├── app
+    │   ├── chat
+    │   ├── login
+    │   ├── meeting
+    │   ├── search
+    │   ├── seekerChat
+    │   ├── seekers
+    │   │   └── edit
+    │   ├── signup
+    │   ├── workerChat
+    │   └── workers
+    │       ├── edit
+    │       └── info
+    ├── chat
+    │   └── src
+    │       ├── assets
+    │       │   └── images
+    │       ├── components
+    │       │   ├── chat
+    │       │   ├── dialog-extension
+    │       │   ├── stream
+    │       │   └── toolbar
+    │       ├── layout
+    │       └── models
+    ├── components
+    │   ├── atoms
+    │   │   ├── Avatar
+    │   │   ├── Icon
+    │   │   ├── Logo
+    │   │   ├── Picture
+    │   │   └── Text
+    │   ├── layout
+    │   │   ├── Box
+    │   │   ├── Flex
+    │   │   └── Grid
+    │   ├── molecules
+    │   │   ├── Button
+    │   │   ├── Calendar
+    │   │   ├── DropdownButton
+    │   │   ├── Dropzone
+    │   │   ├── Header
+    │   │   ├── ImagePreview
+    │   │   ├── Input
+    │   │   ├── InputImages
+    │   │   ├── Label
+    │   │   ├── SearchInput
+    │   │   ├── SideMenu
+    │   │   └── TextArea
+    │   ├── organisms
+    │   │   ├── AlertContainer
+    │   │   ├── BasicInfo
+    │   │   ├── ChatInfoCard
+    │   │   ├── FilterModal
+    │   │   ├── Login
+    │   │   ├── Main
+    │   │   │   ├── ChatInfoContainer
+    │   │   │   ├── IntroTextContainer
+    │   │   │   ├── ProcessInfoContainer
+    │   │   │   ├── PromoteTextContainer
+    │   │   │   └── WorkerInfoContainer
+    │   │   ├── MentoSearch
+    │   │   ├── Signup
+    │   │   ├── TodayChatInfo
+    │   │   ├── WorkerInfoCard
+    │   │   └── WorkerInfoCardSlider
+    │   └── templates
+    │       ├── Layout
+    │       ├── LoginSignupLayout
+    │       ├── MainLayout
+    │       │   ├── MainBlackBackgroundLayout
+    │       │   └── MainBlueBackgroundLayout
+    │       ├── MeetingLayout
+    │       ├── MyPageLayout
+    │       └── WorkerInfoListLayout
+    ├── containers
+    │   ├── AosContainer
+    │   └── FloatingContainer
+    ├── lib
+    ├── stories
+    │   └── assets
+    ├── themes
+    ├── types
+    └── utils
+```
+
+</details>
 
 ## 프로젝트 기간
 

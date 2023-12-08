@@ -38,7 +38,10 @@
 
 ## 3. 서비스 화면
 
-### 메인페이지
+<details>
+
+<summary>메인페이지</summary>
+
 
 ![스크린샷 2023-12-08 오후 7 52 45](https://github.com/Stendhalsynd/career-up-front/assets/96957774/8be686eb-99cd-4036-b3f1-d3ad79ad7835)
 
@@ -48,22 +51,39 @@
 
 ![스크린샷 2023-12-08 오후 7 54 41](https://github.com/Stendhalsynd/career-up-front/assets/96957774/981778ab-9e3d-4a50-be0c-e01237fc5262)
 
-### 멘토 탐색 페이지
+</details>
+
+<details>
+
+<summary>멘토 탐색 페이지</summary>
 
 ![Dec-08-2023 19-55-28](https://github.com/Stendhalsynd/career-up-front/assets/96957774/a55f333a-d6f0-46e4-a799-eff07e85e7c2)
 
-### 현직자 상세 페이지
+</details>
+
+<details>
+
+<summary>현직자 상세 페이지</summary>
 
 ![스크린샷 2023-12-08 오후 7 56 26](https://github.com/Stendhalsynd/career-up-front/assets/96957774/fdc73d28-8bd9-45f4-bf4a-75aac44deda9)
 
-### 상담 신청 페이지
+</details>
+
+<details>
+
+<summary>상담 신청 페이지</summary>
 
 ![Dec-08-2023 19-57-44](https://github.com/Stendhalsynd/career-up-front/assets/96957774/3a143a46-85bf-4928-bfcc-d5bcf65917fe)
 
-### 나의 컨설팅 페이지
+</details>
+
+<details>
+
+<summary>나의 채팅 페이지</summary>
 
 ![Dec-08-2023 19-58-36](https://github.com/Stendhalsynd/career-up-front/assets/96957774/77f21b69-9e87-4e16-a2f2-3328f2f1fc40)
 
+</details>
 
 ## 설치 라이브러리
 

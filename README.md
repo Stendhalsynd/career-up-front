@@ -1,5 +1,19 @@
-# WebRTC 기반 1:1 화상 컨설팅 플랫폼:커리업
+# WebRTC 기반 1:1 화상 컨설팅 플랫폼 : 커리업
 > 6인 팀 프로젝트
+
+<img src='https://github.com/Stendhalsynd/career-up-front/assets/96957774/d0bdbf06-01dd-4deb-bd04-ed69cf3dd16a' width='300' >
+
+## 배포 주소
+
+- [커리업](https://career-up.live/)
+  - 실제 서비스를 볼 수 있는 주소
+- [storybook](https://6560bd731f7f9e471fc4de1d-hikhaqgkfh.chromatic.com/)
+  - 프론트엔드 컴포넌트 개발 현황 및 사용법에 대한 storybook 배포 주소
+  
+## 프로젝트 기간
+
+> `11.10~12.08 (약 4주)`
+
 
 # 1. 서비스 소개
 
@@ -16,6 +30,12 @@
   - 새로 취업을 준비하고 있는 주니어 개발자들
 
 ## 2. 기획 배경
+
+![스크린샷 2023-12-09 오전 8 52 49](https://github.com/Stendhalsynd/career-up-front/assets/96957774/9e49a4ee-b8a5-4d28-867d-b2f955f695bd)
+
+![스크린샷 2023-12-09 오전 8 52 59](https://github.com/Stendhalsynd/career-up-front/assets/96957774/bbc6ff33-efcc-486b-b53c-a14ddeb38966)
+
+![스크린샷 2023-12-09 오전 8 53 12](https://github.com/Stendhalsynd/career-up-front/assets/96957774/eb3fab4f-cec4-4f82-bd29-599b50c58df3)
 
 ### 배경
 
@@ -37,6 +57,12 @@
 - 원하는 시니어 개발자의 신청 가능한 예약 시간을 확인하고 신청 가능한 시간대에 컨설팅을 예약할 수 있도록 한다.
 
 ## 3. 서비스 화면
+
+### 핵심 기능
+
+![스크린샷 2023-12-09 오전 8 54 39](https://github.com/Stendhalsynd/career-up-front/assets/96957774/be08ee2c-ecc7-44df-91e1-2f08a1352a73)
+
+### 서비스 화면
 
 <details>
 
@@ -146,7 +172,7 @@ npm i sweetalert2
 
 <details>
 
-<summary>프론트 프로젝트 구조</summary>
+<summary>프론트엔드 프로젝트 구조</summary>
 
 ```
 .
@@ -243,43 +269,147 @@ npm i sweetalert2
 
 </details>
 
-## 프로젝트 기간
+<details>
 
-> 11.10~
+<summary>백엔드 프로젝트 구조</summary>
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+.
+├── build
+│   ├── classes
+│   │   └── java
+│   │       ├── main
+│   │       │   └── com
+│   │       │       └── careerup
+│   │       │           └── careerupspring
+│   │       │               ├── config
+│   │       │               ├── controller
+│   │       │               ├── dto
+│   │       │               ├── entity
+│   │       │               ├── repository
+│   │       │               │   ├── custom
+│   │       │               │   └── impl
+│   │       │               ├── service
+│   │       │               └── util
+│   │       └── test
+│   │           └── com
+│   │               └── careerup
+│   │                   └── careerupspring
+│   ├── generated
+│   │   ├── querydsl
+│   │   │   └── com
+│   │   │       └── careerup
+│   │   │           └── careerupspring
+│   │   │               └── entity
+│   │   └── sources
+│   │       ├── annotationProcessor
+│   │       │   └── java
+│   │       │       └── main
+│   │       └── headers
+│   │           └── java
+│   │               ├── main
+│   │               └── test
+│   ├── resources
+│   │   └── main
+│   │       └── ssl
+│   └── tmp
+│       ├── compileJava
+│       │   └── compileTransaction
+│       │       ├── backup-dir
+│       │       └── stash-dir
+│       └── compileTestJava
+│           └── compileTransaction
+│               ├── backup-dir
+│               └── stash-dir
+├── gradle
+│   └── wrapper
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── careerup
+    │   │           └── careerupspring
+    │   │               ├── config
+    │   │               ├── controller
+    │   │               ├── dto
+    │   │               ├── entity
+    │   │               ├── repository
+    │   │               │   ├── custom
+    │   │               │   └── impl
+    │   │               ├── service
+    │   │               └── util
+    │   └── resources
+    │       └── ssl
+    └── test
+        └── java
+            └── com
+                └── careerup
+                    └── careerupspring
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+</details>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# 5. 설계 문서
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## ERD
 
-## Learn More
+<details>
 
-To learn more about Next.js, take a look at the following resources:
+<summary>ERD</summary>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![ERD](https://github.com/Stendhalsynd/career-up-front/assets/96957774/ba157ad5-0694-4dd2-9140-1b32f44742ba)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+</details>
 
-## Deploy on Vercel
+## API
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<details>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<summary>API 명세서</summary>
+
+![스크린샷 2023-12-09 오전 8 41 01](https://github.com/Stendhalsynd/career-up-front/assets/96957774/f619f011-90b5-49e2-9fc5-2d97f5d04093)
+
+![스크린샷 2023-12-09 오전 8 41 19](https://github.com/Stendhalsynd/career-up-front/assets/96957774/75a2404c-17b4-4c2d-9d10-3ead235a4632)
+
+</details>
+
+## 구조 설계
+
+<details>
+
+<summary>초안</summary>
+
+![스크린샷 2023-12-09 오전 8 42 15](https://github.com/Stendhalsynd/career-up-front/assets/96957774/8c4c156c-ed9b-4e26-9bc9-f4c9566b9c23)
+
+![스크린샷 2023-12-09 오전 8 42 23](https://github.com/Stendhalsynd/career-up-front/assets/96957774/1f8f8aa0-6c88-4b4c-bde0-81f61926e43f)
+
+![스크린샷 2023-12-09 오전 8 42 33](https://github.com/Stendhalsynd/career-up-front/assets/96957774/1574b9b0-ae9d-479d-8002-0b59c7133c47)
+
+![스크린샷 2023-12-09 오전 8 42 44](https://github.com/Stendhalsynd/career-up-front/assets/96957774/40bcdd87-ae64-4ffd-b4c5-07ae9f8af6da)
+
+![스크린샷 2023-12-09 오전 8 42 51](https://github.com/Stendhalsynd/career-up-front/assets/96957774/5b25ef45-fcc3-48ad-b2e6-6ee28306d34e)
+
+![스크린샷 2023-12-09 오전 8 43 01](https://github.com/Stendhalsynd/career-up-front/assets/96957774/11fc6cb3-49ff-41ba-9158-c958eb6df89b)
+
+![스크린샷 2023-12-09 오전 8 43 10](https://github.com/Stendhalsynd/career-up-front/assets/96957774/9b9d5832-e21b-43a9-a815-5be1227e63e1)
+
+![스크린샷 2023-12-09 오전 8 43 18](https://github.com/Stendhalsynd/career-up-front/assets/96957774/c9c41e29-75d9-4647-8114-533cdee311d6)
+
+![스크린샷 2023-12-09 오전 8 43 24](https://github.com/Stendhalsynd/career-up-front/assets/96957774/41bde615-1e28-4125-baa8-6271de58415e)
+
+![스크린샷 2023-12-09 오전 8 43 32](https://github.com/Stendhalsynd/career-up-front/assets/96957774/f915a031-9d0a-45a1-9386-1d65f80e3052)
+
+</details>
+
+## FIGMA
+
+<details>
+
+<summary>FIGMA</summary>
+
+![스크린샷 2023-12-09 오전 8 46 49](https://github.com/Stendhalsynd/career-up-front/assets/96957774/ef4c4da4-b610-408e-8718-f6599f7c1a41)
+
+- [figma 링크](https://www.figma.com/file/8lfhRkMWCfu8cdw2kosBh6/%EC%BB%A4%EB%A6%AC%EC%97%85?type=design&node-id=197%3A7004&mode=design&t=6YSa5QYmSsrkqLeA-1) 
+
+</details>
+

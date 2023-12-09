@@ -413,3 +413,8 @@ npm i sweetalert2
 
 </details>
 
+# 6. 결과물
+
+## 구글 docs
+
+- [구글 docs](https://docs.google.com/presentation/d/1Zgn1n2KTRaX6ByIlt9NxvSKjvj7m_O1HeOu9z22PmoE/edit?usp=sharing)

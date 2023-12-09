@@ -135,6 +135,14 @@
 
 </details>
 
+<details>
+
+<summary>화상회의</summary>
+
+
+
+</details>
+
 ## 설치 라이브러리
 
 ```
@@ -418,3 +426,9 @@ npm i sweetalert2
 ## 구글 docs
 
 - [구글 docs](https://docs.google.com/presentation/d/1Zgn1n2KTRaX6ByIlt9NxvSKjvj7m_O1HeOu9z22PmoE/edit?usp=sharing)
+
+# 7. 팀 소개
+
+## 팀명
+
+> 🔍 안녕하세요! 포스코 x 코딩온 풀스택 웹 개발자 8기 교육생으로 조직된 프로젝트 팀 `커리업` 입니다. 취업에 도움이 되도록 하는 서비스라는 의미를 담아 `커리어` + `업` 으로 `커리업` 이라는 팀명을 정했습니다. 

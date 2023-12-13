@@ -137,9 +137,9 @@
 
 <details>
 
-<summary>화상회의</summary>
+<summary>화상회의 ⭐️ </summary>
 
-
+![압축된 영상회의](https://github.com/Stendhalsynd/career-up-front/assets/96957774/d83bfb98-8742-4839-8281-b6a5efa38616)
 
 </details>
 

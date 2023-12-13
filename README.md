@@ -431,4 +431,10 @@ npm i sweetalert2
 
 ## 팀명
 
-> 🔍 안녕하세요! 포스코 x 코딩온 풀스택 웹 개발자 8기 교육생으로 조직된 프로젝트 팀 `커리업` 입니다. 취업에 도움이 되도록 하는 서비스라는 의미를 담아 `커리어` + `업` 으로 `커리업` 이라는 팀명을 정했습니다. 
+> 🔍 안녕하세요! 포스코 x 코딩온 풀스택 웹 개발자 8기 교육생으로 조직된 프로젝트 팀 `커리업` 입니다. 취업에 도움이 되도록 하는 서비스라는 의미를 담아 `커리어` + `업` 으로 `커리업` 이라는 팀명을 정했습니다.
+
+## 멤버
+
+| <a href="https://github.com/dawncoding"><img src="https://velog.velcdn.com/images/qmflf556/post/23b29140-1247-43f6-a393-6ddaf7a65371/image.png" width="150px"/></a> | <a href="https://github.com/suhyuns22"><img src="https://velog.velcdn.com/images/qmflf556/post/ff50f6d9-c3c4-4d8d-a5ba-dd9787e55c61/image.png" width="150px"/></a> | <a href="https://github.com/Stendhalsynd"><img src="https://velog.velcdn.com/images/qmflf556/post/19704a5b-0640-4675-b149-abb432c38cd2/image.png" width="150px"/></a> | <a href="https://github.com/best0611"><img src="https://avatars.githubusercontent.com/u/124340520?v=4" width="150px"/></a> | <a href="https://github.com/syxxne"><img src="https://github.com/syxxne" width="150px"/></a> | <a href="https://github.com/ddomiunnie"><img src="https://avatars.githubusercontent.com/u/130021038?v=4" width="150px"/></a> | 
+| --- | --- | --- | --- | --- | --- |
+| dawncoding | suhyunes22 | Stendhalsynd | best0611 | syxxne | ddomiunnie |

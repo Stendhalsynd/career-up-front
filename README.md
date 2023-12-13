@@ -163,7 +163,6 @@ npm i -D aos@next
 npm i @types/aos
 npm i openvidu-browser
 npm i openvidu-react
-npm i react-slick
 npm i sweetalert2
 
 ```

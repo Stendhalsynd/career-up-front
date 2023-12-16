@@ -434,6 +434,10 @@ npm i sweetalert2
 
 - [구글 docs](https://docs.google.com/presentation/d/1Zgn1n2KTRaX6ByIlt9NxvSKjvj7m_O1HeOu9z22PmoE/edit?usp=sharing)
 
+## 수상
+
+<img width="477" alt="스크린샷 2023-12-16 오전 10 10 37" src="https://github.com/Stendhalsynd/career-up-front/assets/96957774/e2ee484b-aac7-4f46-a004-3b7eb4d724f2">
+
 # 7. 팀 소개
 
 ## 팀명
